@@ -5,7 +5,7 @@ import { slugify } from "../../../utils";
 const PostVideoOne = ({data}) => {
   return (
     <div className="axil-img-container flex-height-container">
-        <Link href={`/post/${data.slug}`}>
+        <Link href={`/${data.id}`}>
         <a className="d-block h-100">
             <Image
                 src={data.featureImg}
@@ -22,7 +22,7 @@ const PostVideoOne = ({data}) => {
         <div className="media-body media-body__big">
           <div className="axil-media-bottom mt-auto">
             <h3 className="axil-post-title hover-line hover-line">
-                <Link href={`/post/${data.slug}`}>
+            <Link href={`/${data.id}`}>
                     <a>{data.title}</a>
                 </Link>
             </h3>

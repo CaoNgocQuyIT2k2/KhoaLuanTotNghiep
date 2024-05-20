@@ -1,4 +1,4 @@
-import Image from "next/image";
+// src/components/post/layout/PostDanTri.jsx
 import Link from "next/link";
 import { slugify } from "../../../utils";
 import React, { useEffect, useState } from 'react';
@@ -26,7 +26,7 @@ const PostDanTri = ({ pClass, videoIcon, postSizeMd }) => {
     <div>
       {data.map(article => (
         <div key={article.id} className={`media post-block post-block__small ${pClass ?? "post-block__on-dark-bg m-b-xs-30"}`}>
-          <Link href={`/post/${article.id}`}>
+          <Link href={`/${article.id}`}>
             <a className="align-self-center">
               {article.avatar ? (
                 <img
@@ -50,12 +50,12 @@ const PostDanTri = ({ pClass, videoIcon, postSizeMd }) => {
 
           <div className="media-body">
             <div className="post-cat-group">
-              <Link href={`/category/${slugify(article.category.name)}`}>
+              <Link href={`/${article.id}`}>
                 <a className={`post-cat bg-color-blue-one`}>{article.category.name}</a>
               </Link>
             </div>
             <h3 className="axil-post-title hover-line hover-line">
-              <Link href={`/post/${article.id}`}>
+              <Link href={`/${article.id}`}>
                 <a>{article.title}</a>
               </Link>
             </h3>

@@ -35,7 +35,7 @@ const PostLayoutArtPerCat = ({ postSizeMd, postBgDark }) => {
       <div className="col-lg-12">
         {data.map((article, index) => (
           <div key={index} className={`media post-block m-b-xs-30 ${postSizeMd === true ? "post-block__mid" : ""} ${postBgDark === true ? "post-block__on-dark-bg" : ""}`}>
-            <Link href={`/post/${article.slug}`}>
+            <Link href={`/${article.id}`}>
               <a className="align-self-center">
                 {article.avatar ? (
                   <img
@@ -62,7 +62,7 @@ const PostLayoutArtPerCat = ({ postSizeMd, postBgDark }) => {
                 </Link>
               </div>
               <h3 className="axil-post-title hover-line hover-line">
-                <Link href={`/post/${article.slug}`}>
+                <Link href={`/${article.id}`}>
                   <a>{article.title}</a>
                 </Link>
               </h3>

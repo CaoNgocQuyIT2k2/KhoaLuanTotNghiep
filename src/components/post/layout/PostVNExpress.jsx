@@ -26,7 +26,7 @@ const PostVNExpress = ({ pClass, videoIcon, postSizeMd }) => {
     <div>
       {data.map(article => (
         <div key={article.id} className={`media post-block post-block__small ${pClass ?? "post-block__on-dark-bg m-b-xs-30"}`}>
-          <Link href={`/post/${article.id}`}>
+          <Link href={`/${article.id}`}>
             <a className="align-self-center">
               {article.avatar ? (
                 <img
@@ -55,7 +55,7 @@ const PostVNExpress = ({ pClass, videoIcon, postSizeMd }) => {
               </Link>
             </div>
             <h3 className="axil-post-title hover-line hover-line">
-              <Link href={`/post/${article.id}`}>
+              <Link href={`/${article.id}`}>
                 <a>{article.title}</a>
               </Link>
             </h3>

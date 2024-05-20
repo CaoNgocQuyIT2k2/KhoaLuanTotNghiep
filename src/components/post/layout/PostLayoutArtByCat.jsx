@@ -25,7 +25,7 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark }) => {
 
   return (
     <div className="row">
-      <div className="col-lg-12">
+      <div className="col-lg-6">
         {data.map((article, index) => (
           <div key={index} className={`media post-block m-b-xs-30 ${postSizeMd === true ? "post-block__mid" : ""} ${postBgDark === true ? "post-block__on-dark-bg" : ""}`}>
             <Link href={`/post/${article.slug}`}>

@@ -2,7 +2,7 @@ import { Tab, Nav  } from "react-bootstrap";
 import PostVideoTwo from "../post/layout/PostVideoTwo";
 import PostDanTri from "../post/layout/PostDanTri";
 import PostVNExpress from "../post/layout/PostVNExpress";
-import PostPer4Cat from "../post/layout/PostPer4Cat";
+import PostLatestPer4Cat from "../post/layout/PostLatestPer4Cat";
 
 
 const WidgetPost = ({dataPost}) => {
@@ -24,7 +24,7 @@ const WidgetPost = ({dataPost}) => {
             
             <Tab.Content>
                 <Tab.Pane eventKey="recent">
-                <PostPer4Cat  pClass=""  />
+                <PostLatestPer4Cat  pClass=""  />
                 </Tab.Pane>
                 <Tab.Pane eventKey="popular">
                     <PostDanTri  pClass=""  />

@@ -27,7 +27,7 @@ const PostLayoutOne = () => {
             {data.slice(0, 1).map((post) => (
                 <div key={post.id} className="media post-block m-b-xs-20">
                     <figure className="fig-container">
-                        <Link href={`/post/${post.slug}`}>
+                        <Link href={`/${post.id}`}>
                             <a>
                                 {post.avatar ? (
                                     <img
@@ -57,7 +57,7 @@ const PostLayoutOne = () => {
                     </figure>
                     <div className="media-body">
                         <h3 className="axil-post-title hover-line hover-line">
-                            <Link href={`/post/${post.slug}`}>
+                        <Link href={`/${post.id}`}>
                                 <a>{post.title}</a>
                             </Link>
                         </h3>

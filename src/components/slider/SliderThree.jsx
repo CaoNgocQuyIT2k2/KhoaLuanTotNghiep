@@ -80,7 +80,8 @@ const SliderThree = ({ postData }) => {
                   >
                     <div className="media-body">
                       <h3 className="axil-post-title hover-line">
-                        <Link href={`/post/${data.slug}`}>
+                        <Link href={`/${article.id}`}>
+
                           <a>{data.title}</a>
                         </Link>
                       </h3>

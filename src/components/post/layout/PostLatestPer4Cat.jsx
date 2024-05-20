@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
-const PostPer4Cat = ({ pClass, videoIcon, postSizeMd }) => {
+const PostLatestPer4Cat = ({ pClass, videoIcon, postSizeMd }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const PostPer4Cat = ({ pClass, videoIcon, postSizeMd }) => {
     <div>
       {data.map(article => (
         <div key={article.id} className={`media post-block post-block__small ${pClass ?? "post-block__on-dark-bg m-b-xs-30"}`}>
-          <Link href={`/post/${article.id}`}>
+          <Link href={`/${article.id}`}>
             <a className="align-self-center">
               {article.avatar ? (
                 <img
@@ -55,7 +55,7 @@ const PostPer4Cat = ({ pClass, videoIcon, postSizeMd }) => {
               </Link>
             </div>
             <h3 className="axil-post-title hover-line hover-line">
-              <Link href={`/post/${article.id}`}>
+              <Link href={`/${article.id}`}>
                 <a>{article.title}</a>
               </Link>
             </h3>
@@ -82,4 +82,4 @@ const PostPer4Cat = ({ pClass, videoIcon, postSizeMd }) => {
   );
 };
 
-export default PostPer4Cat;
+export default PostLatestPer4Cat;

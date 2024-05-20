@@ -25,7 +25,7 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 		<>
 			{fetchedData.slice(0, 1).map((data, index) => (
 				<div key={index} className={`axil-img-container ${pClass ?? "m-b-xs-30"}`}>
-					<Link href={`/post/${data.slug}`}>
+					<Link href={`/${data.id}`}>
 						<a className={`d-block ${videoPost === true ? "h-100" : ""}`}>
 							{data.avatar ? (
 								<img
@@ -56,7 +56,7 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 							</div>
 							<div className="axil-media-bottom">
 								<h3 className="axil-post-title hover-line hover-line">
-									<Link href={`/post/${data.slug}`}>
+								<Link href={`/${data.id}`}>
 										<a>{data.title}</a>
 									</Link>
 								</h3>

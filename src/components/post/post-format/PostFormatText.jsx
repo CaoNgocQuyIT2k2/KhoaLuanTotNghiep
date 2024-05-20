@@ -24,9 +24,9 @@ const PostFormatText = ({ postData, allData }) => {
                   <div className="single-blog-wrapper">
                     <SocialShareSide />
 					<h2 className="axil-post-title hover-line">{postData.title}</h2>
-                    {/* <div
+                    <div
                       dangerouslySetInnerHTML={{ __html: postContent }}
-                    ></div> */}
+                    ></div>
                   </div>
                 </article>
                 <SocialShareBottom />
