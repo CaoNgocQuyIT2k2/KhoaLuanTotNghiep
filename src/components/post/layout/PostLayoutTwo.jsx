@@ -75,17 +75,24 @@ const PostLayoutTwo = ({ postSizeMd, postBgDark }) => {
 											</li>
 										)}
                   <li>
-                    <span>Ngày xuất bản: </span>
+                    <span>
+ </span>
                     <span>{new Date(article.create_date).toLocaleDateString()}</span>
                   </li>
                   <li>
-                    <i className="feather icon-activity" />
-                    {article.reading_time}
+                    <i className="" />
+                    {article.reading_time} min
+
                   </li>
-                  <li>
+<li>
+                    <i className="" />
+                    {article.artSource} 
+
+                  </li>
+                                    {/* <li>
                     <i className="feather icon-share-2" />
                     {article.post_share}
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -141,17 +148,24 @@ const PostLayoutTwo = ({ postSizeMd, postBgDark }) => {
 											</li>
 										)}
                   <li>
-                    <span>Ngày xuất bản: </span>
+                    <span>
+ </span>
                     <span>{new Date(article.create_date).toLocaleDateString()}</span>
                   </li>
                   <li>
-                    <i className="feather icon-activity" />
-                    {article.reading_time}
+                    <i className="" />
+                    {article.reading_time} min
+
                   </li>
-                  <li>
+<li>
+                    <i className="" />
+                    {article.artSource} 
+
+                  </li>
+                                    {/* <li>
                     <i className="feather icon-share-2" />
                     {article.post_share}
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>

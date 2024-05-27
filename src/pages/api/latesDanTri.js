@@ -9,7 +9,7 @@ export default async function fetchLatestDantri(req, res) {
 
   // Handle API request
   try {
-    const response = await axios.get("http://localhost:8080/api/v1/article/anonymous/get-latest-dantri?count=4");
+    const response = await axios.get("http://localhost:8080/api/v1/article/anonymous/get-latest-dantri?count=6");
     const data = response.data;
     console.log("🚀 ~ data:", data);
     res.status(200).json(data);

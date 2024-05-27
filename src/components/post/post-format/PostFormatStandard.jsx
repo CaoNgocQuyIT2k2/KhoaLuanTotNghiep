@@ -1,6 +1,7 @@
-// src/components/post/post-format/PostFormatStandard.jsx
+// PostFormatStandard.js
 import React, { useEffect, useState } from 'react';
 import parse from 'html-react-parser';
+import { useSelector, useDispatch } from 'react-redux';
 import WidgetAd from "../../widget/WidgetAd";
 import WidgetInstagram from "../../widget/WidgetInstagram";
 import WidgetNewsletter from "../../widget/WidgetNewsletter";
@@ -8,12 +9,15 @@ import WidgetPost from "../../widget/WidgetPost";
 import WidgetSocialShare from "../../widget/WidgetSocialShare";
 import MetaDataOne from "./elements/meta/MetaDataOne";
 import PostComment from "./elements/PostComment";
-import SocialShareBottom from "./elements/SocialShareBottom";
 import SocialShareSide from "./elements/SocialShareSide";
+import WidgetPostRanSameCat from '../../widget/WidgetPostRanSameCat';
+import StarRating from './elements/StarRating';
 
 const PostFormatStandard = ({ articleId, allData }) => {
   const [postData, setPostData] = useState(null);
-console.log("Kiểm tra việc truyền article_id vào PostFormatStandard",articleId);
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.user.user?.token); // Lấy token từ state.user.user.token
+  console.log("token", token);
 
   useEffect(() => {
     const fetchPostData = async () => {
@@ -51,17 +55,18 @@ console.log("Kiểm tra việc truyền article_id vào PostFormatStandard",arti
                     {parsedContent}
                   </div>
                 </article>
-                <SocialShareBottom />
+                <StarRating articleId={articleId} token={token}/>
                 <hr className="m-t-xs-50 m-b-xs-60" />
                 <PostComment />
               </main>
             </div>
             <div className="col-lg-4">
               <div className="post-sidebar">
+                <WidgetPostRanSameCat dataPost={postData} />
+                <WidgetPost dataPost={allData} />
                 <WidgetAd />
                 <WidgetNewsletter />
                 <WidgetSocialShare />
-                <WidgetPost dataPost={allData} />
                 <WidgetInstagram />
               </div>
             </div>
@@ -70,6 +75,6 @@ console.log("Kiểm tra việc truyền article_id vào PostFormatStandard",arti
       </div>
     </>
   );
-}
+};
 
 export default PostFormatStandard;

@@ -40,7 +40,7 @@ const PostVideoOne = ({data}) => {
                   <i className="dot">.</i>{data.date}
                 </li>
                 <li>
-                    <i className="feather icon-activity" />
+                    <i className="" />
                     {data.post_views}
                 </li>
                 <li>

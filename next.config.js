@@ -1,4 +1,4 @@
-// next.config.js
+const path = require('path');
 
 module.exports = {
   reactStrictMode: false,
@@ -13,11 +13,13 @@ module.exports = {
   },
   async rewrites() {
     return [
-      // Rewrite the route for /post/:article_id to /post/[article_id]
       {
         source: '/post/:article_id',
         destination: '/post/[article_id]'
       }
     ]
-  }
-}
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+  },
+};

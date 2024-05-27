@@ -1,0 +1,127 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: linear-gradient(to bottom, #fff, rgba(233, 236, 246, 0.6862745098));
+  -webkit-backdrop-filter: blur(20px) saturate(70%);
+          backdrop-filter: blur(20px) saturate(70%);
+  border-radius: 20px;
+  width: 90%;
+  height: 660px;
+  overflow: hidden;
+  padding: 6px;
+  border: 2px solid #fff;
+  z-index: 10;
+}
+.container .buttonContainer,
+.container .imgContainer {
+  flex: 50%;
+}
+
+.imgContainer {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: url("/images/Character-Login.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.buttonContainer h3 {
+  margin-top: 50px;
+  font-size: 1.8rem;
+  padding-bottom: 30px;
+  color: #3f3c51;
+}
+.buttonContainer p {
+  font-size: 1rem;
+  padding: 0 30px;
+  color: #9898aa;
+}
+.buttonContainer .button {
+  display: flex;
+  align-items: center;
+  margin-top: 60px;
+  padding-bottom: 25px;
+}
+.buttonContainer .button a {
+  display: inline-block;
+  text-decoration: none;
+  width: 140px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1rem;
+  color: rgba(63, 60, 81, 0.831372549);
+  font-weight: 700;
+  border-radius: 10px;
+  transition: all ease 0.3s;
+}
+@media screen and (max-width: 660px) {
+  .buttonContainer .button a {
+    cursor: default;
+  }
+}
+.buttonContainer .button a:first-child {
+  background: #fff;
+  position: relative;
+  left: 3px;
+  z-index: 2;
+}
+.buttonContainer .button a:first-child:hover {
+  color: black;
+}
+.buttonContainer .button a:last-child {
+  background: #e9ecf4;
+  border: 1px solid rgba(255, 255, 255, 0.582);
+  position: relative;
+  right: 3px;
+  z-index: 1;
+}
+.buttonContainer .button a:last-child:hover {
+  color: black;
+}
+
+.about {
+  position: fixed;
+  bottom: 10px;
+  left: 15px;
+  font-size: 1.4rem;
+  opacity: 0.6;
+  z-index: 22;
+}
+.about a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  background: #3f3c51;
+  padding: 0 3px;
+  color: #fff;
+  border-radius: 4px;
+}
+.about span:first-child {
+  font-size: 1rem;
+  padding-top: 4px;
+  padding-right: 4px;
+}
+.about span:last-child {
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 999px) {
+  .container {
+    flex-direction: row;
+    max-width: 1200px;
+  }
+}/*# sourceMappingURL=Landing.module.css.map */

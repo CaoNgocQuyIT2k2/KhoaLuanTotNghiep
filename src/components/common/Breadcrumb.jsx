@@ -32,7 +32,6 @@ const Breadcrumb = ({ articleId }) => {
     return <div>Loading...</div>;
   }
 
-  const { category, title } = data;
 
   return (
     <div className="breadcrumb-wrapper">
@@ -45,11 +44,16 @@ const Breadcrumb = ({ articleId }) => {
               </Link>
             </li>
             <li className="breadcrumb-item">
-              <Link href={`/category/${category.name}`} >
-                <a>{category.name}</a>
+              <Link href={`/category/${data.category.parent.name}`} >
+                <a>{data.category.parent.name}</a>
               </Link>
             </li>
-            <li className="breadcrumb-item active" aria-current="page">{title}</li>
+            <li className="breadcrumb-item">
+              <Link href={`/category/${data.category.name}`} >
+                <a>{data.category.name}</a>
+              </Link>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">{data.title}</li>
           </ol>
           {/* End of .breadcrumb */}
         </nav>

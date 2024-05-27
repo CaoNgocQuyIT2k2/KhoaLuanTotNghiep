@@ -31,7 +31,7 @@ const MetaDataFour = ({ metaData }) => {
               <i className="dot">.</i>{metaData.date}
             </li>
 			<li>
-				<i className="feather icon-activity" />
+				<i className="" />
 				{metaData.post_views}
 			</li>
 			<li>

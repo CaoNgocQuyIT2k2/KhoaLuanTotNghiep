@@ -26,6 +26,9 @@ const MetaDataOne = ({ metaData }) => {
           <div className="col-lg-6">
             <div className="post-title-wrapper">
               <div className="btn-group">
+              {/* <Link href={`/category/${slugify(metaData.category.parent.name)}`}>
+                  <a className={`cat-btn ${metaData.category.parent.bg_color ?? "bg-color-blue-one"}`}>{metaData.category.parent.name}</a>
+                </Link> */}
                 <Link href={`/category/${slugify(metaData.category.name)}`}>
                   <a className={`cat-btn ${metaData.category.bg_color ?? "bg-color-blue-one"}`}>{metaData.category.name}</a>
                 </Link>
@@ -34,11 +37,11 @@ const MetaDataOne = ({ metaData }) => {
               <div className="post-metas banner-post-metas m-t-xs-20">
                 <ul className="list-inline">
                   <li>
-                    <i className="feather arrow-up" />NXB: <span></span>
+                    <i className="feather arrow-up" /> <span></span>
                     {formatDateTime(metaData.category.create_date)}
                   </li>
                   <li>
-                    <i className="feather icon-activity" />
+                    <i className="" />
                     {metaData.reading_time} min
                   </li>
                   {/* <li>

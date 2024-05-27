@@ -56,10 +56,10 @@ const PostFormatGallery = ({ postData, allData }) => {
             </div>
             <div className="col-lg-4">
               <div className="post-sidebar">
+                <WidgetPost dataPost={allData} />
                 <WidgetAd />
                 <WidgetNewsletter />
                 <WidgetSocialShare />
-                <WidgetPost dataPost={allData} />
                 <WidgetInstagram />
               </div>
             </div>

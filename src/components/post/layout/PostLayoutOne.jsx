@@ -72,17 +72,18 @@ const PostLayoutOne = () => {
                                     </li>
                                 )}
                                 <li className="dot">
-                                    <span>Ngày xuất bản: </span>
+                                    <span>
+ </span>
                                     <span>{new Date(post.create_date).toLocaleDateString()}</span>
                                 </li>
 
                                 <li>
-                                    <i className="feather icon-activity" />
-                                    {post.reading_time}
+                                    <i className="" />
+                                    {post.reading_time} min
                                 </li>
                                 <li>
-                                    <i className="feather icon-share-2" />
-                                    {post.post_share}
+                                    <i className="" />
+                                    {post.artSource}
                                 </li>
                             </ul>
                         </div>

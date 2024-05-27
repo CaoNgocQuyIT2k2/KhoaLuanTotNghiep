@@ -100,14 +100,12 @@ const SliderOne = ({slidePost}) => {
                             </div>
                         {/* End of .post-metas */}
                         <h1 className="page-title m-b-xs-40 hover-line">
-                            <Link href={`/${article.id}`}>
-
+                            <Link href={`/post/${data.slug}`}>
                                 <a>{data.title}</a>
                             </Link>
                         </h1>
                         <div className="btn-group">
-                            <Link href={`/${article.id}`}>
-
+                            <Link href={`/post/${data.slug}`}>
                                 <a className="btn btn-primary m-r-xs-30">READ MORE</a>
                             </Link>
                             <Link href={`/category/${slugify(data.cate)}`}>

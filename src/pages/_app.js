@@ -1,32 +1,15 @@
-// _app.js
-
 import "bootstrap/dist/css/bootstrap.css";
 import "../styles/style.css";
-
 import React from 'react';
-import Script from 'next/script';
-import MyApp from '../../SSRProvider';
+import { Provider } from 'react-redux';
+import store from '../../store';
 
-const App = ({ Component, pageProps }) => {
+function MyApp({ Component, pageProps }) {
   return (
-    <>
-      {/*  Global site tag (gtag.js) - Google Analytics */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-E448GXQHG8"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-E448GXQHG8');
-        `}
-      </Script>
-      <MyApp Component={Component} pageProps={pageProps} />
-    </>
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
   );
-};
+}
 
-export default App;
+export default MyApp;

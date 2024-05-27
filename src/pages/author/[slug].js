@@ -72,10 +72,10 @@ const PostAuthor = ({postData, allPosts}) => {
                     </div>
                     <div className="col-lg-4">
                         <div className="post-sidebar">
+                            <WidgetPost dataPost={allPosts} />
                             <WidgetAd />
                             <WidgetSocialShare />
                             <WidgetCategory cateData={allPosts} />
-                            <WidgetPost dataPost={allPosts} />
                             <WidgetAd img="/images/clientbanner/clientbanner3.jpg" height={492} width={320}/>
                         </div>
                     </div>

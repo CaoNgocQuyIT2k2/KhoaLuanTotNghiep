@@ -5,7 +5,7 @@ import axios from 'axios'; // Import axios
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
-const PostLayoutArtPerCat = ({ postSizeMd, postBgDark }) => {
+const PostLayoutArtPerCat = ({ postSizeMd = false, postBgDark = false }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -34,23 +34,23 @@ const PostLayoutArtPerCat = ({ postSizeMd, postBgDark }) => {
     <div className="row">
       <div className="col-lg-12">
         {data.map((article, index) => (
-          <div key={index} className={`media post-block m-b-xs-30 ${postSizeMd === true ? "post-block__mid" : ""} ${postBgDark === true ? "post-block__on-dark-bg" : ""}`}>
+          <div key={index} className={`media post-block m-b-xs-30 ${postSizeMd ? "post-block__mid" : ""} ${postBgDark ? "post-block__on-dark-bg" : ""}`}>
             <Link href={`/${article.id}`}>
               <a className="align-self-center">
                 {article.avatar ? (
                   <img
-                    src={article.avatar} // Sử dụng đường dẫn ảnh từ dữ liệu article
+                    src={article.avatar}
                     alt={article.title}
-                    width={postSizeMd === true ? 230 : 150}
-                    height={postSizeMd === true ? 210 : 150}
+                    width={postSizeMd ? 230 : 150}
+                    height={postSizeMd ? 210 : 150}
                   />
                 ) : (
                   <img
                     style={{ border: '1px solid black' }}
                     src={defaultAvatarSrc}
                     alt="Default Avatar"
-                    width={postSizeMd === true ? 230 : 150}
-                    height={postSizeMd === true ? 210 : 150}
+                    width={postSizeMd ? 230 : 150}
+                    height={postSizeMd ? 210 : 150}
                   />
                 )}
               </a>
@@ -66,31 +66,27 @@ const PostLayoutArtPerCat = ({ postSizeMd, postBgDark }) => {
                   <a>{article.title}</a>
                 </Link>
               </h3>
-              {postSizeMd === true ?
-                <p className="mid">{limitWords(article.abstracts, 20)}</p>
-                : ""
-              }
+              {postSizeMd ? <p className="mid">{limitWords(article.abstracts, 20)}</p> : ""}
               <div className="post-metas">
                 <ul className="list-inline">
-                {article.author_name !== undefined && article.author_name !== "" && (
-											<li>
-												<span>By</span>
-												<Link href={`/author/${slugify(article.author_name)}`}>
-													<a className="post-author">{article.author_name}</a>
-												</Link>
-											</li>
-										)}
+                  {article.author_name && (
+                    <li>
+                      <span>By</span>
+                      <Link href={`/author/${slugify(article.author_name)}`}>
+                        <a className="post-author">{article.author_name}</a>
+                      </Link>
+                    </li>
+                  )}
                   <li>
-                    <span>Ngày xuất bản: </span>
                     <span>{new Date(article.create_date).toLocaleDateString()}</span>
                   </li>
                   <li>
-                    <i className="feather icon-activity" />
-                    {article.reading_time}
+                    <i className="" />
+                    {article.reading_time} min
                   </li>
                   <li>
-                    <i className="feather icon-share-2" />
-                    {article.post_share}
+                    <i className="" />
+                    {article.artSource}
                   </li>
                 </ul>
               </div>

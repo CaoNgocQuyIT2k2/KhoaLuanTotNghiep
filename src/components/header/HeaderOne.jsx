@@ -5,9 +5,16 @@ import { dateFormate } from "../../utils";
 import SocialLink from "../../data/social/SocialLink.json";
 import OffcanvasMenu from "./OffcanvasMenu";
 import Menu from "./Menu";
+import axios from 'axios';
+import { message } from "antd";
+import { useRouter } from "next/router";
+import { SearchImage } from "../objectDetector/SearchImage";
 
 const HeaderOne = () => {
+  const router = useRouter();
+
   const menuRef = useRef();
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   useEffect(() => {
     const toggleDropdownMenu = () => {
@@ -21,28 +28,27 @@ const HeaderOne = () => {
         }
       }
       if (dropdownSelect.length > 0) {
-         dropdownList.forEach((element) => {
-        element.children[0].addEventListener("click", (e) => {
-          e.preventDefault(); // Prevent default link behavior
+        dropdownList.forEach((element) => {
+          element.children[0].addEventListener("click", (e) => {
+            e.preventDefault(); // Prevent default link behavior
 
-          if (element.classList.contains("active")) {
-            element.classList.remove("active");
-            element.childNodes[1].classList.remove("opened");
-          } else {
-            dropdownList.forEach((submenu) => {
-              submenu.classList.remove("active");
-              submenu.childNodes[1].classList.remove("opened");
-            });
+            if (element.classList.contains("active")) {
+              element.classList.remove("active");
+              element.childNodes[1].classList.remove("opened");
+            } else {
+              dropdownList.forEach((submenu) => {
+                submenu.classList.remove("active");
+                submenu.childNodes[1].classList.remove("opened");
+              });
 
-            element.classList.add("active");
-            element.childNodes[1].classList.add("opened");
-          }
+              element.classList.add("active");
+              element.childNodes[1].classList.add("opened");
+            }
+          });
         });
-      });
       } else {
         console.error("Dropdown select is empty!");
       }
-     
     };
 
     toggleDropdownMenu();
@@ -86,6 +92,29 @@ const HeaderOne = () => {
     });
   };
 
+  const handleSearchButtonClick = async () => {
+    if (!searchKeyword) {
+      message.error("Please enter a search keyword");
+      return;
+    }
+
+    try {
+      const response = await axios.get('/api/Search', {
+        params: { keyList: searchKeyword }
+      });
+
+      if (response.status === 200) {
+        console.log("Kết quả tìm kiếm:", response.data);
+        router.push(`/search/${searchKeyword}`); // Chuyển hướng đến trang tìm kiếm với từ khóa
+      } else {
+        message.error("Search failed");
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      message.error("Internal Server Error");
+    }
+  };
+
   return (
     <>
       <OffcanvasMenu ofcshow={show} ofcHandleClose={handleClose} />
@@ -125,15 +154,15 @@ const HeaderOne = () => {
                       <i className={SocialLink.twitter.icon} />
                     </a>
                   </li>
+                  <a href={SocialLink.instagram.url}>
+                    <i className={SocialLink.instagram.icon} />
+                  </a>
                   <li>
-                    <a href={SocialLink.instagram.url}>
-                      <i className={SocialLink.instagram.icon} />
-                    </a>
-                  </li>
-                  <li>
-                    <a href={SocialLink.linked.url}>
-                      <i className={SocialLink.linked.icon} />
-                    </a>
+                    <Link href="/login">
+                      <a>
+                        <i className="feather icon-log-in" /> Log in
+                      </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -172,8 +201,14 @@ const HeaderOne = () => {
                       type="text"
                       className="navbar-search-field"
                       placeholder="Search Here..."
+                      value={searchKeyword}
+                      onChange={(e) => setSearchKeyword(e.target.value)}
                     />
-                    <button className="navbar-search-btn" type="button">
+                    <button
+                      className="navbar-search-btn"
+                      type="button"
+                      onClick={handleSearchButtonClick}
+                    >
                       <i className="fal fa-search" />
                     </button>
                   </div>
@@ -184,7 +219,7 @@ const HeaderOne = () => {
                     <i className="fal fa-times" />
                   </span>
                 </form>
-
+                <SearchImage setSearchKeyword={setSearchKeyword} /> Thêm thành phần SearchImage
                 <button
                   className="nav-search-field-toggler"
                   onClick={headerSearchShow}

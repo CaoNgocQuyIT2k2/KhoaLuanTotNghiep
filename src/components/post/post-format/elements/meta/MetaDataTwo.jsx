@@ -66,7 +66,7 @@ const MetaDataTwo = ({ metaData }) => {
 					</Link>
                   </li>
 				  <li>
-                        <i className="feather icon-activity" />
+                        <i className="" />
                         {metaData.post_views}
                     </li>
                     <li>

@@ -74,16 +74,19 @@ const PostLayoutNewest = ({ postSizeMd, postBgDark, postData }) => {
 											</li>
 										)}
                   <li>
-                    <span>Ngày xuất bản: </span>
+                    <span>
+ </span>
                     <span>{new Date(article.create_date).toLocaleDateString()}</span>
                   </li>
                   <li>
-                    <i className="feather icon-activity" />
-                    {article.reading_time}
+                    <i className="" />
+                    {article.reading_time} min
+
                   </li>
-                  <li>
-                    <i className="feather icon-share-2" />
-                    {article.post_share}
+<li>
+                    <i className="" />
+                    {article.artSource} 
+
                   </li>
                 </ul>
               </div>

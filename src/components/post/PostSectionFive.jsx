@@ -23,11 +23,11 @@ const PostSectionFive = ({postData, adBanner, pClass}) => {
                     </div>
                     <div className="col-lg-4">
                         <div className="post-sidebar">
+                            <WidgetPost dataPost={postData} />
                             <WidgetAd />
                             <WidgetNewsletter />
                             <WidgetCategory cateData={postData} />
                             <WidgetSocialShare />
-                            <WidgetPost dataPost={postData} />
                             <WidgetInstagram />
                             {adBanner === true ? <AdBanner /> : "" }
                         </div>

@@ -72,16 +72,17 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 										)}
 
 										<li>
-											<span>Ngày xuất bản: </span>
+											<span>
+ </span>
 											<span>{new Date(data.create_date).toLocaleDateString()}</span>
 										</li>
 										<li>
-											<i className="feather icon-activity" />
-											{data.reading_time}
+											<i className="" />
+											{data.reading_time} min
 										</li>
 										<li>
-											<i className="feather icon-share-2" />
-											{data.post_share}
+											<i className="" />
+											{data.artSource}
 										</li>
 									</ul>
 								</div>
