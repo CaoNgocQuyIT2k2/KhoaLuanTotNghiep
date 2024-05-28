@@ -7,12 +7,16 @@ import OffcanvasMenu from "./OffcanvasMenu";
 import Menu from "./Menu";
 import axios from 'axios';
 import { message } from "antd";
+import dynamic from 'next/dynamic';
 import { useRouter } from "next/router";
-import { SearchImage } from "../objectDetector/SearchImage";
+
+// Dynamic import for SearchImage component
+const SearchImage = dynamic(() => import("../objectDetector/SearchImage"), {
+  ssr: false
+});
 
 const HeaderOne = () => {
   const router = useRouter();
-
   const menuRef = useRef();
   const [searchKeyword, setSearchKeyword] = useState("");
 
@@ -30,7 +34,7 @@ const HeaderOne = () => {
       if (dropdownSelect.length > 0) {
         dropdownList.forEach((element) => {
           element.children[0].addEventListener("click", (e) => {
-            e.preventDefault(); // Prevent default link behavior
+            e.preventDefault();
 
             if (element.classList.contains("active")) {
               element.classList.remove("active");
@@ -105,7 +109,7 @@ const HeaderOne = () => {
 
       if (response.status === 200) {
         console.log("Kết quả tìm kiếm:", response.data);
-        router.push(`/search/${searchKeyword}`); // Chuyển hướng đến trang tìm kiếm với từ khóa
+        router.push(`/search/${searchKeyword}`);
       } else {
         message.error("Search failed");
       }
@@ -185,25 +189,26 @@ const HeaderOne = () => {
                 </Link>
               </div>
               <div className="main-nav-wrapper">
-                <div ref={menuRef} >
-                  <Menu  />
+                <div ref={menuRef}>
+                  <Menu />
                 </div>
               </div>
               <div className="navbar-extra-features ml-auto">
                 <form
                   action="#"
-                  className={`navbar-search ${
-                    searchshow ? "show-nav-search" : ""
-                  }`}
+                  className={`navbar-search ${searchshow ? "show-nav-search" : ""}`}
                 >
                   <div className="search-field">
+                    {/* Include the SearchImage component */}
                     <input
                       type="text"
                       className="navbar-search-field"
                       placeholder="Search Here..."
-                      value={searchKeyword}
+                      value={ searchKeyword} // Sử dụng classNames nếu có, nếu không thì sử dụng searchKeyword
                       onChange={(e) => setSearchKeyword(e.target.value)}
                     />
+
+                    <SearchImage setSearchKeyword={setSearchKeyword} />
                     <button
                       className="navbar-search-btn"
                       type="button"
@@ -219,7 +224,6 @@ const HeaderOne = () => {
                     <i className="fal fa-times" />
                   </span>
                 </form>
-                <SearchImage setSearchKeyword={setSearchKeyword} /> Thêm thành phần SearchImage
                 <button
                   className="nav-search-field-toggler"
                   onClick={headerSearchShow}
@@ -233,9 +237,7 @@ const HeaderOne = () => {
                 </button>
               </div>
               <div
-                className={`main-nav-toggler d-block d-lg-none ${
-                  mobileToggle ? "expanded" : ""
-                }`}
+                className={`main-nav-toggler d-block d-lg-none ${mobileToggle ? "expanded" : ""}`}
               >
                 <div className="toggler-inner" onClick={MobileMenuToggler}>
                   <span />
@@ -252,3 +254,4 @@ const HeaderOne = () => {
 };
 
 export default HeaderOne;
+

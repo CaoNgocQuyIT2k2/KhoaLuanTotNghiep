@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
+
 import "@tensorflow/tfjs-backend-cpu";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
-
 
 const ObjectDetectorContainer = styled.div`
   display: flex;
@@ -10,11 +10,11 @@ const ObjectDetectorContainer = styled.div`
   align-items: center;
 `;
 
-const HiddenFileInput = styled.input.attrs({
-  type: 'file',
-})`
+const HiddenFileInput = styled.input`
   display: none;
 `;
+
+
 
 const SelectButton = styled.button`
   padding: 7px 10px;
@@ -35,8 +35,9 @@ const SelectButton = styled.button`
   }
 `;
 
-export function SearchImage({ setSearchKeyword }) {
+const SearchImage = ({ setSearchKeyword }) => {
   const fileInputRef = useRef();
+  const [classNames, setClassNames] = useState("");
   const [isLoading, setLoading] = useState(false);
 
   const openFilePicker = () => {
@@ -56,10 +57,10 @@ export function SearchImage({ setSearchKeyword }) {
     const model = await cocoSsd.load({});
     const predictions = await model.detect(imageElement, 6);
     const classNames = getClassNames(predictions);
+    setSearchKeyword(classNames);
     console.log("Predictions: ", predictions);
-    setSearchKeyword(classNames); // Cập nhật giá trị searchKeyword
   };
-
+  
   const readImage = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -70,6 +71,7 @@ export function SearchImage({ setSearchKeyword }) {
   };
 
   const onSelectImage = async (e) => {
+    setClassNames("");
     setLoading(true);
 
     const file = e.target.files[0];
@@ -86,13 +88,20 @@ export function SearchImage({ setSearchKeyword }) {
 
   return (
     <ObjectDetectorContainer>
-      <HiddenFileInput
+      <HiddenFileInput 
+      className="HiddenFileInput"
+        type="file"
         ref={fileInputRef}
         onChange={onSelectImage}
+        style={{
+          display:"none"
+        }}
       />
       <SelectButton onClick={openFilePicker}>
-        {isLoading ? "Recognizing..." : "Select Image"}
+      {isLoading ? <i className="fal fa-spinner" /> : <i className="fal fa-image" />}
       </SelectButton>
     </ObjectDetectorContainer>
   );
-}
+};
+
+export default SearchImage;

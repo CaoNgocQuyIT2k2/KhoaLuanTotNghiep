@@ -4768,10 +4768,27 @@ input[type="radio"] + label::after {
   opacity: 1;
 }
 .navbar-search .search-field {
+  display: flex; /* Hiển thị các phần tử trong hàng */
+  align-items: center; /* Căn chỉnh các phần tử theo chiều dọc */
   width: 60%;
   margin: 0 auto;
   position: relative;
 }
+
+
+.navbar-search .search-field input,
+.navbar-search .search-field .navbar-search-btn,
+.navbar-search .search-field .search-image-container {
+  flex-grow: 1; /* Phần tử tự mở rộng để chia không gian một cách đồng đều */
+  margin-right: 50px; /* Khoảng cách giữa các phần tử */
+}
+
+
+.HiddenFileInput {
+  display: none;
+}
+
+
 @media (max-width: 991px) {
   .navbar-search .search-field {
     width: 70%;
