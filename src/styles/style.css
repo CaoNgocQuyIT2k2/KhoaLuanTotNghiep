@@ -4545,13 +4545,13 @@ input[type="radio"] + label::after {
     visibility: hidden;
   }
 }
-.main-navigation li {
-  position: relative;
+.main-navigation  {
+  margin-left: 2rem;
   margin-right: 2rem;
   font-family: var(--primary-font);
   font-size: 1.6rem;
   line-height: 2.4rem;
-  color: #fff;
+  color: black;
   font-weight: var(--p-medium);
   padding: 3.1rem 0.5rem 3rem;
 }
@@ -8864,7 +8864,7 @@ figure {
 }
 p {
   margin-bottom: 0px;
-  font-size: 15px;
+  font-size: 17px;
   color: #777;
 }
 h2 {
