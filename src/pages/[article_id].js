@@ -11,9 +11,9 @@ const PostPage = () => {
   const router = useRouter();
   const { article_id } = router.query;
 
-  if (!article_id) {
-    return <div>Loading...</div>;
-  }
+  // if (!article_id) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <>

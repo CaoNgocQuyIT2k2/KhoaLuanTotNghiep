@@ -4811,9 +4811,12 @@ input[type="radio"] + label::after {
   bottom: 0;
   border: none;
   background: transparent;
-  padding: 0.5rem 2rem;
+  padding: 2rem 2rem;
   cursor: pointer;
 }
+
+
+
 .navbar-search .navbar-search-btn i,
 .navbar-search .navbar-search-btn span {
   font-size: 1.8rem;

@@ -1,4 +1,3 @@
-// PostFormatStandard.js
 import React, { useEffect, useState } from 'react';
 import parse from 'html-react-parser';
 import { useSelector, useDispatch } from 'react-redux';
@@ -12,6 +11,7 @@ import PostComment from "./elements/PostComment";
 import SocialShareSide from "./elements/SocialShareSide";
 import WidgetPostRanSameCat from '../../widget/WidgetPostRanSameCat';
 import StarRating from './elements/StarRating';
+import TagArticle from './elements/TagArticle';
 
 const PostFormatStandard = ({ articleId, allData }) => {
   const [postData, setPostData] = useState(null);
@@ -39,7 +39,8 @@ const PostFormatStandard = ({ articleId, allData }) => {
     return <div>Loading...</div>;
   }
 
-  const parsedContent = typeof postData.content === 'string' ? parse(postData.content) : null;
+  // Check if postData.content exists and is a string before parsing it
+  const parsedContent = postData.content && typeof postData.content === 'string' ? parse(postData.content) : null;
 
   return (
     <>
@@ -55,9 +56,10 @@ const PostFormatStandard = ({ articleId, allData }) => {
                     {parsedContent}
                   </div>
                 </article>
+                <TagArticle articleId={articleId}/>
                 <StarRating articleId={articleId} token={token}/>
                 <hr className="m-t-xs-50 m-b-xs-60" />
-                <PostComment />
+                <PostComment articleId={articleId} token={token} />
               </main>
             </div>
             <div className="col-lg-4">

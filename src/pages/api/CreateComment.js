@@ -1,39 +1,36 @@
 import axios from 'axios';
 
 export default async function CreateComment(req, res) {
-  const headers = {
-    'Access-Control-Allow-Origin': 'http://localhost:3000',
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Accept, Authorization'
-  };
+  // Set CORS headers for all responses
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Authorization');
 
   if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Authorization');
+    // Handle preflight request
     res.status(200).end();
     return;
   }
 
   if (req.method === 'POST') {
     try {
-      const { article, comment, parent } = req.body; // Lấy thông tin bình luận từ request body
-      const token = req.headers.authorization; // Lấy token từ header Authorization
+      const { article, comment, parent } = req.body; // Extract comment details from request body
+      const token = req.headers.authorization; // Extract token from Authorization header
 
-      // Kiểm tra xem request body có hợp lệ không
+      // Validate request body
       if (!article || !article.id || !comment) {
         res.status(400).json({ message: 'Invalid request body' });
         return;
       }
 
-      // Gửi yêu cầu tạo bình luận đến API
+      // Send request to create comment API
       const response = await axios.post(
         'http://localhost:8080/api/v1/comment/create',
         { article, comment, parent },
         { headers: { Authorization: token } }
       );
 
-      // Xử lý kết quả trả về từ API
+      // Handle response from API
       if (response.status === 200) {
         res.status(200).json({ message: 'Bình luận thành công!' });
       } else {

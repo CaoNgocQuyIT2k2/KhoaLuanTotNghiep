@@ -2,13 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { dateFormate } from "../../utils";
-import SocialLink from "../../data/social/SocialLink.json";
 import OffcanvasMenu from "./OffcanvasMenu";
 import Menu from "./Menu";
 import axios from 'axios';
 import { message } from "antd";
 import dynamic from 'next/dynamic';
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 // Dynamic import for SearchImage component
 const SearchImage = dynamic(() => import("../objectDetector/SearchImage"), {
@@ -19,7 +19,8 @@ const HeaderOne = () => {
   const router = useRouter();
   const menuRef = useRef();
   const [searchKeyword, setSearchKeyword] = useState("");
-
+  
+  const userName = useSelector((state) => state.user?.user?.user.lastname);
   useEffect(() => {
     const toggleDropdownMenu = () => {
       const dropdownSelect = menuRef.current.childNodes;
@@ -119,6 +120,13 @@ const HeaderOne = () => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Ngăn chặn hành vi mặc định
+      handleSearchButtonClick();
+    }
+  };
+
   return (
     <>
       <OffcanvasMenu ofcshow={show} ofcHandleClose={handleClose} />
@@ -149,22 +157,9 @@ const HeaderOne = () => {
               <div className="col-md-auto">
                 <ul className="ml-auto social-share header-top__social-share">
                   <li>
-                    <a href={SocialLink.fb.url}>
-                      <i className={SocialLink.fb.icon} />
-                    </a>
-                  </li>
-                  <li>
-                    <a href={SocialLink.twitter.url}>
-                      <i className={SocialLink.twitter.icon} />
-                    </a>
-                  </li>
-                  <a href={SocialLink.instagram.url}>
-                    <i className={SocialLink.instagram.icon} />
-                  </a>
-                  <li>
                     <Link href="/login">
                       <a>
-                        <i className="feather icon-log-in" /> Log in
+                        <i className="feather icon-log-in" /> LogIn
                       </a>
                     </Link>
                   </li>
@@ -204,11 +199,12 @@ const HeaderOne = () => {
                       type="text"
                       className="navbar-search-field"
                       placeholder="Search Here..."
-                      value={ searchKeyword} // Sử dụng classNames nếu có, nếu không thì sử dụng searchKeyword
+                      value={searchKeyword} // Sử dụng classNames nếu có, nếu không thì sử dụng searchKeyword
                       onChange={(e) => setSearchKeyword(e.target.value)}
+                      onKeyDown={handleKeyDown} // Thêm sự kiện onKeyDown
                     />
 
-                    <SearchImage setSearchKeyword={setSearchKeyword} />
+                    <SearchImage className="navbar-search-img" setSearchKeyword={setSearchKeyword} />
                     <button
                       className="navbar-search-btn"
                       type="button"
@@ -254,4 +250,3 @@ const HeaderOne = () => {
 };
 
 export default HeaderOne;
-

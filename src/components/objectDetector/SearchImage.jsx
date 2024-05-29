@@ -97,8 +97,10 @@ const SearchImage = ({ setSearchKeyword }) => {
           display:"none"
         }}
       />
-      <SelectButton onClick={openFilePicker}>
-      {isLoading ? <i className="fal fa-spinner" /> : <i className="fal fa-image" />}
+      <SelectButton style={{
+        marginTop: "2rem",
+      }} onClick={openFilePicker}>
+      {isLoading ? <i className="fal fa-spinner" /> : <i className="feather icon-image" />}
       </SelectButton>
     </ObjectDetectorContainer>
   );
