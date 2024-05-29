@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, List, Space } from 'antd';
+import { Avatar, List, Space, message } from 'antd';
 import axios from 'axios';
 import EditComment from './EditComment'; // Import EditComment component
 import { useSelector } from 'react-redux';
 
-const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted,token }) => {
+const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token }) => {
   const [position, setPosition] = useState('bottom');
   const [align, setAlign] = useState('center');
   const [comments, setComments] = useState([]);
   const userId = useSelector((state) => state.user?.user?.user.id);
-  console.log("userId",userId);
+  console.log("userId", userId);
   useEffect(() => {
     if (articleId) {
       fetchCommentArticleDetail();
@@ -26,21 +26,45 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted,token }
     }
   };
 
-  
-
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
     return new Date(dateString).toLocaleDateString('en-US', options);
   };
 
-  const handleUpdateComments = () => {
-    fetchCommentArticleDetail();
+  const handleUpdateComments = async (commentId, newComment) => {
+    try {
+      const response = await axios.post(`/api/UpdateComment?commentId=${commentId}`, {
+        comment: newComment,
+      }, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.status === 200) {
+        message.success('Sửa bình luận thành công.');
+        fetchCommentArticleDetail();
+      } else {
+        message.error('Sửa bình luận thất bại');
+      }
+    } catch (error) {
+      console.error(error.message);
+      message.error('An error occurred while updating the comment.');
+    }
   };
 
-
-  const handleDeleteComment = (commentId) => {
-    // Xử lý sự kiện xóa comment
-    console.log('Delete comment:', commentId);
+  const handleDeleteComment = async (commentId) => {
+    try {
+      const response = await axios.delete(`/api/DeleteComment?commentId=${commentId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.status === 200) {
+        fetchCommentArticleDetail();
+        message.success('Xóa bình luận thành công.');
+      } else {
+        message.error('Xóa bình luận thất bại.');
+      }
+    } catch (error) {
+      console.error(error.message);
+      message.error('An error occurred while deleting the comment.');
+    }
   };
 
   return (
@@ -67,9 +91,14 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted,token }
                 </div>
               }
             />
-             {item.user.id === userId ? ( // Kiểm tra token
+            {item.user.id === userId ? ( // Kiểm tra token
               <Space direction="vertical">
-                <EditComment onEdit={() => handleUpdateComments(item.id)} onDelete={() => handleDeleteComment(item.id)} />
+                <EditComment
+                  comment={item.comment} // Pass the current comment
+                  commentId={item.id} // Pass the comment ID
+                  onEdit={(commentId, newComment) => handleUpdateComments(commentId, newComment)}
+                  onDelete={(commentId) => handleDeleteComment(commentId)}
+                />
               </Space>
             ) : null}
           </List.Item>
