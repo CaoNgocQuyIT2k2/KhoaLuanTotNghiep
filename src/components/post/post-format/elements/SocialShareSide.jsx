@@ -10,6 +10,11 @@ const SocialShareSide = () => {
   return (
     <div className="post-details__social-share mt-2">
       <ul className="social-share social-share__with-bg social-share__vertical">
+      <li>
+          <a href={`/`}>
+            <i class="fa-regular fa-bookmark"></i>
+          </a>
+        </li>
         <li>
           <a href={`https://www.facebook.com/sharer/sharer.php?u=${windowPath}`}>
             <i className="fab fa-facebook-f" />
@@ -30,6 +35,7 @@ const SocialShareSide = () => {
             <i className="fab fa-linkedin-in" />
           </a>
         </li>
+        
       </ul>
     </div>
   );

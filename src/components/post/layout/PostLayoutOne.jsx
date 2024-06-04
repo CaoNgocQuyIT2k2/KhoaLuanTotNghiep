@@ -48,7 +48,7 @@ const PostLayoutOne = () => {
                             </a>
                         </Link>
                         <div className="post-cat-group m-b-xs-10">
-                            <Link href={`/category/${slugify(post.category.name)}`}>
+                            <Link href={`/category/${post.category.id}`}>
                                 <a className={`post-cat cat-btn ${post.category.second_name ?? "bg-color-blue-one"}`}>
                                     {post.category.name}
                                 </a>

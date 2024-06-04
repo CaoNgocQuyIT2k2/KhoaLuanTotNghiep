@@ -44,8 +44,8 @@ const SignInForm = () => {
         message.error("Đăng nhập thất bại1");
       }
     } catch (error) {
-      message.error("Đăng nhập thất bại2");
-      console.log("Đăng nhập thất bại2", error);
+      message.error("Đăng nhập thất bại");
+      console.log("Đăng nhập thất bại", error);
     }
   };
 

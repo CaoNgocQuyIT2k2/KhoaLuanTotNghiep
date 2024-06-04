@@ -11,35 +11,56 @@ import WidgetPost from "../../components/widget/WidgetPost";
 import PostLayoutTwo from "../../components/post/layout/PostLayoutTwo";
 import WidgetCategory from "../../components/widget/WidgetCategory";
 import PostLayoutArtByCat from "../../components/post/layout/PostLayoutArtByCat";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
+const PostCategory = ({ allPosts }) => {
+    const router = useRouter();
+    const { categoryId } = router.query;
+    const [data, setData] = useState([]);
+console.log("data", data);
+    useEffect(() => {
+      const fetchData = async () => {
+        if (categoryId) {
+          try {
+            const response = await axios.get(`/api/getCategoryById?categoryId=${categoryId}`); // Make request to API route
+            setData(response.data);
+            PostLayoutArtByCat();
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        }
+      };
+      fetchData();
+    }, [categoryId]);
 
-const PostCategory = ({ postData, allPosts }) => {
-    const cateContent = postData[0];
+    if (!data || data.length === 0) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <>
-            <HeadMeta metaTitle={cateContent.cate}/>
+            <HeadMeta metaTitle={data.name} />
             <HeaderOne />
-            <Breadcrumb aPage={cateContent.cate} />
-            {/* Banner Start here  */}
+            <Breadcrumb aPage={data.id} />
             <div className="banner banner__default bg-grey-light-three">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-12">
                             <div className="post-title-wrapper">
-                                <h2 className="m-b-xs-0 axil-post-title hover-line">{cateContent.cate}</h2>
+                                <h2 className="m-b-xs-0 axil-post-title hover-line">{data.name}</h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {/* Banner End here  */}
             <div className="random-posts section-gap">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8">
                             <div className="axil-content">
-                                    <PostLayoutArtByCat postSizeMd={true} />
+                                <PostLayoutArtByCat categoryId={categoryId} postSizeMd={true} />
                             </div>
                         </div>
                         <div className="col-lg-4">
@@ -47,8 +68,8 @@ const PostCategory = ({ postData, allPosts }) => {
                                 <WidgetPost dataPost={allPosts} />
                                 <WidgetAd />
                                 <WidgetSocialShare />
-                                <WidgetCategory cateData={allPosts} />
-                                <WidgetAd img="/images/clientbanner/clientbanner3.jpg" height={492} width={320}/>
+                                {/* <WidgetCategory cateData={allPosts} /> */}
+                                <WidgetAd img="/images/clientbanner/clientbanner3.jpg" height={492} width={320} />
                             </div>
                         </div>
                     </div>
@@ -57,51 +78,8 @@ const PostCategory = ({ postData, allPosts }) => {
             <FooterOne />
         </>
     );
-}
+};
 
 export default PostCategory;
 
 
-export async function getStaticProps({ params }) {
-
-    const postParams = params.slug;
-
-    const allPosts = getAllPosts([
-        'slug',
-        'cate',
-        'cate_img',
-        'title',
-        'excerpt',
-        'featureImg',
-        'date',
-        'post_views',
-        'read_time',
-        'author_name',
-        'author_social'
-    ]);
-
-    const getCategoryData = allPosts.filter(post => slugify(post.cate) === postParams);
-    const postData = getCategoryData;
-
-    return {
-        props: {
-            postData,
-            allPosts
-        }
-    }
-}
-
-export async function getStaticPaths() {
-    const posts = getAllPosts(['cate']);
-
-    const paths = posts.map(post => ({
-        params: {
-            slug: slugify(post.cate)
-        }
-    }))
-
-    return {
-        paths,
-        fallback: false,
-    }
-}

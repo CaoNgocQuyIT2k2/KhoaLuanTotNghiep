@@ -1,37 +1,39 @@
-// src/components/Breadcrumb.js
-
 import Link from "next/link";
 import axios from 'axios';
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Breadcrumb = ({ articleId }) => {
-  const [data, setData] = React.useState(null);
-  const [error, setError] = React.useState(null);
+const Breadcrumb = ({ aPage }) => {
+  const [data, setData] = useState();
+  const [error, setError] = useState();
+  const categoryId = aPage;
 
-  React.useEffect(() => {
-    const fetchArticleDetail = async () => {
-      try {
-        const response = await axios.get(`/api/getArtDetail?article_id=${articleId}`);
-        setData(response.data);
-      } catch (error) {
-        console.error("Error fetching article detail:", error);
-        setError(error.message);
+  useEffect(() => {
+    const fetchData = async () => {
+      if (categoryId) {
+        try {
+          const response = await axios.get(`/api/getCategoryById?categoryId=${categoryId}`); // Make request to API route
+
+          setData(response.data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          setError(error);
+        }
       }
     };
+    fetchData();
+  }, [categoryId]);
 
-    if (articleId) {
-      fetchArticleDetail();
-    }
-  }, [articleId]);
+
+  console.log("data", data);
+
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>Error: {error.message}</div>;
   }
 
   if (!data) {
     return <div>Loading...</div>;
   }
-
 
   return (
     <div className="breadcrumb-wrapper">
@@ -43,14 +45,16 @@ const Breadcrumb = ({ articleId }) => {
                 <a>Home</a>
               </Link>
             </li>
+            {data.parent && (
+              <li className="breadcrumb-item">
+                <Link href={`/category/${data.parent.id}`} >
+                  <a>{data.parent.name}</a>
+                </Link>
+              </li>
+            )}
             <li className="breadcrumb-item">
-              <Link href={`/category/${data.category.parent.name}`} >
-                <a>{data.category.parent.name}</a>
-              </Link>
-            </li>
-            <li className="breadcrumb-item">
-              <Link href={`/category/${data.category.name}`} >
-                <a>{data.category.name}</a>
+              <Link href={`/category/${data.id}`} >
+                <a>{data.name}</a>
               </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">{data.title}</li>

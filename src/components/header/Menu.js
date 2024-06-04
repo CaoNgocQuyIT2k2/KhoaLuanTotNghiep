@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RightOutlined, DownOutlined } from '@ant-design/icons'; // Import RightOutlined
 import { Dropdown, Space, Menu } from 'antd';
 import axios from 'axios';
+import Link from 'next/link';
 
 const App = () => {
   const [categories, setCategories] = useState([]);
@@ -23,7 +24,7 @@ const App = () => {
 
   const handleMenuClick = async (categoryId) => {
     try {
-      console.log('Fetching child categories for categoryId:', categoryId);
+      console.log('Fetching child categories:', categoryId);
       const response = await axios.get('/api/getChildCategories', {
         params: { categoryId }
       });
@@ -31,9 +32,9 @@ const App = () => {
       const items = childCategories.map(child => ({
         key: child.id,
         label: (
-          <a target="_blank" rel="noopener noreferrer" href={`http://www.example.com/${child.id}`}>
+          <Link href={`/category/${child.id}`}>
             {child.name}
-          </a>
+          </Link>
         ),
       }));
       setChildMenus(prev => ({ ...prev, [categoryId]: items }));
@@ -67,7 +68,9 @@ const App = () => {
     >
       <a onClick={(e) => e.preventDefault()}>
         <Space>
-          {category.name}
+         <Link href={`/category/${category.id}`}>
+         {category.name}
+         </Link>
           {index < 7 ? <DownOutlined /> : <RightOutlined />} {/* Sử dụng RightOutlined cho các parent categories sau phần tử thứ 7 */}
         </Space>
       </a>

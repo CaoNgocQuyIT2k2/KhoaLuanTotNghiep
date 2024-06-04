@@ -50,7 +50,7 @@ const PostLayoutNewest = ({ postSizeMd, postBgDark, postData }) => {
             </Link>
             <div className="media-body">
               <div className="post-cat-group m-b-xs-10">
-                <Link href={`/category/${slugify(article.category.name)}`}>
+                <Link href={`/category/${article.category.id}`}>
                   <a className={`post-cat cat-btn ${article.cate_bg ?? "bg-color-blue-one"}`}>{article.category.name}</a>
                 </Link>
               </div>

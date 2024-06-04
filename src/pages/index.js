@@ -18,9 +18,7 @@ const HomeOne = ({allPosts}) => {
     <PostSectionOne postData={allPosts} />
     <PostSectionTwo postData={allPosts} />
     <PostSectionThree postData={allPosts} />
-    <PostSectionFour postData={allPosts} />
     <PostSectionFive postData={allPosts} adBanner={true} />
-    <PostSectionSix postData={allPosts}/>
     <FooterOne />
     </>
    );

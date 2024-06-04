@@ -9,6 +9,7 @@ import { message } from "antd";
 import dynamic from 'next/dynamic';
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import LogUser from "../post/post-format/elements/LogUser";
 
 // Dynamic import for SearchImage component
 const SearchImage = dynamic(() => import("../objectDetector/SearchImage"), {
@@ -16,11 +17,11 @@ const SearchImage = dynamic(() => import("../objectDetector/SearchImage"), {
 });
 
 const HeaderOne = () => {
+  const user = useSelector((state) => state.user?.user?.user);
   const router = useRouter();
   const menuRef = useRef();
   const [searchKeyword, setSearchKeyword] = useState("");
-  
-  const userName = useSelector((state) => state.user?.user?.user.lastname);
+
   useEffect(() => {
     const toggleDropdownMenu = () => {
       const dropdownSelect = menuRef.current.childNodes;
@@ -156,15 +157,20 @@ const HeaderOne = () => {
               </div>
               <div className="col-md-auto">
                 <ul className="ml-auto social-share header-top__social-share">
-                  <li>
-                    <Link href="/login">
-                      <a>
-                        <i className="feather icon-log-in" /> LogIn
-                      </a>
-                    </Link>
-                  </li>
+                  {user ? (
+                    <LogUser userName={user.firstname} />
+                  ) : (
+                    <li>
+                      <Link href="/login">
+                        <a>
+                          <i className="feather icon-log-in" /> LogIn
+                        </a>
+                      </Link>
+                    </li>
+                  )}
                 </ul>
               </div>
+
             </div>
           </div>
         </div>

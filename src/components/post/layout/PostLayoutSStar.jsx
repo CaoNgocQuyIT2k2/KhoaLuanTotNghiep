@@ -50,7 +50,7 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 					<div className="media post-block position-absolute">
 						<div className={`media-body ${postSizeLg === true ? "media-body__big" : ""}`}>
 							<div className="post-cat-group m-b-xs-10">
-								<Link href={`/category/${slugify(data.category.name)}`}>
+								<Link href={`/category/${data.category.id}`}>
 									<a className={`post-cat cat-btn ${data.category.second_name ?? "bg-color-blue-one"}`}>{data.category.name}</a>
 								</Link>
 							</div>

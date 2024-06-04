@@ -50,7 +50,7 @@ const PostVNExpress = ({ pClass, videoIcon, postSizeMd }) => {
 
           <div className="media-body">
             <div className="post-cat-group">
-              <Link href={`/category/${slugify(article.category.name)}`}>
+              <Link href={`/category/${article.category.id}`}>
                 <a className={`post-cat bg-color-blue-one`}>{article.category.name}</a>
               </Link>
             </div>

@@ -51,7 +51,7 @@ const PostPqexpress = ({ pClass, videoIcon, postSizeMd }) => {
 
           <div className="media-body">
             <div className="post-cat-group">
-              <Link href={`/${article.id}`}>
+              <Link href={`/category/${article.category.id}`}>
                 <a className={`post-cat bg-color-blue-one`}>{article.category.name}</a>
               </Link>
             </div>
