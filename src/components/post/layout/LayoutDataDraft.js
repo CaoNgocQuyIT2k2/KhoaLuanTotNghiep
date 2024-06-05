@@ -51,7 +51,7 @@ export default function LayoutDataDraft() {
       }
     },
     {
-      title: 'Hành động',
+      title: 'Action',
       key: 'action',
       render: (_, article) => (
         <div style={{ display: 'flex' }}>

@@ -3,9 +3,8 @@ import { Select, Form, Button, Modal, Input, message } from 'antd';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
-const AllTag = () => {
+const AllTag = ({ selectedTags, setSelectedTags }) => {
   const [tags, setTags] = useState([]);
-  const [selectedTags, setSelectedTags] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [newTag, setNewTag] = useState('');
   const token = useSelector((state) => state.user?.user?.token);
@@ -71,11 +70,11 @@ const AllTag = () => {
   };
 
   const tagOptions = tags.map(tag => (
-    <Select.Option  key={tag.id} value={tag.id}>
+    <Select.Option key={tag.id} value={tag.id}>
       {tag.value}
     </Select.Option>
   ));
-  console.log("selectedTags",selectedTags);
+
   return (
     <>
       <Form.Item label="Thẻ" name="tagList">

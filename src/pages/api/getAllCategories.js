@@ -7,13 +7,10 @@ export default async function fetchAllCategories(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept');
 
-  const { categoryId } = req.query;
 
   // Handle API request
   try {
-    const response = await axios.get('http://localhost:8080/api/v1/category/anonymous/get-all-categories', {
-      params: { categoryId }
-    });
+    const response = await axios.get('http://localhost:8080/api/v1/category/anonymous/get-all-categories');
     const data = response.data;
     console.log("🚀 ~ child categories data:", data);
     res.status(200).json(data);

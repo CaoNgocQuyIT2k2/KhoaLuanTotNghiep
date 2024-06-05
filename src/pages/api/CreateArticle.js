@@ -1,23 +1,13 @@
-// Trong API CreateArticle
 import axios from 'axios';
 import FormData from 'form-data';
 
 export default async function CreateArticle(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Authorization');
-
-    if (req.method === 'OPTIONS') {
-        res.status(200).end();
-        return;
-    }
-
     if (req.method === 'POST') {
         try {
-            const { title, abstracts, content, category, tag, image } = req.body;
+            const { title, abstracts, content, category, tag } = req.body;
             const token = req.headers.authorization;
-          
-            if (!title || !abstracts || !content || !category || !tag || !image) {
+
+            if (!title || !abstracts || !content || !category) {
                 res.status(400).json({ message: 'Invalid request body' });
                 return;
             }
@@ -26,12 +16,24 @@ export default async function CreateArticle(req, res) {
             formData.append('title', title);
             formData.append('abstracts', abstracts);
             formData.append('content', content);
-            formData.append('category', JSON.stringify(category));
-            formData.append('tag', tag);
+            formData.append('category', category);
 
-            // Check for the file in the request
-            if (image) {
-                formData.append('image', image[0]);
+            if (tag) {
+                formData.append('tag', tag);
+            }
+
+            if (req.file) {
+                const allowedTypes = ['image/jpeg', 'image/png'];
+                if (!allowedTypes.includes(req.file.mimetype)) {
+                    res.status(400).json({ message: 'Invalid file type. Only JPEG and PNG are allowed.' });
+                    return;
+                }
+                const maxSize = 5 * 1024 * 1024; // 5MB
+                if (req.file.size > maxSize) {
+                    res.status(400).json({ message: 'File size exceeds the limit of 5MB.' });
+                    return;
+                }
+                formData.append('image', req.file.buffer, req.file.originalname);
             }
 
             const response = await axios.post(

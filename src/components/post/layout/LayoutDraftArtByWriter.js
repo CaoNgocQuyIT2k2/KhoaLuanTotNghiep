@@ -63,7 +63,7 @@ export default function LayoutDraftArtByWriter() {
     },
 
     {
-      title: 'Hành động',
+      title: 'Action',
       key: 'action',
       render: (_, article) => (
         <div>
@@ -97,7 +97,7 @@ export default function LayoutDraftArtByWriter() {
 
 
   const handleDelete = (article_id) => {
-    https.delete(`/api/WritterDeleteArt?article_id=${article_id}`,{ headers: { Authorization: `Bearer ${token}` } })
+    axios.delete(`/api/WritterDeleteArt?article_id=${article_id}`,{ headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         message.success("Xóa thành công")
         console.log("🚀 ~ res:", res)
