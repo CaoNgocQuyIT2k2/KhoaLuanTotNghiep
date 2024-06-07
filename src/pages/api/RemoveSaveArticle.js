@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default async function EditorHandlePublic(req, res) {
+export default async function RemoveSaveArticle(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Authorization');
@@ -10,21 +10,27 @@ export default async function EditorHandlePublic(req, res) {
     return;
   }
 
-  if (req.method === 'POST') {
+  if (req.method === 'DELETE') {
     try {
-      const { article_id } = req.query; // Extract article ID from query parameters
-      const token = req.headers.authorization; // Extract token from Authorization header
+      const { id } = req.body;
+      const token = req.headers.authorization; // Lấy token từ header
+      console.log("token: " + token);
 
-      const response = await axios.post(
-        `http://localhost:8080/api/v1/article/public-article?articleId=${article_id}`,
-        {},
+      if (!id) {
+        res.status(400).json({ message: 'Invalid request body' });
+        return;
+      }
+
+      const response = await axios.delete(
+        'http://localhost:8080/api/v1/saved-articles/remove?id=',
+        { article: { id } }, // Cập nhật body theo cấu trúc mới
         { headers: { Authorization: token } }
       );
 
       if (response.status === 200) {
-        res.status(200).json({ message: 'Chấp nhận bản thảo thành công!' });
+        res.status(200).json({ message: 'Tạo tag thành công!' });
       } else {
-        res.status(response.status).json({ message: 'Chấp nhận bản thảo thất bại.' });
+        res.status(response.status).json({ message: 'Tạo tag thất bại.' });
       }
     } catch (error) {
       console.error('Error:', error);

@@ -3,18 +3,23 @@ import { slugify } from "../../../utils";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Pagination } from 'antd';
+import { useSelector } from "react-redux";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png";
 
-const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
+const PostLayoutArtSaved = ({ postSizeMd, postBgDark, categoryId }) => {
     const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const token = useSelector((state) => state.user?.user?.token);
+
     const pageSize = 10;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`/api/getArtByCat?categoryId=${categoryId}`);
+                const response = await axios.get(`/api/getListArticleSaved`,
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
                 setData(response.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -23,7 +28,7 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
 
         fetchData();
     }, [categoryId]);
-
+    console.log("data", data);
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const currentData = data.slice(startIndex, endIndex);
@@ -33,12 +38,12 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
             <div className="col-lg-12">
                 {currentData.map((article, index) => (
                     <div key={index} className={`media post-block m-b-xs-30 ${postSizeMd ? "post-block__mid" : ""} ${postBgDark ? "post-block__on-dark-bg" : ""}`}>
-                        <Link href={`/${article.id}`}>
+                        <Link href={`/${article.article.id}`}>
                             <a className="align-self-center">
-                                {article.avatar ? (
+                                {article.article.avatar ? (
                                     <img
-                                        src={article.avatar}
-                                        alt={article.title}
+                                        src={article.article.avatar}
+                                        alt={article.article.title}
                                         width={postSizeMd ? 285 : 150}
                                         height={postSizeMd ? 285 : 150}
                                     />
@@ -55,39 +60,48 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
                         </Link>
                         <div className="media-body">
                             <div className="post-cat-group m-b-xs-10">
-                                <Link href={`/category/${article.category.id}`}>
-                                    <a className={`post-cat cat-btn ${article.cate_bg ?? "bg-color-blue-one"}`}>{article.category.name}</a>
+                                <Link href={`/category/${article.article.category.id}`}>
+                                    <a className={`post-cat cat-btn ${article.article.cate_bg ?? "bg-color-blue-one"}`}>{article.article.category.name}</a>
                                 </Link>
                             </div>
                             <h3 className="axil-post-title hover-line">
-                                <Link href={`/${article.id}`}>
-                                    <a>{article.title}</a>
+                                <Link href={`/${article.article.id}`}>
+                                    <a>{article.article.title}</a>
                                 </Link>
                             </h3>
                             {postSizeMd &&
-                                <p className="mid">{article.abstracts}</p>
+                                <p className="mid">{article.article.abstracts}</p>
                             }
                             <div className="post-metas">
                                 <ul className="list-inline">
-                                    {article.author_name && (
+                                    {article.article.author_name && (
                                         <li>
                                             <span>By</span>
-                                            <Link href={`/author/${slugify(article.author_name)}`}>
-                                                <a className="post-author">{article.author_name}</a>
+                                            <Link href={`/author/${slugify(article.article.author_name)}`}>
+                                                <a className="post-author">{article.article.author_name}</a>
                                             </Link>
                                         </li>
                                     )}
                                     <li>
                                         <span></span>
-                                        <span>{new Date(article.create_date).toLocaleDateString()}</span>
+                                        <span>{new Date(article.article.create_date).toLocaleDateString()}</span>
                                     </li>
                                     <li>
                                         <i className="feather icon-activity" />
-                                        {article.reading_time} min
+                                        {article.article.reading_time} min
                                     </li>
                                     <li>
                                         <i className="" />
-                                        {article.artSource}
+                                        {article.article.artSource}
+                                    </li>
+                                    <li className="saved-icon">
+                                        <a href="#" style={{
+                                           fontSize: '1rem',
+                                            color:  "black",
+                                            marginRight: '20px',
+                                        }} title="Unsave" >
+                                           
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -106,4 +120,4 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
     );
 };
 
-export default PostLayoutArtByCat;
+export default PostLayoutArtSaved;

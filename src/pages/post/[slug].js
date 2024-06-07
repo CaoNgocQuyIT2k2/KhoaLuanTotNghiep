@@ -4,29 +4,16 @@ import Breadcrumb from "../../components/common/Breadcrumb";
 import HeadMeta from "../../components/elements/HeadMeta";
 import FooterOne from "../../components/footer/FooterOne";
 import HeaderOne from "../../components/header/HeaderOne";
-import PostFormatAudio from "../../components/post/post-format/PostFormatAudio";
-import PostFormatGallery from "../../components/post/post-format/PostFormatGallery";
-import PostFormatQuote from "../../components/post/post-format/PostFormatQuote";
+
 import PostFormatStandard from "../../components/post/post-format/PostFormatStandard";
-import PostFormatText from "../../components/post/post-format/PostFormatText";
-import PostFormatVideo from "../../components/post/post-format/PostFormatVideo";
+
 import PostSectionSix from "../../components/post/PostSectionSix";
 
 
 const PostDetails = ({postContent, allPosts}) => {
 
 	const PostFormatHandler = () => {
-		if (postContent.postFormat === 'video') {
-			return <PostFormatVideo postData={postContent} allData={allPosts}/>
-		} else if (postContent.postFormat === 'gallery') {
-			return <PostFormatGallery postData={postContent} allData={allPosts} />
-		}  else if (postContent.postFormat === 'audio') {
-			return <PostFormatAudio postData={postContent} allData={allPosts} />
-		} else if (postContent.postFormat === 'quote') {
-			return <PostFormatQuote postData={postContent} allData={allPosts} />
-		} else if (postContent.postFormat === 'text') {
-			return <PostFormatText postData={postContent} allData={allPosts} />
-		}else {
+		 if (postContent.postFormat === '') {
 			return <PostFormatStandard  postData={postContent} allData={allPosts} />
 		}
 	}

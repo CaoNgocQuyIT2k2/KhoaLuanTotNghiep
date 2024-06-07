@@ -40,8 +40,22 @@ const EditPassword = () => {
       });
 
       setSuccess('Password updated successfully');
+      window.location.href = "/"; 
+
     } catch (error) {
-      setError(error.response?.data?.message || 'An error occurred');
+      const errorMessage = error.response?.data?.message;
+
+      // Kiểm tra lỗi cụ thể và đặt thông báo lỗi
+      if (error.response?.data === 'ERROR: Old password entered incorrectly.') {
+        setError('Old password entered incorrectly.');
+      } 
+      else if (error.response?.data === 'ERROR:  The re-entered password does not match.') {
+        setError('New password does not match.');
+      } 
+      else {
+        setError(errorMessage);
+      }
+
       setTimeout(() => {
         setError('');
       }, 7000);
@@ -105,8 +119,5 @@ const EditPassword = () => {
     </div>
   );
 };
-
-
-
 
 export default EditPassword;

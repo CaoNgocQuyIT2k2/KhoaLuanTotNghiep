@@ -1,31 +1,42 @@
-import Link from "next/link";
-import { slugify } from "../../../utils";
-import React from 'react';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { slugify } from '../../../utils';
+import { Pagination } from 'antd';
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
 const PostLayoutArtBySearch = ({ searchData, postSizeMd, postBgDark }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 10;
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const currentData = searchData.slice(startIndex, endIndex);
+
   return (
     <div className="row">
       <div className="col-lg-12">
-        {searchData.map((article, index) => (
-          <div key={index} className={`media post-block m-b-xs-30 ${postSizeMd === true ? "post-block__mid" : ""} ${postBgDark === true ? "post-block__on-dark-bg" : ""}`}>
+        {currentData.map((article, index) => (
+          <div
+            key={index}
+            className={`media post-block m-b-xs-30 ${postSizeMd ? 'post-block__mid' : ''} ${postBgDark ? 'post-block__on-dark-bg' : ''}`}
+          >
             <Link href={`/${article.id}`}>
               <a className="align-self-center">
                 {article.avatar ? (
                   <img
                     src={article.avatar}
                     alt={article.title}
-                    width={postSizeMd === true ? 285 : 150}
-                    height={postSizeMd === true ? 285 : 150}
+                    width={postSizeMd ? 285 : 150}
+                    height={postSizeMd ? 285 : 150}
                   />
                 ) : (
                   <img
                     style={{ border: '1px solid black' }}
                     src={defaultAvatarSrc}
                     alt="Default Avatar"
-                    width={postSizeMd === true ? 285 : 150}
-                    height={postSizeMd === true ? 285 : 150}
+                    width={postSizeMd ? 285 : 150}
+                    height={postSizeMd ? 285 : 150}
                   />
                 )}
               </a>
@@ -33,15 +44,15 @@ const PostLayoutArtBySearch = ({ searchData, postSizeMd, postBgDark }) => {
             <div className="media-body">
               <div className="post-cat-group m-b-xs-10">
                 <Link href={`/category/${article.category.id}`}>
-                  <a className={`post-cat cat-btn ${article.cate_bg ?? "bg-color-blue-one"}`}>{article.category.name}</a>
+                  <a className={`post-cat cat-btn ${article.cate_bg ?? 'bg-color-blue-one'}`}>{article.category.name}</a>
                 </Link>
               </div>
               <h3 className="axil-post-title hover-line hover-line">
-              <Link href={`/${article.id}`}>
-                <a>{article.title}</a>
-              </Link>
+                <Link href={`/${article.id}`}>
+                  <a>{article.title}</a>
+                </Link>
               </h3>
-              {postSizeMd === true && <p className="mid">{article.abstracts}</p>}
+              {postSizeMd && <p className="mid">{article.abstracts}</p>}
               <div className="post-metas">
                 <ul className="list-inline">
                   {article.author_name && (
@@ -68,6 +79,13 @@ const PostLayoutArtBySearch = ({ searchData, postSizeMd, postBgDark }) => {
             </div>
           </div>
         ))}
+        <Pagination
+          current={currentPage}
+          pageSize={pageSize}
+          total={searchData.length}
+          onChange={(page) => setCurrentPage(page)}
+          style={{ textAlign: 'center', marginTop: '20px' }}
+        />
       </div>
     </div>
   );

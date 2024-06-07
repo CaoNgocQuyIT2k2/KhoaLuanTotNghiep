@@ -2,6 +2,7 @@ import Link from "next/link";
 import { slugify } from "../../../utils";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import TopStarRating from "../post-format/elements/TopStarRating";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
@@ -83,6 +84,9 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 										<li>
 											<i className="" />
 											{data.artSource}
+										</li>
+										<li>
+											<TopStarRating articleId={data.id}/>
 										</li>
 									</ul>
 								</div>

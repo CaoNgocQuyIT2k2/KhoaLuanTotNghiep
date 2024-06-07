@@ -4450,22 +4450,27 @@ input[type="radio"] + label::after {
 .social-share li a:hover {
   color: var(--primary-color);
 }
+
 .social-share__with-bg li a {
   display: block;
   width: 3.2rem;
   height: 3.2rem;
-  background: var(--grey-dark-one);
+  background: white;
   border-radius: 100%;
   font-size: 1.2rem;
   line-height: 3.2rem;
-  color: #fff;
+  color: #000;
   text-align: center;
+  border: 1px solid #e4e4e4;
 }
+
 .social-share__with-bg li a:hover {
   background: var(--primary-color);
   color: #fff;
   transform: rotate(45deg);
 }
+
+
 .social-share__with-bg-white li a {
   background: #fff;
   color: var(--grey-dark-one);
@@ -4485,6 +4490,9 @@ input[type="radio"] + label::after {
   line-height: 6rem;
   border-radius: 0;
 }
+
+
+
 @media (max-width: 991px) {
   .social-share__square li a {
     width: 6rem;
@@ -9341,7 +9349,7 @@ label.valid:after {
     color: #0063a5;
     font-family: 'Mukta', sans-serif;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 2rem;
 }
 
 .profile-top-wrap a {
@@ -9410,12 +9418,13 @@ label.valid:after {
     justify-content: center;
     font-family: 'Mukta', sans-serif;
     margin-left: 2rem;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     transition: 350ms ease;
 }
 
 .profileEditBtn a:hover {
-    background-color: #f8f8f8;
+  color:white;
+  background-color: #0063a5;
 }
 
 .changePassBtn a {
@@ -9593,7 +9602,7 @@ label.valid:after {
   background-color: rgba(245, 72, 72, 0.9);
   color: white;
   padding: 8px;
-  font-size: 0.9rem;
+  font-size: 1.2em;
   text-align: center;
 }
 
@@ -9620,4 +9629,146 @@ label.valid:after {
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --saved-icon-url: url('https://cdnweb.dantri.com.vn/dist/60b264397de1be0e3d0e.svg');
+  --save-icon-url: url('https://cdnweb.dantri.com.vn/dist/654561c72dd30d1107f3.svg');
+}
 
+.save-icon,
+.saved-icon {
+  display: inline-block;
+  width: 32px; /* Kích thước của icon */
+  height: 32px; /* Kích thước của icon */
+  background-size: 24px 24px; /* Đảm bảo icon được phủ đều */
+  background-repeat: no-repeat; /* Đảm bảo icon không lặp lại */
+  background-position: center; /* Đảm bảo icon nằm ở giữa */
+  background-color: transparent; /* Nền trong suốt để không bị ảnh hưởng bởi nền ngoài */
+  border: none; /* Loại bỏ viền nếu có */
+  border-radius: 50%; /* Đảm bảo hình tròn */
+  text-align: center; /* Căn giữa nội dung */
+  line-height: 32px; /* Căn giữa biểu tượng theo chiều dọc */
+}
+
+/* Background image for save-icon */
+.save-icon {
+  background-image: var(--save-icon-url);
+}
+
+/* Background image for saved-icon */
+.saved-icon {
+  background-image: var(--saved-icon-url);
+}
+
+/* Override the hover effects */
+.save-icon:hover,
+.saved-icon:hover {
+  background-color: transparent; /* Không thay đổi màu nền khi hover */
+  transform: none; /* Không xoay khi hover */
+  color: inherit; /* Giữ nguyên màu chữ */
+}
+
+/* Ensure any inner icon is hidden */
+.save-icon i,
+.saved-icon i {
+  display: none;
+}
+
+/* New class to override background for save-icon */
+.no-background {
+  background: none !important;
+}
+
+
+/*--Social share--*/
+.SaveArt {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+  .SaveArt li {
+    margin-right: 1rem;
+  }
+  .SaveArt li a {
+    font-size: 2rem;
+    color: var(--grey-dark-one);
+  }
+  .SaveArt li a:hover {
+    color: var(--primary-color);
+  }
+  
+  .SaveArt__with-bg li a {
+    display: block;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 100%;
+    font-size: 1.2rem;
+    line-height: 3.2rem;
+    color: #000;
+    text-align: center;
+    border: 1px solid #e4e4e4;
+  }
+  
+  .SaveArt__with-bg li a:hover {
+    color: #fff;
+    transform: rotate(45deg);
+  }
+  
+  
+  .SaveArt__with-bg-white li a {
+    background: #fff;
+    color: var(--grey-dark-one);
+  }
+  .SaveArt__vertical {
+    flex-direction: column;
+  }
+  .SaveArt__vertical li {
+    margin: 0 0 2rem;
+  }
+  .SaveArt__square li {
+    margin: 0;
+  }
+  .SaveArt__square li a {
+    width: 8rem;
+    height: 6rem;
+    line-height: 6rem;
+    border-radius: 0;
+  }
+  
+  
+  
+  @media (max-width: 991px) {
+    .SaveArt__square li a {
+      width: 6rem;
+    }
+  }
+  .SaveArt__square li a:hover {
+    transform: none;
+  }
+  .post-details__SaveArt {
+    position: absolute;
+    top: 0;
+    left: -6.4rem;
+  }
+  @media (max-width: 1199px) {
+    .post-details__SaveArt {
+      position: static;
+    }
+    .post-details__SaveArt .SaveArt__vertical {
+      flex-direction: row;
+      margin-bottom: 2rem;
+    }
+    .post-details__SaveArt .SaveArt__vertical li {
+      margin: 0 1rem 1rem 0;
+    }
+  }
+  .contact-SaveArt .SaveArt-list-wrapper {
+    margin: -1rem;
+  }
+  .contact-SaveArt .SaveArt-list-wrapper li {
+    width: 7.2rem;
+    height: 7.2rem;
+    padding: 1rem;
+  }

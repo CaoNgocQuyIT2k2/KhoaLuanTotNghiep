@@ -19,8 +19,8 @@ export default async function UpdateUserInfo(req, res) {
       const token = req.headers.authorization;
 
       // Validate request body
-      if (!firstname || !lastname || !email || !dob) {
-        res.status(400).json({ message: 'All fields are required' });
+      if (!firstname || !lastname || !email ) {
+        res.status(400).json({ message: 'Fill in the required fields' });
         return;
       }
 

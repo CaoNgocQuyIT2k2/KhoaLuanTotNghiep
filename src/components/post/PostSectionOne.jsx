@@ -17,7 +17,7 @@ const PostSectionOne = ({ postData }) => {
               <div className="axil-recent-news">
                 <SectionTitle
                   title="Recent News"
-                  btnText="ALL RECENT NEWS"
+                 
                   pClass="m-b-xs-30"
                 />
                 <PostLayoutNewest />

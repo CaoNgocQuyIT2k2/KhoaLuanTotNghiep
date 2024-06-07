@@ -61,7 +61,7 @@ const Profile = () => {
         </li>
       </ul>
       <div className="btns_wrap">
-        <button className="profileEditBtn">
+        <button className="profileEditBtn ">
           <Link href="/editProfile">Edit Profile</Link>
         </button>
       </div>

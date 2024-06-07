@@ -6,7 +6,7 @@ const PostSectionThree = () => {
   return (
     <div className="section-gap section-gap-top__with-text trending-stories">
       <div className="container">
-        <SectionTitle title="Trending Stories" btnText="ALL TRENDING STORIES" />
+        <SectionTitle title="Trending Stories" />
         <div className="">
             <div className="col-lg-12" >
               <PostLayoutTwo />

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { dateFormate } from "../../utils";
 import OffcanvasMenu from "./OffcanvasMenu";
-import Menu from "./Menu";
+import MenuCategories from "./MenuCategories";
 import axios from 'axios';
 import { message } from "antd";
 import dynamic from 'next/dynamic';
@@ -11,7 +11,6 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import LogUser from "../post/post-format/elements/LogUser";
 
-// Dynamic import for SearchImage component
 const SearchImage = dynamic(() => import("../objectDetector/SearchImage"), {
   ssr: false
 });
@@ -21,6 +20,8 @@ const HeaderOne = () => {
   const router = useRouter();
   const menuRef = useRef();
   const [searchKeyword, setSearchKeyword] = useState("");
+  const [searchshow, setSearchShow] = useState(false);
+  const [mobileToggle, setMobileToggle] = useState(false);
 
   useEffect(() => {
     const toggleDropdownMenu = () => {
@@ -60,26 +61,32 @@ const HeaderOne = () => {
     toggleDropdownMenu();
   }, []);
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const [searchshow, setSearchShow] = useState(false);
+  const handleClose = () => {
+    setSearchShow(false);
+    setMobileToggle(false);
+  };
+  
+  const handleShow = () => {
+    setSearchShow(true);
+    setMobileToggle(false);
+  };
 
   const headerSearchShow = () => {
     setSearchShow(true);
+    setMobileToggle(false);
   };
+
   const headerSearchClose = () => {
     setSearchShow(false);
+    setMobileToggle(false);
   };
 
-  const [mobileToggle, setMobileToggle] = useState(false);
-
   const MobileMenuToggler = () => {
+    if (searchshow) return;
     setMobileToggle(!mobileToggle);
     const HtmlTag = document.querySelector("html");
     const menuSelect = document.querySelectorAll(".main-navigation li");
-
+  
     if (HtmlTag.classList.contains("main-menu-opened")) {
       HtmlTag.classList.remove("main-menu-opened");
     } else {
@@ -87,7 +94,7 @@ const HeaderOne = () => {
         HtmlTag.classList.add("main-menu-opened");
       }, 800);
     }
-
+  
     menuSelect.forEach((element) => {
       element.addEventListener("click", function () {
         if (!element.classList.contains("has-dropdown")) {
@@ -123,14 +130,14 @@ const HeaderOne = () => {
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-      event.preventDefault(); // Ngăn chặn hành vi mặc định
+      event.preventDefault();
       handleSearchButtonClick();
     }
   };
 
   return (
     <>
-      <OffcanvasMenu ofcshow={show} ofcHandleClose={handleClose} />
+      <OffcanvasMenu ofcshow={mobileToggle} ofcHandleClose={handleClose} />
       <header className="page-header">
         <div className="header-top bg-grey-dark-one">
           <div className="container">
@@ -170,7 +177,6 @@ const HeaderOne = () => {
                   )}
                 </ul>
               </div>
-
             </div>
           </div>
         </div>
@@ -191,7 +197,7 @@ const HeaderOne = () => {
               </div>
               <div className="main-nav-wrapper">
                 <div ref={menuRef}>
-                  <Menu />
+                  <MenuCategories />
                 </div>
               </div>
               <div className="navbar-extra-features ml-auto">
@@ -200,16 +206,14 @@ const HeaderOne = () => {
                   className={`navbar-search ${searchshow ? "show-nav-search" : ""}`}
                 >
                   <div className="search-field">
-                    {/* Include the SearchImage component */}
                     <input
                       type="text"
                       className="navbar-search-field"
                       placeholder="Search Here..."
-                      value={searchKeyword} // Sử dụng classNames nếu có, nếu không thì sử dụng searchKeyword
+                      value={searchKeyword}
                       onChange={(e) => setSearchKeyword(e.target.value)}
-                      onKeyDown={handleKeyDown} // Thêm sự kiện onKeyDown
+                      onKeyDown={handleKeyDown}
                     />
-
                     <SearchImage className="navbar-search-img" setSearchKeyword={setSearchKeyword} />
                     <button
                       className="navbar-search-btn"
@@ -232,11 +236,13 @@ const HeaderOne = () => {
                 >
                   <i className="far fa-search" />
                 </button>
-                <button className="side-nav-toggler" onClick={handleShow}>
-                  <span />
-                  <span />
-                  <span />
-                </button>
+                {!searchshow && (
+                  <button className="side-nav-toggler" onClick={MobileMenuToggler}>
+                    <span />
+                    <span />
+                    <span />
+                  </button>
+                )}
               </div>
               <div
                 className={`main-nav-toggler d-block d-lg-none ${mobileToggle ? "expanded" : ""}`}

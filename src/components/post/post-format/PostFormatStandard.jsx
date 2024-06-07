@@ -52,7 +52,7 @@ const PostFormatStandard = ({ articleId, allData }) => {
               <main className="site-main">
                 <article className="post-details">
                   <div className="single-blog-wrapper">
-                    <SocialShareSide />
+                    <SocialShareSide articleId={articleId}  />
                     {parsedContent}
                   </div>
                 </article>

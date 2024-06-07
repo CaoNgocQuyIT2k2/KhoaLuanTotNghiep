@@ -11,7 +11,7 @@ export default function LogUser({userName}) {
         color: 'white',
         marginTop:"0.5rem",
         fontSize:"1.5rem",
-      }}>Xin chào, {userName}</p>
+      }}>Hello, {userName}</p>
       <MenuUser/> 
     </Stack>
   );

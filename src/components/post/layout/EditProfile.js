@@ -18,7 +18,7 @@ const EditProfile = () => {
 
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-
+  console.log("user", user);
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const storedUserInfo = JSON.parse(localStorage.getItem('USER_INFO'));
@@ -53,8 +53,10 @@ const EditProfile = () => {
       });
 
       setSuccess('Edit Profile successfully');
+      window.location.href = "/profile"; // Chuyển hướng đến trang đăng nhập
+
     } catch (error) {
-      setError(error.response?.data?.message || 'An error occurred');
+      setError(error.response?.data?.message || 'Vui lòng nhập lại');
       setTimeout(() => {
         setError('');
       }, 7000);
@@ -70,11 +72,9 @@ const EditProfile = () => {
       <form onSubmit={handleSubmit}>
         {error && <div className="error_msg">{error}</div>}
         {success && <div className="success_msg">{success}</div>}
-        <Link href={'/profile'}>
-          <a>
-            <FiArrowLeft />
-          </a>
-        </Link>
+        <button className='mb-4' onClick={() => router.push('/profile')}>
+        <FiArrowLeft />
+        </button>
         <div className="input-wrapper">
           <input
             type="text"

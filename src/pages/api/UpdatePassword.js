@@ -38,10 +38,13 @@ export default async function UpdatePassword(req, res) {
         res.status(response.status).json({ message: 'Failed to update password.' });
       }
     } catch (error) {
-      console.error('Error:', error);
-      if (error.response && error.response.status === 403) {
-        res.status(403).json({ message: 'Unauthorized' });
+      // Log detailed error from backend
+      console.error('Error updating password:', error.message);
+      if (error.response) {
+        console.error('Backend response data:', error.response.data);
+        res.status(error.response.status).json({ message: error.response.data });
       } else {
+        console.error('No response received from backend');
         res.status(500).json({ message: 'Internal Server Error' });
       }
     }

@@ -4,7 +4,7 @@ import { Dropdown, Space, Menu } from 'antd';
 import axios from 'axios';
 import Link from 'next/link';
 
-const App = () => {
+const MenuCategories = () => {
   const [categories, setCategories] = useState([]);
   const [childMenus, setChildMenus] = useState({});
 
@@ -59,23 +59,24 @@ const App = () => {
         </Menu>
       }
       trigger={['hover']}
-      placement={index < 7 ? 'bottomLeft' : 'rightTop'} // Đặt placement dựa vào index
+      placement={index < 7 ? 'bottomLeft' : 'rightTop'}
       onVisibleChange={(visible) => {
         if (visible && !childMenus[category.id] && index < 7) {
           handleMenuClick(category.id);
         }
       }}
     >
-      <a onClick={(e) => e.preventDefault()}>
+      <div> {/* Sử dụng div thay vì a */}
         <Space>
-         <Link href={`/category/${category.id}`}>
-         {category.name}
-         </Link>
-          {index < 7 ? <DownOutlined /> : <RightOutlined />} {/* Sử dụng RightOutlined cho các parent categories sau phần tử thứ 7 */}
+          <Link href={`/category/${category.id}`}>
+            {category.name}
+          </Link>
+          {index < 7 ? <DownOutlined /> : <RightOutlined />}
         </Space>
-      </a>
+      </div>
     </Dropdown>
   );
+  
   
 
   const limitedItems = categories.slice(0, 7).map((category, index) => (
@@ -115,5 +116,4 @@ const App = () => {
   );
 };
 
-export default App;
-
+export default MenuCategories;

@@ -77,15 +77,10 @@ export default function MenuUser() {
           Your feed
         </MenuItem>
         <MenuItem onClick={handleClose} style={{ fontSize: '1.5rem' }}>
-          Saved news
-        </MenuItem>
-        {userRole === 'EDITOR' && (
-          <MenuItem onClick={handleClose} style={{ fontSize: '1.5rem' }}>
-            <Link href="/editor/EditorDashboard">
-              <a>Editor Dashboard</a>
+        <Link href="/article/articleSaved">
+              <a>Saved news</a>
             </Link>
-          </MenuItem>
-        )}
+        </MenuItem>
         {userRole === 'ADMIN' && (
           <MenuItem onClick={handleClose} style={{ fontSize: '1.5rem' }}>
             <Link href="/admin/AdminDashboard">
@@ -93,13 +88,7 @@ export default function MenuUser() {
             </Link>
           </MenuItem>
         )}
-        {userRole === 'WRITER' && (
-          <MenuItem onClick={handleClose} style={{ fontSize: '1.5rem' }}>
-            <Link href="/writer/WriterDashboard">
-              <a>Writer Dashboard</a>
-            </Link>
-          </MenuItem>
-        )}
+       
         <MenuItem onClick={handleLogoutClick} style={{ fontSize: '1.5rem' }}>
           Logout
         </MenuItem>

@@ -27,12 +27,10 @@ const Breadcrumb = ({ aPage }) => {
   console.log("data", data);
 
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   return (

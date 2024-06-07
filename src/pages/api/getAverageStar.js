@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default async function getAverageStar(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -11,7 +11,7 @@ export default async function getAverageStar(req, res) {
   }
 
   const { articleId } = req.query;
-
+  console.log("articleId: " + articleId);
   if (!articleId) {
     res.status(400).json({ message: 'articleId is required' });
     return;

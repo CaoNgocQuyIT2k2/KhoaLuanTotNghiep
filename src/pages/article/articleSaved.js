@@ -14,8 +14,9 @@ import PostLayoutArtByCat from "../../components/post/layout/PostLayoutArtByCat"
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import PostLayoutArtSaved from "../../components/post/layout/PostLayoutArtSaved";
 
-const PostCategory = ({ allPosts }) => {
+const articleSaved = ({ allPosts }) => {
     const router = useRouter();
     const { categoryId } = router.query;
     const [data, setData] = useState(null);
@@ -34,21 +35,19 @@ const PostCategory = ({ allPosts }) => {
         fetchData();
     }, [categoryId]);
 
-    if (!data) {
-        return <div>Loading...</div>;
-    }
+
 
     return (
         <>
-            <HeadMeta metaTitle={data.name} />
+
             <HeaderOne />
-            <Breadcrumb aPage={data.id} />
+
             <div className="banner banner__default bg-grey-light-three">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-12">
                             <div className="post-title-wrapper">
-                                <h2 className="m-b-xs-0 axil-post-title hover-line">{data.name}</h2>
+                                <h2 className="m-b-xs-0 axil-post-title hover-line">NEWS SAVED</h2>
                             </div>
                         </div>
                     </div>
@@ -59,7 +58,7 @@ const PostCategory = ({ allPosts }) => {
                     <div className="row">
                         <div className="col-lg-8">
                             <div className="axil-content">
-                                <PostLayoutArtByCat categoryId={categoryId} postSizeMd={true} />
+                                <PostLayoutArtSaved postSizeMd={true} />
                             </div>
                         </div>
                         <div className="col-lg-4">
@@ -78,4 +77,4 @@ const PostCategory = ({ allPosts }) => {
     );
 };
 
-export default PostCategory;
+export default articleSaved;
