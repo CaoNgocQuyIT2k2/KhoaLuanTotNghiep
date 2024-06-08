@@ -1,30 +1,87 @@
-export default async function getAverageStar(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Authorization');
-  
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
-  }
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { message } from 'antd';
 
-  const { articleId } = req.query;
-  console.log("articleId: " + articleId);
-  if (!articleId) {
-    res.status(400).json({ message: 'articleId is required' });
-    return;
-  }
+const StarRating = ({ articleId, token }) => {
+  const [rating, setRating] = useState(0);
+  const [averageRating, setAverageRating] = useState(null);
 
-  try {
-    const response = await axios.get(`http://localhost:8080/api/v1/vote-star/get-average-star?articleId=${articleId}`);
+  useEffect(() => {
+    fetchAverageRating(articleId, setAverageRating);
+  }, [articleId]);
 
-    if (response.status === 200) {
-      res.status(200).json({ averageStar: response.data });
-    } else {
-      res.status(response.status).json({ message: 'Failed to fetch average star.' });
+  const fetchAverageRating = async (articleId, setAverageRating) => {
+    try {
+      const response = await axios.get(`/api/getAverageStar?articleId=${articleId}`);
+      if (response.status === 200) {
+        setAverageRating(response.data);
+      } else {
+        message.error('Failed to fetch average rating.');
+      }
+    } catch (error) {
+      console.error('Error fetching average rating:', error);
+      message.error('Failed to fetch average rating2.');
     }
-  } catch (error) {
-    console.error('Error fetching average star:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
-  }
-}
+  };
+  console.log("averageRating", averageRating);
+  const handleRating = async (star) => {
+    setRating(star);
+
+    const data = {
+      article: {
+        id: articleId
+      },
+      star: star
+    };
+
+    try {
+      const response = await axios.post(
+        '/api/vote-star',
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      if (response.status === 200) {
+        message.success(response.data.message);
+        fetchAverageRating(articleId, setAverageRating); // Refresh the average rating
+      } else {
+        message.error(response.data.message);
+      }
+    } catch (error) {
+      console.error('Error submitting rating:', error);
+      if (error.response && error.response.status === 403) {
+        message.error("Bạn không có quyền thực hiện đánh giá.");
+      } else {
+        message.error("Đánh giá thất bại.");
+      }
+    }
+  };
+
+  return (
+    <div className="star-rating">
+      <div className="average-rating">
+        {averageRating !== null ? (
+          <span>Sao trung bình: {averageRating.averageStar.toFixed(1)} / 5.0</span>
+        ) : (
+          <span>Loading average rating...</span>
+        )}
+
+      </div>
+      <div className="rating-stars">
+        {[1, 2, 3, 4, 5].map(star => (
+          <i
+            key={star}
+            className={`fa-star ${star <= rating ? 'fas' : 'far'}`}
+            onClick={() => handleRating(star)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default StarRating;

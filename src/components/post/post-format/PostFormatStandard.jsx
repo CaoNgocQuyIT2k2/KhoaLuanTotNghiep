@@ -38,7 +38,7 @@ const PostFormatStandard = ({ articleId, allData }) => {
   if (!postData) {
     return <div>Loading...</div>;
   }
-
+console.log("postData", postData);
   // Check if postData.content exists and is a string before parsing it
   const parsedContent = postData.content && typeof postData.content === 'string' ? parse(postData.content) : null;
 

@@ -6,6 +6,7 @@ import PostFormatStandard from '../components/post/post-format/PostFormatStandar
 import HeaderOne from '../components/header/HeaderOne';
 import FooterOne from '../components/footer/FooterOne';
 import Breadcrumb from '../components/common/Breadcrumb';
+import BackToTopButton from '../components/post/post-format/elements/BackToTopButton';
 
 const PostPage = () => {
   const router = useRouter();
@@ -21,6 +22,8 @@ const PostPage = () => {
       <Breadcrumb articleId={article_id} />
       <PostFormatStandard articleId={article_id} />;
       <FooterOne />
+    <BackToTopButton />
+
     </>
   );
 };

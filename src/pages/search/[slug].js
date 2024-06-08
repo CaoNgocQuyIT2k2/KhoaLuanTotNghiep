@@ -10,6 +10,7 @@ import WidgetSocialShare from "../../components/widget/WidgetSocialShare";
 import WidgetPost from "../../components/widget/WidgetPost";
 import WidgetCategory from "../../components/widget/WidgetCategory";
 import PostLayoutArtBySearch from "../../components/post/layout/PostLayoutArtBySearch";
+import BackToTopButton from '../../components/post/post-format/elements/BackToTopButton';
 
 const PostCategory = () => {
   const router = useRouter();
@@ -75,6 +76,8 @@ const PostCategory = () => {
         </div>
       </div>
       <FooterOne />
+    <BackToTopButton />
+
     </>
   );
 };

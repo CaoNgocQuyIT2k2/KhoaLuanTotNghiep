@@ -58,161 +58,161 @@ Date Created: Oct 14, 2022
 ================================================== --*/
 /*--imported fonts--*/
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 300;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v15/pxiDyp8kv8JHgFVrJJLm21lVF9eL.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 400;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v15/pxiGyp8kv8JHgFVrJJLucHtF.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 500;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v15/pxiDyp8kv8JHgFVrJJLmg1hVF9eL.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 600;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v15/pxiDyp8kv8JHgFVrJJLmr19VF9eL.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 700;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v15/pxiDyp8kv8JHgFVrJJLmy15VF9eL.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 800;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v15/pxiDyp8kv8JHgFVrJJLm111VF9eL.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 300;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v15/pxiByp8kv8JHgFVrLDz8Z1xlEA.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v15/pxiEyp8kv8JHgFVrJJfedw.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 500;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v15/pxiByp8kv8JHgFVrLGT9Z1xlEA.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 600;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v15/pxiByp8kv8JHgFVrLEj6Z1xlEA.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 700;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v15/pxiByp8kv8JHgFVrLCz7Z1xlEA.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 800;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v15/pxiByp8kv8JHgFVrLDD4Z1xlEA.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 900;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v15/pxiByp8kv8JHgFVrLBT5Z1xlEA.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 300;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/roboto/v29/KFOjCnqEu92Fr1Mu51TjASc6CsE.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 400;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/roboto/v29/KFOkCnqEu92Fr1Mu51xIIzc.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 500;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/roboto/v29/KFOjCnqEu92Fr1Mu51S7ACc6CsE.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 700;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/roboto/v29/KFOjCnqEu92Fr1Mu51TzBic6CsE.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 900;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/roboto/v29/KFOjCnqEu92Fr1Mu51TLBCc6CsE.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 300;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc9.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxP.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 500;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc9.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 700;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmWUlfBBc9.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 900;
   font-display: swap;
@@ -8649,7 +8649,7 @@ list-type-ulli,
   padding: 0;
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 300;
   src: url("../../public/fonts/poppins/poppins-v5-latin-300.eot");
@@ -8663,7 +8663,7 @@ list-type-ulli,
     url("../../public/fonts/poppins/poppins-v5-latin-300.svg#Poppins") format("svg");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 300;
   src: url("../../public/fonts/poppins/poppins-v5-latin-300italic.eot");
@@ -8677,7 +8677,7 @@ list-type-ulli,
     url("../../public/fonts/poppins/poppins-v5-latin-300italic.svg#Poppins") format("svg");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 400;
   src: url("../../public/fonts/poppins/poppins-v5-latin-regular.eot");
@@ -8691,7 +8691,7 @@ list-type-ulli,
     url("../../public/fonts/poppins/poppins-v5-latin-regular.svg#Poppins") format("svg");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 400;
   src: url("../../public/fonts/poppins/poppins-v5-latin-italic.eot");
@@ -8705,7 +8705,7 @@ list-type-ulli,
     url("../../public/fonts/poppins/poppins-v5-latin-italic.svg#Poppins") format("svg");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 500;
   src: url("../../public/fonts/poppins/poppins-v5-latin-500.eot");
@@ -8719,7 +8719,7 @@ list-type-ulli,
     url("../../public/fonts/poppins/poppins-v5-latin-500.svg#Poppins") format("svg");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 500;
   src: url("../../public/fonts/poppins/poppins-v5-latin-500italic.eot");
@@ -8733,7 +8733,7 @@ list-type-ulli,
     url("../../public/fonts/poppins/poppins-v5-latin-500italic.svg#Poppins") format("svg");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 600;
   src: url("../../public/fonts/poppins/poppins-v5-latin-600.eot");
@@ -8747,7 +8747,7 @@ list-type-ulli,
     url("../../public/fonts/poppins/poppins-v5-latin-600.svg#Poppins") format("svg");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 700;
   src: url("../../public/fonts/poppins/poppins-v5-latin-700.eot");
@@ -8761,7 +8761,7 @@ list-type-ulli,
     url("../../public/fonts/poppins/poppins-v5-latin-700.svg#Poppins") format("svg");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 700;
   src: url("../../public/fonts/poppins/poppins-v5-latin-700italic.eot");
@@ -8775,7 +8775,7 @@ list-type-ulli,
     url("../../public/fonts/poppins/poppins-v5-latin-700italic.svg#Poppins") format("svg");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 800;
   src: url("../../public/fonts/poppins/poppins-v5-latin-800.eot");
@@ -8789,7 +8789,7 @@ list-type-ulli,
     url("../../public/fonts/poppins/poppins-v5-latin-800.svg#Poppins") format("svg");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: italic;
   font-weight: 800;
   src: url("../../public/fonts/poppins/poppins-v5-latin-800italic.eot");
@@ -8803,7 +8803,7 @@ list-type-ulli,
     url("../../public/fonts/poppins/poppins-v5-latin-800italic.svg#Poppins") format("svg");
 }
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
   font-style: normal;
   font-weight: 900;
   src: url("../../public/fonts/poppins/poppins-v5-latin-900.eot");
@@ -9772,3 +9772,244 @@ label.valid:after {
     height: 7.2rem;
     padding: 1rem;
   }
+
+
+
+@font-face{font-family:"Inter";src:url(https://cdnweb.dantri.com.vn/dist/c58c465723edbb1e7132.eot);src:url(https://cdnweb.dantri.com.vn/dist/c58c465723edbb1e7132.eot?#iefix) format("embedded-opentype"),url(https://cdnweb.dantri.com.vn/dist/ac03a6de9ea313009257.woff2) format("woff2"),url(https://cdnweb.dantri.com.vn/dist/f3ce705f806c10eb6e2d.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Inter";src:url(https://cdnweb.dantri.com.vn/dist/4779e75fdb6a29fbacd9.eot);src:url(https://cdnweb.dantri.com.vn/dist/4779e75fdb6a29fbacd9.eot?#iefix) format("embedded-opentype"),url(https://cdnweb.dantri.com.vn/dist/d4b5441320ecab87d64a.woff2) format("woff2"),url(https://cdnweb.dantri.com.vn/dist/484bd6e66988b594f558.woff) format("woff");font-weight:500;font-style:normal;font-display:swap}@font-face{font-family:"Inter";src:url(https://cdnweb.dantri.com.vn/dist/b6115a2cf89be644f163.eot);src:url(https://cdnweb.dantri.com.vn/dist/b6115a2cf89be644f163.eot?#iefix) format("embedded-opentype"),url(https://cdnweb.dantri.com.vn/dist/7249951440b8b2f3f6ba.woff2) format("woff2"),url(https://cdnweb.dantri.com.vn/dist/6d7d360a0832f5c43a22.woff) format("woff");font-weight:600;font-style:normal;font-display:swap}@font-face{font-family:"Inter";src:url(https://cdnweb.dantri.com.vn/dist/881389b4b0a03b4f452c.eot);src:url(https://cdnweb.dantri.com.vn/dist/881389b4b0a03b4f452c.eot?#iefix) format("embedded-opentype"),url(https://cdnweb.dantri.com.vn/dist/df454d31cb00344b1ff1.woff2) format("woff2"),url(https://cdnweb.dantri.com.vn/dist/3a84061fa1e9573b4a9f.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}.O9VAherl4x0Mm97xjCIp{display:flex;width:166px;height:28px;align-items:center;flex-shrink:0;justify-content:center}.s0Yr8xvVir_2KNnwycpu{border-radius:6px;border:2px solid var(--green-10, #E7F0EB)}.s0Yr8xvVir_2KNnwycpu.kKAxMBA76wUDIG2C9F4w{background:#f9f9f9;border:rgba(0,0,0,0)}.s0Yr8xvVir_2KNnwycpu.kKAxMBA76wUDIG2C9F4w span{color:var(--black, #292D32)}.s0Yr8xvVir_2KNnwycpu.RXCflJFIOBK8xwKJ7xv2{background:none}.s0Yr8xvVir_2KNnwycpu.Bo1iHN5r2uoc3ZnIGrKu{font-size:14px;font-weight:600}.s0Yr8xvVir_2KNnwycpu span{color:var(--green, #0F6C32);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:14px;font-style:normal;font-weight:600;line-height:normal;display:flex;justify-content:center;align-items:center;gap:4px;row-gap:4px}.cFnL7SCY_gApvoYcGPwH{width:84px;height:28px;display:flex;padding:6px 8px;justify-content:center;align-items:center;flex-wrap:nowrap;line-height:12px}.cFnL7SCY_gApvoYcGPwH span{font-size:10px;line-height:12px}.kGRXLSMESFZzLPG7yXhS{width:120px;height:29px;display:flex;padding:6px 8px;justify-content:center;align-items:center;flex-wrap:nowrap;line-height:12px}.kGRXLSMESFZzLPG7yXhS span{font-size:14px}.Y8aiwbjxJ6NpWeHNCHxm{width:150px;height:29px;display:flex;padding:6px 8px;justify-content:center;align-items:center;flex-wrap:nowrap;line-height:12px}.Y8aiwbjxJ6NpWeHNCHxm span{font-size:16px}.RG0jm4adTh_VENPTXqfQ{display:flex;align-items:center;gap:4px;padding:12px 0;border-radius:6px;background:none;border:2px solid #e7f0eb;color:#0f6c32;font-size:10px;font-weight:600;margin-top:8px;width:100%;height:37px;justify-content:center}.RG0jm4adTh_VENPTXqfQ span{font-size:14px}
+
+.Ae8Z5BKVF0S0yz_wDIkg {
+  display: flex;
+  flex-direction: column
+}
+
+.Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG,.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid #e3e5e8;
+  align-items: flex-start;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  gap: 16px
+}
+
+.Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG img,.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu img {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%
+}
+
+.Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG p,.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu p {
+  margin: auto 0
+}
+
+.Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG .QIOCZgyVaqEM6CrHzKrl,.Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG .AgAsFFovGEg4VoevG5Zb,.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu .QIOCZgyVaqEM6CrHzKrl,.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu .AgAsFFovGEg4VoevG5Zb {
+  color: var(--black, #292D32);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px
+}
+
+.Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG .QIOCZgyVaqEM6CrHzKrl.z23f9Hx3hraVJxUlBLp5,.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu .QIOCZgyVaqEM6CrHzKrl.z23f9Hx3hraVJxUlBLp5 {
+  font-size: 17px;
+  max-width: 100px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden
+}
+
+@media(max-width: 389px) {
+  .Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG .QIOCZgyVaqEM6CrHzKrl.z23f9Hx3hraVJxUlBLp5,.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu .QIOCZgyVaqEM6CrHzKrl.z23f9Hx3hraVJxUlBLp5 {
+      max-width:80px
+  }
+}
+
+.Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG .AgAsFFovGEg4VoevG5Zb,.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu .AgAsFFovGEg4VoevG5Zb {
+  max-width: 224px;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 0;
+  flex-direction: column;
+  line-height: 20px
+}
+
+.Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG .jumLUAVo0OEbsI77bxsE,.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu .jumLUAVo0OEbsI77bxsE {
+  margin-top: 8px;
+  width: 224px;
+  color: var(--black, #292D32);
+  font-family: "Roboto",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  display: flex;
+  justify-content: flex-start
+}
+
+
+.Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG .G8rMGWdreAGHVOvLGtIh,.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu .G8rMGWdreAGHVOvLGtIh {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 8px
+}
+
+.Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG .G8rMGWdreAGHVOvLGtIh .GTl86OzEYpo2XsSsAfn8,.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu .G8rMGWdreAGHVOvLGtIh .GTl86OzEYpo2XsSsAfn8 {
+  background: #fff;
+  border: none;
+  color: #222;
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px
+}
+
+.Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG.AOQgp6rl6lTaAjc_2xJR .QIOCZgyVaqEM6CrHzKrl,.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu.AOQgp6rl6lTaAjc_2xJR .QIOCZgyVaqEM6CrHzKrl {
+  font-size: 14px;
+  padding-left: 16px;
+  font-weight: 500
+}
+
+.Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG.AOQgp6rl6lTaAjc_2xJR .QIOCZgyVaqEM6CrHzKrl.z23f9Hx3hraVJxUlBLp5,.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu.AOQgp6rl6lTaAjc_2xJR .QIOCZgyVaqEM6CrHzKrl.z23f9Hx3hraVJxUlBLp5 {
+  font-size: 17px;
+  max-width: 175px
+}
+
+.Ae8Z5BKVF0S0yz_wDIkg .MwTn6zWG4_2tPHxA6yoG {
+  align-items: center
+}
+
+.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu {
+  border-bottom: none;
+  gap: 0
+}
+
+.Ae8Z5BKVF0S0yz_wDIkg .F5Wx08mnwZLG_2XOFFgu .AgAsFFovGEg4VoevG5Zb {
+  margin-left: 16px;
+  padding-right: 8px
+}
+
+.aOs47ZWz4radtQCFl39o .F5Wx08mnwZLG_2XOFFgu {
+  flex-wrap: nowrap
+}
+
+.aOs47ZWz4radtQCFl39o .F5Wx08mnwZLG_2XOFFgu .AgAsFFovGEg4VoevG5Zb {
+  width: 100%;
+  font-size: 14px
+}
+
+.aOs47ZWz4radtQCFl39o .F5Wx08mnwZLG_2XOFFgu .jumLUAVo0OEbsI77bxsE {
+  margin-top: 4px;
+  margin-left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start
+}
+
+.uxizQaS6ZYIAoIbih97w {
+  color: #888;
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 17px
+}
+
+.uxizQaS6ZYIAoIbih97w a {
+  font-weight: 700;
+  color: #888
+}
+
+.YiDiQ1PJonL51y8gf3f_ {
+  color: var(--graydarkgray, #888);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal
+}
+
+
+
+.A5aze9nOBiDAXsQh3BYi{border:none;width:240px;margin:46px auto 22px;padding:12px;border-radius:6px;display:flex;justify-content:space-between;align-items:center;gap:8px;background:#e7f0eb;cursor:pointer}.A5aze9nOBiDAXsQh3BYi span{color:#158e42;font-weight:600;font-size:15px}.Xut0pP1LisWAWIKCzHdw{font-family:"Roboto",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:16px;font-weight:400;text-align:center;color:#000;margin-bottom:400px}.hnDnbfcbh83CEOdzrSbo{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif}.hnDnbfcbh83CEOdzrSbo .ucT0nlmjRZQvqxUnVJTA{color:#888;font-weight:500;line-height:20px}.hnDnbfcbh83CEOdzrSbo .ucT0nlmjRZQvqxUnVJTA a{font-weight:700;color:#292d32;text-decoration:underline}.i90yosMcsSc_JCyc1Blu{font-weight:700;font-size:34px;line-height:39px;margin-bottom:36px;color:#292d32}.ZBwh0DJkg5FL71eqf3Yw{padding-bottom:40px}.yIs3PBgtmntpFby_71Q8{font-weight:700;font-size:14px;margin-bottom:27px;position:relative;display:flex;color:#292d32}.yIs3PBgtmntpFby_71Q8::before{content:"";display:block;position:absolute;left:0;bottom:3px;width:100%;height:0;border-top:1px solid #e3e5e8;z-index:-10}.yIs3PBgtmntpFby_71Q8>span{background:#fff none;padding:0 16px 0 0;display:block}.pV_SNtiJwOo940HzG7qg{text-align:center}.pV_SNtiJwOo940HzG7qg .NIZQzxi5109TKlmrQZo2{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;width:264px;height:48px;background:#0f6c32;color:#fff;border-radius:4px;border:0;padding:0;white-space:nowrap}.MrZLbGiBncEyBrNyRixq{position:relative}.MrZLbGiBncEyBrNyRixq .mQGnlZsufnSJ3STULb62{position:absolute;left:-24px;top:28px}.J_h5fqzVRbIt1oNd24PA .A5aze9nOBiDAXsQh3BYi{width:100%;border:none}.J_h5fqzVRbIt1oNd24PA .A5aze9nOBiDAXsQh3BYi span{font-size:18px;line-height:22px}.J_h5fqzVRbIt1oNd24PA .Xut0pP1LisWAWIKCzHdw{margin-bottom:100px;text-align:start;font-size:18px;line-height:21px}.J_h5fqzVRbIt1oNd24PA .MrZLbGiBncEyBrNyRixq .mQGnlZsufnSJ3STULb62{top:20px}.J_h5fqzVRbIt1oNd24PA.hnDnbfcbh83CEOdzrSbo{padding:0 16px}.J_h5fqzVRbIt1oNd24PA.hnDnbfcbh83CEOdzrSbo.krYv7fJ6dLmOk4CU_ka6{padding:60px 24px 40px}.J_h5fqzVRbIt1oNd24PA.hnDnbfcbh83CEOdzrSbo.krYv7fJ6dLmOk4CU_ka6 .dKjTTriaK_JfJpDOjOVZ{gap:24px}.J_h5fqzVRbIt1oNd24PA.hnDnbfcbh83CEOdzrSbo.krYv7fJ6dLmOk4CU_ka6 .dKjTTriaK_JfJpDOjOVZ button{font-size:17px}.J_h5fqzVRbIt1oNd24PA .i90yosMcsSc_JCyc1Blu{font-size:26px;line-height:29px;margin-top:32px;margin-bottom:24px}.J_h5fqzVRbIt1oNd24PA .i90yosMcsSc_JCyc1Blu .PBO0Y38hQKW2gA_CLBuz{background:none;padding:0;border:none;position:absolute;top:24px;right:24px}.J_h5fqzVRbIt1oNd24PA .ucT0nlmjRZQvqxUnVJTA{font-size:15px;font-weight:500;color:#888}.J_h5fqzVRbIt1oNd24PA .ucT0nlmjRZQvqxUnVJTA a{color:#292d32;text-decoration:underline}.J_h5fqzVRbIt1oNd24PA .ZBwh0DJkg5FL71eqf3Yw{padding-bottom:8px}.J_h5fqzVRbIt1oNd24PA .yIs3PBgtmntpFby_71Q8{font-size:15px}.J_h5fqzVRbIt1oNd24PA .yIs3PBgtmntpFby_71Q8::before{display:none}.J_h5fqzVRbIt1oNd24PA .yIs3PBgtmntpFby_71Q8 span{padding:0}.Xo5xrsxPNPYjB719aAqB{display:flex;justify-content:space-between;gap:120px}.Xo5xrsxPNPYjB719aAqB.hnDnbfcbh83CEOdzrSbo{width:100%}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t{flex-direction:column;gap:0}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .zCYCrHM0HRNVm7aSyF9a{background:#fff}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .i90yosMcsSc_JCyc1Blu{margin-bottom:16px}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM{width:188px;height:36px;margin-bottom:24px}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM button{border:none}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM button span{font-size:12px;font-weight:500}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM button svg{width:20px;height:20px}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM a{padding:8px 12px;background-color:rgba(0,0,0,0);border:1px solid #f9f9f9}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM a span{font-size:12px;font-weight:500}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM a svg{width:20px;height:20px}.Xo5xrsxPNPYjB719aAqB .y7idnc0MSa__siU3g_I3{width:408px}.Xo5xrsxPNPYjB719aAqB .y7idnc0MSa__siU3g_I3.syTKTxY2JqbBl0rkP4TZ{max-width:100%}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM{width:240px;position:relative}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM .X2HVKAqHJh34QBZXCHQg{position:sticky;top:60px}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM a.yQjyaga6JQDCbBwcMUsg,.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM button.yQjyaga6JQDCbBwcMUsg{border:none;height:48px;width:100%;display:flex;justify-content:space-between;align-items:center;background-color:#f9f9f9;padding:12px;border-radius:6px;cursor:pointer}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM a.yQjyaga6JQDCbBwcMUsg.Ayzn85NpasTS9YCxGwtz,.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM button.yQjyaga6JQDCbBwcMUsg.Ayzn85NpasTS9YCxGwtz{height:37px}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM a.yQjyaga6JQDCbBwcMUsg span,.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM button.yQjyaga6JQDCbBwcMUsg span{color:var(--black, #292D32);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:15px;font-style:normal;font-weight:600;line-height:normal}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM a.yQjyaga6JQDCbBwcMUsg span.PvRRKOyjFxOkR8LaD8gc,.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM button.yQjyaga6JQDCbBwcMUsg span.PvRRKOyjFxOkR8LaD8gc{font-size:17px;font-weight:500}.Ccoa5Slfcman_7DtENdO{margin-bottom:17px;display:flex;justify-content:flex-start;gap:8px}.Ccoa5Slfcman_7DtENdO a{color:#222;font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:14px;font-style:normal;font-weight:500;line-height:normal}.usbTpoSBJT9X0Zp6GFAN{width:408px}.usbTpoSBJT9X0Zp6GFAN .dKjTTriaK_JfJpDOjOVZ{display:flex;justify-content:flex-start;gap:48px;height:29px;border-bottom:1px solid var(--grayline, #E3E5E8);margin-bottom:24px}.usbTpoSBJT9X0Zp6GFAN .dKjTTriaK_JfJpDOjOVZ button{background:#fff;border:none;color:var(--black, #292D32);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:16px;font-style:normal;font-weight:500;line-height:normal;padding:0}.usbTpoSBJT9X0Zp6GFAN .dKjTTriaK_JfJpDOjOVZ button.dNUsmF0MMARWgzPeMr5h{font-weight:700;border-bottom:2px solid var(--black, #292D32)}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5{width:100%;position:relative}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5 .OTZWpHauduqmvDscxe5A{height:48px;width:100%;border-radius:6px;background:#f9f9f9;border:none;margin-bottom:24px;padding-left:16px;padding-right:45px;color:var(--graydarkgray, #888);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:16px;font-style:normal;font-weight:400;line-height:normal}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5 .OTZWpHauduqmvDscxe5A:focus{border:none;outline:none}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5 .OTZWpHauduqmvDscxe5A.JzlwqFPpGuMMD5dQbb_6{color:#292d32}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5 .JFDRx6jHvI2DKa1eZLjs{background:none;margin:0;border:none;position:absolute;right:16px;padding:0;top:calc(50% - 25px)}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5.qJT_PqAbADtcLVp6t4qe .OTZWpHauduqmvDscxe5A{margin-top:12px;margin-bottom:36px;-webkit-appearance:none;-moz-appearance:none;appearance:none}.usbTpoSBJT9X0Zp6GFAN.usbTpoSBJT9X0Zp6GFAN{max-width:100%}.krYv7fJ6dLmOk4CU_ka6{height:100vh;border-radius:16px 16px 0 0;padding:60px 24px 40px;background:#fff;width:100%;max-width:1056px;overflow-y:auto;filter:drop-shadow(0 4px 100px rgba(217, 217, 217, 0.5))}.ct5I4DJda0SeLz7TeWg_{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:rgba(41,45,50,.8) none;-webkit-backdrop-filter:blur(50px);backdrop-filter:blur(50px)}
+
+#button {
+  display: inline-block;
+
+  color:#000;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+#button::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: black;
+}
+#button:hover {
+  cursor: pointer;
+  color: white; /* Màu chữ trắng khi hover */
+  background-color: #333;
+}
+
+
+#button:active {
+  background-color: #555;
+  color: white;
+
+}
+#button.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Styles for the content section */
+
+.content {
+  width: 77%;
+  margin: 50px auto;
+  font-family: 'Merriweather', serif;
+  font-size: 17px;
+  color: #6c767a;
+  line-height: 1.9;
+}
+@media (min-width: 500px) {
+  .content {
+    width: 43%;
+  }
+  #button {
+    margin: 30px;
+  }
+}
+.content h1 {
+  margin-bottom: -10px;
+  color: #03a9f4;
+  line-height: 1.5;
+}
+.content h3 {
+  font-style: italic;
+  color: #96a2a7;
+}

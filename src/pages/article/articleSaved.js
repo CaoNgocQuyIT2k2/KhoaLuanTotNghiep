@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PostLayoutArtSaved from "../../components/post/layout/PostLayoutArtSaved";
+import BackToTopButton from "../../components/post/post-format/elements/BackToTopButton";
 
 const articleSaved = ({ allPosts }) => {
     const router = useRouter();
@@ -73,6 +74,8 @@ const articleSaved = ({ allPosts }) => {
                 </div>
             </div>
             <FooterOne />
+        <BackToTopButton />
+
         </>
     );
 };

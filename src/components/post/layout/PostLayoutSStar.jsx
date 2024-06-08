@@ -85,6 +85,14 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 											<i className="" />
 											{data.artSource}
 										</li>
+										<li className="save-icon">
+                    <a href="#" style={{
+                      fontSize: '1rem',
+                      color: "black",
+                      marginRight: '20px',
+                    }} title="save" >
+                    </a>
+                  </li>
 										<li>
 											<TopStarRating articleId={data.id}/>
 										</li>

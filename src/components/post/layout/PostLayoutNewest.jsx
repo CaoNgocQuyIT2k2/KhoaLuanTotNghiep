@@ -55,7 +55,7 @@ const PostLayoutNewest = ({ postSizeMd, postBgDark, postData }) => {
                 </Link>
               </div>
               <h3 className="axil-post-title hover-line hover-line">
-              <Link href={`/${article.id}`}>
+                <Link href={`/${article.id}`}>
                   <a>{article.title}</a>
                 </Link>
               </h3>
@@ -65,17 +65,17 @@ const PostLayoutNewest = ({ postSizeMd, postBgDark, postData }) => {
               }
               <div className="post-metas">
                 <ul className="list-inline">
-                {article.author_name !== undefined && article.author_name !== "" && (
-											<li>
-												<span>By</span>
-												<Link href={`/author/${slugify(article.author_name)}`}>
-													<a className="post-author">{article.author_name}</a>
-												</Link>
-											</li>
-										)}
+                  {article.author_name !== undefined && article.author_name !== "" && (
+                    <li>
+                      <span>By</span>
+                      <Link href={`/author/${slugify(article.author_name)}`}>
+                        <a className="post-author">{article.author_name}</a>
+                      </Link>
+                    </li>
+                  )}
                   <li>
                     <span>
- </span>
+                    </span>
                     <span>{new Date(article.create_date).toLocaleDateString()}</span>
                   </li>
                   <li>
@@ -83,10 +83,17 @@ const PostLayoutNewest = ({ postSizeMd, postBgDark, postData }) => {
                     {article.reading_time} min
 
                   </li>
-<li>
+                  <li>
                     <i className="" />
-                    {article.artSource} 
-
+                    {article.artSource}
+                  </li>
+                  <li className="save-icon">
+                    <a href="#" style={{
+                      fontSize: '1rem',
+                      color: "black",
+                      marginRight: '20px',
+                    }} title="save" >
+                    </a>
                   </li>
                 </ul>
               </div>

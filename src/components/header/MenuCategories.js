@@ -105,7 +105,7 @@ const MenuCategories = () => {
           trigger={['hover']}
           placement="rightTop" // Thiết lập hiển thị sang bên phải
         >
-          <a onClick={(e) => e.preventDefault()} style={{ display: 'inline-block', marginRight: '10px' }}>
+          <a onClick={(e) => e.preventDefault()} style={{ display: 'inline-block', marginRight: '10px', fontSize:'3rem', }}>
             <Space>
               ...
             </Space>

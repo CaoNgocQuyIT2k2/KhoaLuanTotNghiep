@@ -14,6 +14,7 @@ import PostLayoutArtByCat from "../../components/post/layout/PostLayoutArtByCat"
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import BackToTopButton from "../../components/post/post-format/elements/BackToTopButton";
 
 const PostCategory = ({ allPosts }) => {
     const router = useRouter();
@@ -74,6 +75,8 @@ const PostCategory = ({ allPosts }) => {
                 </div>
             </div>
             <FooterOne />
+    <BackToTopButton />
+
         </>
     );
 };

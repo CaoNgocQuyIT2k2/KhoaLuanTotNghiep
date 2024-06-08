@@ -1,7 +1,7 @@
 // src/pages/api/getChildCategories.js
 import axios from 'axios';
 
-export default async function fetchAllỦe(req, res) {
+export default async function getListArticleSaved(req, res) {
   // Set up CORS headers
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -16,10 +16,10 @@ export default async function fetchAllỦe(req, res) {
     { headers: { Authorization: token } }
     );
     const data = response.data;
-    console.log("🚀 ~ child categories data:", data);
+    console.log("🚀 ~ saved article data:", data);
     res.status(200).json(data);
   } catch (error) {
-    console.log("🚀 ~ error fetching child categories:", error);
+    console.log("🚀 ~ error save article:", error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 }

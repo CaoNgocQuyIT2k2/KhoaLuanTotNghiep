@@ -162,6 +162,14 @@ const PostLayoutTwo = ({ postSizeMd, postBgDark }) => {
                     {article.artSource} 
 
                   </li>
+                  <li className="save-icon">
+                    <a href="#" style={{
+                      fontSize: '1rem',
+                      color: "black",
+                      marginRight: '20px',
+                    }} title="save" >
+                    </a>
+                  </li>
                                     {/* <li>
                     <i className="feather icon-share-2" />
                     {article.post_share}

@@ -74,6 +74,15 @@ const PostLayoutArtBySearch = ({ searchData, postSizeMd, postBgDark }) => {
                     <i className="" />
                     {article.artSource}
                   </li>
+ <li className="save-icon">
+                                        <a href="#" style={{
+                                           fontSize: '1rem',
+                                            color:  "black",
+                                            marginRight: '20px',
+                                        }} title="save" >
+                                           
+                                        </a>
+                                    </li>
                 </ul>
               </div>
             </div>

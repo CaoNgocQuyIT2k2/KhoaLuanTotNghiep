@@ -57,7 +57,7 @@ const PostLayoutOne = () => {
                     </figure>
                     <div className="media-body">
                         <h3 className="axil-post-title hover-line hover-line">
-                        <Link href={`/${post.id}`}>
+                            <Link href={`/${post.id}`}>
                                 <a>{post.title}</a>
                             </Link>
                         </h3>
@@ -73,7 +73,7 @@ const PostLayoutOne = () => {
                                 )}
                                 <li className="dot">
                                     <span>
- </span>
+                                    </span>
                                     <span>{new Date(post.create_date).toLocaleDateString()}</span>
                                 </li>
 
@@ -84,6 +84,14 @@ const PostLayoutOne = () => {
                                 <li>
                                     <i className="" />
                                     {post.artSource}
+                                </li>
+                                <li className="save-icon">
+                                    <a href="#" style={{
+                                        fontSize: '1rem',
+                                        color: "black",
+                                        marginRight: '20px',
+                                    }} title="save" >
+                                    </a>
                                 </li>
                             </ul>
                         </div>

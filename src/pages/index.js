@@ -8,6 +8,7 @@ import PostSectionOne from "../components/post/PostSectionOne";
 import PostSectionSix from "../components/post/PostSectionSix";
 import PostSectionThree from "../components/post/PostSectionThree";
 import PostSectionTwo from "../components/post/PostSectionTwo";
+import BackToTopButton from "../components/post/post-format/elements/BackToTopButton";
 
 const HomeOne = ({allPosts}) => {
  
@@ -20,6 +21,8 @@ const HomeOne = ({allPosts}) => {
     <PostSectionThree postData={allPosts} />
     <PostSectionFive postData={allPosts} adBanner={true} />
     <FooterOne />
+    <BackToTopButton />
+
     </>
    );
 }

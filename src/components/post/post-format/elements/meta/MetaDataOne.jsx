@@ -27,11 +27,8 @@ const MetaDataOne = ({ metaData }) => {
           <div className="col-lg-6">
             <div className="post-title-wrapper">
               <div className="btn-group">
-              {/* <Link href={`/category/${slugify(metaData.category.parent.name)}`}>
-                  <a className={`cat-btn ${metaData.category.parent.bg_color ?? "bg-color-blue-one"}`}>{metaData.category.parent.name}</a>
-                </Link> */}
-                <Link href={`/category/${slugify(metaData.category.name)}`}>
-                  <a className={`cat-btn ${metaData.category.bg_color ?? "bg-color-blue-one"}`}>{metaData.category.name}</a>
+                <Link  href={`/category/${metaData.category?.id}`} >
+                  <a className={`cat-btn  bg-color-blue-one`}>{metaData.category?.name}</a>
                 </Link>
               </div>
               <h2 className="m-t-xs-20 m-b-xs-0 axil-post-title hover-line">{metaData.title}</h2>
@@ -39,7 +36,7 @@ const MetaDataOne = ({ metaData }) => {
                 <ul className="list-inline">
                   <li>
                     <i className="feather arrow-up" /> <span></span>
-                    {formatDateTime(metaData.category.create_date)}
+                    {formatDateTime(metaData.category?.create_date)}
                   </li>
                   <li>
                     <i className="" />

@@ -70,7 +70,7 @@ const PostLatestPer4Cat = ({ pClass, videoIcon, postSizeMd }) => {
                   </li>
                 )}
                 <li>
-                  <span>Ngày xuất bản: </span>
+                  <span></span>
                   <span>{new Date(article.create_date).toLocaleDateString()}</span>
                 </li>
               </ul>

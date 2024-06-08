@@ -4,6 +4,7 @@ import Breadcrumb from "../../components/common/Breadcrumb";
 import HeadMeta from "../../components/elements/HeadMeta";
 import FooterOne from "../../components/footer/FooterOne";
 import HeaderOne from "../../components/header/HeaderOne";
+import BackToTopButton from "../../components/post/post-format/elements/BackToTopButton";
 
 import PostFormatStandard from "../../components/post/post-format/PostFormatStandard";
 
@@ -26,6 +27,8 @@ const PostDetails = ({postContent, allPosts}) => {
 		<PostFormatHandler />
 		<PostSectionSix postData={allPosts} />
         <FooterOne />
+		<BackToTopButton />
+
         </>
      );
 }
