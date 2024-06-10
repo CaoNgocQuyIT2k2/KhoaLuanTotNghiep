@@ -24,6 +24,12 @@ export default function MenuUser() {
 
   const router = useRouter();
 
+
+  const handleSavedNewsClick = () => {
+    handleClose();
+    router.push('/article/articleSaved');
+  };
+
   const handleYourFeedClick = () => {
     handleClose();
     router.push('/yourfeed');
@@ -80,10 +86,8 @@ export default function MenuUser() {
         <MenuItem onClick={handleYourFeedClick}  style={{ fontSize: '1.5rem' }}>
           Your feed
         </MenuItem>
-        <MenuItem onClick={handleClose} style={{ fontSize: '1.5rem' }}>
-        <Link href="/article/articleSaved">
-              <a>Saved news</a>
-            </Link>
+        <MenuItem onClick={handleSavedNewsClick} style={{ fontSize: '1.5rem' }}>
+              Saved news
         </MenuItem>
         {userRole === 'ADMIN' && (
           <MenuItem onClick={handleClose} style={{ fontSize: '1.5rem' }}>
