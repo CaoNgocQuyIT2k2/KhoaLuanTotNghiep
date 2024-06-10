@@ -14,24 +14,22 @@ export default async function FollowCategory(req, res) {
 
   if (req.method === 'POST') {
     try {
-      const { categoryId } = req.query;
+      const { category } = req.body;
       const token = req.headers.authorization;
 
-      console.log("categoryId", categoryId);
+      console.log("categoryId", category);
       console.log("token", token);
 
       // Construct the request body in the new format
       const requestBody = {
-        category: {
-          id: categoryId
-        }
+        category
       };
 
       console.log("requestBody", requestBody);
 
       // Send request to update tag API
       const response = await axios.post(
-        'http://localhost:8080/api/v1/category/update',
+        'http://localhost:8080/api/v1/follow-category/follow',
         requestBody,
         { headers: { Authorization: token } }
       );

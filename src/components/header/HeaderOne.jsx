@@ -137,7 +137,7 @@ const HeaderOne = () => {
 
   return (
     <>
-      <OffcanvasMenu ofcshow={mobileToggle} ofcHandleClose={handleClose} />
+  
       <header className="page-header">
         <div className="header-top bg-grey-dark-one">
           <div className="container">
@@ -214,13 +214,13 @@ const HeaderOne = () => {
                       onChange={(e) => setSearchKeyword(e.target.value)}
                       onKeyDown={handleKeyDown}
                     />
-                    <SearchImage className="navbar-search-img" setSearchKeyword={setSearchKeyword} />
+                    <SearchImage className="navbar-search-img btn-search-image" setSearchKeyword={setSearchKeyword} />
                     <button
                       className="navbar-search-btn"
                       type="button"
                       onClick={handleSearchButtonClick}
                     >
-                      <i className="fal fa-search" />
+                      <i className="fal fa-search btn-seach-article" />
                     </button>
                   </div>
                   <span
@@ -236,22 +236,12 @@ const HeaderOne = () => {
                 >
                   <i className="far fa-search" />
                 </button>
-                {!searchshow && (
-                  <button className="side-nav-toggler" onClick={MobileMenuToggler}>
-                    <span />
-                    <span />
-                    <span />
-                  </button>
-                )}
+               
               </div>
               <div
-                className={`main-nav-toggler d-block d-lg-none ${mobileToggle ? "expanded" : ""}`}
+              
               >
-                <div className="toggler-inner" onClick={MobileMenuToggler}>
-                  <span />
-                  <span />
-                  <span />
-                </div>
+                
               </div>
             </div>
           </div>

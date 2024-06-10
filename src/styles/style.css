@@ -4557,12 +4557,22 @@ input[type="radio"] + label::after {
   margin-left: 2rem;
   margin-right: 2rem;
   font-family: var(--primary-font);
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   line-height: 2.4rem;
   color: black;
   font-weight: var(--p-medium);
-  padding: 3.1rem 0.5rem 3rem;
+  padding: 1.5rem 0.5rem 1.5rem;
 }
+
+.btn-seach-article{
+  position: relative;
+}
+
+.btn-search-image{
+  position: absolute;
+  top: 10px;
+}
+
 .main-navigation li.has-dropdown {
   margin-right: 3.4rem;
 }
@@ -4596,7 +4606,7 @@ input[type="radio"] + label::after {
 .main-navigation a {
   position: relative;
   display: inline-flex;
-  font-weight: inherit;
+  font-weight: 600;
   display: inline;
 }
 .main-navigation a::before {
@@ -9941,8 +9951,6 @@ label.valid:after {
 
 
 
-.A5aze9nOBiDAXsQh3BYi{border:none;width:240px;margin:46px auto 22px;padding:12px;border-radius:6px;display:flex;justify-content:space-between;align-items:center;gap:8px;background:#e7f0eb;cursor:pointer}.A5aze9nOBiDAXsQh3BYi span{color:#158e42;font-weight:600;font-size:15px}.Xut0pP1LisWAWIKCzHdw{font-family:"Roboto",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:16px;font-weight:400;text-align:center;color:#000;margin-bottom:400px}.hnDnbfcbh83CEOdzrSbo{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif}.hnDnbfcbh83CEOdzrSbo .ucT0nlmjRZQvqxUnVJTA{color:#888;font-weight:500;line-height:20px}.hnDnbfcbh83CEOdzrSbo .ucT0nlmjRZQvqxUnVJTA a{font-weight:700;color:#292d32;text-decoration:underline}.i90yosMcsSc_JCyc1Blu{font-weight:700;font-size:34px;line-height:39px;margin-bottom:36px;color:#292d32}.ZBwh0DJkg5FL71eqf3Yw{padding-bottom:40px}.yIs3PBgtmntpFby_71Q8{font-weight:700;font-size:14px;margin-bottom:27px;position:relative;display:flex;color:#292d32}.yIs3PBgtmntpFby_71Q8::before{content:"";display:block;position:absolute;left:0;bottom:3px;width:100%;height:0;border-top:1px solid #e3e5e8;z-index:-10}.yIs3PBgtmntpFby_71Q8>span{background:#fff none;padding:0 16px 0 0;display:block}.pV_SNtiJwOo940HzG7qg{text-align:center}.pV_SNtiJwOo940HzG7qg .NIZQzxi5109TKlmrQZo2{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;width:264px;height:48px;background:#0f6c32;color:#fff;border-radius:4px;border:0;padding:0;white-space:nowrap}.MrZLbGiBncEyBrNyRixq{position:relative}.MrZLbGiBncEyBrNyRixq .mQGnlZsufnSJ3STULb62{position:absolute;left:-24px;top:28px}.J_h5fqzVRbIt1oNd24PA .A5aze9nOBiDAXsQh3BYi{width:100%;border:none}.J_h5fqzVRbIt1oNd24PA .A5aze9nOBiDAXsQh3BYi span{font-size:18px;line-height:22px}.J_h5fqzVRbIt1oNd24PA .Xut0pP1LisWAWIKCzHdw{margin-bottom:100px;text-align:start;font-size:18px;line-height:21px}.J_h5fqzVRbIt1oNd24PA .MrZLbGiBncEyBrNyRixq .mQGnlZsufnSJ3STULb62{top:20px}.J_h5fqzVRbIt1oNd24PA.hnDnbfcbh83CEOdzrSbo{padding:0 16px}.J_h5fqzVRbIt1oNd24PA.hnDnbfcbh83CEOdzrSbo.krYv7fJ6dLmOk4CU_ka6{padding:60px 24px 40px}.J_h5fqzVRbIt1oNd24PA.hnDnbfcbh83CEOdzrSbo.krYv7fJ6dLmOk4CU_ka6 .dKjTTriaK_JfJpDOjOVZ{gap:24px}.J_h5fqzVRbIt1oNd24PA.hnDnbfcbh83CEOdzrSbo.krYv7fJ6dLmOk4CU_ka6 .dKjTTriaK_JfJpDOjOVZ button{font-size:17px}.J_h5fqzVRbIt1oNd24PA .i90yosMcsSc_JCyc1Blu{font-size:26px;line-height:29px;margin-top:32px;margin-bottom:24px}.J_h5fqzVRbIt1oNd24PA .i90yosMcsSc_JCyc1Blu .PBO0Y38hQKW2gA_CLBuz{background:none;padding:0;border:none;position:absolute;top:24px;right:24px}.J_h5fqzVRbIt1oNd24PA .ucT0nlmjRZQvqxUnVJTA{font-size:15px;font-weight:500;color:#888}.J_h5fqzVRbIt1oNd24PA .ucT0nlmjRZQvqxUnVJTA a{color:#292d32;text-decoration:underline}.J_h5fqzVRbIt1oNd24PA .ZBwh0DJkg5FL71eqf3Yw{padding-bottom:8px}.J_h5fqzVRbIt1oNd24PA .yIs3PBgtmntpFby_71Q8{font-size:15px}.J_h5fqzVRbIt1oNd24PA .yIs3PBgtmntpFby_71Q8::before{display:none}.J_h5fqzVRbIt1oNd24PA .yIs3PBgtmntpFby_71Q8 span{padding:0}.Xo5xrsxPNPYjB719aAqB{display:flex;justify-content:space-between;gap:120px}.Xo5xrsxPNPYjB719aAqB.hnDnbfcbh83CEOdzrSbo{width:100%}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t{flex-direction:column;gap:0}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .zCYCrHM0HRNVm7aSyF9a{background:#fff}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .i90yosMcsSc_JCyc1Blu{margin-bottom:16px}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM{width:188px;height:36px;margin-bottom:24px}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM button{border:none}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM button span{font-size:12px;font-weight:500}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM button svg{width:20px;height:20px}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM a{padding:8px 12px;background-color:rgba(0,0,0,0);border:1px solid #f9f9f9}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM a span{font-size:12px;font-weight:500}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM a svg{width:20px;height:20px}.Xo5xrsxPNPYjB719aAqB .y7idnc0MSa__siU3g_I3{width:408px}.Xo5xrsxPNPYjB719aAqB .y7idnc0MSa__siU3g_I3.syTKTxY2JqbBl0rkP4TZ{max-width:100%}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM{width:240px;position:relative}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM .X2HVKAqHJh34QBZXCHQg{position:sticky;top:60px}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM a.yQjyaga6JQDCbBwcMUsg,.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM button.yQjyaga6JQDCbBwcMUsg{border:none;height:48px;width:100%;display:flex;justify-content:space-between;align-items:center;background-color:#f9f9f9;padding:12px;border-radius:6px;cursor:pointer}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM a.yQjyaga6JQDCbBwcMUsg.Ayzn85NpasTS9YCxGwtz,.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM button.yQjyaga6JQDCbBwcMUsg.Ayzn85NpasTS9YCxGwtz{height:37px}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM a.yQjyaga6JQDCbBwcMUsg span,.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM button.yQjyaga6JQDCbBwcMUsg span{color:var(--black, #292D32);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:15px;font-style:normal;font-weight:600;line-height:normal}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM a.yQjyaga6JQDCbBwcMUsg span.PvRRKOyjFxOkR8LaD8gc,.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM button.yQjyaga6JQDCbBwcMUsg span.PvRRKOyjFxOkR8LaD8gc{font-size:17px;font-weight:500}.Ccoa5Slfcman_7DtENdO{margin-bottom:17px;display:flex;justify-content:flex-start;gap:8px}.Ccoa5Slfcman_7DtENdO a{color:#222;font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:14px;font-style:normal;font-weight:500;line-height:normal}.usbTpoSBJT9X0Zp6GFAN{width:408px}.usbTpoSBJT9X0Zp6GFAN .dKjTTriaK_JfJpDOjOVZ{display:flex;justify-content:flex-start;gap:48px;height:29px;border-bottom:1px solid var(--grayline, #E3E5E8);margin-bottom:24px}.usbTpoSBJT9X0Zp6GFAN .dKjTTriaK_JfJpDOjOVZ button{background:#fff;border:none;color:var(--black, #292D32);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:16px;font-style:normal;font-weight:500;line-height:normal;padding:0}.usbTpoSBJT9X0Zp6GFAN .dKjTTriaK_JfJpDOjOVZ button.dNUsmF0MMARWgzPeMr5h{font-weight:700;border-bottom:2px solid var(--black, #292D32)}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5{width:100%;position:relative}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5 .OTZWpHauduqmvDscxe5A{height:48px;width:100%;border-radius:6px;background:#f9f9f9;border:none;margin-bottom:24px;padding-left:16px;padding-right:45px;color:var(--graydarkgray, #888);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:16px;font-style:normal;font-weight:400;line-height:normal}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5 .OTZWpHauduqmvDscxe5A:focus{border:none;outline:none}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5 .OTZWpHauduqmvDscxe5A.JzlwqFPpGuMMD5dQbb_6{color:#292d32}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5 .JFDRx6jHvI2DKa1eZLjs{background:none;margin:0;border:none;position:absolute;right:16px;padding:0;top:calc(50% - 25px)}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5.qJT_PqAbADtcLVp6t4qe .OTZWpHauduqmvDscxe5A{margin-top:12px;margin-bottom:36px;-webkit-appearance:none;-moz-appearance:none;appearance:none}.usbTpoSBJT9X0Zp6GFAN.usbTpoSBJT9X0Zp6GFAN{max-width:100%}.krYv7fJ6dLmOk4CU_ka6{height:100vh;border-radius:16px 16px 0 0;padding:60px 24px 40px;background:#fff;width:100%;max-width:1056px;overflow-y:auto;filter:drop-shadow(0 4px 100px rgba(217, 217, 217, 0.5))}.ct5I4DJda0SeLz7TeWg_{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:rgba(41,45,50,.8) none;-webkit-backdrop-filter:blur(50px);backdrop-filter:blur(50px)}
-
 #button {
   display: inline-block;
 
@@ -10013,3 +10021,1286 @@ label.valid:after {
   font-style: italic;
   color: #96a2a7;
 }
+
+
+
+.body{display:flex;gap:96px;margin-top:50px;min-height:1080px;height:-moz-max-content;height:max-content}.body .sidebar{width:264px;position:relative;z-index:1;flex-shrink:0}.body .content{position:relative;min-height:1169px;min-width:552px}.body .page-content{max-width:689px;width:100%;min-height:500px}.body .news-container{max-width:100%}
+
+._IOX7b9h3ehmfwCtcJlL{position:sticky;top:60px}.U2a29pIZKHe_zUk0rnP4{list-style:none;margin:0;padding-left:0;padding-top:60px}.U2a29pIZKHe_zUk0rnP4 li{width:264px;height:48px;display:flex;font-weight:500;position:relative;align-items:center;margin-top:16px}.U2a29pIZKHe_zUk0rnP4 li:nth-child(1){margin-top:0}.U2a29pIZKHe_zUk0rnP4 li:nth-child(6){pointer-events:none;opacity:.5}.U2a29pIZKHe_zUk0rnP4 li:nth-child(7){height:1px}.U2a29pIZKHe_zUk0rnP4 li a{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-style:normal;font-size:14px;line-height:17px;color:#292d32;height:100%;width:100%;display:flex;align-items:center;gap:24px}.U2a29pIZKHe_zUk0rnP4 li a svg{margin-left:14px}.LhUcpE8AvJVc3kiaLSEJ{height:1px;width:100%;border-bottom:1px solid #eee}.ZS38fNMGdJbyhACPGIEJ{background:#f9f9f9;border-radius:4px}.ZS38fNMGdJbyhACPGIEJ a{font-weight:700}._TPtANQFcOe9FwrDfaGL{width:16px;height:16px;border-radius:50%;background-color:#0f6c32;font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-style:normal;font-weight:600;font-size:11px;line-height:13px;color:#fff;display:flex;justify-content:center;align-items:center;position:absolute;top:8px;left:25px}
+
+
+.gOUscEOscjTNuwhyh2vq {
+  margin-top: 25px
+}
+
+.gOUscEOscjTNuwhyh2vq hr {
+  border: none;
+  border-top: 1px solid rgba(227,229,232,.6);
+  margin: 24px 0
+}
+
+.gOUscEOscjTNuwhyh2vq .qvTyCBfUMQHsYYLKb5Mf {
+  font-size: 18px;
+  font-weight: 700;
+  color: #292d32
+}
+
+.gOUscEOscjTNuwhyh2vq .r2LqPeTg8U0GIKtjcpNH {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px
+}
+
+.gOUscEOscjTNuwhyh2vq .r2LqPeTg8U0GIKtjcpNH span {
+  color: #222;
+  font-weight: 500
+}
+
+.gOUscEOscjTNuwhyh2vq .r2LqPeTg8U0GIKtjcpNH button {
+  border: none;
+  outline: none;
+  background: rgba(0,0,0,0);
+  color: #292d32;
+  font-weight: 600
+}
+
+.gOUscEOscjTNuwhyh2vq .r2LqPeTg8U0GIKtjcpNH button a:hover {
+  color: #292d32
+}
+
+.gOUscEOscjTNuwhyh2vq .KDAmLTmeHztQqYZbZeFd {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.gOUscEOscjTNuwhyh2vq .KDAmLTmeHztQqYZbZeFd .Y8ihR3A9g54t3GgpB4GY {
+  color: #292d32;
+  font-weight: 600;
+  font-size: 15px
+}
+
+.gOUscEOscjTNuwhyh2vq .KDAmLTmeHztQqYZbZeFd .Y8ihR3A9g54t3GgpB4GY:hover {
+  color: #007aff
+}
+
+.gOUscEOscjTNuwhyh2vq .afGsxzX7WCnoecTp2qlE {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px
+}
+
+.gOUscEOscjTNuwhyh2vq .afGsxzX7WCnoecTp2qlE .HcN_RMJSlcsiyU00kyps {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 100%;
+  overflow: hidden
+}
+
+.gOUscEOscjTNuwhyh2vq .afGsxzX7WCnoecTp2qlE .Xn49D0DqFpzRBvMCUNHk {
+  width: 100%;
+  font-size: 15px;
+  color: #292d32
+}
+
+.gOUscEOscjTNuwhyh2vq .afGsxzX7WCnoecTp2qlE .Xn49D0DqFpzRBvMCUNHk a {
+  font-weight: 600;
+  line-height: 20px
+}
+
+.gOUscEOscjTNuwhyh2vq .afGsxzX7WCnoecTp2qlE .Xn49D0DqFpzRBvMCUNHk .VEd1_QXGxDRwas9MdhvD {
+  margin-top: 8px;
+  font-family: "Roboto",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
+  font-weight: 400
+}
+
+.A5aze9nOBiDAXsQh3BYi{border:none;width:240px;margin:46px auto 22px;padding:12px;border-radius:6px;display:flex;justify-content:space-between;align-items:center;gap:8px;background:#e7f0eb;cursor:pointer}.A5aze9nOBiDAXsQh3BYi span{color:#158e42;font-weight:600;font-size:15px}.Xut0pP1LisWAWIKCzHdw{font-family:"Roboto",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:16px;font-weight:400;text-align:center;color:#000;margin-bottom:400px}.hnDnbfcbh83CEOdzrSbo{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif}.hnDnbfcbh83CEOdzrSbo .ucT0nlmjRZQvqxUnVJTA{color:#888;font-weight:500;line-height:20px}.hnDnbfcbh83CEOdzrSbo .ucT0nlmjRZQvqxUnVJTA a{font-weight:700;color:#292d32;text-decoration:underline}.i90yosMcsSc_JCyc1Blu{font-weight:700;font-size:34px;line-height:39px;margin-bottom:36px;color:#292d32}.ZBwh0DJkg5FL71eqf3Yw{padding-bottom:40px}.yIs3PBgtmntpFby_71Q8{font-weight:700;font-size:14px;margin-bottom:27px;position:relative;display:flex;color:#292d32}.yIs3PBgtmntpFby_71Q8::before{content:"";display:block;position:absolute;left:0;bottom:3px;width:100%;height:0;border-top:1px solid #e3e5e8;z-index:-10}.yIs3PBgtmntpFby_71Q8>span{background:#fff none;padding:0 16px 0 0;display:block}.pV_SNtiJwOo940HzG7qg{text-align:center}.pV_SNtiJwOo940HzG7qg .NIZQzxi5109TKlmrQZo2{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;width:264px;height:48px;background:#0f6c32;color:#fff;border-radius:4px;border:0;padding:0;white-space:nowrap}.MrZLbGiBncEyBrNyRixq{position:relative}.MrZLbGiBncEyBrNyRixq .mQGnlZsufnSJ3STULb62{position:absolute;left:-24px;top:28px}.J_h5fqzVRbIt1oNd24PA .A5aze9nOBiDAXsQh3BYi{width:100%;border:none}.J_h5fqzVRbIt1oNd24PA .A5aze9nOBiDAXsQh3BYi span{font-size:18px;line-height:22px}.J_h5fqzVRbIt1oNd24PA .Xut0pP1LisWAWIKCzHdw{margin-bottom:100px;text-align:start;font-size:18px;line-height:21px}.J_h5fqzVRbIt1oNd24PA .MrZLbGiBncEyBrNyRixq .mQGnlZsufnSJ3STULb62{top:20px}.J_h5fqzVRbIt1oNd24PA.hnDnbfcbh83CEOdzrSbo{padding:0 16px}.J_h5fqzVRbIt1oNd24PA.hnDnbfcbh83CEOdzrSbo.krYv7fJ6dLmOk4CU_ka6{padding:60px 24px 40px}.J_h5fqzVRbIt1oNd24PA.hnDnbfcbh83CEOdzrSbo.krYv7fJ6dLmOk4CU_ka6 .dKjTTriaK_JfJpDOjOVZ{gap:24px}.J_h5fqzVRbIt1oNd24PA.hnDnbfcbh83CEOdzrSbo.krYv7fJ6dLmOk4CU_ka6 .dKjTTriaK_JfJpDOjOVZ button{font-size:17px}.J_h5fqzVRbIt1oNd24PA .i90yosMcsSc_JCyc1Blu{font-size:26px;line-height:29px;margin-top:32px;margin-bottom:24px}.J_h5fqzVRbIt1oNd24PA .i90yosMcsSc_JCyc1Blu .PBO0Y38hQKW2gA_CLBuz{background:none;padding:0;border:none;position:absolute;top:24px;right:24px}.J_h5fqzVRbIt1oNd24PA .ucT0nlmjRZQvqxUnVJTA{font-size:15px;font-weight:500;color:#888}.J_h5fqzVRbIt1oNd24PA .ucT0nlmjRZQvqxUnVJTA a{color:#292d32;text-decoration:underline}.J_h5fqzVRbIt1oNd24PA .ZBwh0DJkg5FL71eqf3Yw{padding-bottom:8px}.J_h5fqzVRbIt1oNd24PA .yIs3PBgtmntpFby_71Q8{font-size:15px}.J_h5fqzVRbIt1oNd24PA .yIs3PBgtmntpFby_71Q8::before{display:none}.J_h5fqzVRbIt1oNd24PA .yIs3PBgtmntpFby_71Q8 span{padding:0}.Xo5xrsxPNPYjB719aAqB{display:flex;justify-content:space-between;gap:120px}.Xo5xrsxPNPYjB719aAqB.hnDnbfcbh83CEOdzrSbo{width:100%}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t{flex-direction:column;gap:0}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .zCYCrHM0HRNVm7aSyF9a{background:#fff}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .i90yosMcsSc_JCyc1Blu{margin-bottom:16px}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM{width:188px;height:36px;margin-bottom:24px}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM button{border:none}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM button span{font-size:12px;font-weight:500}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM button svg{width:20px;height:20px}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM a{padding:8px 12px;background-color:rgba(0,0,0,0);border:1px solid #f9f9f9}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM a span{font-size:12px;font-weight:500}.Xo5xrsxPNPYjB719aAqB.NMWA3oS5vkv3iHinbv3t .EuVqRNSHwaT2WVLgaTBM a svg{width:20px;height:20px}.Xo5xrsxPNPYjB719aAqB .y7idnc0MSa__siU3g_I3{width:408px}.Xo5xrsxPNPYjB719aAqB .y7idnc0MSa__siU3g_I3.syTKTxY2JqbBl0rkP4TZ{max-width:100%}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM{width:240px;position:relative}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM .X2HVKAqHJh34QBZXCHQg{position:sticky;top:60px}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM a.yQjyaga6JQDCbBwcMUsg,.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM button.yQjyaga6JQDCbBwcMUsg{border:none;height:48px;width:100%;display:flex;justify-content:space-between;align-items:center;background-color:#f9f9f9;padding:12px;border-radius:6px;cursor:pointer}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM a.yQjyaga6JQDCbBwcMUsg.Ayzn85NpasTS9YCxGwtz,.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM button.yQjyaga6JQDCbBwcMUsg.Ayzn85NpasTS9YCxGwtz{height:37px}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM a.yQjyaga6JQDCbBwcMUsg span,.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM button.yQjyaga6JQDCbBwcMUsg span{color:var(--black, #292D32);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:15px;font-style:normal;font-weight:600;line-height:normal}.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM a.yQjyaga6JQDCbBwcMUsg span.PvRRKOyjFxOkR8LaD8gc,.Xo5xrsxPNPYjB719aAqB .EuVqRNSHwaT2WVLgaTBM button.yQjyaga6JQDCbBwcMUsg span.PvRRKOyjFxOkR8LaD8gc{font-size:17px;font-weight:500}.Ccoa5Slfcman_7DtENdO{margin-bottom:17px;display:flex;justify-content:flex-start;gap:8px}.Ccoa5Slfcman_7DtENdO a{color:#222;font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:14px;font-style:normal;font-weight:500;line-height:normal}.usbTpoSBJT9X0Zp6GFAN{width:408px}.usbTpoSBJT9X0Zp6GFAN .dKjTTriaK_JfJpDOjOVZ{display:flex;justify-content:flex-start;gap:48px;height:29px;border-bottom:1px solid var(--grayline, #E3E5E8);margin-bottom:24px}.usbTpoSBJT9X0Zp6GFAN .dKjTTriaK_JfJpDOjOVZ button{background:#fff;border:none;color:var(--black, #292D32);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:16px;font-style:normal;font-weight:500;line-height:normal;padding:0}.usbTpoSBJT9X0Zp6GFAN .dKjTTriaK_JfJpDOjOVZ button.dNUsmF0MMARWgzPeMr5h{font-weight:700;border-bottom:2px solid var(--black, #292D32)}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5{width:100%;position:relative}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5 .OTZWpHauduqmvDscxe5A{height:48px;width:100%;border-radius:6px;background:#f9f9f9;border:none;margin-bottom:24px;padding-left:16px;padding-right:45px;color:var(--graydarkgray, #888);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;font-size:16px;font-style:normal;font-weight:400;line-height:normal}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5 .OTZWpHauduqmvDscxe5A:focus{border:none;outline:none}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5 .OTZWpHauduqmvDscxe5A.JzlwqFPpGuMMD5dQbb_6{color:#292d32}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5 .JFDRx6jHvI2DKa1eZLjs{background:none;margin:0;border:none;position:absolute;right:16px;padding:0;top:calc(50% - 25px)}.usbTpoSBJT9X0Zp6GFAN .ztqGuyEgMUbF77XzvWY5.qJT_PqAbADtcLVp6t4qe .OTZWpHauduqmvDscxe5A{margin-top:12px;margin-bottom:36px;-webkit-appearance:none;-moz-appearance:none;appearance:none}.usbTpoSBJT9X0Zp6GFAN.usbTpoSBJT9X0Zp6GFAN{max-width:100%}.krYv7fJ6dLmOk4CU_ka6{height:100vh;border-radius:16px 16px 0 0;padding:60px 24px 40px;background:#fff;width:100%;max-width:1056px;overflow-y:auto;filter:drop-shadow(0 4px 100px rgba(217, 217, 217, 0.5))}.ct5I4DJda0SeLz7TeWg_{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:rgba(41,45,50,.8) none;-webkit-backdrop-filter:blur(50px);backdrop-filter:blur(50px)}
+
+.T4C8M7gx47SgNVdeaEo5 {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e3e5e8
+}
+
+.T4C8M7gx47SgNVdeaEo5:not(:first-child) {
+  padding-top: 24px
+}
+
+.T4C8M7gx47SgNVdeaEo5 a {
+  color: #292d32
+}
+
+.T4C8M7gx47SgNVdeaEo5 a:hover {
+  outline: 0;
+  color: #06c
+}
+
+.T4C8M7gx47SgNVdeaEo5 a.baoayGCy5KTsiUdG7uGe {
+  color: #222
+}
+
+.cejlglTblCkKqUv8Qao3 {
+  margin-bottom: 24px
+}
+
+.cejlglTblCkKqUv8Qao3 a {
+  position: relative;
+  line-height: 0;
+  display: block;
+  padding: 0 0 66.66667%;
+  overflow: hidden
+}
+
+.cejlglTblCkKqUv8Qao3 a img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.cenTMdraIxX2mUpD2iEA {
+  margin: 0 0 8px;
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px
+}
+
+.cenTMdraIxX2mUpD2iEA .HIrCbQlh9Q3YlUMjrZ04 {
+  display: flex;
+  gap: 0 10px;
+  flex-wrap: wrap
+}
+
+.cenTMdraIxX2mUpD2iEA .M_jHBWXk5C2p2zXwD9zY {
+  display: block;
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #25282b;
+  text-transform: uppercase
+}
+
+.cenTMdraIxX2mUpD2iEA .HcN_RMJSlcsiyU00kyps {
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  overflow: hidden;
+  flex-shrink: 0
+}
+
+.cenTMdraIxX2mUpD2iEA .ux8KZiAEn4vC6KggEsME {
+  display: flex;
+  flex-direction: revert;
+  position: relative;
+  width: 140px
+}
+
+.cenTMdraIxX2mUpD2iEA .ux8KZiAEn4vC6KggEsME.nzMpaxcIcjf94mFckJq1 {
+  width: 190px
+}
+
+.cenTMdraIxX2mUpD2iEA .ux8KZiAEn4vC6KggEsME .HcN_RMJSlcsiyU00kyps {
+  position: absolute;
+  right: 0
+}
+
+.cenTMdraIxX2mUpD2iEA .ux8KZiAEn4vC6KggEsME .HcN_RMJSlcsiyU00kyps:nth-child(2) {
+  transform: translateX(-20px);
+  z-index: -1
+}
+
+.cenTMdraIxX2mUpD2iEA .ux8KZiAEn4vC6KggEsME .HcN_RMJSlcsiyU00kyps:nth-child(3) {
+  transform: translateX(-40px);
+  z-index: -2
+}
+
+.cenTMdraIxX2mUpD2iEA .ux8KZiAEn4vC6KggEsME .HcN_RMJSlcsiyU00kyps:nth-child(4) {
+  transform: translateX(-60px);
+  z-index: -3
+}
+
+.kSwdQjwNaCgDz38MLLID {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background: #158e42;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  font-size: 20px
+}
+
+.T4C8M7gx47SgNVdeaEo5 {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e3e5e8
+}
+
+.T4C8M7gx47SgNVdeaEo5:not(:first-child) {
+  padding-top: 24px
+}
+
+.T4C8M7gx47SgNVdeaEo5 a {
+  color: #292d32
+}
+
+.T4C8M7gx47SgNVdeaEo5 a:hover {
+  outline: 0;
+  color: #06c
+}
+
+.T4C8M7gx47SgNVdeaEo5 a.baoayGCy5KTsiUdG7uGe {
+  color: #222
+}
+
+.cejlglTblCkKqUv8Qao3 {
+  margin-bottom: 24px
+}
+
+.cejlglTblCkKqUv8Qao3 a {
+  position: relative;
+  line-height: 0;
+  display: block;
+  padding: 0 0 66.66667%;
+  overflow: hidden
+}
+
+.cejlglTblCkKqUv8Qao3 a img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.cenTMdraIxX2mUpD2iEA {
+  margin: 0 0 8px;
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px
+}
+
+.cenTMdraIxX2mUpD2iEA .HIrCbQlh9Q3YlUMjrZ04 {
+  display: flex;
+  gap: 0 10px;
+  flex-wrap: wrap
+}
+
+.cenTMdraIxX2mUpD2iEA .M_jHBWXk5C2p2zXwD9zY {
+  display: block;
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #25282b;
+  text-transform: uppercase
+}
+
+.cenTMdraIxX2mUpD2iEA .HcN_RMJSlcsiyU00kyps {
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  overflow: hidden;
+  flex-shrink: 0
+}
+
+.cenTMdraIxX2mUpD2iEA .ux8KZiAEn4vC6KggEsME {
+  display: flex;
+  flex-direction: revert;
+  position: relative;
+  width: 140px
+}
+
+.cenTMdraIxX2mUpD2iEA .ux8KZiAEn4vC6KggEsME.nzMpaxcIcjf94mFckJq1 {
+  width: 190px
+}
+
+.cenTMdraIxX2mUpD2iEA .ux8KZiAEn4vC6KggEsME .HcN_RMJSlcsiyU00kyps {
+  position: absolute;
+  right: 0
+}
+
+.cenTMdraIxX2mUpD2iEA .ux8KZiAEn4vC6KggEsME .HcN_RMJSlcsiyU00kyps:nth-child(2) {
+  transform: translateX(-20px);
+  z-index: -1
+}
+
+.cenTMdraIxX2mUpD2iEA .ux8KZiAEn4vC6KggEsME .HcN_RMJSlcsiyU00kyps:nth-child(3) {
+  transform: translateX(-40px);
+  z-index: -2
+}
+
+.cenTMdraIxX2mUpD2iEA .ux8KZiAEn4vC6KggEsME .HcN_RMJSlcsiyU00kyps:nth-child(4) {
+  transform: translateX(-60px);
+  z-index: -3
+}
+
+.DFvkGh7X5w3Tc2YVuhsc {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+
+.Vf3BrfrGTlBJ9SqOawCQ {
+  margin-left: auto;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  -moz-column-gap: 4px;
+  column-gap: 4px;
+  color: #222
+}
+
+.Vf3BrfrGTlBJ9SqOawCQ a {
+  max-width: 140px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis
+}
+
+.Vf3BrfrGTlBJ9SqOawCQ a:hover {
+  color: #007aff
+}
+
+.Vf3BrfrGTlBJ9SqOawCQ.O1csbTKEz7Y2ZY3tfWAx {
+  text-align: end;
+  flex-direction: column;
+  gap: 8px
+}
+
+.Vf3BrfrGTlBJ9SqOawCQ.O1csbTKEz7Y2ZY3tfWAx a {
+  max-width: 170px
+}
+
+.HsTDZu9ws0UPzoZBFDu9 {
+  margin-bottom: 16px
+}
+
+.HsTDZu9ws0UPzoZBFDu9 a img {
+  height: 20px
+}
+
+.AuRR3nlDzpNADbzhpaC1:active,.AuRR3nlDzpNADbzhpaC1:hover {
+  color: #888
+}
+
+.DLthO24IR5yJeB6qXBm5 {
+  display: flex;
+  grid-gap: 18px;
+  align-items: flex-start
+}
+
+.eVtHDwY4ho_s_IKmmoH4 {
+  display: flex;
+  grid-gap: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  align-items: center
+}
+
+.eVtHDwY4ho_s_IKmmoH4 span {
+  color: #158e42
+}
+
+.aeCKZIV00_InkEbThqIB {
+  position: relative
+}
+
+.aeCKZIV00_InkEbThqIB button {
+  background: rgba(0,0,0,0) none;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  display: flex;
+  align-items: center
+}
+
+.dRBXobkAPI2IGJ58g8Ze {
+  font-weight: 600;
+  font-size: 15px;
+  padding: 16px 16px 24px;
+  background: #fff none;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 50px rgba(0,0,0,.1);
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  min-width: 208px;
+  color: #292d32;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 25px;
+  z-index: 1
+}
+
+.dRBXobkAPI2IGJ58g8Ze .m4r9V3DNrgUZ16VYioVN {
+  margin-bottom: -8px
+}
+
+.dRBXobkAPI2IGJ58g8Ze .uaBSO7J2Hx1lX6yTUTr0 {
+  border-top: 1px solid #e3e5e8;
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px
+}
+
+.dRBXobkAPI2IGJ58g8Ze .uaBSO7J2Hx1lX6yTUTr0 .zdW928foNsO8NxDITUde {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 16px;
+  column-gap: 16px;
+  padding: 0 16px
+}
+
+.dRBXobkAPI2IGJ58g8Ze .uaBSO7J2Hx1lX6yTUTr0 .zdW928foNsO8NxDITUde:hover {
+  outline: 0;
+  color: #06c
+}
+
+.dRBXobkAPI2IGJ58g8Ze .uaBSO7J2Hx1lX6yTUTr0 .zdW928foNsO8NxDITUde.eg4OiBbnfAq5FC00i2jg {
+  color: #0f6c32
+}
+
+.dRBXobkAPI2IGJ58g8Ze .uaBSO7J2Hx1lX6yTUTr0 .zdW928foNsO8NxDITUde span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #e3e5e8;
+  border-radius: 50%
+}
+
+.fh9h0wMr_Nug2Yi0Vqev {
+  text-align: center
+}
+
+.fh9h0wMr_Nug2Yi0Vqev .zQ4iLLGNwsvxOCYQ55qQ {
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Arial","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
+  width: 264px;
+  height: 48px;
+  background: #0f6c32;
+  color: #fff;
+  border-radius: 4px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap
+}
+
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Arial", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+  overflow-x: hidden;
+  color: #4d4d4d;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 1199px) {
+  body.no-scroll {
+    overflow-x: auto;
+  }
+  body {
+    overflow: visible;
+  }
+}
+
+button, input, optgroup, select, textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+a {
+  color: #222;
+  text-decoration: none;
+}
+.footer-childcategory {
+  color: #ffffff85;
+  text-decoration: none;
+}
+
+a:focus, a:hover, a:active {
+  outline: 0;
+  color: #06c;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 1158px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.container.v-detail {
+  width: 100%;
+  padding: 8px 16px 0;
+}
+
+.container.v-detail .video-nav {
+  justify-content: start;
+  gap: 16px;
+}
+
+.container.v-detail .video-nav a {
+  color: #404040;
+}
+
+footer.container.v-detail {
+  max-width: 1660px;
+  padding: 36px 15px 30px;
+}
+
+.author-info_right {
+  text-align: right;
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 0;
+  justify-content: flex-end;
+  color: #333;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.author-info_right a {
+  color: #333;
+}
+
+.author-info_right a:hover {
+  outline: 0;
+  color: #06c;
+}
+
+.bg-wrap {
+  position: relative;
+  z-index: 0;
+}
+
+.bg-wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  min-width: 1158px;
+  display: block;
+  z-index: -1;
+}
+
+.flex-jcb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-jcc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  padding-top: 16px;
+  padding-bottom: 13px;
+  z-index: 10;
+}
+
+.header::before {
+  background: #fff none;
+}
+
+.header-logo {
+  margin: 0;
+  line-height: 0;
+}
+
+.header-logo a {
+  line-height: 0;
+  display: inline-block;
+}
+
+.header-logo a svg, .header-logo a img {
+  width: auto;
+  height: 39px;
+}
+
+.header-logo a svg.config, .header-logo a svg.noel, .header-logo a img.config, .header-logo a img.noel {
+  height: 46px;
+  position: relative;
+  top: -2px;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+.header-logo.dtnewyear a {
+  max-height: 20px;
+}
+
+.header-logo.dtnewyear svg, .header-logo.dtnewyear img {
+  height: 46px;
+  position: relative;
+  top: -16px;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+.header-account {
+  background: rgba(0,0,0,0) none;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Arial", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  outline: 0;
+  color: gray;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header-account svg {
+  margin: 0 9px 0 0;
+  stroke: #4d4d4d;
+}
+
+.newest-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 14px;
+  gap: 8px;
+  border: 1px solid #ccc;
+  border-radius: 123px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Arial", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #292d32;
+  margin-right: 18px;
+}
+
+.international {
+  height: 37px;
+  padding: 4px 0;
+  border: none;
+  border-radius: 18px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Arial", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  margin: 0 16px 0 0;
+  font-weight: 400;
+  line-height: 1;
+  position: relative;
+}
+
+.international::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: 8px;
+  width: 1px;
+  height: 20px;
+  background-color: #d6d6d6;
+}
+
+.international:last-child::after {
+  width: 0;
+}
+
+.international img {
+  margin: 0 8px 0 0;
+  overflow: hidden;
+  height: 26px;
+}
+
+div[data-module=user-onboarding] {
+  z-index: 10;
+  position: absolute;
+  width: 0;
+  top: 0;
+  right: 0;
+}
+
+.user-popup {
+  background: none;
+  border: none;
+}
+
+.user-info {
+  color: gray;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Arial", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  cursor: pointer;
+  margin-right: 17px;
+  position: relative;
+}
+
+.user-info::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 20px;
+  right: -5px;
+  top: 3px;
+  background-color: #d6d6d6;
+}
+
+.user-info .user-logout {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  visibility: visible;
+  opacity: 1;
+  top: 205px;
+  background: #eee none;
+}
+
+.user-info .user-logout:hover {
+  color: #2361ff;
+}
+
+.user-info .user-logout::before {
+  content: none;
+}
+
+.user-info .user-infos {
+  visibility: visible;
+  opacity: 1;
+  top: 45px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 1px solid #d5d5d5;
+  width: 140px;
+  justify-content: flex-start;
+}
+
+.user-info .user-infos:hover {
+  color: #2361ff;
+}
+
+.user-info .user-infos::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 35px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid rgba(0,0,0,0);
+  border-right: 8px solid rgba(0,0,0,0);
+  border-bottom: 9px solid #eee;
+}
+
+.user-info .user-comment {
+  border-radius: 0;
+  visibility: visible;
+  opacity: 1;
+  top: 77px;
+  border-bottom: 1px solid #d5d5d5;
+  width: 140px;
+  justify-content: flex-start;
+}
+
+.user-info .user-comment span {
+  white-space: nowrap;
+}
+
+.user-info .user-comment::before {
+  content: none;
+}
+
+.user-info .user-comment:hover {
+  color: #2361ff;
+}
+
+.user-info .user-your-news {
+  border-radius: 0;
+  visibility: visible;
+  opacity: 1;
+  top: 109px;
+  border-bottom: 1px solid #d5d5d5;
+  width: 140px;
+  justify-content: flex-start;
+}
+
+.user-info .user-your-news span {
+  white-space: nowrap;
+}
+
+.user-info .user-your-news::before {
+  content: none;
+}
+
+.user-info .user-your-news:hover {
+  color: #2361ff;
+}
+
+.user-info .user-news {
+  border-radius: 0;
+  visibility: visible;
+  opacity: 1;
+  top: 141px;
+  border-bottom: 1px solid #d5d5d5;
+  width: 140px;
+  justify-content: flex-start;
+}
+
+.user-info .user-news::before {
+  content: none;
+}
+
+.user-info .user-news:hover {
+  color: #2361ff;
+}
+
+.user-info .user-saved {
+  border-radius: 0;
+  visibility: visible;
+  opacity: 1;
+  top: 173px;
+  border-bottom: 1px solid #d5d5d5;
+  width: 140px;
+  justify-content: flex-start;
+}
+
+.user-info .user-saved::before {
+  content: none;
+}
+
+.user-info .user-saved:hover {
+  color: #2361ff;
+}
+
+.user-info > svg {
+  margin: 0 5px 0 5px;
+  stroke: gray;
+}
+
+.user-name {
+  position: relative;
+  top: 1px;
+}
+
+.user-name b {
+  font-weight: 600;
+}
+
+.user-avatar {
+  position: relative;
+  margin: 0 4px 0 0;
+}
+
+.user-avatar .avatar {
+  width: 26px;
+  height: 26px;
+  background: #1a7900 none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.user-avatar .avatar.img-check {
+  background: none;
+}
+
+.user-avatar svg {
+  stroke: #4d4d4d;
+}
+
+.user-logout {
+  position: absolute;
+  top: 60px;
+  right: -25px;
+  width: 140px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background: #eee none;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+  border: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.user-logout::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 35px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid rgba(0,0,0,0);
+  border-right: 8px solid rgba(0,0,0,0);
+  border-bottom: 9px solid #eee;
+}
+
+.user-extend {
+  position: absolute;
+  right: -25px;
+  width: 140px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background: #eee none;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+  border: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.user-extend::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 35px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid rgba(0,0,0,0);
+  border-right: 8px solid rgba(0,0,0,0);
+  border-bottom: 9px solid #eee;
+}
+
+.search-link {
+  margin: 0 0 0 20px;
+  line-height: 0;
+}
+
+.search-link svg {
+  stroke: #4d4d4d;
+}
+
+.menu {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Arial", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+.menu::before {
+  background: #fff none;
+}
+
+.menu-wrap {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.menu-wrap::before {
+  background: #fff none;
+  top: -1px;
+}
+
+.menu-wrap:not(.show) > li:hover::after {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.menu-wrap:not(.show) > li:hover .submenu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-wrap:not(.show) > li:hover::before, .menu-wrap:not(.show) > li.active::before {
+  content: "";
+  width: 100%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  border-top: 3px solid #1a7900;
+}
+
+.menu-wrap.show > li > a {
+  color: #a0a4a8;
+}
+
+.menu-wrap.show > li > a:hover {
+  color: #1a7900;
+}
+
+.menu-wrap > li {
+  position: relative;
+}
+
+.menu-wrap > li.has-child::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 8px solid rgba(0,0,0,0);
+  border-right: 8px solid rgba(0,0,0,0);
+  border-bottom: 8px solid #eee;
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translate(-50%, 30px);
+  transition: all .15s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.menu-wrap > li > a {
+  font-weight: 500;
+  color: #333;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.menu-wrap > li.home svg {
+  stroke: #333;
+}
+
+.menu-wrap > li.home svg path:nth-child(1) {
+  fill: #333;
+}
+
+.menu-wrap > li.menu-more {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.menu-wrap > li.menu-more:hover::before {
+  display: none;
+}
+
+.menu-wrap > li.menu-more .close {
+  display: none;
+}
+
+.menu-wrap > li.menu-more.show .more {
+  display: none;
+}
+
+.menu-wrap > li.menu-more.show .close {
+  display: block;
+}
+
+.menu-wrap > li.menu-logo img {
+  width: auto;
+  max-height: 26px;
+  position: relative;
+  top: -6px;
+}
+
+.menu-second {
+  margin: 0 0 0 40px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Arial", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.menu-second.child {
+  margin: 12px 0 0;
+  margin-bottom: -13px;
+  padding-top: 10px;
+  border-top: 1px solid;
+}
+
+.menu-second.child .deactive a {
+  color: #333;
+}
+
+.menu-second.child li {
+  display: block;
+  position: relative;
+}
+
+.menu-second.child li:not(:first-of-type) {
+  margin: 0 0 0 30px;
+}
+
+.menu-second.child li:not(:first-of-type)::before {
+  display: none;
+}
+
+.menu-second.child li h1 {
+  font-size: 14px;
+  line-height: 20px;
+  color: #222;
+  margin: 0;
+  font-weight: 600;
+}
+
+.menu-second.child li a {
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+  padding: 0 0 4px;
+  border-bottom: 3px solid rgba(0,0,0,0);
+}
+
+.menu-second.child li.has-child::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 8px solid rgba(0,0,0,0);
+  border-right: 8px solid rgba(0,0,0,0);
+  border-bottom: 8px solid #eee;
+  position: absolute;
+  bottom: -13px;
+  left: 50%;
+  transform: translate(-50%, 30px);
+  transition: all .15s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.section-container {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  position: relative;
+}
+
+.account-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden; /* Để tránh cuộn */
+  padding: 20px;
+}
+
+.section-content {
+  margin-left: 25%;
+  width: 33.33%; /* Chiếm khoảng 4 cột */
+  padding: 20px;
+  overflow-y: auto; /* Để phần nội dung có thể cuộn */
+}
+
+.settings-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 41.67%; /* Chiếm khoảng 5 cột */
+  height: 100%;
+  z-index: 1;
+  overflow: hidden; /* Để tránh cuộn */
+  padding: 20px;
+}
+.section-container {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  position: relative;
+}
+
+
+/* Thêm CSS này vào file CSS của bạn */
+
+.header-sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.section-container {
+  margin-top: 80px; /* Chiều cao của header */
+  padding-bottom: 100px; /* Khoảng cách để footer không chồng lên nội dung */
+}
+
+.account-sidebar {
+  position: fixed;
+  top: 80px; /* Khoảng cách từ đầu trang, đã tính cả chiều cao của header */
+  left: 0;
+  width: 25%;
+  height: calc(100% - 180px); /* Trừ đi chiều cao của header và phần đệm dưới */
+  z-index: 1;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.section-content {
+  margin-left: 25%;
+  width: 33.33%;
+  padding: 20px;
+  overflow-y: auto;
+  height: calc(100% - 180px); /* Trừ đi chiều cao của header và phần đệm dưới */
+}
+
+.settings-panel {
+  position: fixed;
+  top: 80px; /* Khoảng cách từ đầu trang, đã tính cả chiều cao của header */
+  right: 0;
+  width: 41.67%;
+  height: calc(100% - 180px); /* Trừ đi chiều cao của header và phần đệm dưới */
+  z-index: 1;
+  overflow: hidden;
+  padding: 20px;
+}
+

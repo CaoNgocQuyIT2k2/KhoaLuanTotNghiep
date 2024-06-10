@@ -73,6 +73,14 @@ const PostLatestPer4Cat = ({ pClass, videoIcon, postSizeMd }) => {
                   <span></span>
                   <span>{new Date(article.create_date).toLocaleDateString()}</span>
                 </li>
+                <li className="save-icon">
+                  <a href="#" style={{
+                    fontSize: '1rem',
+                    color: "black",
+                    marginRight: '20px',
+                  }} title="save" >
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

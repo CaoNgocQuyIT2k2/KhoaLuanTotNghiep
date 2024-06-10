@@ -12,25 +12,24 @@ export default async function RemoveSaveArticle(req, res) {
 
   if (req.method === 'DELETE') {
     try {
-      const { id } = req.body;
+      const { articleId } = req.body;
       const token = req.headers.authorization; // Lấy token từ header
-      console.log("token: " + token);
+      console.log("token: ", articleId);
 
-      if (!id) {
-        res.status(400).json({ message: 'Invalid request body' });
+      if (!articleId) {
+        res.status(400).json({ message: 'Invalid request params' });
         return;
       }
 
       const response = await axios.delete(
-        'http://localhost:8080/api/v1/saved-articles/remove?id=',
-        { article: { id } }, // Cập nhật body theo cấu trúc mới
+        `http://localhost:8080/api/v1/saved-articles/remove?articleId=${articleId}`,
         { headers: { Authorization: token } }
       );
 
       if (response.status === 200) {
-        res.status(200).json({ message: 'Tạo tag thành công!' });
+        res.status(200).json({ message: 'Xóa bài đã lưu thành công!' });
       } else {
-        res.status(response.status).json({ message: 'Tạo tag thất bại.' });
+        res.status(response.status).json({ message: 'Xóa bài đã lưu thất bại.' });
       }
     } catch (error) {
       console.error('Error:', error);

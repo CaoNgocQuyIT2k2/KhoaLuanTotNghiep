@@ -24,6 +24,10 @@ export default function MenuUser() {
 
   const router = useRouter();
 
+  const handleYourFeedClick = () => {
+    handleClose();
+    router.push('/yourfeed');
+  };
   const handleProfileClick = () => {
     handleClose();
     router.push('/profile');
@@ -73,7 +77,7 @@ export default function MenuUser() {
         <MenuItem onClick={handlePaswordClick} style={{ fontSize: '1.5rem' }}>
           Update Password
         </MenuItem>
-        <MenuItem onClick={handleClose} style={{ fontSize: '1.5rem' }}>
+        <MenuItem onClick={handleYourFeedClick}  style={{ fontSize: '1.5rem' }}>
           Your feed
         </MenuItem>
         <MenuItem onClick={handleClose} style={{ fontSize: '1.5rem' }}>

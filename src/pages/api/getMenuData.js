@@ -17,9 +17,11 @@ export default async function fetchMenuData(req, res) {
 
       return {
         label: parent.name,
+        id:parent.id,
         path: "#",
         submenu: childCategories.map(child => ({
           sublabel: child.name,
+          id: child.id,
           subpath: `/category/${child.id}`
         }))
       };

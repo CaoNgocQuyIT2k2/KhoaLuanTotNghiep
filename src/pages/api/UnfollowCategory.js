@@ -20,14 +20,12 @@ export default async function UnfollowCategory(req, res) {
       console.log("categoryId", categoryId);
       console.log("token", token);
 
-      console.log("requestBody", requestBody);
 
       // Send request to update tag API
       const response = await axios.delete(
-        `http://localhost:8080/api/v1/follow-category/un-follow?categoryId==${categoryId}`,
+        `http://localhost:8080/api/v1/follow-category/un-follow?categoryId=${categoryId}`,
         { headers: { Authorization: token } }
       );
-
       // Handle response from API
       if (response.status === 200) {
         res.status(200).json({ message: 'Unfollow successfully!' });
@@ -36,6 +34,7 @@ export default async function UnfollowCategory(req, res) {
       }
     } catch (error) {
       console.error('Error:', error);
+      console.log("lỗi");
       if (error.response && error.response.status === 403) {
         res.status(403).json({ message: 'Unauthorized' });
       } else {

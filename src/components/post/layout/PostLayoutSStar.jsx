@@ -57,7 +57,7 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 							</div>
 							<div className="axil-media-bottom">
 								<h3 className="axil-post-title hover-line hover-line">
-								<Link href={`/${data.id}`}>
+									<Link href={`/${data.id}`}>
 										<a>{data.title}</a>
 									</Link>
 								</h3>
@@ -74,7 +74,7 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 
 										<li>
 											<span>
- </span>
+											</span>
 											<span>{new Date(data.create_date).toLocaleDateString()}</span>
 										</li>
 										<li>
@@ -86,15 +86,15 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 											{data.artSource}
 										</li>
 										<li className="save-icon">
-                    <a href="#" style={{
-                      fontSize: '1rem',
-                      color: "black",
-                      marginRight: '20px',
-                    }} title="save" >
-                    </a>
-                  </li>
+											<a href="#" style={{
+												fontSize: '1rem',
+												color: "black",
+												marginRight: '20px',
+											}} title="save" >
+											</a>
+										</li>
 										<li>
-											<TopStarRating articleId={data.id}/>
+											<TopStarRating articleId={data.id} />
 										</li>
 									</ul>
 								</div>

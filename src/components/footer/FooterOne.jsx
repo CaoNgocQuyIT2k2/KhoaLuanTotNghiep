@@ -55,7 +55,7 @@ const FooterOne = () => {
                     {(childMenus[category.id] || []).map((child) => (
                       <li key={child.id}>
                         <Link href={`/category/${child.id}`}>
-                          <a>{child.name}</a>
+                          <a className='footer-childcategory'>{child.name}</a>
                         </Link>
                       </li>
                     ))}

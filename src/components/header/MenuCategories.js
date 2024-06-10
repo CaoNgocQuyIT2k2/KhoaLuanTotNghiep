@@ -59,9 +59,9 @@ const MenuCategories = () => {
         </Menu>
       }
       trigger={['hover']}
-      placement={index < 7 ? 'bottomLeft' : 'rightTop'}
+      placement={index < 9 ? 'bottomLeft' : 'rightTop'}
       onVisibleChange={(visible) => {
-        if (visible && !childMenus[category.id] && index < 7) {
+        if (visible && !childMenus[category.id] && index < 9) {
           handleMenuClick(category.id);
         }
       }}
@@ -71,7 +71,7 @@ const MenuCategories = () => {
           <Link href={`/category/${category.id}`}>
             {category.name}
           </Link>
-          {index < 7 ? <DownOutlined /> : <RightOutlined />}
+          {index < 9 ? <DownOutlined /> : <RightOutlined />}
         </Space>
       </div>
     </Dropdown>
@@ -79,13 +79,13 @@ const MenuCategories = () => {
   
   
 
-  const limitedItems = categories.slice(0, 7).map((category, index) => (
+  const limitedItems = categories.slice(0, 9).map((category, index) => (
     <div key={category.id} style={{ display: 'inline-block', marginRight: '20px' }}>
       {renderDropdown(category, index)}
     </div>
   ));
 
-  const overflowItems = categories.slice(7).map(category => (
+  const overflowItems = categories.slice(9).map(category => (
     <Menu.Item key={category.id}>
       {renderDropdown(category)}
     </Menu.Item>
@@ -95,7 +95,7 @@ const MenuCategories = () => {
     className='main-navigation list-inline'
     style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
       {limitedItems}
-      {categories.length > 7 && (
+      {categories.length > 9 && (
         <Dropdown
           overlay={
             <Menu>

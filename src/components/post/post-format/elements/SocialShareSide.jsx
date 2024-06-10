@@ -18,7 +18,7 @@ const SocialShareSide = ({ articleId }) => {
   useEffect(() => {
     setwindowPath(window.location.href);
     fetchData();
-    checkIfArticleIsSaved();
+    checkIfArticleIsSaved(articleId);
   }, [articleId]);
 
   const fetchData = async () => {
@@ -42,9 +42,9 @@ const SocialShareSide = ({ articleId }) => {
     }
   };
 
-  const checkIfArticleIsSaved = async () => {
+  const checkIfArticleIsSaved = async (articleId) => {
     try {
-      const response = await axios.get(`/api/getSavedArticle?id=${savedArticleId}`, {
+      const response = await axios.get(`/api/getSavedArticle?articleId=${articleId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.status === 200) {
@@ -55,7 +55,6 @@ const SocialShareSide = ({ articleId }) => {
       console.error("Error checking if article is saved:", error);
     }
   };
-
   const handleReaction = async (typeReact) => {
     try {
       const response = await axios.post(
@@ -66,6 +65,8 @@ const SocialShareSide = ({ articleId }) => {
 
       if (response.status === 200) {
         fetchData(); // Refresh data after successful vote
+        console.log('Article saved successfully!');
+
       }
     } catch (error) {
       console.error("Error submitting reaction:", error);
@@ -73,7 +74,7 @@ const SocialShareSide = ({ articleId }) => {
   };
 console.log("articleId",articleId);
   // Thêm hàm xử lý sự kiện cho nút Save
-  const handleSaveArticle = async () => {
+  const handleSaveArticle = async (articleId) => {
     try {
       const response = await axios.post(
         '/api/AddSaveArticle',
@@ -92,12 +93,11 @@ console.log("articleId",articleId);
       console.error("Error saving article:", error);
     }
   };
-console.log("savedArticleId",savedArticleId);
-  const handleUnSaveArticle = async () => {
+console.log("savedArticleId",articleId);
+  const handleUnSaveArticle = async (articleId) => {
     try {
       const response = await axios.post(
-        '/api/RemoveSaveArticle',
-        { id: savedArticleId },
+        `/api/RemoveSaveArticle?articleId=${articleId}`,
         { headers: { Authorization: `Bearer ${token}` }}
       );
 
@@ -113,11 +113,11 @@ console.log("savedArticleId",savedArticleId);
   };
 
   // Thay đổi sự kiện onClick để chuyển đổi giữa handleSaveArticle và handleUnSaveArticle
-  const handleSaveOrUnsaveArticle = () => {
+  const handleSaveOrUnsaveArticle = (articleId) => {
     if (isArticleSaved) {
-      handleUnSaveArticle();
+      handleUnSaveArticle(articleId);
     } else {
-      handleSaveArticle();
+      handleSaveArticle(articleId);
     }
   };
 
@@ -125,7 +125,7 @@ console.log("savedArticleId",savedArticleId);
     <div className="post-details__SaveArt mt-2">
        <ul className="SaveArt SaveArt__with-bg SaveArt__vertical">
        <li>
-          <a href="#" className={`save-icon ${isArticleSaved ? "saved-icon" : ""}`} title={isArticleSaved ? "Unsave" : "Save"} onClick={handleSaveOrUnsaveArticle}></a>
+          <a href="#" className={`save-icon ${isArticleSaved ? "saved-icon" : "save-icon"}`} title={isArticleSaved ? "Unsave" : "Save"} onClick={handleSaveOrUnsaveArticle}></a>
         </li>
         </ul>
       <ul className="social-share social-share__with-bg social-share__vertical">
