@@ -1,6 +1,7 @@
 import React from 'react';
+import ButtonSaveArt from '../post/post-format/elements/ButtonSaveArt';
 
-const ArticleFollowed = ({ title, imageUrl, category, date }) => (
+const ArticleFollowed = ({articlId, title, imageUrl, category, date }) => (
 
     <article className="T4C8M7gx47SgNVdeaEo5">
         <div className="cejlglTblCkKqUv8Qao3">
@@ -12,14 +13,7 @@ const ArticleFollowed = ({ title, imageUrl, category, date }) => (
             </h3>
             <div className="DFvkGh7X5w3Tc2YVuhsc">
                 <div className="DLthO24IR5yJeB6qXBm5">
-                    <li className="save-icon">
-                        <a href="#" style={{
-                            fontSize: '1rem',
-                            color: "black",
-                            marginRight: '20px',
-                        }} title="save" >
-                        </a>
-                    </li>
+                <ButtonSaveArt articleId={articlId}/>
                 </div>
                 <div className="Vf3BrfrGTlBJ9SqOawCQ">
                     <a className="AuRR3nlDzpNADbzhpaC1 baoayGCy5KTsiUdG7uGe" href={`/${category}.htm`}>{category}</a> - <span>{date}</span>

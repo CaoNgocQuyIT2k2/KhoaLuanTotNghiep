@@ -34,6 +34,7 @@ const SectionArticleFollowed = ({ refresh,onToggleSectionList }) => {
                         {articles.map((article, index) => (
                             <div key={article.id} className={index === articles.length - 1 ? 'last-article' : ''}>
                                 <ArticleFollowed
+                                    articlId ={article.id}
                                     title={article.title}
                                     imageUrl={article.avatar}
                                     category={article.category.name}

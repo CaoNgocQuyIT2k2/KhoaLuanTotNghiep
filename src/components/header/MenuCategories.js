@@ -61,7 +61,7 @@ const MenuCategories = () => {
       trigger={['hover']}
       placement={index < 9 ? 'bottomLeft' : 'rightTop'}
       onVisibleChange={(visible) => {
-        if (visible && !childMenus[category.id] && index < 9) {
+        if (visible && !childMenus[category.id]) {
           handleMenuClick(category.id);
         }
       }}
@@ -77,23 +77,22 @@ const MenuCategories = () => {
     </Dropdown>
   );
   
-  
-
   const limitedItems = categories.slice(0, 9).map((category, index) => (
     <div key={category.id} style={{ display: 'inline-block', marginRight: '20px' }}>
       {renderDropdown(category, index)}
     </div>
   ));
 
-  const overflowItems = categories.slice(9).map(category => (
+  const overflowItems = categories.slice(9).map((category, index) => (
     <Menu.Item key={category.id}>
-      {renderDropdown(category)}
+      {renderDropdown(category, index + 9)} {/* Pass the correct index */}
     </Menu.Item>
   ));
+
   return (
     <div 
-    className='main-navigation list-inline'
-    style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+      className='main-navigation list-inline'
+      style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
       {limitedItems}
       {categories.length > 9 && (
         <Dropdown

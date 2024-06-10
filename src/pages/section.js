@@ -32,7 +32,7 @@ const Section = () => {
             <div className="account-sidebar">
                 <AccountSidebar />
             </div>
-            <div className="section-content">
+            <div className="section-content" >
                 {showSectionList ? (
                     <SectionList searchTerm={searchTerm} handleBackToDashboard={handleBackToDashboard} />
                 ) : (

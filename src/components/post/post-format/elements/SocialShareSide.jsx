@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { useSelector } from "react-redux";
+import ButtonSaveArt from "./ButtonSaveArt";
 
 const SocialShareSide = ({ articleId }) => {
   const [windowPath, setwindowPath] = useState(null);
   const token = useSelector((state) => state.user.user?.token); 
-  const [isArticleSaved, setIsArticleSaved] = useState(false);
-  const [savedArticleId, setSavedArticleId] = useState(null);
 
   const [reactData, setReactData] = useState({
     LIKE: 0,
@@ -18,7 +17,6 @@ const SocialShareSide = ({ articleId }) => {
   useEffect(() => {
     setwindowPath(window.location.href);
     fetchData();
-    checkIfArticleIsSaved(articleId);
   }, [articleId]);
 
   const fetchData = async () => {
@@ -42,19 +40,7 @@ const SocialShareSide = ({ articleId }) => {
     }
   };
 
-  const checkIfArticleIsSaved = async (articleId) => {
-    try {
-      const response = await axios.get(`/api/getSavedArticle?articleId=${articleId}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      if (response.status === 200) {
-        setIsArticleSaved(true); // Đánh dấu bài viết đã được lưu
-      }
-    } catch (error) {
-      setIsArticleSaved(false); // Đánh dấu bài viết chưa được lưu
-      console.error("Error checking if article is saved:", error);
-    }
-  };
+
   const handleReaction = async (typeReact) => {
     try {
       const response = await axios.post(
@@ -73,60 +59,14 @@ const SocialShareSide = ({ articleId }) => {
     }
   };
 console.log("articleId",articleId);
-  // Thêm hàm xử lý sự kiện cho nút Save
-  const handleSaveArticle = async (articleId) => {
-    try {
-      const response = await axios.post(
-        '/api/AddSaveArticle',
-        { id: articleId },
-        { headers: { Authorization: `Bearer ${token}` }}
-      );
 
-      if (response.status === 200) {
-        setSavedArticleId(response.data.id); // Lưu ID của bài viết đã được lưu
-        setIsArticleSaved(true); // Đánh dấu bài viết đã được lưu
-        console.log('Article saved successfully!');
-      } else {
-        console.error('Failed to save article.');
-      }
-    } catch (error) {
-      console.error("Error saving article:", error);
-    }
-  };
+
 console.log("savedArticleId",articleId);
-  const handleUnSaveArticle = async (articleId) => {
-    try {
-      const response = await axios.post(
-        `/api/RemoveSaveArticle?articleId=${articleId}`,
-        { headers: { Authorization: `Bearer ${token}` }}
-      );
-
-      if (response.status === 200) {
-        setIsArticleSaved(false); // Đánh dấu bài viết chưa được lưu
-        console.log('Article unsaved successfully!');
-      } else {
-        console.error('Failed to unsave article.');
-      }
-    } catch (error) {
-      console.error("Error unsaving article:", error);
-    }
-  };
-
-  // Thay đổi sự kiện onClick để chuyển đổi giữa handleSaveArticle và handleUnSaveArticle
-  const handleSaveOrUnsaveArticle = (articleId) => {
-    if (isArticleSaved) {
-      handleUnSaveArticle(articleId);
-    } else {
-      handleSaveArticle(articleId);
-    }
-  };
 
   return (
     <div className="post-details__SaveArt mt-2">
        <ul className="SaveArt SaveArt__with-bg SaveArt__vertical">
-       <li>
-          <a href="#" className={`save-icon ${isArticleSaved ? "saved-icon" : "save-icon"}`} title={isArticleSaved ? "Unsave" : "Save"} onClick={handleSaveOrUnsaveArticle}></a>
-        </li>
+       <ButtonSaveArt articleId={articleId}/>
         </ul>
       <ul className="social-share social-share__with-bg social-share__vertical">
         

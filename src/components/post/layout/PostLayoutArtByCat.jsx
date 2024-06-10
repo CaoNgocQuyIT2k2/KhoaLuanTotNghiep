@@ -3,6 +3,7 @@ import { slugify } from "../../../utils";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Pagination } from 'antd';
+import ButtonSaveArt from "../post-format/elements/ButtonSaveArt";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png";
 
@@ -89,14 +90,7 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
                                         <i className="" />
                                         {article.artSource}
                                     </li>
-                                    <li className="save-icon">
-                                        <a href="#" style={{
-                                            fontSize: '1rem',
-                                            color: "black",
-                                            marginRight: '20px',
-                                        }} title="save" >
-                                        </a>
-                                    </li>
+                                    <ButtonSaveArt articleId={article.id}/>
                                 </ul>
                             </div>
                         </div>

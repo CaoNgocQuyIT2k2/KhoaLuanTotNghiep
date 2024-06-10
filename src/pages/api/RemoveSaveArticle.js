@@ -12,7 +12,7 @@ export default async function RemoveSaveArticle(req, res) {
 
   if (req.method === 'DELETE') {
     try {
-      const { articleId } = req.body;
+      const { articleId } = req.query;
       const token = req.headers.authorization; // Lấy token từ header
       console.log("token: ", articleId);
 

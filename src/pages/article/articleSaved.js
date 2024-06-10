@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import PostLayoutArtSaved from "../../components/post/layout/PostLayoutArtSaved";
 import BackToTopButton from "../../components/post/post-format/elements/BackToTopButton";
+import SavedArticle from "../../components/post/post-format/elements/SavedArticle";
 
 const articleSaved = ({ allPosts }) => {
     const router = useRouter();
@@ -43,35 +44,21 @@ const articleSaved = ({ allPosts }) => {
 
             <HeaderOne />
 
-            <div className="banner banner__default bg-grey-light-three">
-                <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-lg-12">
-                            <div className="post-title-wrapper">
-                                <h2 className="m-b-xs-0 axil-post-title hover-line">NEWS SAVED</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+            <div className="body container">
+
             <div className="random-posts section-gap">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-8">
+                        <div className="col-lg-12">
                             <div className="axil-content">
-                                <PostLayoutArtSaved postSizeMd={true} />
+                                <SavedArticle postSizeMd={true} />
                             </div>
                         </div>
-                        <div className="col-lg-4">
-                            <div className="post-sidebar">
-                                <WidgetPost dataPost={allPosts} />
-                                <WidgetAd />
-                                <WidgetSocialShare />
-                                <WidgetAd img="/images/clientbanner/clientbanner3.jpg" height={492} width={320} />
-                            </div>
-                        </div>
+                     
                     </div>
                 </div>
+            </div>
             </div>
             <FooterOne />
         <BackToTopButton />

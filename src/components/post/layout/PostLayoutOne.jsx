@@ -3,6 +3,7 @@ import Link from "next/link";
 import { slugify } from "../../../utils";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import ButtonSaveArt from "../post-format/elements/ButtonSaveArt";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
@@ -85,14 +86,7 @@ const PostLayoutOne = () => {
                                     <i className="" />
                                     {post.artSource}
                                 </li>
-                                <li className="save-icon">
-                                    <a href="#" style={{
-                                        fontSize: '1rem',
-                                        color: "black",
-                                        marginRight: '20px',
-                                    }} title="save" >
-                                    </a>
-                                </li>
+                                <ButtonSaveArt articleId={post.id}/>
                             </ul>
                         </div>
                     </div>

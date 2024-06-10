@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default async function AddSaveArticle(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization');
 
   if (req.method === 'OPTIONS') {
     res.status(200).end();
@@ -12,18 +12,17 @@ export default async function AddSaveArticle(req, res) {
 
   if (req.method === 'POST') {
     try {
-      const { id } = req.body;
-      const token = req.headers.authorization; // Lấy token từ header
-      console.log("token: " + token);
-
-      if (!id) {
+      const { articleId } = req.body;
+      const token = req.headers.authorization;
+      console.log("articleId",articleId);
+      if (!articleId) {
         res.status(400).json({ message: 'Invalid request body' });
         return;
       }
 
       const response = await axios.post(
         'http://localhost:8080/api/v1/saved-articles/add',
-        { article: { id } }, // Cập nhật body theo cấu trúc mới
+        { article: { id: articleId } },
         { headers: { Authorization: token } }
       );
 
