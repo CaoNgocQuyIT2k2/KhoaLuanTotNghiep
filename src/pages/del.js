@@ -3,7 +3,7 @@ import AccountSidebar from '../components/elements/AccountSidebar';
 import FooterOne from '../components/footer/FooterOne';
 import BackToTopButton from '../components/post/post-format/elements/BackToTopButton';
 import HeaderOne from '../components/header/HeaderOne';
-import EditPassword from '../components/post/layout/EditPassword';
+import EditPassCus from '../components/post/layout/editPassCus';
 
 function articleSaved() {
     return (
@@ -19,7 +19,7 @@ function articleSaved() {
             </div>
             <div className="content1 page-content" data-module="account-page-content" data-content="saved-articles">
                 <div>
-                    <EditPassword/>
+                    <EditPassCus/>
             </div>
             <div className="infinite-scroll-component__outerdiv">
                 <div className="infinite-scroll-component " style={{ height: "auto", overflow: "auto" }}>

@@ -1,29 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { FiArrowLeft } from 'react-icons/fi';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+import { message } from 'antd';
 
-const EditPassword = () => {
-  const router = useRouter();
 
-  const [userInfo, setUserInfo] = useState(null);
-  const [token, setToken] = useState('');
-
+const EditPassCus = () => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [reEnterPassword, setReEnterPassword] = useState('');
-
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const token = useSelector((state) => state.user.token);
+  const userPass = useSelector((state) => state.user.user?.password);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const storedUserInfo = JSON.parse(localStorage.getItem('USER_INFO'));
-      setUserInfo(storedUserInfo);
-      setToken(storedUserInfo?.token);
-    }
-  }, []);
+  console.log("userPass", userPass);
+  console.log("token", token);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,85 +32,68 @@ const EditPassword = () => {
         headers: { Authorization: `Bearer ${token}` }
       });
 
-      setSuccess('Password updated successfully');
-      window.location.href = "/"; 
+      message.success("Cập nhật mật khẩu mới thành công")
+      window.location.href = "/";
 
     } catch (error) {
       const errorMessage = error.response?.data?.message;
-
-      // Kiểm tra lỗi cụ thể và đặt thông báo lỗi
-      if (error.response?.data === 'ERROR: Old password entered incorrectly.') {
-        setError('Old password entered incorrectly.');
-      } 
-      else if (error.response?.data === 'ERROR:  The re-entered password does not match.') {
-        setError('New password does not match.');
-      } 
-      else {
-        setError(errorMessage);
-      }
-
-      setTimeout(() => {
-        setError('');
-      }, 7000);
+     message.error(errorMessage)
     }
   };
 
-  if (!userInfo) {
-    return <div>Loading...</div>; // Or handle the loading state as needed
-  }
 
-  return (
-    <div className="Inclusive-editprofile-page">
-      <form onSubmit={handleSubmit}>
-        {error && <div className="error_msg">{error}</div>}
-        {success && <div className="success_msg">{success}</div>}
-        <Link href={'/'}>
-          <a>
-            <FiArrowLeft />
-          </a>
-        </Link>
-        <div className="input-wrapper">
-          <input
-            type="password"
-            id="oldPassword"
-            placeholder="Old Password"
-            name="oldPassword"
-            value={oldPassword}
-            onChange={(e) => setOldPassword(e.target.value)}
-          />
-          <label htmlFor="oldPassword">Old Password</label>
-        </div>
-
-        <div className="input-wrapper">
-          <input
-            type="password"
-            id="newPassword"
-            placeholder="New Password"
-            name="newPassword"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
-          <label htmlFor="newPassword">New Password</label>
-        </div>
-
-        <div className="input-wrapper">
-          <input
-            type="password"
-            id="reEnterPassword"
-            placeholder="Re-enter New Password"
-            name="reEnterPassword"
-            value={reEnterPassword}
-            onChange={(e) => setReEnterPassword(e.target.value)}
-          />
-          <label htmlFor="reEnterPassword">Re-enter New Password</label>
-        </div>
-
-        <button type="submit" className="editprofile-btn">
-          Update Password
-        </button>
-      </form>
+ return (
+    <div className='v36fvPKH_ALKwt47Kz3Y'>
+      <div className="dI0VCLFWaIoqADF62yLQ ITaSIg8lSOa0oSg1LAeu">
+        <p className="_dh_nPdNXVpYJS3VccnV">
+          <span className="LO3Sxj6O4IVuNYM8VuvI">
+            <span>MẬT KHẨU HIỆN TẠI <span className="aowxSyYM0OBcNJOidK_O">*</span></span>
+            <button className="msr4LmGgHiPdV3PTjSR9">Quên mật khẩu</button>
+          </span>
+          <span className="yrMkfpvDEXCq1K_XAwLh">
+            <input 
+              type="password" 
+              className="old-password cK8sGnii0pt_rFXaskPQ UyyS_b5f_eAxGlEp52S5 password-field-account" 
+              placeholder="Nhập mật khẩu hiện tại của bạn" 
+              value={oldPassword} 
+              onChange={(e) => setOldPassword(e.target.value)} 
+            />
+          </span>
+          <span className="Su1ySi5r1ZMc2U1D4Bpg">
+            MẬT KHẨU MỚI<span className="aowxSyYM0OBcNJOidK_O"> *</span>
+          </span>
+          <span className="yrMkfpvDEXCq1K_XAwLh">
+            <input 
+              type="password" 
+              className="cK8sGnii0pt_rFXaskPQ NepAMKDzSLa9BxysjR5V UyyS_b5f_eAxGlEp52S5 password-field-account" 
+              placeholder="Nhập mật khẩu mới" 
+              value={newPassword} 
+              onChange={(e) => setNewPassword(e.target.value)} 
+            />
+          </span>
+          <span className="yrMkfpvDEXCq1K_XAwLh">
+            <input 
+              type="password" 
+              className="cK8sGnii0pt_rFXaskPQ NepAMKDzSLa9BxysjR5V UyyS_b5f_eAxGlEp52S5 password-field-account" 
+              placeholder="Nhập lại mật khẩu mới" 
+              value={reEnterPassword} 
+              onChange={(e) => setReEnterPassword(e.target.value)} 
+            />
+          </span>
+          <span className="plYc33QtLf1c29jFLiHk ">
+          
+            <button 
+              onClick={handleSubmit} 
+              className="jFZjYRrWS_zUMhDWGtbj MkxO0ERI4KK3CQZsovoP"
+            >
+              Xác nhận
+            </button>
+          </span>
+        </p>
+        <span className="kEYHwcrORCYFkC0vl_Hg"></span>
+      </div>
     </div>
   );
 };
 
-export default EditPassword;
+export default EditPassCus;

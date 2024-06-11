@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-const ProfileCus = () => {
+const EditProfile = () => {
     const [editing, setEditing] = useState(false);
     const [editingField, setEditingField] = useState("");
     const [user, setUser] = useState({});
@@ -250,4 +250,4 @@ const ProfileCus = () => {
     );
 };
 
-export default ProfileCus;
+export default EditProfile;

@@ -15,9 +15,9 @@ export default async function UpdatePassword(req, res) {
   if (req.method === 'POST') {
     try {
       const { oldPassword, newPassword, reEnterPassword } = req.body;
-      const { userId } = req.query;
       const token = req.headers.authorization;
-
+      console.log("oldPassword, newPassword, reEnterPassword ", oldPassword, newPassword, reEnterPassword);
+      console.log("token", token);
       // Validate request body
       if (!oldPassword || !newPassword || !reEnterPassword) {
         res.status(400).json({ message: 'All fields are required' });
