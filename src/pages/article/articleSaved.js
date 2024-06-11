@@ -13,7 +13,7 @@ function articleSaved() {
 
     const [articles, setSavedArticles] = useState([]);
     const [reload, setReload] = useState(false); // State để cập nhật lại giao diện
-    const token = useSelector((state) => state.user.user?.token); 
+    const token = useSelector((state) => state.user?.token); 
 
     useEffect(() => {
         const fetchData = async () => {

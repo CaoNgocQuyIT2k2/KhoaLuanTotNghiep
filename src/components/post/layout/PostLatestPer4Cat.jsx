@@ -74,7 +74,6 @@ const PostLatestPer4Cat = ({ pClass, videoIcon, postSizeMd }) => {
                   <span></span>
                   <span>{new Date(article.create_date).toLocaleDateString()}</span>
                 </li>
-                <ButtonSaveArt articleId={article.id}/>
               </ul>
             </div>
           </div>

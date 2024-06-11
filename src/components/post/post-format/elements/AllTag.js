@@ -7,7 +7,7 @@ const AllTag = ({ selectedTags, setSelectedTags }) => {
   const [tags, setTags] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [newTag, setNewTag] = useState('');
-  const token = useSelector((state) => state.user?.user?.token);
+  const token = useSelector((state) => state.user?.token);
 
   useEffect(() => {
     fetchTags();

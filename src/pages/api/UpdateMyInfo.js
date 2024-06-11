@@ -14,12 +14,13 @@ export default async function UpdateUserInfo(req, res) {
 
   if (req.method === 'POST') {
     try {
-      const { firstname, lastname, email, dob } = req.body;
+      const { firstname, lastname, dob } = req.body;
       const { userId } = req.query;
       const token = req.headers.authorization;
-
+      console.log(firstname, lastname, dob);
+      console.log("userId", userId);
       // Validate request body
-      if (!firstname || !lastname || !email ) {
+      if (!firstname || !lastname) {
         res.status(400).json({ message: 'Fill in the required fields' });
         return;
       }
@@ -27,16 +28,19 @@ export default async function UpdateUserInfo(req, res) {
       // Send request to update user information API
       const response = await axios.post(
         `http://localhost:8080/api/v1/user/update-user-infor?userId=${userId}`,
-        { firstname, lastname, email, dob },
+        { firstname, lastname, dob },
         { headers: { Authorization: token } }
       );
 
       // Handle response from API
+      // Handle response from API
       if (response.status === 200) {
-        res.status(200).json({ message: 'User information updated successfully!' });
+        const updatedUserData = response.data; // Dữ liệu người dùng đã được cập nhật
+        res.status(200).json(updatedUserData); // Trả lại dữ liệu người dùng
       } else {
         res.status(response.status).json({ message: 'Failed to update user information.' });
       }
+
     } catch (error) {
       console.error('Error:', error);
       if (error.response && error.response.status === 403) {

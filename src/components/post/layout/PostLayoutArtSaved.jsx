@@ -10,7 +10,7 @@ const defaultAvatarSrc = "/images/category/BgWhite.png";
 const PostLayoutArtSaved = ({ postSizeMd, postBgDark, categoryId }) => {
     const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const token = useSelector((state) => state.user?.user?.token);
+    const token = useSelector((state) => state.user?.token);
 
     const pageSize = 10;
 

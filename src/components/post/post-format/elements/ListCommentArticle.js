@@ -3,12 +3,13 @@ import { Avatar, List, Space, message } from 'antd';
 import axios from 'axios';
 import EditComment from './EditComment'; // Import EditComment component
 import { useSelector } from 'react-redux';
+import { format } from 'date-fns';
 
 const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token }) => {
   const [position, setPosition] = useState('bottom');
   const [align, setAlign] = useState('center');
   const [comments, setComments] = useState([]);
-  const userId = useSelector((state) => state.user?.user?.user.id);
+  const userId = useSelector((state) => state.user?.user.id);
   console.log("userId", userId);
   useEffect(() => {
     if (articleId) {
@@ -26,10 +27,6 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
     }
   };
 
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
-  };
 
   const handleUpdateComments = async (commentId, newComment) => {
     try {
@@ -46,7 +43,11 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
       }
     } catch (error) {
       console.error(error.message);
-      message.error('An error occurred while updating the comment.');
+      if (error.response && error.response.data && error.response.data.message) {
+        message.error(error.response.data.message);
+      } else {
+        message.error('Đã xảy ra lỗi, vui lòng thử lại sau.');
+      }
     }
   };
 
@@ -87,7 +88,7 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
               description={
                 <div>
                   <p className="text-xl">{item.comment}</p>
-                  <p>{formatDate(item.create_date)}</p>
+                  <p>{format(new Date(item.create_date), 'dd-MM-yyyy')}</p>
                 </div>
               }
             />

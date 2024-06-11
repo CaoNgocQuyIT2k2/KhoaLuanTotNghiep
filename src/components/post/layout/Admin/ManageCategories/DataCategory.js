@@ -6,8 +6,8 @@ import AddCategory from './AddCategory';
 import EditCategory from './EditCategory';
 
 export default function DataCategory() {
-  const userId = useSelector((state) => state.user?.user?.user.id);
-  const token = useSelector((state) => state.user?.user?.token);
+  const userId = useSelector((state) => state.user?.user.id);
+  const token = useSelector((state) => state.user?.token);
 
   const [detail, setDetail] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);

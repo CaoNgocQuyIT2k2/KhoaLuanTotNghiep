@@ -17,8 +17,8 @@ const LayoutAddArticle = () => {
     const [fileList, setFileList] = useState([]);
     const [selectedTags, setSelectedTags] = useState([]);
     const [form] = Form.useForm();
-    const user = useSelector((state) => state.user?.user?.user);
-    const token = useSelector((state) => state.user?.user?.token);
+    const user = useSelector((state) => state.user?.user);
+    const token = useSelector((state) => state.user?.token);
 
     const normFile = (e) => {
         if (Array.isArray(e)) {

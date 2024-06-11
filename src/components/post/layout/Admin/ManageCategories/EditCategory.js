@@ -7,7 +7,7 @@ const { Option } = Select;
 
 const EditCategory = ({ showModal, categoryId, tagName, parentName, parentId, fetchCategories }) => {
   const [loading, setLoading] = useState(false);
-  const token = useSelector((state) => state.user.user.token);
+  const token = useSelector((state) => state.user?.token);
   const [open, setOpen] = useState(false);
   const [categoryData, setCategoryData] = useState({
     name: '',
@@ -16,7 +16,7 @@ const EditCategory = ({ showModal, categoryId, tagName, parentName, parentId, fe
   });
   const [parentCategories, setParentCategories] = useState([]);
 
-  const user = useSelector((state) => state.user.user.user);
+  const user = useSelector((state) => state.user?.user);
 
   useEffect(() => {
     setCategoryData({

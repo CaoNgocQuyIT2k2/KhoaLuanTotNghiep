@@ -6,8 +6,8 @@ import axios from 'axios';
 import Link from 'next/link';
 
 export default function LayoutDataDraft() {
-  const userId = useSelector((state) => state.user?.user?.user.id);
-  const token = useSelector((state) => state.user?.user?.token);
+  const userId = useSelector((state) => state.user?.user.id);
+  const token = useSelector((state) => state.user?.token);
   const [detail, setDetail] = useState([]);
 
   useEffect(() => {

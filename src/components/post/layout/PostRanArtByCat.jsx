@@ -79,7 +79,6 @@ const PostRanArtByCat = ({ pClass, videoIcon, dataPost }) => {
                 <li>
                   <span>{new Date(article.create_date).toLocaleDateString()}</span>
                 </li>
-                <ButtonSaveArt articleId={article.id}/>
               </ul>
             </div>
           </div>

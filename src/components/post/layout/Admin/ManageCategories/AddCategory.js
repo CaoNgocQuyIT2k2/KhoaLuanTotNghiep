@@ -12,9 +12,9 @@ const AddCategory = ({ fetchCategories }) => {
   const [secondName, setSecondName] = useState('');
   const [parentId, setParentId] = useState(null);
   const [parentCategories, setParentCategories] = useState([]);
-  const token = useSelector((state) => state.user?.user?.token);
+  const token = useSelector((state) => state.user?.token);
 
-  const user = useSelector((state) => state.user?.user?.user);
+  const user = useSelector((state) => state.user?.user);
 
   useEffect(() => {
     fetchParentCategories();
@@ -80,7 +80,7 @@ const AddCategory = ({ fetchCategories }) => {
   return (
     <>
       <Button type="primary" onClick={showModalHandler} className='bg-green-500 mb-3 text-white'>
-        Add 
+        Thêm 
       </Button>
       <AntModal
         visible={open}

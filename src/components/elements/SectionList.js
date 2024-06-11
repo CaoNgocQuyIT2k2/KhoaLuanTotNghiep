@@ -9,7 +9,7 @@ const SectionList = (props) => {
     const [followedParentCategories, setFollowedParentCategories] = useState([]);
     const [followedChildCategories, setFollowedChildCategories] = useState([]);
     const [searchText, setSearchText] = useState('');
-    const token = useSelector((state) => state.user?.user?.token);
+    const token = useSelector((state) => state.user?.token);
 console.log("followedChildCategories",followedChildCategories);
     useEffect(() => {
         const fetchMenuData = async () => {
@@ -217,7 +217,7 @@ console.log("followedChildCategories",followedChildCategories);
     return (
         <div className='hnDnbfcbh83CEOdzrSbo'>
             <div>
-                <div class="Ccoa5Slfcman_7DtENdO">
+                <div className="Ccoa5Slfcman_7DtENdO">
                     <a href="#" onClick={props.handleBackToDashboard}>Bảng tin của bạn</a>
                     <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="m7 5.36 2.174 2.173a.662.662 0 0 1 0 .934L7 10.64" stroke="#888" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -237,7 +237,7 @@ console.log("followedChildCategories",followedChildCategories);
                 {filteredMenuData.map((section, index) => (
                     <div key={index}>
                         <div className="MwTn6zWG4_2tPHxA6yoG" style={{ display: 'flex' }}>
-                            <div className="QIOCZgyVaqEM6CrHzKrl" href={section.path}>
+                            <div className="QIOCZgyVaqEM6CrHzKrl" href={`/${section.id}`}>
                                 {section.label}
                             </div>
                             <div className="G8rMGWdreAGHVOvLGtIh">

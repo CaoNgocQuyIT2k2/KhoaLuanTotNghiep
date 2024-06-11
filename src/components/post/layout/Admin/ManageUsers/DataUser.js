@@ -7,9 +7,9 @@ import 'moment/locale/vi'; // Import the locale you want to use, 'vi' for Vietna
 import axios from 'axios';
 
 export default function DataUser() {
-  const userId = useSelector((state) => state.user?.user?.user.id);
-  const user = useSelector((state) => state.user?.user?.user);
-  const token = useSelector((state) => state.user.user.token);
+  const userId = useSelector((state) => state.user?.user.id);
+  const user = useSelector((state) => state.user?.user);
+  const token = useSelector((state) => state.user?.token);
   const [detail, setDetail] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   console.log("🚀 ~ userId111:", userId);

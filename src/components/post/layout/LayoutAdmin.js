@@ -93,7 +93,7 @@ const LayoutAdmin = () => {
             {renderContent()}
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Quy Design ©2023 Created by Quy</Footer>
+        <Footer style={{ textAlign: 'center' }}></Footer>
       </Layout>
     </Layout>
   );

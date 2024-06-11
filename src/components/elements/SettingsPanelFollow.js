@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Link from 'next/link';
 
 const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
-    const token = useSelector((state) => state.user?.user?.token);
+    const token = useSelector((state) => state.user?.token);
 
     const [expanded, setExpanded] = useState({});
     const [menuData, setMenuData] = useState([]);

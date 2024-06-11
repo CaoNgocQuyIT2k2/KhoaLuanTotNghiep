@@ -8,14 +8,14 @@ import axios from 'axios';
 
 const EditUser = ({ showModal,tagId,tagName, fetchTags}) => {
   const [loading, setLoading] = useState(false);
-  const token = useSelector((state) => state.user.user.token);
+  const token = useSelector((state) => state.user?.token);
   const [open, setOpen] = useState(false);
   const [userData, setUserData] = useState({
     tagId:'',
     value: '',
   });
 
-  const user = useSelector((state) => state.user.user.user);
+  const user = useSelector((state) => state.user?.user);
 
   useEffect(() => {
     // Set the users when the props change

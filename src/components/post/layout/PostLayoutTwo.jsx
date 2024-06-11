@@ -163,7 +163,6 @@ const PostLayoutTwo = ({ postSizeMd, postBgDark }) => {
                     {article.artSource} 
 
                   </li>
-                  <ButtonSaveArt articleId={article.id}/>
                                     {/* <li>
                     <i className="feather icon-share-2" />
                     {article.post_share}

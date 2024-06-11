@@ -11,7 +11,7 @@ function SavedArticle() {
 
     const [articles, setSavedArticles] = useState([]);
     const [reload, setReload] = useState(false); // State để cập nhật lại giao diện
-    const token = useSelector((state) => state.user.user?.token); 
+    const token = useSelector((state) => state.user?.token); 
 
     useEffect(() => {
         const fetchData = async () => {
@@ -54,17 +54,17 @@ function SavedArticle() {
                             <div key={article.id} className="ZBwh0DJkg5FL71eqf3Yw">
                                 <div className="V1VBkDe4K3fhJ4uICwtR">
                                     <div className="DaX62uiePpKQmmJoLOs8">
-                                        <a href={`/giao-duc/${article.article.id}`}>
+                                        <a href={`/${article.article.id}`}>
                                             <img src={article.article.avatar} alt="thumbnail" />
                                         </a>
                                     </div>
                                     <div>
                                         <h3 className="UKXLyOM1eMF6VLstRRGz">
-                                            <a href={`/giao-duc/${article.article.id}`}>{article.article.title}</a>
+                                            <a href={`/${article.article.id}`}>{article.article.title}</a>
                                         </h3>
                                         <div className="Zpvur19KRg4zrXo69tbh">
                                             <div className="NzI0g5AmrlM03V_rgU5A">
-                                                <a className="u5YqKYE6VDc62PKWyGYA OC55iwpw0AojSkcTSDyH" href="/giao-duc.htm">{article.article.category.name}</a>-
+                                                <a className="u5YqKYE6VDc62PKWyGYA OC55iwpw0AojSkcTSDyH"  href={`/category/${article.article.category.id}`}>{article.article.category.name}</a>-
                                                 <span>{article.article.create_date}</span>
                                             </div>
                                             <div className="kVunuOJJvyAdEERuRnUL">

@@ -53,7 +53,7 @@ const AccountSidebar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href={`/articleSaved`}>
+                        <Link href={`/article/articleSaved`}>
                             <a>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
                                     <path d="M16.435 3h-8.88C5.595 3 4 4.566 4 6.473V19.15c0 1.62 1.188 2.303 2.644 1.52l4.495-2.438c.479-.26 1.253-.26 1.722 0l4.495 2.438c1.456.792 2.644.108 2.644-1.52V6.473C19.99 4.566 18.397 3 16.435 3Z" stroke="#292D32" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>

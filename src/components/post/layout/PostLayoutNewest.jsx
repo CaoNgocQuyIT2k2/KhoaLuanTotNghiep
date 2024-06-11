@@ -88,7 +88,6 @@ const PostLayoutNewest = ({ postSizeMd, postBgDark, postData }) => {
                     <i className="" />
                     {article.artSource}
                   </li>
-                  <ButtonSaveArt articleId={article.id}/>
                 </ul>
               </div>
             </div>

@@ -89,7 +89,6 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 													<i className="" />
 													{data.artSource}
 												</li>
-												<ButtonSaveArt articleId={data.id}/>
 												<li>
 													<TopStarRating articleId={data.id} />
 												</li>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import { message } from 'antd';
 import { useDispatch } from 'react-redux';
-import { setInf } from '../../store/reducers/userReducer';
+import { setUserInfo } from '../../store/reducers/userReducer';
 
 const SignInForm = () => {
   const [formData, setFormData] = useState({
@@ -37,14 +37,13 @@ const SignInForm = () => {
         localStorage.setItem('USER_INFO', JSON.stringify(userInfo));
 
         window.location.href = "/"; // Chuyển hướng đến trang đăng nhập
-        dispatch(setInf(userInfo));
+        dispatch(setUserInfo(userInfo));
 
 
       } else {
         message.error("Đăng nhập thất bại1");
       }
     } catch (error) {
-      message.error("Đăng nhập thất bại");
       console.log("Đăng nhập thất bại", error);
     }
   };

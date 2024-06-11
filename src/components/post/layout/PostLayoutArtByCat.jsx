@@ -17,6 +17,8 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
             try {
                 const response = await axios.get(`/api/getArtByCat?categoryId=${categoryId}`);
                 setData(response.data);
+                // Đặt trang hiện tại về 1 khi thay đổi danh mục
+                setCurrentPage(1);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }

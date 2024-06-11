@@ -5,7 +5,7 @@ import { Button } from 'antd';
 
 const ButtonSaveArt = ({ articleId,onRemoveSaveArticle  }) => {
   const [isSaved, setIsSaved] = useState(false);
-  const token = useSelector((state) => state.user?.user?.token);
+  const token = useSelector((state) => state.user?.token);
 
   useEffect(() => {
     const fetchData = async () => {

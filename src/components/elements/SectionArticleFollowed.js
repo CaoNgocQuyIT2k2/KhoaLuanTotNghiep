@@ -7,7 +7,7 @@ import SettingsPanelFollowFoot from './SettingsPanelFollowFoot';
 
 const SectionArticleFollowed = ({ refresh,onToggleSectionList }) => {
     const [articles, setArticles] = useState([]);
-    const token = useSelector((state) => state.user?.user?.token);
+    const token = useSelector((state) => state.user?.token);
 
     const fetchArticles = async () => {
         try {
@@ -23,7 +23,6 @@ const SectionArticleFollowed = ({ refresh,onToggleSectionList }) => {
     useEffect(() => {
         fetchArticles();
     }, [refresh]);
-
     return (
 <>
 <div className="y7idnc0MSa__siU3g_I3">
@@ -34,10 +33,11 @@ const SectionArticleFollowed = ({ refresh,onToggleSectionList }) => {
                         {articles.map((article, index) => (
                             <div key={article.id} className={index === articles.length - 1 ? 'last-article' : ''}>
                                 <ArticleFollowed
-                                    articlId ={article.id}
+                                    articleId ={article.id}
                                     title={article.title}
                                     imageUrl={article.avatar}
                                     category={article.category.name}
+                                    categoryId={article.category.id}
                                     date={format(new Date(article.create_date), 'yyyy-MM-dd')}
                                 />
                             </div>

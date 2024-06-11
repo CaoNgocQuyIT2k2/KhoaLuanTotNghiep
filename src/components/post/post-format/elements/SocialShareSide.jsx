@@ -5,7 +5,7 @@ import ButtonSaveArt from "./ButtonSaveArt";
 
 const SocialShareSide = ({ articleId }) => {
   const [windowPath, setwindowPath] = useState(null);
-  const token = useSelector((state) => state.user.user?.token); 
+  const token = useSelector((state) => state.user?.token); 
 
   const [reactData, setReactData] = useState({
     LIKE: 0,

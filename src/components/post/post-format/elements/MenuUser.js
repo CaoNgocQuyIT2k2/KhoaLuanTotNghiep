@@ -83,11 +83,11 @@ export default function MenuUser() {
         <MenuItem onClick={handlePaswordClick} style={{ fontSize: '1.5rem' }}>
           Update Password
         </MenuItem>
-        <MenuItem onClick={handleYourFeedClick}  style={{ fontSize: '1.5rem' }}>
+        <MenuItem onClick={handleYourFeedClick} style={{ fontSize: '1.5rem' }}>
           Your feed
         </MenuItem>
         <MenuItem onClick={handleSavedNewsClick} style={{ fontSize: '1.5rem' }}>
-              Saved news
+          Saved news
         </MenuItem>
         {userRole === 'ADMIN' && (
           <MenuItem onClick={handleClose} style={{ fontSize: '1.5rem' }}>
@@ -96,7 +96,7 @@ export default function MenuUser() {
             </Link>
           </MenuItem>
         )}
-       
+
         <MenuItem onClick={handleLogoutClick} style={{ fontSize: '1.5rem' }}>
           Logout
         </MenuItem>

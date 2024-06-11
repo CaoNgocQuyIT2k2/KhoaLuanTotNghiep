@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { dateFormate } from "../../utils";
-import OffcanvasMenu from "./OffcanvasMenu";
 import MenuCategories from "./MenuCategories";
 import axios from 'axios';
 import { message } from "antd";
@@ -16,7 +15,7 @@ const SearchImage = dynamic(() => import("../objectDetector/SearchImage"), {
 });
 
 const HeaderOne = () => {
-  const user = useSelector((state) => state.user?.user?.user);
+  const user = useSelector((state) => state.user?.user);
   const router = useRouter();
   const menuRef = useRef();
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -143,21 +142,21 @@ const HeaderOne = () => {
           <div className="container">
             <div className="row align-items-center">
               <div className="col-md">
-                <ul className="header-top-nav list-inline justify-content-center justify-content-md-start">
+                <ul className="header-top-nav list-inline justify-content-center justify-content-md-start" >
                   <li className="current-date">{dateFormate()}</li>
                   <li>
                     <Link href="/">
-                      <a>Advertisement</a>
+                      <a id="btn-header">Advertisement</a>
                     </Link>
                   </li>
                   <li>
                     <Link href="/about-us">
-                      <a>About</a>
+                      <a id="btn-header">About</a>
                     </Link>
                   </li>
                   <li>
                     <Link href="/contact">
-                      <a>Contact</a>
+                      <a id="btn-header">Contact</a>
                     </Link>
                   </li>
                 </ul>
@@ -165,7 +164,7 @@ const HeaderOne = () => {
               <div className="col-md-auto">
                 <ul className="ml-auto social-share header-top__social-share">
                   {user ? (
-                    <LogUser userName={user.firstname} />
+                    <LogUser avatar={user.avatar} userName={user.firstname} />
                   ) : (
                     <li>
                       <Link href="/login">

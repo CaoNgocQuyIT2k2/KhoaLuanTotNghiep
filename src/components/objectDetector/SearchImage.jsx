@@ -100,7 +100,7 @@ const SearchImage = ({ setSearchKeyword }) => {
       <SelectButton style={{
         marginTop: "1.5rem",
       }} onClick={openFilePicker}>
-      {isLoading ? <i class="fa-solid fa-spinner"></i> : <i class="fa-solid fa-image"></i>}
+      {isLoading ? <i className="fa-solid fa-spinner"></i> : <i className="fa-solid fa-image"></i>}
       </SelectButton>
     </ObjectDetectorContainer>
   );

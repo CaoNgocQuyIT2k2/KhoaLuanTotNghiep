@@ -53,7 +53,7 @@ const YourFeed = () => {
                                         )}
                                     </div>
                                     <div className="settings-panel">
-                                        {showSettingsPanel && <SettingsPanelFollow  onToggleSectionList={handleToggleSectionList} buttonText="Thiết lập hiển thị" />}
+                                        {showSettingsPanel && <SettingsPanelFollow onToggleSectionList={handleToggleSectionList} buttonText="Thiết lập hiển thị" />}
                                     </div>
                                 </div>
                             </div>
@@ -67,3 +67,4 @@ const YourFeed = () => {
 };
 
 export default YourFeed;
+

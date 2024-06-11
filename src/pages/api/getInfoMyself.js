@@ -10,6 +10,7 @@ export default async function getInfoMyself(req, res) {
   // Handle API request
   try {
     const token = req.headers.authorization; // Extract token from Authorization header
+    console.log("token: " + token);
     const response = await axios.get("http://localhost:8080/api/v1/user/get-my-infor",
     { headers: { Authorization: token } }
     );

@@ -89,7 +89,6 @@ const PostLayoutArtPerCat = ({ postSizeMd = false, postBgDark = false }) => {
                     <i className="" />
                     {article.artSource}
                   </li>
-                  <ButtonSaveArt articleId={article.id}/>
                 </ul>
               </div>
             </div>

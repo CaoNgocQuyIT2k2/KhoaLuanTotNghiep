@@ -16,7 +16,7 @@ import TagArticle from './elements/TagArticle';
 const PostFormatStandard = ({ articleId, allData }) => {
   const [postData, setPostData] = useState(null);
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.user.user?.token); // Lấy token từ state.user.user.token
+  const token = useSelector((state) => state.user?.token); // Lấy token từ state.user.user.token
   console.log("token", token);
 
   useEffect(() => {

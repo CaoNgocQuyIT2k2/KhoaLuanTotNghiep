@@ -86,7 +86,6 @@ const PostLayoutOne = () => {
                                     <i className="" />
                                     {post.artSource}
                                 </li>
-                                <ButtonSaveArt articleId={post.id}/>
                             </ul>
                         </div>
                     </div>

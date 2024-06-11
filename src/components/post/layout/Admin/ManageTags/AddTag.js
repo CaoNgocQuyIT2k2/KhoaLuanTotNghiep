@@ -7,8 +7,8 @@ const AddTag = ({ articleName, fetchTags }) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [tagName, setTagName] = useState('');
-  const user = useSelector((state) => state.user.user.user);
-  const token = useSelector((state) => state.user.user.token);
+  const user = useSelector((state) => state.user?.user);
+  const token = useSelector((state) => state.user?.token);
 
   useEffect(() => {
     // Set the tagName when the articleName changes
@@ -52,7 +52,7 @@ const AddTag = ({ articleName, fetchTags }) => {
   return (
     <>
       <Button type="primary" onClick={showModalHandler} className='bg-green-500 mb-3 text-white'>
-        Add 
+        Thêm 
       </Button>
       <AntModal
         visible={open}
