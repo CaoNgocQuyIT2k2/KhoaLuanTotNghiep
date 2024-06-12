@@ -1,4 +1,4 @@
-// pages/api/vote-star.js
+// pages/api/VoteStar.js
 import axios from 'axios';
 
 export default async function handler(req, res) {
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       }
 
       const response = await axios.post(
-        'http://localhost:8080/api/v1/vote-star/vote',
+        'http://localhost:8080/api/v1/VoteStar/vote',
         { article, star },
         { headers: { Authorization: token } }
       );

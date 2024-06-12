@@ -7,6 +7,9 @@ import MenuData from "../../data/menu/HeaderMenu.json";
 const HeaderFour = () => {
     // Main Menu Toggle 
 	var menuRef = useRef();
+	useEffect(() => {
+		toggleDropdownMenu();
+	}, []);
 
 	const toggleDropdownMenu = () => {
 		const dropdownSelect = menuRef.current.childNodes;
@@ -41,10 +44,7 @@ const HeaderFour = () => {
 		});
 	}
 	
-	useEffect(() => {
-		toggleDropdownMenu();
-	}, []);
-
+	
     // Header Search 
 
 	const [searchshow, setSearchShow] = useState(false);

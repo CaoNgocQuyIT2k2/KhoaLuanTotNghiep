@@ -3,6 +3,7 @@ import { slugify } from "../../../utils";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // Import axios
 import ButtonSaveArt from "../post-format/elements/ButtonSaveArt";
+import Image from "next/image";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
@@ -32,14 +33,14 @@ const PostLayoutNewest = ({ postSizeMd, postBgDark, postData }) => {
             <Link href={`/${article.id}`}>
               <a className="align-self-center">
                 {article.avatar ? (
-                  <img
+                  <Image
                     src={article.avatar} // Sử dụng đường dẫn ảnh từ dữ liệu article
                     alt={article.title}
                     width={postSizeMd === true ? 285 : 150}
                     height={postSizeMd === true ? 285 : 150}
                   />
                 ) : (
-                  <img
+                  <Image
                     style={{ border: '1px solid black' }}
                     src={defaultAvatarSrc}
                     alt={article.title}

@@ -5,7 +5,7 @@ import BackToTopButton from '../components/post/post-format/elements/BackToTopBu
 import HeaderOne from '../components/header/HeaderOne';
 import EditPassword from '../components/post/layout/EditPassword';
 
-function articleSaved() {
+function EditPassword() {
     return (
         <>
         <HeaderOne />
@@ -34,4 +34,4 @@ function articleSaved() {
     );
 }
 
-export default articleSaved;
+export default EditPassword;

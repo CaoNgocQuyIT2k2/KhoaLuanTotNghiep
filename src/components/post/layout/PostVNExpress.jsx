@@ -12,7 +12,7 @@ const PostVNExpress = ({ pClass, videoIcon, postSizeMd }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/latesVNExpress");
+        const response = await axios.get("/api/LatesVNExpress");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -29,14 +29,14 @@ const PostVNExpress = ({ pClass, videoIcon, postSizeMd }) => {
           <Link href={`/${article.id}`}>
             <a className="align-self-center">
               {article.avatar ? (
-                <img
+                <Image
                   src={article.avatar}
                   alt={article.title}
                   width={100}
                   height={100}
                 />
               ) : (
-                <img
+                <Image
                   style={{ border: '1px solid black' }}
                   src={defaultAvatarSrc}
                   alt="Default Avatar"

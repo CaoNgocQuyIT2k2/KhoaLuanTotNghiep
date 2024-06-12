@@ -30,14 +30,14 @@ const PostLatestPer4Cat = ({ pClass, videoIcon, postSizeMd }) => {
           <Link href={`/${article.id}`}>
             <a className="align-self-center">
               {article.avatar ? (
-                <img
+                <Image
                   src={article.avatar}
                   alt={article.title}
                   width={100}
                   height={100}
                 />
               ) : (
-                <img
+                <Image
                   style={{ border: '1px solid black' }}
                   src={defaultAvatarSrc}
                   alt="Default Avatar"

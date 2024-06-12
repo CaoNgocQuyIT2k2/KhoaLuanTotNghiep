@@ -1,4 +1,4 @@
-// pages/api/vote-star.js
+// pages/api/VoteStar.js
 import axios from 'axios';
 
 export default async function ReactArticle(req, res) {

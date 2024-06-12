@@ -9,6 +9,10 @@ const HeaderTwo = () => {
  
 // Main Menu Toggle 
 var menuRef = useRef();
+useEffect(() => {
+  toggleDropdownMenu();
+}, []);
+
 
 const toggleDropdownMenu = () => {
   const dropdownSelect = menuRef.current.childNodes;
@@ -43,9 +47,6 @@ const toggleDropdownMenu = () => {
   });
 }
 
-useEffect(() => {
-  toggleDropdownMenu();
-}, []);
 
   // Offcanvas Menu
 

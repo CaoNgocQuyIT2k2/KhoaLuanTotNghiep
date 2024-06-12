@@ -12,9 +12,13 @@ export default function DataCategory() {
   const [detail, setDetail] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
+  useEffect(() => {
+    fetchCategories();
+  }, [userId]);
+  
   const fetchCategories = async () => {
     try {
-      const response = await axios.get(`/api/getAllCategories`);
+      const response = await axios.get(`/api/GetAllCategories`);
       const categories = response.data || [];
       setDetail(categories);
     } catch (error) {
@@ -22,9 +26,7 @@ export default function DataCategory() {
     }
   };
 
-  useEffect(() => {
-    fetchCategories();
-  }, [userId]);
+
 
   const showModal = (category) => {
     setSelectedCategoryId(category.id);

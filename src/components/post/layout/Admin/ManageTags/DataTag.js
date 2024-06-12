@@ -14,9 +14,13 @@ export default function DataTag() {
   const [detail, setDetail] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
+  useEffect(() => {
+    fetchTags();
+  }, [userId])
+
   const fetchTags = async () => {
     try {
-      const response = await axios.get(`/api/getAllTag`);
+      const response = await axios.get(`/api/GetAllTag`);
       const tags = response.data || [];
       console.log("🚀 ~ response.data:", response.data);
       setDetail(tags);
@@ -24,10 +28,7 @@ export default function DataTag() {
       console.error("Error fetching article detail:", error);
     }
   };
-
-  useEffect(() => {
-    fetchTags();
-  }, [userId]);
+;
 
   const showModal = (tags) => {
     setSelectedCategoryId(tags.id);

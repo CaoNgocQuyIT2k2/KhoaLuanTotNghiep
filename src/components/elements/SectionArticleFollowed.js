@@ -8,10 +8,13 @@ import SettingsPanelFollowFoot from './SettingsPanelFollowFoot';
 const SectionArticleFollowed = ({ refresh,onToggleSectionList }) => {
     const [articles, setArticles] = useState([]);
     const token = useSelector((state) => state.user?.token);
-
+    useEffect(() => {
+        fetchArticles();
+    }, [refresh]);
+    
     const fetchArticles = async () => {
         try {
-            const response = await axios.get('/api/getListFollowArticle', 
+            const response = await axios.get('/api/GetListFollowArticle', 
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setArticles(response.data);
@@ -20,9 +23,7 @@ const SectionArticleFollowed = ({ refresh,onToggleSectionList }) => {
         }
     };
 
-    useEffect(() => {
-        fetchArticles();
-    }, [refresh]);
+ 
     return (
 <>
 <div className="y7idnc0MSa__siU3g_I3">

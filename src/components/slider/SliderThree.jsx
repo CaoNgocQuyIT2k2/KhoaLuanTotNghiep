@@ -3,14 +3,6 @@ import React, { useEffect, useRef } from "react";
 import { slugify } from "../../utils";
 
 const SliderThree = ({ postData }) => {
-  const postContainerRef = useRef();
-
-  const ClickScrollDown = () => {
-    postContainerRef.current.scrollTop += 200;
-  };
-  const ClickScrollUp = () => {
-    postContainerRef.current.scrollTop -= 200;
-  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -22,6 +14,17 @@ const SliderThree = ({ postData }) => {
       }
     }, 100);
   }, []);
+  
+  const postContainerRef = useRef();
+
+  const ClickScrollDown = () => {
+    postContainerRef.current.scrollTop += 200;
+  };
+  const ClickScrollUp = () => {
+    postContainerRef.current.scrollTop -= 200;
+  };
+
+  
 
   const firstPost = postData[0];
 

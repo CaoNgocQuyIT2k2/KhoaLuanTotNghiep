@@ -14,9 +14,13 @@ export default function DataUser() {
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   console.log("🚀 ~ userId111:", userId);
 
+  useEffect(() => {
+    fetchListUser();
+  }, [userId, fetchListUser]);
+
   const fetchListUser = useCallback(async () => {
     try {
-      const response = await axios.get(`/api/getAllUser`, {
+      const response = await axios.get(`/api/GetAllUser`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const users = response.data || [];
@@ -27,9 +31,7 @@ export default function DataUser() {
     }
   }, [token]);
 
-  useEffect(() => {
-    fetchListUser();
-  }, [userId, fetchListUser]);
+
 
   const showModal = (users) => {
     setSelectedCategoryId(users.id);

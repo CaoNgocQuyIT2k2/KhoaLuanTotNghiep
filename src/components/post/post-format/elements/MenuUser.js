@@ -27,7 +27,7 @@ export default function MenuUser() {
 
   const handleSavedNewsClick = () => {
     handleClose();
-    router.push('/article/articleSaved');
+    router.push('/article/ArticleSaved');
   };
 
   const handleYourFeedClick = () => {
@@ -41,7 +41,7 @@ export default function MenuUser() {
 
   const handlePaswordClick = () => {
     handleClose();
-    router.push('/editPassword');
+    router.push('/EditPassword');
   };
 
   const handleLogoutClick = async () => {

@@ -11,7 +11,7 @@ const FooterOne = () => {
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const response = await axios.get('/api/getParentCategories');
+        const response = await axios.get('/api/GetParentCategories');
         const parentCategories = response.data;
         // Lấy 7 danh mục cha đầu tiên
         const firstSevenCategories = parentCategories.slice(0, 6);
@@ -19,7 +19,7 @@ const FooterOne = () => {
 
         // Lấy danh sách child categories cho tất cả các parent categories
         firstSevenCategories.forEach(category => {
-          getChildCategories(category.id);
+          GetChildCategories(category.id);
         });
       } catch (error) {
         console.error("Error fetching parent categories:", error);
@@ -29,10 +29,10 @@ const FooterOne = () => {
     getCategories();
   }, []);
 
-  const getChildCategories = async (categoryId) => {
+  const GetChildCategories = async (categoryId) => {
     try {
       console.log('Fetching child categories:', categoryId);
-      const response = await axios.get('/api/getChildCategories', {
+      const response = await axios.get('/api/GetChildCategories', {
         params: { categoryId }
       });
       const childCategories = response.data;

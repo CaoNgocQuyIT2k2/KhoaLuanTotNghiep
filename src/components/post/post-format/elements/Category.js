@@ -6,7 +6,7 @@ const Category = ({ setSelectedCategory }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/getAllCategories')
+    axios.get('/api/GetAllCategories')
       .then(response => {
         setCategories(response.data);
       })

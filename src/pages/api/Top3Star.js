@@ -1,4 +1,4 @@
-// pages/api/top6ReactArticle.js
+// pages/api/Top6ReactArticle.js
 import axios from 'axios';
 
 export default async function fetchTop3Star(req, res) {

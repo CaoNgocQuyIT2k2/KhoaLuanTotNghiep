@@ -1,7 +1,7 @@
-// src/pages/api/getArtDetail.js
+// src/pages/api/GetArtDetail.js
 import axios from 'axios';
 
-export default async function getFollowChildCat(req, res) {
+export default async function GetFollowChildCat(req, res) {
   // Set up CORS headers
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');

@@ -3,6 +3,7 @@ import { slugify } from "../../../utils";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ButtonSaveArt from "../post-format/elements/ButtonSaveArt";
+import Image from "next/image";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
@@ -19,7 +20,7 @@ const PostRanArtByCat = ({ pClass, videoIcon, dataPost }) => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/getRRandomArtSameCat?categoryId=${category_id}`);
+        const response = await axios.get(`/api/GetRRandomArtSameCat?categoryId=${category_id}`);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -36,14 +37,14 @@ const PostRanArtByCat = ({ pClass, videoIcon, dataPost }) => {
           <Link href={`/${article.id}`}>
             <a className="align-self-center">
               {article.avatar ? (
-                <img
+                <Image
                   src={article.avatar}
                   alt={article.title}
                   width={100}
                   height={100}
                 />
               ) : (
-                <img
+                <Image
                   style={{ border: '1px solid black' }}
                   src={defaultAvatarSrc}
                   alt="Default Avatar"

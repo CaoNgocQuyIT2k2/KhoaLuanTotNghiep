@@ -1,4 +1,4 @@
-// src/pages/api/getParentCategories.js
+// src/pages/api/GetParentCategories.js
 import axios from 'axios';
 
 export default async function fetchParentCategories(req, res) {

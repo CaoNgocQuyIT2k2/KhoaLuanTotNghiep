@@ -15,7 +15,7 @@ const AllTag = ({ selectedTags, setSelectedTags }) => {
 
   const fetchTags = async () => {
     try {
-      const response = await axios.get('/api/getAllTag');
+      const response = await axios.get('/api/GetAllTag');
       setTags(response.data);
     } catch (error) {
       console.error('Lỗi khi lấy danh sách thẻ:', error);

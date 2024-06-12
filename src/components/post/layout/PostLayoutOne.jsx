@@ -31,14 +31,14 @@ const PostLayoutOne = () => {
                         <Link href={`/${post.id}`}>
                             <a>
                                 {post.avatar ? (
-                                    <img
+                                    <Image
                                         src={post.avatar}
                                         alt={post.title}
                                         width={540}
                                         height={540}
                                     />
                                 ) : (
-                                    <img
+                                    <Image
                                         src={defaultAvatarSrc}
                                         alt={"Default Avatar"}
                                         width={540}

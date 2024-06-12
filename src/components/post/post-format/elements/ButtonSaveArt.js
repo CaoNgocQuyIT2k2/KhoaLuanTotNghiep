@@ -10,7 +10,7 @@ const ButtonSaveArt = ({ articleId,onRemoveSaveArticle  }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/getSavedArticle?articleId=${articleId}`, {
+        const response = await axios.get(`/api/GetSavedArticle?articleId=${articleId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
   

@@ -1,7 +1,7 @@
-// src/pages/api/getChildCategories.js
+// src/pages/api/GetChildCategories.js
 import axios from 'axios';
 
-export default async function getListArticleSaved(req, res) {
+export default async function GetListArticleSaved(req, res) {
   // Set up CORS headers
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');

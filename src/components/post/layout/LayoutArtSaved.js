@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
+
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import ButtonSaveArt from '../../components/post/post-format/elements/ButtonSaveArt';
-import HeaderOne from '../../components/header/HeaderOne';
-import FooterOne from '../../components/footer/FooterOne';
-import BackToTopButton from '../../components/post/post-format/elements/BackToTopButton';
-import AccountSidebar from '../../../elements/AccountSidebar';
-import Image from 'next/image';
 
-function SavedArticle() {
+import { format } from 'date-fns';
+import Image from 'next/image';
+import HeaderOne from '../../header/HeaderOne';
+import AccountSidebar from '../../elements/AccountSidebar';
+import ButtonSaveArt from '../post-format/elements/ButtonSaveArt';
+import FooterOne from '../../footer/FooterOne';
+import BackToTopButton from '../post-format/elements/BackToTopButton';
+
+function LayoutArtSaved() {
 
     const [articles, setSavedArticles] = useState([]);
     const [reload, setReload] = useState(false); // State để cập nhật lại giao diện
@@ -39,9 +43,7 @@ function SavedArticle() {
         <HeaderOne />
         <div className="body container">
             <div className="sidebar" data-module="account-sidebar">
-                <div className="_IOX7b9h3ehmfwCtcJlL" style={{
-                    paddingTop: "25px",
-                }}>
+                <div className="_IOX7b9h3ehmfwCtcJlL">
                     <ul className="U2a29pIZKHe_zUk0rnP4">
                         <AccountSidebar />
                     </ul>
@@ -65,8 +67,8 @@ function SavedArticle() {
                                         </h3>
                                         <div className="Zpvur19KRg4zrXo69tbh">
                                             <div className="NzI0g5AmrlM03V_rgU5A">
-                                                <a className="u5YqKYE6VDc62PKWyGYA OC55iwpw0AojSkcTSDyH"  href={`/category/${article.article.category.id}`}>{article.article.category.name}</a>-
-                                                <span>{article.article.create_date}</span>
+                                                <a className="u5YqKYE6VDc62PKWyGYA OC55iwpw0AojSkcTSDyH" href={`/category/${article.article.category.id}`}>{article.article.category.name}</a>-
+                                                <span>{format(new Date(article.article.create_date), 'dd-MM-yyyy')}</span>
                                             </div>
                                             <div className="kVunuOJJvyAdEERuRnUL">
                                                 
@@ -94,4 +96,4 @@ function SavedArticle() {
     );
 }
 
-export default SavedArticle;
+export default LayoutArtSaved;

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Pagination } from 'antd';
 import { useSelector } from "react-redux";
+import Image from "next/image";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png";
 
@@ -17,7 +18,7 @@ const PostLayoutArtSaved = ({ postSizeMd, postBgDark, categoryId }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`/api/getListArticleSaved`,
+                const response = await axios.get(`/api/GetListArticleSaved`,
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
                 setData(response.data);
@@ -41,14 +42,14 @@ const PostLayoutArtSaved = ({ postSizeMd, postBgDark, categoryId }) => {
                         <Link href={`/${article.article.id}`}>
                             <a className="align-self-center">
                                 {article.article.avatar ? (
-                                    <img
+                                    <Image
                                         src={article.article.avatar}
                                         alt={article.article.title}
                                         width={postSizeMd ? 285 : 150}
                                         height={postSizeMd ? 285 : 150}
                                     />
                                 ) : (
-                                    <img
+                                    <Image
                                         style={{ border: '1px solid black' }}
                                         src={defaultAvatarSrc}
                                         alt="Default Avatar"

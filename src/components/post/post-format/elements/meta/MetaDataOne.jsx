@@ -56,7 +56,7 @@ const MetaDataOne = ({ metaData }) => {
           </div>
           <div className="col-lg-6">
             <div className="post-main-thumbnail">
-              <img
+              <Image
                 src={metaData.avatar}
                 alt={metaData.title}
                 width={953} // Update width based on API data

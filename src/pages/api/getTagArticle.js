@@ -1,4 +1,4 @@
-// src/pages/api/getArtDetail.js
+// src/pages/api/GetArtDetail.js
 import axios from 'axios';
 
 export default async function fetchTagArticle(req, res) {

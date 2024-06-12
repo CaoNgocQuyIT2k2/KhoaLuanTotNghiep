@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default async function getAverageStar(req, res) {
+export default async function GetAverageStar(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Authorization');
@@ -18,7 +18,7 @@ export default async function getAverageStar(req, res) {
   }
 
   try {
-    const response = await axios.get(`http://localhost:8080/api/v1/vote-star/get-average-star?articleId=${articleId}`);
+    const response = await axios.get(`http://localhost:8080/api/v1/VoteStar/get-average-star?articleId=${articleId}`);
 
     if (response.status === 200) {
       res.status(200).json({ averageStar: response.data });

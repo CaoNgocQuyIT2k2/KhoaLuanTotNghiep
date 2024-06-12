@@ -7,6 +7,12 @@ const SocialShareSide = ({ articleId }) => {
   const [windowPath, setwindowPath] = useState(null);
   const token = useSelector((state) => state.user?.token); 
 
+
+  useEffect(() => {
+    setwindowPath(window.location.href);
+    fetchData();
+  }, [articleId]);
+  
   const [reactData, setReactData] = useState({
     LIKE: 0,
     HEART: 0,
@@ -14,15 +20,12 @@ const SocialShareSide = ({ articleId }) => {
     STAR: 0
   });
 
-  useEffect(() => {
-    setwindowPath(window.location.href);
-    fetchData();
-  }, [articleId]);
+
 
   const fetchData = async () => {
     try {
       const types = ['LIKE', 'HEART', 'CLAP', 'STAR'];
-      const promises = types.map(type => axios.get(`/api/getReactByArticle?articleId=${articleId}&typeReact=${type}`));
+      const promises = types.map(type => axios.get(`/api/GetReactByArticle?articleId=${articleId}&typeReact=${type}`));
       const responses = await Promise.all(promises);
 
       // Trích xuất giá trị số lượng từ dữ liệu trả về của mỗi response

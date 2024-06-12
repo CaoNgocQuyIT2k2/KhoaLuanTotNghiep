@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { slugify } from '../../../utils';
 import { Pagination } from 'antd';
 import ButtonSaveArt from '../post-format/elements/ButtonSaveArt';
+import Image from 'next/image';
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
@@ -25,14 +26,14 @@ const PostLayoutArtBySearch = ({ searchData, postSizeMd, postBgDark }) => {
             <Link href={`/${article.id}`}>
               <a className="align-self-center">
                 {article.avatar ? (
-                  <img
+                  <Image
                     src={article.avatar}
                     alt={article.title}
                     width={postSizeMd ? 285 : 150}
                     height={postSizeMd ? 285 : 150}
                   />
                 ) : (
-                  <img
+                  <Image
                     style={{ border: '1px solid black' }}
                     src={defaultAvatarSrc}
                     alt="Default Avatar"

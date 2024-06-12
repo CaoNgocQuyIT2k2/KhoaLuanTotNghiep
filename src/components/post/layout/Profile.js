@@ -21,7 +21,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("/api/getInfoMyself", {
+                const response = await axios.get("/api/GetInfoMyself", {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setUser(response.data);

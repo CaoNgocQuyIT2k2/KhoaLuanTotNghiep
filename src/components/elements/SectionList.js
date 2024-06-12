@@ -10,13 +10,12 @@ const SectionList = (props) => {
     const [followedChildCategories, setFollowedChildCategories] = useState([]);
     const [searchText, setSearchText] = useState('');
     const token = useSelector((state) => state.user?.token);
-console.log("followedChildCategories",followedChildCategories);
     useEffect(() => {
         const fetchMenuData = async () => {
             try {
-                const menuResponse = await axios.get('/api/getMenuData');
+                const menuResponse = await axios.get('/api/GetMenuData');
                 const menuData = menuResponse.data;
-                const parentCategoriesResponse = await axios.get('/api/getFollowParentCat', { headers: { Authorization: `Bearer ${token}` } });
+                const parentCategoriesResponse = await axios.get('/api/GetFollowParentCat', { headers: { Authorization: `Bearer ${token}` } });
                 const parentCategories = parentCategoriesResponse.data;
 
                 const updatedMenuData = menuData.map(menuItem => {
@@ -35,7 +34,7 @@ console.log("followedChildCategories",followedChildCategories);
 
                 for (let parentCategory of parentCategories) {
                     console.log("arentCategory.id",parentCategory.id);
-                    const childCategoriesResponse = await axios.get(`/api/getFollowChildCat?categoryId=${parentCategory.id}`, {
+                    const childCategoriesResponse = await axios.get(`/api/GetFollowChildCat?categoryId=${parentCategory.id}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     setFollowedChildCategories(prev => [...prev, ...childCategoriesResponse.data]);
@@ -70,16 +69,16 @@ console.log("followedChildCategories",followedChildCategories);
                 { category: { id: categoryId } },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
-            const allParent = await axios.get('/api/getAllParent');
+            const allParent = await axios.get('/api/GetAllParent');
             
             if (response.status === 200) {
-                const parentCategoriesResponse = await axios.get('/api/getFollowParentCat', { headers: { Authorization: `Bearer ${token}` } });
+                const parentCategoriesResponse = await axios.get('/api/GetFollowParentCat', { headers: { Authorization: `Bearer ${token}` } });
                 const parentCategories = parentCategoriesResponse.data;
                 setFollowedParentCategories(parentCategories);
 
                 const allChildCategories = [];
                 for (let parentCategory of parentCategories) {
-                    const childCategoriesResponse = await axios.get(`/api/getFollowChildCat?categoryId=${parentCategory.id}`, {
+                    const childCategoriesResponse = await axios.get(`/api/GetFollowChildCat?categoryId=${parentCategory.id}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     allChildCategories.push(...childCategoriesResponse.data);
@@ -106,7 +105,7 @@ console.log("followedChildCategories",followedChildCategories);
             );
 
             if (response.status === 200) {
-                const parentCategoriesResponse = await axios.get('/api/getFollowParentCat', { headers: { Authorization: `Bearer ${token}` } });
+                const parentCategoriesResponse = await axios.get('/api/GetFollowParentCat', { headers: { Authorization: `Bearer ${token}` } });
                 const parentCategories = parentCategoriesResponse.data;
                 setFollowedParentCategories(parentCategories);
 
@@ -117,7 +116,7 @@ console.log("followedChildCategories",followedChildCategories);
 
                 const followedChildCategories = [];
                 for (let parentCategory of parentCategories) {
-                    const childCategoriesResponse = await axios.get(`/api/getFollowChildCat?categoryId=${parentCategory.id}`, {
+                    const childCategoriesResponse = await axios.get(`/api/GetFollowChildCat?categoryId=${parentCategory.id}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     followedChildCategories.push(...childCategoriesResponse.data);
@@ -220,7 +219,7 @@ console.log("followedChildCategories",followedChildCategories);
                 <div className="Ccoa5Slfcman_7DtENdO">
                     <a href="#" onClick={props.handleBackToDashboard}>Bảng tin của bạn</a>
                     <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="m7 5.36 2.174 2.173a.662.662 0 0 1 0 .934L7 10.64" stroke="#888" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="m7 5.36 2.174 2.173a.662.662 0 0 1 0 .934L7 10.64" stroke="#888" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"></path>
                     </svg>
                     <a href="#">Thiết lập</a>
                 </div>

@@ -17,9 +17,9 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
     useEffect(() => {
         const fetchMenuData = async () => {
             try {
-                const menuResponse = await axios.get('/api/getMenuData');
+                const menuResponse = await axios.get('/api/GetMenuData');
                 const menuData = menuResponse.data;
-                const parentCategoriesResponse = await axios.get('/api/getFollowParentCat', { headers: { Authorization: `Bearer ${token}` } });
+                const parentCategoriesResponse = await axios.get('/api/GetFollowParentCat', { headers: { Authorization: `Bearer ${token}` } });
                 const parentCategories = parentCategoriesResponse.data;
 
                 const updatedMenuData = menuData.map(menuItem => {
@@ -38,7 +38,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
 
                 const allChildCategories = [];
                 for (let parentCategory of parentCategories) {
-                    const childCategoriesResponse = await axios.get(`/api/getFollowChildCat?categoryId=${parentCategory.id}`, {
+                    const childCategoriesResponse = await axios.get(`/api/GetFollowChildCat?categoryId=${parentCategory.id}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     allChildCategories.push(...childCategoriesResponse.data);
@@ -58,6 +58,32 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
         };
 
         fetchMenuData();
+    }, [token]);
+
+    useEffect(() => {
+        axios.get('/api/GetAllCategories')
+            .then(response => {
+                const allCategories = response.data;
+                const childCategories = allCategories.filter(category => category.parent !== null);
+                const randomSixCategories = getRandomItems(childCategories, 5);
+                setRandomCategories(randomSixCategories);
+
+                // Fetch and set followed status for random categories
+                randomSixCategories.forEach(async (category) => {
+                    const parentCategoryId = category.parent.id;
+                    const childCategoriesResponse = await axios.get(`/api/GetFollowChildCat?categoryId=${parentCategoryId}`, {
+                        headers: { Authorization: `Bearer ${token}` }
+                    });
+                    const followedChildCategories = childCategoriesResponse.data;
+                    const followedCategoryIds = followedChildCategories.map(cat => cat.id);
+                    if (followedCategoryIds.includes(category.id)) {
+                        setFollowedCategories(prevState => [...prevState, category.id]);
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching random categories:', error);
+            });
     }, [token]);
 
     const toggleExpand = (section) => {
@@ -114,31 +140,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
         }
     };
 
-    useEffect(() => {
-        axios.get('/api/getAllCategories')
-            .then(response => {
-                const allCategories = response.data;
-                const childCategories = allCategories.filter(category => category.parent !== null);
-                const randomSixCategories = getRandomItems(childCategories, 5);
-                setRandomCategories(randomSixCategories);
-
-                // Fetch and set followed status for random categories
-                randomSixCategories.forEach(async (category) => {
-                    const parentCategoryId = category.parent.id;
-                    const childCategoriesResponse = await axios.get(`/api/getFollowChildCat?categoryId=${parentCategoryId}`, {
-                        headers: { Authorization: `Bearer ${token}` }
-                    });
-                    const followedChildCategories = childCategoriesResponse.data;
-                    const followedCategoryIds = followedChildCategories.map(cat => cat.id);
-                    if (followedCategoryIds.includes(category.id)) {
-                        setFollowedCategories(prevState => [...prevState, category.id]);
-                    }
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching random categories:', error);
-            });
-    }, [token]);
+  
 
     const getRandomItems = (array, count) => {
         const shuffled = array.sort(() => 0.5 - Math.random());

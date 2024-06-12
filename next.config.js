@@ -23,7 +23,12 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ['i1-vnexpress.vnecdn.net'],
+    domains: [
+      'i1-vnexpress.vnecdn.net',
+      'res.cloudinary.com',
+      'cdnphoto.dantri.com.vn',
+      'nhandaoonline.vn'
+    ],
   },
   async rewrites() {
     return [

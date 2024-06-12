@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { message } from "antd";
 import Link from "next/link";
+import Image from "next/image";
 
 const RegisterScreen = () => {
   const [formData, setFormData] = useState({
@@ -42,7 +43,7 @@ const RegisterScreen = () => {
 
     try {
       const { data } = await axios.post(
-        "/api/sign-up", // Gửi request đến API Route bạn vừa tạo
+        "/api/SignUp", // Gửi request đến API Route bạn vừa tạo
         formData
       );
       message.success("Đăng ký thành công");
@@ -66,81 +67,84 @@ const RegisterScreen = () => {
               {error && <div className="error_message">{error}</div>}
               <div className="form-group">
                 <label htmlFor="firstname"><i className="zmdi zmdi-account material-icons-name"></i></label>
-                <input 
-                  type="text" 
-                  name="firstname" 
-                  id="firstname" 
-                  placeholder="Your First Name" 
+                <input
+                  type="text"
+                  name="firstname"
+                  id="firstname"
+                  placeholder="Your First Name"
                   value={formData.firstname}
                   onChange={handleInputChange}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="lastname"><i className="zmdi zmdi-account material-icons-name"></i></label>
-                <input 
-                  type="text" 
-                  name="lastname" 
-                  id="lastname" 
-                  placeholder="Your Last Name" 
+                <input
+                  type="text"
+                  name="lastname"
+                  id="lastname"
+                  placeholder="Your Last Name"
                   value={formData.lastname}
                   onChange={handleInputChange}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="email"><i className="zmdi zmdi-email"></i></label>
-                <input 
-                  type="email" 
-                  name="email" 
-                  id="email" 
-                  placeholder="Your Email" 
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Your Email"
                   value={formData.email}
                   onChange={handleInputChange}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="password"><i className="zmdi zmdi-lock"></i></label>
-                <input 
-                  type="password" 
-                  name="password" 
-                  id="password" 
-                  placeholder="Password" 
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
                   value={formData.password}
                   onChange={handleInputChange}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="confirmpassword"><i className="zmdi zmdi-lock"></i></label>
-                <input 
-                  type="password" 
-                  id="confirmpassword" 
-                  placeholder="Confirm Password" 
+                <input
+                  type="password"
+                  id="confirmpassword"
+                  placeholder="Confirm Password"
                   value={confirmpassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="dob"><i className="zmdi zmdi-calendar"></i></label>
-                <input 
-                  type="date" 
-                  name="dob" 
-                  id="dob" 
-                  placeholder="Your Date of Birth" 
+                <input
+                  type="date"
+                  name="dob"
+                  id="dob"
+                  placeholder="Your Date of Birth"
                   value={formData.dob}
                   onChange={handleInputChange}
                 />
               </div>
               <div className="form-group">
-              <Link className="createAnAcc" href="/login">
-              I am already member
-            </Link>
+                <Link className="createAnAcc" href="/login">
+                  I am already member
+                </Link>
               </div>
               <div className="form-group form-button">
-                <input type="submit" name="signup" id="signup" className="form-submit" value="Register"/>
+                <input type="submit" name="signup" id="signup" className="form-submit" value="Register" />
               </div>
             </form>
           </div>
           <div className="signup-image">
-            <figure><img src="/images/signup-image.jpg" alt="sign up image" /></figure>
+            <figure>
+              <Image src="/images/signup-image.jpg" alt="sign in image" width={500} height={500} />
+            </figure>
+
           </div>
         </div>
       </div>

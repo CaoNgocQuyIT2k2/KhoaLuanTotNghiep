@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import AccountSidebar from '../components/elements/AccountSidebar';
-import SettingsPanelFollow from '../components/elements/SettingsPanelFollow';
-import SectionList from '../components/elements/SectionList';
-import SectionArticleFollowed from '../components/elements/SectionArticleFollowed';
+import AccountSidebar from '../../elements/AccountSidebar';
+import SectionList from '../../elements/SectionList';
+import SectionArticleFollowed from '../../elements/SectionArticleFollowed';
+import SettingsPanelFollow from '../../elements/SettingsPanelFollow';
 
-const Section = () => {
+
+const LayoutYourFeed = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [showSectionList, setShowSectionList] = useState(false);
     const [showSettingsPanel, setShowSettingsPanel] = useState(true);
@@ -46,4 +47,4 @@ const Section = () => {
     );
 };
 
-export default Section;
+export default LayoutYourFeed;

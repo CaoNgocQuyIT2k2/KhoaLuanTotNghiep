@@ -5,6 +5,11 @@ import Slider from "react-slick";
 import { slugify } from "../../utils";
 
 const SliderTwo = ({ slidePost }) => {
+
+  useEffect(() => {
+    setshape('shape-loaded');
+  }, []);
+  
     function SlickNextArrow(props) {
     const { className, onClick } = props;
     return (
@@ -66,9 +71,7 @@ const SliderTwo = ({ slidePost }) => {
 // Shape Class Added
 const [shape, setshape] = useState('');
 
-useEffect(() => {
-  setshape('shape-loaded');
-}, []);
+
 
 
   return (

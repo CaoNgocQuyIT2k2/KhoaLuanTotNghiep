@@ -7,7 +7,11 @@ import OffcanvasMenu from './OffcanvasMenu';
 const HeaderFive = () => {
     // Main Menu Toggle 
 	var menuRef = useRef();
-
+	
+	useEffect(() => {
+		toggleDropdownMenu();
+	}, []);
+	
 	const toggleDropdownMenu = () => {
 		const dropdownSelect = menuRef.current.childNodes;
 		let dropdownList = [];
@@ -40,10 +44,7 @@ const HeaderFive = () => {
 			})
 		});
 	}
-	
-	useEffect(() => {
-		toggleDropdownMenu();
-	}, []);
+
 
 	// Offcanvas Menu
 	const [show, setShow] = useState(false);

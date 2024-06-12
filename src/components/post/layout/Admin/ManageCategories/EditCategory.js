@@ -32,7 +32,7 @@ const EditCategory = ({ showModal, categoryId, tagName, parentName, parentId, fe
 
   const fetchParentCategories = async () => {
     try {
-      const response = await axios.get(`/api/getParentCategories`);
+      const response = await axios.get(`/api/GetParentCategories`);
       setParentCategories(response.data || []);
     } catch (error) {
       console.error("Error fetching parent categories:", error);

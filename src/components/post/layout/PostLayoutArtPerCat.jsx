@@ -3,6 +3,7 @@ import { slugify } from "../../../utils";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // Import axios
 import ButtonSaveArt from "../post-format/elements/ButtonSaveArt";
+import Image from "next/image";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
@@ -39,14 +40,14 @@ const PostLayoutArtPerCat = ({ postSizeMd = false, postBgDark = false }) => {
             <Link href={`/${article.id}`}>
               <a className="align-self-center">
                 {article.avatar ? (
-                  <img
+                  <Image
                     src={article.avatar}
                     alt={article.title}
                     width={postSizeMd ? 230 : 150}
                     height={postSizeMd ? 210 : 150}
                   />
                 ) : (
-                  <img
+                  <Image
                     style={{ border: '1px solid black' }}
                     src={defaultAvatarSrc}
                     alt="Default Avatar"

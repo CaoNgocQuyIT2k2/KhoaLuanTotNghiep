@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Pagination } from 'antd';
 import ButtonSaveArt from "../post-format/elements/ButtonSaveArt";
+import Image from "next/image";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png";
 
@@ -15,7 +16,7 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`/api/getArtByCat?categoryId=${categoryId}`);
+                const response = await axios.get(`/api/GetArtByCat?categoryId=${categoryId}`);
                 setData(response.data);
                 // Đặt trang hiện tại về 1 khi thay đổi danh mục
                 setCurrentPage(1);
@@ -39,14 +40,14 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
                         <Link href={`/${article.id}`}>
                             <a className="align-self-center">
                                 {article.avatar ? (
-                                    <img
+                                    <Image
                                         src={article.avatar}
                                         alt={article.title}
                                         width={postSizeMd ? 285 : 150}
                                         height={postSizeMd ? 285 : 150}
                                     />
                                 ) : (
-                                    <img
+                                    <Image
                                         style={{ border: '1px solid black' }}
                                         src={defaultAvatarSrc}
                                         alt="Default Avatar"

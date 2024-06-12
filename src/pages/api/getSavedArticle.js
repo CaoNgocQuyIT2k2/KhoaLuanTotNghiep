@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default async function getSavedArticle(req, res) {
+export default async function GetSavedArticle(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept');

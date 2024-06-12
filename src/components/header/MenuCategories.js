@@ -11,7 +11,7 @@ const MenuCategories = () => {
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const response = await axios.get('/api/getParentCategories');
+        const response = await axios.get('/api/GetParentCategories');
         const parentCategories = response.data;
         setCategories(parentCategories);
       } catch (error) {
@@ -25,7 +25,7 @@ const MenuCategories = () => {
   const handleMenuClick = async (categoryId) => {
     try {
       console.log('Fetching child categories:', categoryId);
-      const response = await axios.get('/api/getChildCategories', {
+      const response = await axios.get('/api/GetChildCategories', {
         params: { categoryId }
       });
       const childCategories = response.data;

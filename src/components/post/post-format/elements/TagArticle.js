@@ -9,7 +9,7 @@ const TagArticle = ({articleId}) => {
   useEffect(() => {
     const fetchTags = async () => {
       try {
-        const response = await axios.get(`/api/getTagArticle?article_id=${articleId}`);
+        const response = await axios.get(`/api/GetTagArticle?article_id=${articleId}`);
         setTags(response.data);
       } catch (error) {
         console.error('Error fetching tags:', error);

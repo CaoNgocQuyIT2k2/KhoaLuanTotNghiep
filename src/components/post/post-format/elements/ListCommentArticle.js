@@ -10,7 +10,7 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
   const [align, setAlign] = useState('center');
   const [comments, setComments] = useState([]);
   const userId = useSelector((state) => state.user?.user.id);
-  console.log("userId", userId);
+  
   useEffect(() => {
     if (articleId) {
       fetchCommentArticleDetail();
@@ -19,7 +19,7 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
 
   const fetchCommentArticleDetail = async () => {
     try {
-      const response = await axios.get(`/api/getCommentArticle?articleId=${articleId}`);
+      const response = await axios.get(`/api/GetCommentArticle?articleId=${articleId}`);
       setComments(response.data);
       setCommentPosted(false);
     } catch (error) {

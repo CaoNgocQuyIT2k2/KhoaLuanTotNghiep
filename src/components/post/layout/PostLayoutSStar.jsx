@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TopStarRating from "../post-format/elements/TopStarRating";
 import ButtonSaveArt from "../post-format/elements/ButtonSaveArt";
+import Image from "next/image";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
@@ -30,14 +31,14 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 					<Link href={`/${data.id}`}>
 						<a className={`d-block ${videoPost === true ? "h-100" : ""}`}>
 							{data.avatar ? (
-								<img
+								<Image
 									src={data.avatar} // Sử dụng đường dẫn ảnh từ dữ liệu data
 									alt={data.title}
 									width={postSizeLg ? 730 : 350}
 									height={postSizeLg ? 550 : 260}
 								/>
 							) : (
-								<img
+								<Image
 									style={{ border: '1px solid black' }}
 									src={defaultAvatarSrc}
 									alt={data.title}

@@ -11,7 +11,7 @@ const Breadcrumb = ({ aPage }) => {
     const fetchData = async () => {
       if (categoryId) {
         try {
-          const response = await axios.get(`/api/getCategoryById?categoryId=${categoryId}`); // Make request to API route
+          const response = await axios.get(`/api/GetCategoryById?categoryId=${categoryId}`); // Make request to API route
 
           setData(response.data);
         } catch (error) {
