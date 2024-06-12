@@ -26,9 +26,10 @@ const PostLayoutArtSaved = ({ postSizeMd, postBgDark, categoryId }) => {
                 console.error("Error fetching data:", error);
             }
         };
-
+    
         fetchData();
-    }, [categoryId]);
+    }, [categoryId, token]); // Thêm 'token' vào mảng phụ thuộc của useEffect
+    
     console.log("data", data);
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;

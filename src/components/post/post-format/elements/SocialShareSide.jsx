@@ -7,12 +7,11 @@ const SocialShareSide = ({ articleId }) => {
   const [windowPath, setwindowPath] = useState(null);
   const token = useSelector((state) => state.user?.token); 
 
-
   useEffect(() => {
     setwindowPath(window.location.href);
     fetchData();
-  }, [articleId]);
-  
+  }, [articleId, fetchData]); // Include fetchData in dependencies array
+
   const [reactData, setReactData] = useState({
     LIKE: 0,
     HEART: 0,
@@ -20,29 +19,25 @@ const SocialShareSide = ({ articleId }) => {
     STAR: 0
   });
 
-
-
   const fetchData = async () => {
     try {
       const types = ['LIKE', 'HEART', 'CLAP', 'STAR'];
       const promises = types.map(type => axios.get(`/api/GetReactByArticle?articleId=${articleId}&typeReact=${type}`));
       const responses = await Promise.all(promises);
 
-      // Trích xuất giá trị số lượng từ dữ liệu trả về của mỗi response
+      // Extract quantity values from each response's data
       const data = responses.reduce((acc, response, index) => {
         const type = types[index];
-        // Lấy giá trị số lượng từ response.data và gán cho acc[type]
-        acc[type] = response.data[type];
+        acc[type] = response.data[type]; // Get quantity value from response.data and assign it to acc[type]
         return acc;
       }, {});
 
-      // Cập nhật state reactData với dữ liệu số lượng đã trích xuất
+      // Update reactData state with the extracted quantity data
       setReactData(data);
     } catch (error) {
       console.error("Error fetching react data:", error);
     }
   };
-
 
   const handleReaction = async (typeReact) => {
     try {
@@ -55,16 +50,11 @@ const SocialShareSide = ({ articleId }) => {
       if (response.status === 200) {
         fetchData(); // Refresh data after successful vote
         console.log('Article saved successfully!');
-
       }
     } catch (error) {
       console.error("Error submitting reaction:", error);
     }
   };
-console.log("articleId",articleId);
-
-
-console.log("savedArticleId",articleId);
 
   return (
     <div className="post-details__SaveArt mt-2">

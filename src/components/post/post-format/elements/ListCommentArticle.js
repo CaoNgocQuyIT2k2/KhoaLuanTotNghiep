@@ -11,12 +11,6 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
   const [comments, setComments] = useState([]);
   const userId = useSelector((state) => state.user?.user.id);
   
-  useEffect(() => {
-    if (articleId) {
-      fetchCommentArticleDetail();
-    }
-  }, [articleId, commentPosted]);
-
   const fetchCommentArticleDetail = async () => {
     try {
       const response = await axios.get(`/api/GetCommentArticle?articleId=${articleId}`);
@@ -27,6 +21,11 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
     }
   };
 
+  useEffect(() => {
+    if (articleId) {
+      fetchCommentArticleDetail();
+    }
+  }, [articleId, commentPosted, fetchCommentArticleDetail]); // Include fetchCommentArticleDetail in dependencies array
 
   const handleUpdateComments = async (commentId, newComment) => {
     try {

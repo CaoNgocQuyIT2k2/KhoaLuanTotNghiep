@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const { Option } = Select;
 
-const EditCategory = ({ showModal, categoryId, tagName, parentName, parentId, fetchCategories }) => {
+const EditCategory = ({ showModal,categoryName, categoryId, parentName, parentId, fetchCategories }) => {
   const [loading, setLoading] = useState(false);
   const token = useSelector((state) => state.user?.token);
   const [open, setOpen] = useState(false);
@@ -17,14 +17,14 @@ const EditCategory = ({ showModal, categoryId, tagName, parentName, parentId, fe
   const [parentCategories, setParentCategories] = useState([]);
 
   const user = useSelector((state) => state.user?.user);
-
+console.log("categoryName",categoryName);
   useEffect(() => {
     setCategoryData({
-      name: tagName,
+      name: categoryName,
       parentId: parentId,
       parentName: parentName,
     });
-  }, [tagName, parentId, parentName]);
+  }, [categoryName, parentId, parentName]);
 
   useEffect(() => {
     fetchParentCategories();

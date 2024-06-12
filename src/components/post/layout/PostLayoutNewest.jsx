@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
-const PostLayoutNewest = ({ postSizeMd, postBgDark, postData }) => {
+const PostLayoutNewest = ({ postSizeMd, postBgDark }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,6 @@ const PostLayoutNewest = ({ postSizeMd, postBgDark, postData }) => {
       try {
         const response = await axios.get("/api/Top5Newest");
         setData(response.data);
-        postData = response.data; // Không cần gán postData bởi đã được truyền qua props
       } catch (error) {
         console.error("Error fetching data:", error);
       }

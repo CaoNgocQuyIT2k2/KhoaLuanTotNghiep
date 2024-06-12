@@ -30,8 +30,8 @@ export default function DataTag() {
   };
 ;
 
-  const showModal = (tags) => {
-    setSelectedCategoryId(tags.id);
+  const showModal = (tagId) => {
+    setSelectedCategoryId(tagId);
   };
 
   const columns = [

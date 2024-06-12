@@ -3,8 +3,9 @@ import Link from 'next/link';
 import axios from 'axios';
 import { message } from 'antd';
 import { useDispatch } from 'react-redux';
-import { setUserInfo } from '../../store/reducers/userReducer';
+
 import Image from 'next/image';
+import { setUserInfo } from '../../store/action/userActions';
 
 const SignInForm = () => {
   const [formData, setFormData] = useState({

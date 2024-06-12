@@ -6,7 +6,7 @@ import AddCategory from './AddCategory';
 import EditCategory from './EditCategory';
 
 export default function DataCategory() {
-  const userId = useSelector((state) => state.user?.user.id);
+  const userId = useSelector((state) => state.user?.user?.id);
   const token = useSelector((state) => state.user?.token);
 
   const [detail, setDetail] = useState([]);
@@ -28,8 +28,8 @@ export default function DataCategory() {
 
 
 
-  const showModal = (category) => {
-    setSelectedCategoryId(category.id);
+  const showModal = (categoryId) => {
+    setSelectedCategoryId(categoryId);
   };
   const columns = [
     {
@@ -61,7 +61,7 @@ export default function DataCategory() {
       render: (_, category) => (
         <div>
           <EditCategory
-            showModal={() => showModal(category)}
+            showModal={showModal}
             categoryName={category.name}
             categoryId={category.id}
             parentId={category.parent ? category.parent.id : null}
