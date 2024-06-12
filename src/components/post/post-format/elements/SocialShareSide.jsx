@@ -1,25 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from 'axios';
 import { useSelector } from "react-redux";
 import ButtonSaveArt from "./ButtonSaveArt";
 
 const SocialShareSide = ({ articleId }) => {
-  const [windowPath, setwindowPath] = useState(null);
-  const token = useSelector((state) => state.user?.token); 
+  const [windowPath, setWindowPath] = useState(null);
+  const token = useSelector((state) => state.user?.token);
 
-  useEffect(() => {
-    setwindowPath(window.location.href);
-    fetchData();
-  }, [articleId, fetchData]); // Include fetchData in dependencies array
-
-  const [reactData, setReactData] = useState({
-    LIKE: 0,
-    HEART: 0,
-    CLAP: 0,
-    STAR: 0
-  });
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const types = ['LIKE', 'HEART', 'CLAP', 'STAR'];
       const promises = types.map(type => axios.get(`/api/GetReactByArticle?articleId=${articleId}&typeReact=${type}`));
@@ -37,7 +25,19 @@ const SocialShareSide = ({ articleId }) => {
     } catch (error) {
       console.error("Error fetching react data:", error);
     }
-  };
+  }, [articleId]);
+
+  const [reactData, setReactData] = useState({
+    LIKE: 0,
+    HEART: 0,
+    CLAP: 0,
+    STAR: 0
+  });
+
+  useEffect(() => {
+    setWindowPath(window.location.href);
+    fetchData();
+  }, [articleId, fetchData]);
 
   const handleReaction = async (typeReact) => {
     try {
