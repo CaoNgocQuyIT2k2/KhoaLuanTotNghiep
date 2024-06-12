@@ -1,5 +1,3 @@
-import { getAllPosts } from "../../../lib/api";
-import { slugify } from "../../utils";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
