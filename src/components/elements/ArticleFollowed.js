@@ -10,10 +10,20 @@ const ArticleFollowed = ({ articleId, title, imageUrl, category, date, categoryI
             <div className="cejlglTblCkKqUv8Qao3">
                 <Link href={`/${articleId}`}>
                     <a>
-                        <Image src={imageUrl} alt={title} width={500} height={300} />
+                        <Image 
+                            src={imageUrl} 
+                            alt={title} 
+                            width={500} 
+                            height={300} 
+                            layout="responsive" 
+                            objectFit="cover" 
+                            onError={(e) => {
+                                e.target.onerror = null; 
+                                e.target.src = "/path/to/default-image.jpg"; // Đường dẫn đến ảnh mặc định
+                            }} 
+                        />
                     </a>
                 </Link>
-
             </div>
             <div>
                 <h3 className="cenTMdraIxX2mUpD2iEA">
@@ -28,10 +38,7 @@ const ArticleFollowed = ({ articleId, title, imageUrl, category, date, categoryI
                     </div>
                 </div>
             </div>
-
         </article>
-
-
     );
 }
 

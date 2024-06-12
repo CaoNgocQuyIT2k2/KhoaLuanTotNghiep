@@ -22,15 +22,15 @@ export default async function CreateTag(req, res) {
       }
 
       const response = await axios.post(
-        'http://localhost:8080/api/v1/tag/create',
+        'http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/tag/create',
         { value },
         { headers: { Authorization: token } }
       );
-
+      const data = response.data;
       if (response.status === 200) {
-        res.status(200).json({ message: 'Tạo tag thành công!' });
+        res.status(200).json(data);
       } else {
-        res.status(response.status).json({ message: 'Tạo tag thất bại.' });
+        throw new Error('Unexpected status code from API');
       }
     } catch (error) {
       console.error('Error:', error);

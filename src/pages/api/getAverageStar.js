@@ -18,13 +18,12 @@ export default async function GetAverageStar(req, res) {
   }
 
   try {
-    const response = await axios.get(`http://localhost:8080/api/v1/vote-star/get-average-star?articleId=${articleId}`);
-
+    const response = await axios.get(`http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/vote-star/get-average-star?articleId=${articleId}`);
+    const data = response.data;
     if (response.status === 200) {
-      res.status(200).json({ averageStar: response.data });
-      console.log("Lấy thành công sao trung bình");
+      res.status(200).json(data);
     } else {
-      res.status(response.status).json({ message: 'Failed to fetch average star.' });
+      throw new Error('Unexpected status code from API');
     }
   } catch (error) {
     console.error('Error fetching average star:', error);

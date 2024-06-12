@@ -4,8 +4,9 @@ import ArticleFollowed from './ArticleFollowed';
 import { useSelector } from 'react-redux';
 import { format } from 'date-fns';
 import SettingsPanelFollowFoot from './SettingsPanelFollowFoot';
+import HeaderOne from '../header/HeaderOne';
 
-const SectionArticleFollowed = ({ refresh,onToggleSectionList }) => {
+const SectionArticleFollowed = ({ refresh, onToggleSectionList }) => {
     const [articles, setArticles] = useState([]);
     const token = useSelector((state) => state.user?.token);
     
@@ -22,7 +23,7 @@ const SectionArticleFollowed = ({ refresh,onToggleSectionList }) => {
         };
         
         fetchArticles();
-    }, [refresh, token]); // Thêm token vào dependency array
+    }, [refresh, token]);
     
     return (
         <>
@@ -34,9 +35,9 @@ const SectionArticleFollowed = ({ refresh,onToggleSectionList }) => {
                             {articles.map((article, index) => (
                                 <div key={article.id} className={index === articles.length - 1 ? 'last-article' : ''}>
                                     <ArticleFollowed
-                                        articleId ={article.id}
+                                        articleId={article.id}
                                         title={article.title}
-                                        imageUrl={article.avatar}
+                                        imageUrl={article.avatar || '/path/to/default-image.jpg'} // Sử dụng ảnh mặc định nếu avatar không tồn tại
                                         category={article.category.name}
                                         categoryId={article.category.id}
                                         date={format(new Date(article.create_date), 'yyyy-MM-dd')}
@@ -47,7 +48,7 @@ const SectionArticleFollowed = ({ refresh,onToggleSectionList }) => {
                     </div>
                 </div>
             </div>
-            <SettingsPanelFollowFoot onToggleSectionList={onToggleSectionList}/>
+            <SettingsPanelFollowFoot onToggleSectionList={onToggleSectionList} />
             <div className='y7idnc0MSa__siU3g_I3'>
                 <div className='zCYCrHM0HRNVm7aSyF9a'>
                     <div className="Xut0pP1LisWAWIKCzHdw">Thiết lập thêm chuyên mục và tác giả yêu thích để trải nghiệm cá nhân hoá tốt nhất dành cho bạn.</div>

@@ -31,15 +31,16 @@ export default async function CreateCategory(req, res) {
       }
       console.log("requestBody",requestBody);
       const response = await axios.post(
-        'http://localhost:8080/api/v1/category/create',
+        'http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/category/create',
         requestBody,
         { headers: { Authorization: token } }
       );
+      const data = response.data;
 
       if (response.status === 200) {
-        res.status(200).json({ message: 'Tạo category thành công!' });
+        res.status(200).json(data);
       } else {
-        res.status(response.status).json({ message: 'Tạo category thất bại.' });
+        throw new Error('Unexpected status code from API');
       }
     } catch (error) {
       console.error('Error:', error);

@@ -29,17 +29,15 @@ export default async function handler(req, res) {
 
       // Gọi API tìm kiếm từ server 8080 bằng phương thức GET
       const response = await axios.get(
-        'http://localhost:8080/api/v1/article/anonymous/search',
+        'http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/article/anonymous/search',
         { params: { keyList } }
       );
-
+      const data = response.data;
       // Xử lý kết quả trả về từ server 8080
       if (response.status === 200) {
-        const searchData = response.data;
-        console.log("searchData",searchData);
-        res.status(200).json(searchData); // Trả về dữ liệu tìm kiếm
+        res.status(200).json(data);
       } else {
-        res.status(response.status).json({ message: 'Search failed' });
+        throw new Error('Unexpected status code from API');
       }
     } catch (error) {
       console.error('Error:', error);

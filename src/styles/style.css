@@ -11271,7 +11271,6 @@ div[data-module=user-onboarding] {
 }
 
 .section-container {
-  margin-top: 100px; /* Chiều cao của header */
   padding-bottom: 100px; /* Khoảng cách để footer không chồng lên nội dung */
 }
 

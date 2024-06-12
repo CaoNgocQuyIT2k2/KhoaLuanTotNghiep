@@ -12,12 +12,16 @@ export default async function GetListArticleSaved(req, res) {
   try {
     const token = req.headers.authorization; // Extract token from Authorization header
 
-    const response = await axios.get('http://localhost:8080/api/v1/saved-articles/get-list',
+    const response = await axios.get('http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/saved-articles/get-list',
     { headers: { Authorization: token } }
     );
     const data = response.data;
     console.log("🚀 ~ saved article data:", data);
-    res.status(200).json(data);
+    if (response.status === 200) {
+      res.status(200).json(data);
+    } else {
+      throw new Error('Unexpected status code from API');
+    }
   } catch (error) {
     console.log("🚀 ~ error save article:", error);
     res.status(500).json({ message: 'Internal Server Error' });

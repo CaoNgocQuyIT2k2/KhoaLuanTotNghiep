@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
       // Gửi request POST đến API khác
       const response = await axios.post(
-        'http://localhost:8080/api/v1/auth/sign-up',
+        'http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/auth/sign-up',
         { firstname, lastname, email, password, dob }, // Truyền dữ liệu từ req.body
         { headers }
       );
@@ -24,7 +24,11 @@ export default async function handler(req, res) {
       console.log("🚀 ~ data:", data);
 
       // Trả về kết quả
-      res.status(200).json({ message: 'Đăng ký thành công', data: req.body });
+      if (response.status === 200) {
+        res.status(200).json(data);
+      } else {
+        throw new Error('Unexpected status code from API');
+      };
     } catch (error) {
       console.error("Error:", error);
 

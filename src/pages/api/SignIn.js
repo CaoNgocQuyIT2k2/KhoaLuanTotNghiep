@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 
       // Send POST request to the external API
       const response = await axios.post(
-        'http://localhost:8080/api/v1/auth/sign-in',
+        'http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/auth/sign-in',
         { email, password }
       );
 
@@ -28,10 +28,11 @@ export default async function handler(req, res) {
       console.log("🚀 ~ data:", data.user);
 
       // Ensure that the response contains a token
-      if (!data.token) {
-        throw new Error('Token not found in response');
+      if (response.status === 200) {
+        res.status(200).json(data);
+      } else {
+        throw new Error('Unexpected status code from API');
       }
-
       // Return the token in the response
       res.status(200).json({ token: data.token, user: data.user });
     } catch (error) {

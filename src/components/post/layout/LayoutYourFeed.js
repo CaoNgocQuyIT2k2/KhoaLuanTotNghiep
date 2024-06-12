@@ -3,6 +3,7 @@ import AccountSidebar from '../../elements/AccountSidebar';
 import SectionList from '../../elements/SectionList';
 import SectionArticleFollowed from '../../elements/SectionArticleFollowed';
 import SettingsPanelFollow from '../../elements/SettingsPanelFollow';
+import HeaderOne from '../../header/HeaderOne';
 
 
 const LayoutYourFeed = () => {
@@ -28,7 +29,9 @@ const LayoutYourFeed = () => {
     };
 
     return (
-
+        
+        <>
+        <HeaderOne/>
         <div className="section-container">
             <div className="account-sidebar">
                 <AccountSidebar />
@@ -44,6 +47,7 @@ const LayoutYourFeed = () => {
                 {showSettingsPanel && <SettingsPanelFollow onToggleSectionList={handleToggleSectionList} buttonText="Thiết lập hiển thị" />}
             </div>
         </div>
+        </>
     );
 };
 

@@ -64,15 +64,15 @@ export default async function updateAvatar(req, res) {
 
     // Tiếp tục xử lý như trong mã gốc của bạn
     try {
-      const response = await axios.post('http://localhost:8080/api/v1/user/update-user-avatar', 
+      const response = await axios.post('http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/user/update-user-avatar', 
         { file: fs.createReadStream(filePath) },
         { headers: { 'Content-Type': 'multipart/form-data', Authorization: token } }
       );
-
+      const data = response.data;
       if (response.status === 200) {
-        res.status(200).json(response.data);
+        res.status(200).json(data);
       } else {
-        res.status(response.status).json({ message: 'Cập nhật avatar thất bại.' });
+        throw new Error('Unexpected status code from API');
       }
     } catch (error) {
       console.error('Error:', error);

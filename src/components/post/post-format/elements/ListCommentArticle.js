@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Avatar, List, Space, message } from 'antd';
 import axios from 'axios';
 import EditComment from './EditComment'; // Import EditComment component
@@ -9,7 +9,7 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
   const [position, setPosition] = useState('bottom');
   const [align, setAlign] = useState('center');
   const [comments, setComments] = useState([]);
-  const userId = useSelector((state) => state.user?.user.id);
+  const userId = useSelector((state) => state.user?.user?.id);
   
   const fetchCommentArticleDetail = useCallback(async () => {
     try {

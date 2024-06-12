@@ -20,22 +20,23 @@ export default async function handler(req, res) {
     try {
       const { article, star } = req.body;
       const token = req.headers.authorization;
-
+console.log("toFixed", token);
+console.log("toFixed", article, star);
       if (!article || !article.id || !star) {
         res.status(400).json({ message: 'Invalid request body' });
         return;
       }
 
       const response = await axios.post(
-        'http://localhost:8080/api/v1/VoteStar/vote',
+        'http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/vote-star/vote',
         { article, star },
         { headers: { Authorization: token } }
       );
-
+      const data = response.data;
       if (response.status === 200) {
-        res.status(200).json({ message: 'Đánh giá thành công!' });
+        res.status(200).json(data);
       } else {
-        res.status(response.status).json({ message: 'Đánh giá thất bại.' });
+        throw new Error('Unexpected status code from API');
       }
     } catch (error) {
       console.error('Error:', error);

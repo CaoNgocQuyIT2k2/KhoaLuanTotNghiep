@@ -27,20 +27,18 @@ export default async function UpdateUserInfo(req, res) {
 
       // Send request to update user information API
       const response = await axios.post(
-        `http://localhost:8080/api/v1/user/update-user-infor?userId=${userId}`,
+        `http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/user/update-user-infor?userId=${userId}`,
         { firstname, lastname, dob },
         { headers: { Authorization: token } }
       );
 
-      // Handle response from API
+      const data = response.data;
       // Handle response from API
       if (response.status === 200) {
-        const updatedUserData = response.data; // Dữ liệu người dùng đã được cập nhật
-        res.status(200).json(updatedUserData); // Trả lại dữ liệu người dùng
+        res.status(200).json(data);
       } else {
-        res.status(response.status).json({ message: 'Failed to update user information.' });
+        throw new Error('Unexpected status code from API');
       }
-
     } catch (error) {
       console.error('Error:', error);
       if (error.response && error.response.status === 403) {

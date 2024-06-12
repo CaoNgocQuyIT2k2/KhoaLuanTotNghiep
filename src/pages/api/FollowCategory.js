@@ -29,16 +29,16 @@ export default async function FollowCategory(req, res) {
 
       // Send request to update tag API
       const response = await axios.post(
-        'http://localhost:8080/api/v1/follow-category/follow',
+        'http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/follow-category/follow',
         requestBody,
         { headers: { Authorization: token } }
       );
-
+      const data = response.data;
       // Handle response from API
       if (response.status === 200) {
-        res.status(200).json({ message: 'Follow category  successfully!' });
+        res.status(200).json(data);
       } else {
-        res.status(response.status).json({ message: 'Failed to follow category.' });
+        throw new Error('Unexpected status code from API');
       }
     } catch (error) {
       console.error('Error:', error);

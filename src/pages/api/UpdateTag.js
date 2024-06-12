@@ -27,16 +27,16 @@ export default async function UpdateTag(req, res) {
 
       // Send request to update password API
       const response = await axios.post(
-        `http://localhost:8080/api/v1/tag/update?tagId=${tagId}`,
+        `http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/tag/update?tagId=${tagId}`,
         { value },
         { headers: { Authorization: token } }
       );
-
+      const data = response.data;
       // Handle response from API
       if (response.status === 200) {
-        res.status(200).json({ message: 'Password updated successfully!' });
+        res.status(200).json(data);
       } else {
-        res.status(response.status).json({ message: 'Failed to update password.' });
+        throw new Error('Unexpected status code from API');
       }
     } catch (error) {
       console.error('Error:', error);

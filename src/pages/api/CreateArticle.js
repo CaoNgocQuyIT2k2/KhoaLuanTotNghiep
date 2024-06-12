@@ -37,16 +37,16 @@ export default async function CreateArticle(req, res) {
             }
 
             const response = await axios.post(
-                'http://localhost:8080/api/v1/article/create',
+                'http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/article/create',
                 formData,
                 { headers: { Authorization: token, 'Content-Type': 'multipart/form-data' } }
             );
-
+            const data = response.data;
             if (response.status === 200) {
-                res.status(200).json({ message: 'Bài viết được tạo thành công!' });
-            } else {
-                res.status(response.status).json({ message: 'Tạo bài viết thất bại.' });
-            }
+                res.status(200).json(data);
+              } else {
+                throw new Error('Unexpected status code from API');
+              }
         } catch (error) {
             console.error('Error:', error);
             if (error.response && error.response.status === 403) {

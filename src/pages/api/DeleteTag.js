@@ -20,15 +20,15 @@ export default async function DeleteComment(req, res) {
       console.log("userId",token);
       // Send request to create comment API
       const response = await axios.delete(
-        `http://localhost:8080/api/v1/tag/delete?tagId=${tagId}`,
+        `http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/tag/delete?tagId=${tagId}`,
         { headers: { Authorization: token } }
       );
-
+      const data = response.data;
       // Handle response from API
       if (response.status === 200) {
-        res.status(200).json({ message: 'Xóa thẻ thành công!' });
+        res.status(200).json(data);
       } else {
-        res.status(response.status).json({ message: 'Xóa thẻ thất bại.' });
+        throw new Error('Unexpected status code from API');
       }
     } catch (error) {
       console.error('Error:', error);

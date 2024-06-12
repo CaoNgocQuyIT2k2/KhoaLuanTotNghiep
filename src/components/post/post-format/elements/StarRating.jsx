@@ -20,7 +20,7 @@ const StarRating = ({ articleId, token }) => {
       console.error('Error fetching average rating:', error);
     }
   };
-  console.log("averageRating", averageRating);
+
   const handleRating = async (star) => {
     setRating(star);
 
@@ -61,12 +61,11 @@ const StarRating = ({ articleId, token }) => {
   return (
     <div className="star-rating">
       <div className="average-rating">
-        {averageRating !== null ? (
+        {averageRating !== null && averageRating.averageStar !== undefined ? (
           <span>Sao trung bình: {averageRating.averageStar.toFixed(1)} / 5.0</span>
         ) : (
           <span>Loading average rating...</span>
         )}
-
       </div>
       <div className="rating-stars">
         {[1, 2, 3, 4, 5].map(star => (
