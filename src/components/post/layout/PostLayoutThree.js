@@ -90,12 +90,11 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 													<i className="" />
 													{data.artSource}
 												</li>
-												<li>
-													<TopStarRating articleId={data.id} />
-												</li>
+												
 											</>
 										)}
 									</ul>
+									<TopStarRating articleId={data.id} />
 								</div>
 							</div>
 						</div>

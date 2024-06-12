@@ -18,15 +18,17 @@ export default async function GetAverageStar(req, res) {
   }
 
   try {
-    const response = await axios.get(`http://localhost:8080/api/v1/VoteStar/get-average-star?articleId=${articleId}`);
+    const response = await axios.get(`http://localhost:8080/api/v1/vote-star/get-average-star?articleId=${articleId}`);
 
     if (response.status === 200) {
       res.status(200).json({ averageStar: response.data });
+      console.log("Lấy thành công sao trung bình");
     } else {
       res.status(response.status).json({ message: 'Failed to fetch average star.' });
     }
   } catch (error) {
     console.error('Error fetching average star:', error);
+    console.log("Lấy thất bại sao trung bình");
     res.status(500).json({ message: 'Internal Server Error' });
   }
 }

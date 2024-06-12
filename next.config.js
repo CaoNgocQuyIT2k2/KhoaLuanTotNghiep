@@ -1,9 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   swcMinify: true,
-  basePath: process.env.NEXT_PUBLIC_BASEPATH || "",
+  basePath: process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_BASEPATH : "",
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
 
@@ -29,32 +29,15 @@ module.exports = {
       'nhandaoonline.vn'
     ],
   },
-  async rewrites() {
-    return [
-      {
-        source: '/post/:article_id',
-        destination: '/post/[article_id]'
-      }
-    ];
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/post/:article_id',
+  //       destination: '/post/[article_id]',
+  //     },
+  //   ];
+  // },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
-  },
-  exportPathMap: async function () {
-    return {
-      '/': { page: '/' },
-      '/register': { page: '/register' },
-      '/yourfeed': { page: '/yourfeed' },
-      '/profile': { page: '/profile' },
-      '/login': { page: '/login' },
-      '/EditProfile': { page: '/EditProfile' },
-      '/EditPassword': { page: '/EditPassword' },
-      '/[article_id]': { page: '/[article_id]' },
-      '/search/[slug]': { page: '/search/[slug]' },
-      '/post/[slug]': { page: '/post/[slug]' },
-      '/category/[categoryId]': { page: '/category/[categoryId]' },
-      '/article/ArticleSaved': { page: '/article/ArticleSaved' },
-      '/admin/AdminDashboard': { page: '/admin/AdminDashboard' },
-    };
   },
 };
