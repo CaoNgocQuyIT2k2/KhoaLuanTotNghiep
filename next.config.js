@@ -41,4 +41,21 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
+  exportPathMap: async function () {
+    return {
+      '/': { page: '/' },
+      '/register': { page: '/register' },
+      '/yourfeed': { page: '/yourfeed' },
+      '/profile': { page: '/profile' },
+      '/login': { page: '/login' },
+      '/EditProfile': { page: '/EditProfile' },
+      '/EditPassword': { page: '/EditPassword' },
+      '/[article_id]': { page: '/[article_id]' },
+      '/search/[slug]': { page: '/search/[slug]' },
+      '/post/[slug]': { page: '/post/[slug]' },
+      '/category/[categoryId]': { page: '/category/[categoryId]' },
+      '/article/ArticleSaved': { page: '/article/ArticleSaved' },
+      '/admin/AdminDashboard': { page: '/admin/AdminDashboard' },
+    };
+  },
 };
