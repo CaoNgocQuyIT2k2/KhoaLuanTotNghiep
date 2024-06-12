@@ -14,12 +14,9 @@ const TopStarRatingTop = ({ articleId }) => {
       const response = await axios.get(`/api/GetAverageStar?articleId=${articleId}`);
       if (response.status === 200) {
         setAverageRatingTop(response.data);
-      } else {
-        message.error('Failed to fetch average rating.');
-      }
+      } 
     } catch (error) {
       console.error('Error fetching average rating:', error);
-      message.error('Failed to fetch average rating.');
     }
   };
 

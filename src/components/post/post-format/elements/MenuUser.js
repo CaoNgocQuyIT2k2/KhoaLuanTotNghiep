@@ -11,7 +11,7 @@ import Link from 'next/link'; // Import Link from next/link
 export default function MenuUser() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const userRole = useSelector((state) => state.user.user?.user?.role); // Lấy role từ state.user.user.user.role
+  const userRole = useSelector((state) => state.user.user?.role); // Lấy role từ state.user.user.user.role
   console.log("userRole", userRole);
 
   const handleClick = (event) => {

@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 
       // Send POST request to the external API
       const response = await axios.post(
-        'http://localhost:8080/api/v1/auth/SignIn',
+        'http://localhost:8080/api/v1/auth/sign-in',
         { email, password }
       );
 

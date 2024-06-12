@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
       // Gửi request POST đến API khác
       const response = await axios.post(
-        'http://localhost:8080/api/v1/auth/SignUp',
+        'http://localhost:8080/api/v1/auth/sign-up',
         { firstname, lastname, email, password, dob }, // Truyền dữ liệu từ req.body
         { headers }
       );

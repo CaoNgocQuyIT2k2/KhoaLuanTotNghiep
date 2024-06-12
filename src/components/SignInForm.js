@@ -39,11 +39,10 @@ const SignInForm = () => {
 
         window.location.href = "/"; // Chuyển hướng đến trang đăng nhập
         dispatch(setUserInfo(userInfo));
-      } else {
-        message.error("Đăng nhập thất bại");
-      }
+      } 
     } catch (error) {
       console.log("Đăng nhập thất bại", error);
+      message.error(error.response.data.message);
     }
   };
 
