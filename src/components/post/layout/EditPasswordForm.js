@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { message } from 'antd';
 
 
-const EditPassCus = () => {
+const EditPasswordForm = () => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [reEnterPassword, setReEnterPassword] = useState('');
@@ -96,4 +96,4 @@ const EditPassCus = () => {
   );
 };
 
-export default EditPassCus;
+export default EditPasswordForm;

@@ -11509,3 +11509,18 @@ ul {
   font-weight: 700 !important;
   color: #e7f0eb !important;
 }
+
+
+.add-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.rotated-image {
+  transform: rotate(90deg);
+  width: auto; /* Maintain aspect ratio */
+  height: auto; /* Maintain aspect ratio */
+}

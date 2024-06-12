@@ -12,21 +12,6 @@ const AdBanner = () => {
                 className="rotated-image"
             />
         </a>
-        <style jsx>{`
-          .add-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 60px;
-            text-align: center;
-          }
-
-          .rotated-image {
-            transform: rotate(90deg);
-            width: auto; /* Maintain aspect ratio */
-            height: auto; /* Maintain aspect ratio */
-          }
-        `}</style>
       </div>
     );
 }

@@ -6,6 +6,7 @@ import { PieChartOutlined, UserOutlined, TeamOutlined, FileOutlined, HomeOutline
 import DataUser from './Admin/ManageUsers/DataUser';
 import DataCategory from './Admin/ManageCategories/DataCategory';
 import DataTag from './Admin/ManageTags/DataTag';
+import Link from 'next/link';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -52,7 +53,7 @@ const LayoutAdmin = () => {
             alignItems: 'center',
             marginBottom: '10px',
           }} />}>
-            <a href="/" onClick={() => window.location.href = "/"}>Home</a>
+            <Link href="/" onClick={() => window.location.href = "/"}>Home</Link>
           </Menu.Item>
           <Menu.Item key="1" icon={<PieChartOutlined style={{
             fontSize: '1.5rem',
