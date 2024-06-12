@@ -3,11 +3,10 @@ const path = require('path');
 module.exports = {
   reactStrictMode: false,
   swcMinify: true,
-  basePath: process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_BASEPATH : "",
+  basePath: process.env.NEXT_PUBLIC_BASEPATH || "",
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
 
-    // Thêm quy tắc xử lý các tệp asset
     config.module.rules.push({
       test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/,
       use: [
