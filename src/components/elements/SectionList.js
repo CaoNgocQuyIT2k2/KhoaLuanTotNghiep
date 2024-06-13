@@ -13,9 +13,9 @@ const SectionList = (props) => {
     useEffect(() => {
         const fetchMenuData = async () => {
             try {
-                const menuResponse = await axios.get('/api/GetMenuData');
+                const menuResponse = await axios.get('/api/get-menu-data');
                 const menuData = menuResponse.data;
-                const parentCategoriesResponse = await axios.get('/api/GetFollowParentCat', { headers: { Authorization: `Bearer ${token}` } });
+                const parentCategoriesResponse = await axios.get('/api/get-follow-parent-cat', { headers: { Authorization: `Bearer ${token}` } });
                 const parentCategories = parentCategoriesResponse.data;
 
                 const updatedMenuData = menuData.map(menuItem => {
@@ -34,7 +34,7 @@ const SectionList = (props) => {
 
                 for (let parentCategory of parentCategories) {
                     console.log("arentCategory.id",parentCategory.id);
-                    const childCategoriesResponse = await axios.get(`/api/GetFollowChildCat?categoryId=${parentCategory.id}`, {
+                    const childCategoriesResponse = await axios.get(`/api/get-follow-child-cat?categoryId=${parentCategory.id}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     setFollowedChildCategories(prev => [...prev, ...childCategoriesResponse.data]);
@@ -65,20 +65,20 @@ const SectionList = (props) => {
     const followCategory = async (categoryId) => {
         try {
             const response = await axios.post(
-                '/api/FollowCategory',
+                '/api/follow-category',
                 { category: { id: categoryId } },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
-            const allParent = await axios.get('/api/GetAllParent');
+            const allParent = await axios.get('/api/get-all-parent');
             
             if (response.status === 200) {
-                const parentCategoriesResponse = await axios.get('/api/GetFollowParentCat', { headers: { Authorization: `Bearer ${token}` } });
+                const parentCategoriesResponse = await axios.get('/api/get-follow-parent-cat', { headers: { Authorization: `Bearer ${token}` } });
                 const parentCategories = parentCategoriesResponse.data;
                 setFollowedParentCategories(parentCategories);
 
                 const allChildCategories = [];
                 for (let parentCategory of parentCategories) {
-                    const childCategoriesResponse = await axios.get(`/api/GetFollowChildCat?categoryId=${parentCategory.id}`, {
+                    const childCategoriesResponse = await axios.get(`/api/get-follow-child-cat?categoryId=${parentCategory.id}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     allChildCategories.push(...childCategoriesResponse.data);
@@ -100,12 +100,12 @@ const SectionList = (props) => {
     const unfollowCategory = async (categoryId) => {
         try {
             const response = await axios.delete(
-                `/api/UnfollowCategory?categoryId=${categoryId}`,
+                `/api/unfollow-category?categoryId=${categoryId}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
             if (response.status === 200) {
-                const parentCategoriesResponse = await axios.get('/api/GetFollowParentCat', { headers: { Authorization: `Bearer ${token}` } });
+                const parentCategoriesResponse = await axios.get('/api/get-follow-parent-cat', { headers: { Authorization: `Bearer ${token}` } });
                 const parentCategories = parentCategoriesResponse.data;
                 setFollowedParentCategories(parentCategories);
 
@@ -116,7 +116,7 @@ const SectionList = (props) => {
 
                 const followedChildCategories = [];
                 for (let parentCategory of parentCategories) {
-                    const childCategoriesResponse = await axios.get(`/api/GetFollowChildCat?categoryId=${parentCategory.id}`, {
+                    const childCategoriesResponse = await axios.get(`/api/get-follow-child-cat?categoryId=${parentCategory.id}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     followedChildCategories.push(...childCategoriesResponse.data);
@@ -137,7 +137,7 @@ const SectionList = (props) => {
             if (!isAlreadyFollowed) {
                 // Follow category child
                 const response = await axios.post(
-                    '/api/FollowCategory',
+                    '/api/follow-category',
                     { category: { id: categoryId } },
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
@@ -167,7 +167,7 @@ const SectionList = (props) => {
     const unfollowCategoryChild = async (categoryId) => {
         try {
             const response = await axios.delete(
-                `/api/UnfollowCategory?categoryId=${categoryId}`,
+                `/api/unfollow-category?categoryId=${categoryId}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 

@@ -17,9 +17,9 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
     useEffect(() => {
         const fetchMenuData = async () => {
             try {
-                const menuResponse = await axios.get('/api/GetMenuData');
+                const menuResponse = await axios.get('/api/get-menu-data');
                 const menuData = menuResponse.data;
-                const parentCategoriesResponse = await axios.get('/api/GetFollowParentCat', { headers: { Authorization: `Bearer ${token}` } });
+                const parentCategoriesResponse = await axios.get('/api/get-follow-parent-cat', { headers: { Authorization: `Bearer ${token}` } });
                 const parentCategories = parentCategoriesResponse.data;
 
                 const updatedMenuData = menuData.map(menuItem => {
@@ -38,7 +38,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
 
                 const allChildCategories = [];
                 for (let parentCategory of parentCategories) {
-                    const childCategoriesResponse = await axios.get(`/api/GetFollowChildCat?categoryId=${parentCategory.id}`, {
+                    const childCategoriesResponse = await axios.get(`/api/get-follow-child-cat?categoryId=${parentCategory.id}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     allChildCategories.push(...childCategoriesResponse.data);
@@ -61,7 +61,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
     }, [token]);
 
     useEffect(() => {
-        axios.get('/api/GetAllCategories')
+        axios.get('/api/get-all-categories')
             .then(response => {
                 const allCategories = response.data;
                 const childCategories = allCategories.filter(category => category.parent !== null);
@@ -71,7 +71,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                 // Fetch and set followed status for random categories
                 randomSixCategories.forEach(async (category) => {
                     const parentCategoryId = category.parent.id;
-                    const childCategoriesResponse = await axios.get(`/api/GetFollowChildCat?categoryId=${parentCategoryId}`, {
+                    const childCategoriesResponse = await axios.get(`/api/get-follow-child-cat?categoryId=${parentCategoryId}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     const followedChildCategories = childCategoriesResponse.data;
@@ -96,7 +96,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
     const followCategory = async (categoryId) => {
         try {
             const response = await axios.post(
-                '/api/FollowCategory',
+                '/api/follow-category',
                 { category: { id: categoryId } },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -120,7 +120,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
     const unfollowCategory = async (categoryId) => {
         try {
             const response = await axios.delete(
-                `/api/UnfollowCategory?categoryId=${categoryId}`,
+                `/api/unfollow-category?categoryId=${categoryId}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 

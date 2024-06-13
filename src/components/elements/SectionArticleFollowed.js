@@ -13,7 +13,7 @@ const SectionArticleFollowed = ({ refresh, onToggleSectionList }) => {
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await axios.get('/api/GetListFollowArticle', 
+                const response = await axios.get('/api/get-list-follow-article', 
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
                 setArticles(response.data);

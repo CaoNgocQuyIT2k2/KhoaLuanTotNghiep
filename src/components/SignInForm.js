@@ -26,7 +26,7 @@ const SignInForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/SignIn', formData);
+      const response = await axios.post('/api/sign-in', formData);
 
       if (response.status === 200) {
         message.success("Đăng nhập thành công");

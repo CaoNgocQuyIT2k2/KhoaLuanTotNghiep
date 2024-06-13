@@ -10,7 +10,7 @@ const SocialShareSide = ({ articleId }) => {
   const fetchData = useCallback(async () => {
     try {
       const types = ['LIKE', 'HEART', 'CLAP', 'STAR'];
-      const promises = types.map(type => axios.get(`/api/GetReactByArticle?articleId=${articleId}&typeReact=${type}`));
+      const promises = types.map(type => axios.get(`/api/get-react-by-article?articleId=${articleId}&typeReact=${type}`));
       const responses = await Promise.all(promises);
 
       // Extract quantity values from each response's data
@@ -42,7 +42,7 @@ const SocialShareSide = ({ articleId }) => {
   const handleReaction = async (typeReact) => {
     try {
       const response = await axios.post(
-        '/api/ReactArticle',
+        '/api/react-article',
         { article: { id: articleId }, typeReact },
         { headers: { Authorization: `Bearer ${token}` }}
       );

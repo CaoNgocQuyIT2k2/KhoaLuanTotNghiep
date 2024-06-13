@@ -24,7 +24,7 @@ const PostFormatStandard = ({ articleId, allData }) => {
       if (!articleId) return;
 
       try {
-        const response = await fetch(`/api/GetArtDetail?article_id=${articleId}`);
+        const response = await fetch(`/api/get-art-detail?article_id=${articleId}`);
         const data = await response.json();
         setPostData(data);
       } catch (error) {

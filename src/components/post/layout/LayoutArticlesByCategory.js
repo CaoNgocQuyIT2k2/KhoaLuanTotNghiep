@@ -21,7 +21,7 @@ const LayoutArticlesByCategory = ({ allPosts }) => {
         const fetchData = async () => {
             if (categoryId) {
                 try {
-                    const response = await axios.get(`/api/GetCategoryById?categoryId=${categoryId}`);
+                    const response = await axios.get(`/api/get-category-by-id?categoryId=${categoryId}`);
                     setData(response.data);
                 } catch (error) {
                     console.error("Error fetching data:", error);

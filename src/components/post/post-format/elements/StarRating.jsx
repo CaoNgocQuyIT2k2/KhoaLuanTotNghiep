@@ -12,7 +12,7 @@ const StarRating = ({ articleId, token }) => {
 
   const fetchAverageRating = async (articleId, setAverageRating) => {
     try {
-      const response = await axios.get(`/api/GetAverageStar?articleId=${articleId}`);
+      const response = await axios.get(`/api/get-average-star?articleId=${articleId}`);
       if (response.status === 200) {
         setAverageRating(response.data);
       } 
@@ -33,7 +33,7 @@ const StarRating = ({ articleId, token }) => {
 
     try {
       const response = await axios.post(
-        '/api/VoteStar',
+        '/vote-star',
         data,
         {
           headers: {

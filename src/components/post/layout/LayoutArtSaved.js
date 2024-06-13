@@ -21,7 +21,7 @@ function LayoutArtSaved() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-              const response = await axios.get('/api/GetListArticleSaved', 
+              const response = await axios.get('/api/get-list-article-saved', 
                   { headers: { Authorization: `Bearer ${token}` }
               });
               setSavedArticles(response.data);

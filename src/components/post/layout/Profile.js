@@ -21,7 +21,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("/api/GetInfoMyself", {
+                const response = await axios.get("/api/get-info-myself", {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setUser(response.data);
@@ -50,7 +50,7 @@ const Profile = () => {
                 lastname: user.lastname,
                 dob: user.dob,
             };
-            const response = await axios.post(`/api/UpdateMyInfo?userId=${userId}`, formUser, {
+            const response = await axios.post(`/api/update-my-info?userId=${userId}`, formUser, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
@@ -91,7 +91,7 @@ const Profile = () => {
         formData.append('file', file);
 
         try {
-            const response = await axios.post('/api/UpdateAvatar', formData, {
+            const response = await axios.post('/api/update-avatar', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`,

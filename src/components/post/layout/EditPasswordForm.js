@@ -28,7 +28,7 @@ const EditPasswordForm = () => {
     };
 
     try {
-      await axios.post(`/api/UpdatePassword`, formData, {
+      await axios.post(`/api/update-password`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

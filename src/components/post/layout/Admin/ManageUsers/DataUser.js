@@ -20,7 +20,7 @@ console.log("userId",userId);
 
   const fetchListUser = useCallback(async () => {
     try {
-      const response = await axios.get(`/api/GetAllUser`, {
+      const response = await axios.get(`/api/get-all-user`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const users = response.data || [];
@@ -44,7 +44,7 @@ console.log("userId",userId);
     }
     console.log("user_id", user_id);
     axios
-      .delete(`/api/DeleteUser?userId=${user_id}`, {
+      .delete(`/api/delete-user?userId=${user_id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res = 200) => {

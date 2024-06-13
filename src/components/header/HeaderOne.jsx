@@ -116,7 +116,7 @@ const HeaderOne = () => {
     }
 
     try {
-      const response = await axios.get('/api/Search', {
+      const response = await axios.get('/api/search', {
         params: { keyList: searchKeyword }
       });
 

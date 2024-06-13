@@ -34,7 +34,7 @@ const AddTag = ({ articleName, fetchTags }) => {
         return;
       }
 
-      const response = await axios.post(`/api/CreateTag`, {
+      const response = await axios.post(`/api/create-tag`, {
         value: tagName,
       }, { headers: { Authorization: `Bearer ${token}` } });
 

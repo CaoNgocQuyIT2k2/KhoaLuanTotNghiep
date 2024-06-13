@@ -11,7 +11,7 @@ const FooterOne = () => {
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const response = await axios.get('/api/GetParentCategories');
+        const response = await axios.get('/api/get-parent-categories');
         const parentCategories = response.data;
         // Lấy 7 danh mục cha đầu tiên
         const firstSevenCategories = parentCategories.slice(0, 6);
@@ -32,7 +32,7 @@ const FooterOne = () => {
   const GetChildCategories = async (categoryId) => {
     try {
       console.log('Fetching child categories:', categoryId);
-      const response = await axios.get('/api/GetChildCategories', {
+      const response = await axios.get('/api/get-child-categories', {
         params: { categoryId }
       });
       const childCategories = response.data;

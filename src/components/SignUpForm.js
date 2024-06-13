@@ -43,7 +43,7 @@ const RegisterScreen = () => {
 
     try {
       const { data } = await axios.post(
-        "/api/SignUp", // Gửi request đến API Route bạn vừa tạo
+        "/api/sign-up", // Gửi request đến API Route bạn vừa tạo
         formData
       );
       message.success("Đăng ký thành công");

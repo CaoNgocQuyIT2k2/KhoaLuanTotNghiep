@@ -13,7 +13,7 @@ const PostDanTri = ({ pClass, videoIcon, postSizeMd }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/LatesDanTri");
+        const response = await axios.get("/api/lates-dan-tri");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);

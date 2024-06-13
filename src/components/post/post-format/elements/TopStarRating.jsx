@@ -11,7 +11,7 @@ const TopStarRatingTop = ({ articleId }) => {
   console.log("articleId",articleId);
   const fetchAverageRatingTop = async (articleId) => {
     try {
-      const response = await axios.get(`/api/GetAverageStar?articleId=${articleId}`);
+      const response = await axios.get(`/api/get-average-star?articleId=${articleId}`);
       if (response.status === 200) {
         setAverageRatingTop(response.data);
       } 

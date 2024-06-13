@@ -13,7 +13,7 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
   
   const fetchCommentArticleDetail = useCallback(async () => {
     try {
-      const response = await axios.get(`/api/GetCommentArticle?articleId=${articleId}`);
+      const response = await axios.get(`/api/get-comment-article?articleId=${articleId}`);
       setComments(response.data);
       setCommentPosted(false);
     } catch (error) {
@@ -30,7 +30,7 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
   
   const handleUpdateComments = async (commentId, newComment) => {
     try {
-      const response = await axios.post(`/api/UpdateComment?commentId=${commentId}`, {
+      const response = await axios.post(`/api/update-comment?commentId=${commentId}`, {
         comment: newComment,
       }, {
         headers: { Authorization: `Bearer ${token}` },
@@ -51,9 +51,9 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
     }
   };
 
-  const handleDeleteComment = async (commentId) => {
+  const handledelete-comment = async (commentId) => {
     try {
-      const response = await axios.delete(`/api/DeleteComment?commentId=${commentId}`, {
+      const response = await axios.delete(`/api/delete-comment?commentId=${commentId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.status === 200) {
@@ -98,7 +98,7 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
                   comment={item.comment} // Pass the current comment
                   commentId={item.id} // Pass the comment ID
                   onEdit={(commentId, newComment) => handleUpdateComments(commentId, newComment)}
-                  onDelete={(commentId) => handleDeleteComment(commentId)}
+                  onDelete={(commentId) => handledelete-comment(commentId)}
                 />
               </Space>
             ) : null}

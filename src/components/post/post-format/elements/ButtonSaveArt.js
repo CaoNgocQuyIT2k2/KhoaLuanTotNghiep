@@ -10,7 +10,7 @@ const ButtonSaveArt = ({ articleId,onRemoveSaveArticle  }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/GetSavedArticle?articleId=${articleId}`, {
+        const response = await axios.get(`/api/get-saved-article?articleId=${articleId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
   
@@ -32,7 +32,7 @@ const ButtonSaveArt = ({ articleId,onRemoveSaveArticle  }) => {
   const handleSaveArticle = async () => {
     try {
       const response = await axios.post(
-        '/api/AddSaveArticle',
+        '/api/add-save-article',
         { articleId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -56,7 +56,7 @@ const ButtonSaveArt = ({ articleId,onRemoveSaveArticle  }) => {
   const handleRemoveSaveArticle = async () => {
     try {
       const response = await axios.delete(
-        `/api/RemoveSaveArticle?articleId=${articleId}`,
+        `/api/remove-save-article?articleId=${articleId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 

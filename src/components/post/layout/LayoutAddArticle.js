@@ -60,7 +60,7 @@ const LayoutAddArticle = () => {
             }
             console.log("formData: " + formData);
             const response = await axios.post(
-                '/api/CreateArticle',
+                '/api/create-article',
                 formData,
                 { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' } }
             );

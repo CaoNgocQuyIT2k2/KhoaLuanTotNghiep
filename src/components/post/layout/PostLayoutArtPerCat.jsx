@@ -13,7 +13,7 @@ const PostLayoutArtPerCat = ({ postSizeMd = false, postBgDark = false }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/LatestArticlePerCat"); // Make request to API route
+        const response = await axios.get("/api/latest-article-per-cat"); // Make request to API route
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);

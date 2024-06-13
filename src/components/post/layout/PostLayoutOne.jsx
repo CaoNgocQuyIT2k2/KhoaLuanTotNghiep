@@ -13,7 +13,7 @@ const PostLayoutOne = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("/api/Top5Newest");
+                const response = await axios.get("/api/top-5-newest");
                 setData(response.data);
             } catch (error) {
                 console.error("Error fetching data:", error);

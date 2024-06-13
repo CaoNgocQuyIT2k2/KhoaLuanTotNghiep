@@ -16,7 +16,7 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`/api/GetArtByCat?categoryId=${categoryId}`);
+                const response = await axios.get(`/api/get-art-by-cat?categoryId=${categoryId}`);
                 setData(response.data);
                 // Đặt trang hiện tại về 1 khi thay đổi danh mục
                 setCurrentPage(1);

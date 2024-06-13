@@ -12,7 +12,7 @@ const PostVNExpress = ({ pClass, videoIcon, postSizeMd }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/LatesVNExpress");
+        const response = await axios.get("/api/lates-vnexpress");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);

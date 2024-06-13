@@ -22,7 +22,7 @@ const AddCategory = ({ fetchCategories }) => {
 
   const fetchParentCategories = async () => {
     try {
-      const response = await axios.get(`/api/GetParentCategories`);
+      const response = await axios.get(`/api/get-parent-categories`);
       setParentCategories(response.data || []);
     } catch (error) {
       console.error("Error fetching parent categories:", error);
@@ -64,7 +64,7 @@ const AddCategory = ({ fetchCategories }) => {
         requestBody.parent = { id: parentId };
       }
 
-      const response = await axios.post(`/api/CreateCategory`, requestBody, {
+      const response = await axios.post(`/api/create-category`, requestBody, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

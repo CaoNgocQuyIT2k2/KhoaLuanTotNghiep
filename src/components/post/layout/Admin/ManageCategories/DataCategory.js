@@ -18,7 +18,7 @@ export default function DataCategory() {
   
   const fetchCategories = async () => {
     try {
-      const response = await axios.get(`/api/GetAllCategories`);
+      const response = await axios.get(`/api/get-all-categories`);
       const categories = response.data || [];
       setDetail(categories);
     } catch (error) {
@@ -80,7 +80,7 @@ export default function DataCategory() {
   const handleDelete = (categoryId) => {
     console.log("categoryId",categoryId);
     axios
-      .delete(`/api/DeleteCategory?categoryId=${categoryId}`, {
+      .delete(`/api/delete-category?categoryId=${categoryId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

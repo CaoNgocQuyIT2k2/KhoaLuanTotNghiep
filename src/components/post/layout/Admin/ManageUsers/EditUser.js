@@ -50,7 +50,7 @@ const EditUser = ({ showModal, userId, userfirstname, fetchListUser, userlastnam
         console.error("User information is missing");
         return;
       }
-      const response = await axios.post(`/api/UpdateUserInfo?userId=${userId}`, {
+      const response = await axios.post(`/api/update-user-info?userId=${userId}`, {
         firstname: userData.firstname,
         lastname: userData.lastname,
         dob: userData.dob,

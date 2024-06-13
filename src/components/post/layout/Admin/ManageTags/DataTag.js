@@ -20,7 +20,7 @@ export default function DataTag() {
 
   const fetchTags = async () => {
     try {
-      const response = await axios.get(`/api/GetAllTag`);
+      const response = await axios.get(`/api/get-all-tag`);
       const tags = response.data || [];
       console.log("🚀 ~ response.data:", response.data);
       setDetail(tags);
@@ -67,7 +67,7 @@ export default function DataTag() {
 
   const handleDelete = (tags_id) => {
     axios
-      .delete(`/api/DeleteTag?tagId=${tags_id}`,
+      .delete(`/api/delete-tag?tagId=${tags_id}`,
       { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((res) => {

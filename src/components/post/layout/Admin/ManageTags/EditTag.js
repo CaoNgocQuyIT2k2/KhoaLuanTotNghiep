@@ -60,7 +60,7 @@ const EditUser = ({ showModal,tagId,tagName, fetchTags}) => {
         return;
       }
       console.log("tagId",tagId);
-      const response = await axios.post(`/api/UpdateTag?tagId=${tagId}`, {
+      const response = await axios.post(`/api/update-tag?tagId=${tagId}`, {
         value: userData.value,
       }
     , { headers: { Authorization: `Bearer ${token}` } }

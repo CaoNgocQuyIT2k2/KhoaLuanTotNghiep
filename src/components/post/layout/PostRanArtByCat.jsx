@@ -20,7 +20,7 @@ const PostRanArtByCat = ({ pClass, videoIcon, dataPost }) => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/GetRRandomArtSameCat?categoryId=${category_id}`);
+        const response = await axios.get(`/api/get-random-art-same-cat?categoryId=${category_id}`);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);

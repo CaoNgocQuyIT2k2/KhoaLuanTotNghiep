@@ -31,7 +31,7 @@ const PostComment = ({ articleId, parentId, token }) => {
 
     try {
       const response = await axios.post(
-        '/api/CreateComment',
+        '/api/create-comment',
         commentData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -32,7 +32,7 @@ console.log("categoryName",categoryName);
 
   const fetchParentCategories = async () => {
     try {
-      const response = await axios.get(`/api/GetParentCategories`);
+      const response = await axios.get(`/api/get-parent-categories`);
       setParentCategories(response.data || []);
     } catch (error) {
       console.error("Error fetching parent categories:", error);
@@ -80,7 +80,7 @@ console.log("categoryData.parentId",categoryData.parentId);
       }
 console.log("requestBody",requestBody);
       const response = await axios.post(
-        `/api/UpdateCategory?categoryId=${categoryId}`,
+        `/api/update-category?categoryId=${categoryId}`,
         requestBody,
         { headers: { Authorization: `Bearer ${token}` } }
       );

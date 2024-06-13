@@ -13,7 +13,7 @@ const EditProfile = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("/api/GetInfoMyself", {
+                const response = await axios.get("/api/get-info-myself", {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setUser(response.data);
@@ -37,7 +37,7 @@ const EditProfile = () => {
 
     const handleConfirmClick = async () => {
         try {
-            const response = await axios.put("/api/updateUserInfo", user, {
+            const response = await axios.put("/api/update-user-info", user, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setSuccess("Cập nhật thành công!");
