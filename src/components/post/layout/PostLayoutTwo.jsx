@@ -13,7 +13,7 @@ const PostLayoutTwo = ({ postSizeMd, postBgDark }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/Top6react-article");
+        const response = await axios.get("/api/top-6-react-article");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
