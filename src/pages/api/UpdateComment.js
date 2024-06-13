@@ -2,13 +2,11 @@ import { message } from 'antd';
 import axios from 'axios';
 
 export default async function CreateComment(req, res) {
-  // Set CORS headers for all responses
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Authorization');
 
   if (req.method === 'OPTIONS') {
-    // Handle preflight request
     res.status(200).end();
     return;
   }
