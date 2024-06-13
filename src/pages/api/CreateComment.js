@@ -29,8 +29,6 @@ export default async function CreateComment(req, res) {
         { article, comment, parent },
         { headers: { Authorization: token } }
       );
-
-
       const data = response.data;
       // Handle response from API
       if (response.status === 200) {

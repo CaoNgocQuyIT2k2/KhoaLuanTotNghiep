@@ -36,7 +36,6 @@ export default async function CreateCategory(req, res) {
         { headers: { Authorization: token } }
       );
       const data = response.data;
-
       if (response.status === 200) {
         res.status(200).json(data);
       } else {
