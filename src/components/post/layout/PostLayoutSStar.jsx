@@ -21,8 +21,8 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 			}
 		};
 
-	// 	fetchData();
-	// }, []);
+		fetchData();
+	}, []);
 
 	return (
 		<>
