@@ -21,7 +21,10 @@ const HeaderOne = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchshow, setSearchShow] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
-  const [mount, setMount] = useState(false)
+
+
+  const [mount, setMount] = useState(false);
+
 
   useEffect(() => {
     setMount(true)
@@ -32,13 +35,19 @@ const HeaderOne = () => {
       const dropdownSelect = menuRef.current?.childNodes;
       let dropdownList = [];
 
-      for (let i = 0; i < dropdownSelect?.lengthth; i++) {
+
+
+      for (let i = 0; i < dropdownSelect?.length; i++) {
+
         const element = dropdownSelect[i];
         if (element.classList.contains("has-dropdown")) {
           dropdownList.push(element);
         }
       }
-      if (dropdownSelect?.lengthth > 0) {
+
+
+      if (dropdownSelect?.length > 0) {
+
         dropdownList.forEach((element) => {
           element.children[0].addEventListener("click", (e) => {
             e.preventDefault();
@@ -138,6 +147,7 @@ const HeaderOne = () => {
       handleSearchButtonClick();
     }
   };
+
 
   if(!mount) return null
 
