@@ -48,7 +48,7 @@ const PostLayoutArtPerCat = ({ postSizeMd = false, postBgDark = false }) => {
                   />
                 ) : (
                   <Image
-                    style={{ border: '1px solid black' }}
+                    className="defaultImage"
                     src={defaultAvatarSrc}
                     alt="Default Avatar"
                     width={postSizeMd ? 230 : 150}

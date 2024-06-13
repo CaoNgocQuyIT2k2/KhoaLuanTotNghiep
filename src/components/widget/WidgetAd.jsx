@@ -7,8 +7,8 @@ const WidgetAd = ({img, height, width}) => {
             <Image
                 src={img ?? "/images/clientbanner/clientbanner2.jpg"}
                 alt="sidebar Ad"
-                width={width ?? 320}
-                height={height ?? 287}
+                width={320}
+                height={ 287}
                 className="img-fluid"
             />
         </a>

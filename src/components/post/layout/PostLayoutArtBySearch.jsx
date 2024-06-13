@@ -34,7 +34,7 @@ const PostLayoutArtBySearch = ({ searchData, postSizeMd, postBgDark }) => {
                   />
                 ) : (
                   <Image
-                    style={{ border: '1px solid black' }}
+                    className="defaultImage"
                     src={defaultAvatarSrc}
                     alt="Default Avatar"
                     width={postSizeMd ? 285 : 150}

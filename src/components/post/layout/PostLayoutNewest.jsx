@@ -40,7 +40,7 @@ const PostLayoutNewest = ({ postSizeMd, postBgDark }) => {
                   />
                 ) : (
                   <Image
-                    style={{ border: '1px solid black' }}
+                    className="defaultImage"
                     src={defaultAvatarSrc}
                     alt={article.title}
                     width={postSizeMd === true ? 285 : 150}
