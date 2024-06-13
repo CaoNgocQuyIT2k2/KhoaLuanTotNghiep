@@ -11523,3 +11523,7 @@ ul {
   width: auto; /* Maintain aspect ratio */
   height: auto; /* Maintain aspect ratio */
 }
+
+.defaultImage {
+  border: 1px solid black;
+}

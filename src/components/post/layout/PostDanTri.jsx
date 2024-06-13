@@ -38,7 +38,7 @@ const PostDanTri = ({ pClass, videoIcon, postSizeMd }) => {
                 />
               ) : (
                 <Image
-                  style={{ border: '1px solid black' }}
+                  className="defaultImage"
                   src={defaultAvatarSrc}
                   alt="Default Avatar"
                   width={100}

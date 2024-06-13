@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { slugify } from "../../../../../utils";
 
+const defaultAvatarSrc = "/images/category/BgWhite.png";
 
 
 // Hàm để định dạng ngày giờ
@@ -56,13 +56,22 @@ const MetaDataOne = ({ metaData }) => {
           </div>
           <div className="col-lg-6">
             <div className="post-main-thumbnail">
-              <Image
-                src={metaData.avatar}
-                alt={metaData.title}
-                width={953} // Update width based on API data
-                height={834} // Update height based on API data
-                className="img-fluid"
-              />
+              {metaData.avatar ? (
+                <Image
+                  src={metaData.avatar}
+                  alt={metaData.title}
+                  width={953}
+                  height={834}
+                />
+              ) : (
+                <Image
+                  className="defaultImage"
+                  src={defaultAvatarSrc}
+                  alt="Default Avatar"
+                  width={953}
+                  height={834}
+                />
+              )}
             </div>
           </div>
         </div>

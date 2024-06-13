@@ -39,7 +39,7 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 								/>
 							) : (
 								<Image
-									style={{ border: '1px solid black' }}
+									className="defaultImage"
 									src={defaultAvatarSrc}
 									alt={data.title}
 									width={postSizeLg ? 730 : 350}

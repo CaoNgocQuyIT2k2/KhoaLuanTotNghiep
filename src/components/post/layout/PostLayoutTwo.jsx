@@ -42,7 +42,7 @@ const PostLayoutTwo = ({ postSizeMd, postBgDark }) => {
                   />
                 ) : (
                   <Image
-                    style={{ border: '1px solid black' }}
+                    className="defaultImage"
                     src={defaultAvatarSrc}
                     alt="Default Avatar"
                     width={postSizeMd === true ? 285 : 150}
@@ -107,7 +107,7 @@ const PostLayoutTwo = ({ postSizeMd, postBgDark }) => {
                   />
                 ) : (
                   <Image
-                    style={{ border: '1px solid black' }}
+                    className="defaultImage"
                     src={defaultAvatarSrc}
                     alt="Default Avatar"
                     width={postSizeMd === true ? 285 : 150}

@@ -16,8 +16,7 @@ import TagArticle from './elements/TagArticle';
 const PostFormatStandard = ({ articleId, allData }) => {
   const [postData, setPostData] = useState(null);
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.user?.token); // Lấy token từ state.user.user.token
-  console.log("token", token);
+  const token = useSelector((state) => state.user?.token); // Ensure token exists
 
   useEffect(() => {
     const fetchPostData = async () => {
@@ -38,8 +37,7 @@ const PostFormatStandard = ({ articleId, allData }) => {
   if (!postData) {
     return <div>Loading...</div>;
   }
-console.log("postData", postData);
-  // Check if postData.content exists and is a string before parsing it
+
   const parsedContent = postData.content && typeof postData.content === 'string' ? parse(postData.content) : null;
 
   return (
@@ -52,7 +50,7 @@ console.log("postData", postData);
               <main className="site-main">
                 <article className="post-details">
                   <div className="single-blog-wrapper">
-                    <SocialShareSide articleId={articleId}  />
+                    <SocialShareSide articleId={articleId} />
                     {parsedContent}
                   </div>
                 </article>

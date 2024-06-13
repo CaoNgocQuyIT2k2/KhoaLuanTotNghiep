@@ -43,7 +43,7 @@ const PostLayoutOne = () => {
                                         alt={"Default Avatar"}
                                         width={540}
                                         height={540}
-                                        style={{ border: '1px solid black' }}
+                                        className="defaultImage"
                                     />
                                 )}
                             </a>

@@ -21,7 +21,7 @@ const HomeOne = ({allPosts}) => {
     <PostSectionThree postData={allPosts} />
     <PostSectionFive postData={allPosts} adBanner={true} />
     <FooterOne />
-    <BackToTopButton />
+    {/* <BackToTopButton /> */}
 
     </>
    );

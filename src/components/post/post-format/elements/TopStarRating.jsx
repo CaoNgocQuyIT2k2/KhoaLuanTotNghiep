@@ -8,13 +8,13 @@ const TopStarRatingTop = ({ articleId }) => {
   useEffect(() => {
     fetchAverageRatingTop(articleId);
   }, [articleId]);
-console.log("articleId",articleId);
+  console.log("articleId", articleId);
   const fetchAverageRatingTop = async (articleId) => {
     try {
       const response = await axios.get(`/api/GetAverageStar?articleId=${articleId}`);
       if (response.status === 200) {
         setAverageRatingTop(response.data);
-      } 
+      }
     } catch (error) {
       console.error('Error fetching average rating:', error);
     }
@@ -27,10 +27,10 @@ console.log("articleId",articleId);
   return (
     <div className="star-rating">
       <div className="average-rating">
-        <p  style={{
-        color: 'white',
-        fontSize:'2rem'
-      }}>{averageRatingTop.averageStar.toFixed(1)} </p>
+        <p style={{
+          color: 'white',
+          fontSize: '2rem'
+        }}>{averageRatingTop.averageStar && averageRatingTop.averageStar.toFixed(1)} </p>
       </div>
       <div className="rating-stars">
         <i className="fa-star fas" />
