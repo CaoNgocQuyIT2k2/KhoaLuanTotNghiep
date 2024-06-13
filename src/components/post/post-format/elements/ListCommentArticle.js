@@ -51,7 +51,7 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
     }
   };
 
-  const handledelete-comment = async (commentId) => {
+  const handledelete = async (commentId) => {
     try {
       const response = await axios.delete(`/api/delete-comment?commentId=${commentId}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -98,7 +98,7 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
                   comment={item.comment} // Pass the current comment
                   commentId={item.id} // Pass the comment ID
                   onEdit={(commentId, newComment) => handleUpdateComments(commentId, newComment)}
-                  onDelete={(commentId) => handledelete-comment(commentId)}
+                  onDelete={(commentId) => handledelete(commentId)}
                 />
               </Space>
             ) : null}
