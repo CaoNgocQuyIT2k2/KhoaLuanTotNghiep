@@ -116,9 +116,9 @@ const HeaderOne = () => {
   };
 
   const handleSearchButtonClick = async () => {
-    console.log("searchKeyword",searchKeyword);
+
     if (!searchKeyword) {
-      message.error("Please enter a search keyword");
+      message.error("Vui lòng nhập dữ liệu tìm kiếm");
       return;
     }
     else router.push(`/search/${searchKeyword}`);

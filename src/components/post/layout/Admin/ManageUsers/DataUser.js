@@ -12,8 +12,8 @@ export default function DataUser() {
   const token = useSelector((state) => state.user?.token);
   const [detail, setDetail] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
-  console.log("🚀 ~ userId111:", userId);
-console.log("userId",userId);
+
+
   useEffect(() => {
     fetchListUser();
   }, [userId, fetchListUser]);
@@ -24,7 +24,7 @@ console.log("userId",userId);
         headers: { Authorization: `Bearer ${token}` },
       });
       const users = response.data || [];
-      console.log("users", users);
+
       setDetail(users);
     } catch (error) {
       console.error("Error fetching article detail:", error);
@@ -42,7 +42,7 @@ console.log("userId",userId);
       console.error("User information is missing");
       return;
     }
-    console.log("user_id", user_id);
+
     axios
       .delete(`/api/delete-user?userId=${user_id}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -50,7 +50,7 @@ console.log("userId",userId);
       .then((res = 200) => {
         message.success("Xóa thành công");
         fetchListUser();
-        console.log("🚀 ~ res:", res);
+
       })
       .catch((err) => {
         message.error("Xóa thất bại");

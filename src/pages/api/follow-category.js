@@ -17,15 +17,15 @@ export default async function handler(req, res) {
       const { category } = req.body;
       const token = req.headers.authorization;
 
-      console.log("categoryId", category);
-      console.log("token", token);
+
+
 
       // Construct the request body in the new format
       const requestBody = {
         category
       };
 
-      console.log("requestBody", requestBody);
+
 
       // Send request to update tag API
       const response = await axios.post(

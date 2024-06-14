@@ -6,8 +6,8 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept');
   
   const { categoryId } = req.query;
-  console.log("category: " + categoryId);
-console.log("categoryId", categoryId);
+
+
   if (!categoryId) {
     return res.status(400).json({ message: 'categoryId is required' });
   }
@@ -15,14 +15,14 @@ console.log("categoryId", categoryId);
   try {
     const response = await axios.get(`http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/article/anonymous/find-by-category?categoryId=${categoryId}`);
     const data = response.data;
-    console.log("🚀 ~ data:", data);
+
     if (response.status === 200) {
       res.status(200).json(data);
     } else {
       throw new Error('Unexpected status code from API');
     }
   } catch (error) {
-    console.log("🚀 ~ error fetching articles:", error);
+
     res.status(500).json({ message: 'Internal Server Error' });
   }
 }

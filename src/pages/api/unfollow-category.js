@@ -17,8 +17,8 @@ export default async function handler(req, res) {
       const { categoryId } = req.query;
       const token = req.headers.authorization;
 
-      console.log("categoryId", categoryId);
-      console.log("token", token);
+
+
 
 
       // Send request to update tag API
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
       }
     } catch (error) {
       console.error('Error:', error);
-      console.log("lỗi");
+
       if (error.response && error.response.status === 403) {
         res.status(403).json({ message: 'Unauthorized' });
       } else {

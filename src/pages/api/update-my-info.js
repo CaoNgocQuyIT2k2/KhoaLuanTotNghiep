@@ -17,8 +17,8 @@ export default async function handler(req, res) {
       const { firstname, lastname, dob } = req.body;
       const { userId } = req.query;
       const token = req.headers.authorization;
-      console.log(firstname, lastname, dob);
-      console.log("userId", userId);
+
+
       // Validate request body
       if (!firstname || !lastname) {
         res.status(400).json({ message: 'Fill in the required fields' });

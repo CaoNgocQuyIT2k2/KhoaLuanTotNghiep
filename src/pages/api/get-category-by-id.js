@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept');
 
   const { categoryId } = req.query;
-console.log("category: " + categoryId);
+
   if (!categoryId) {
     return res.status(400).json({ message: 'categoryId is required' });
   }
@@ -16,14 +16,14 @@ console.log("category: " + categoryId);
       params: { categoryId }
     });
     const data = response.data;
-    console.log("🚀 ~ category data:", data);
+
     if (response.status === 200) {
       res.status(200).json(data);
     } else {
       throw new Error('Unexpected status code from API');
     }
   } catch (error) {
-    console.log("🚀 ~ error fetching category:", error);
+
     res.status(500).json({ message: 'Internal Server Error' });
   }
 }

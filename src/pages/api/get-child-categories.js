@@ -15,14 +15,14 @@ export default async function handler(req, res) {
       params: { categoryId }
     });
     const data = response.data;
-    console.log("🚀 ~ child categories data:", data);
+
     if (response.status === 200) {
       res.status(200).json(data);
     } else {
       throw new Error('Unexpected status code from API');
     }
   } catch (error) {
-    console.log("🚀 ~ error fetching child categories:", error);
+
     res.status(500).json({ message: 'Internal Server Error' });
   }
 }

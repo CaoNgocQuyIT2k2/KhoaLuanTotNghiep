@@ -33,7 +33,7 @@ const StarRating = ({ articleId, token }) => {
 
     try {
       const response = await axios.post(
-        '/vote-star',
+        'api/vote-star',
         data,
         {
           headers: {
@@ -43,10 +43,10 @@ const StarRating = ({ articleId, token }) => {
       );
 
       if (response.status === 200) {
-        message.success(response.data.message);
+        message.success("Đánh giá sao thành công");
         fetchAverageRating(articleId, setAverageRating); // Refresh the average rating
       } else {
-        message.error(response.data.message);
+        message.error("Đánh giá sao thất bại");
       }
     } catch (error) {
       console.error('Error submitting rating:', error);
@@ -61,8 +61,8 @@ const StarRating = ({ articleId, token }) => {
   return (
     <div className="star-rating">
       <div className="average-rating">
-        {averageRating !== null && averageRating.averageStar !== undefined ? (
-          <span>Sao trung bình: {averageRating.averageStar.toFixed(1)} / 5.0</span>
+        {averageRating !== null ? (
+          <span>Sao trung bình: {averageRating.toFixed(1)} / 5.0</span>
         ) : (
           <span>Loading average rating...</span>
         )}

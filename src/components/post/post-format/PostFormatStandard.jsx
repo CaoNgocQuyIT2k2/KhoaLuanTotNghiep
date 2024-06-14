@@ -64,10 +64,6 @@ const PostFormatStandard = ({ articleId, allData }) => {
               <div className="post-sidebar">
                 <WidgetPostRanSameCat dataPost={postData} />
                 <WidgetPost dataPost={allData} />
-                <WidgetAd />
-                <WidgetNewsletter />
-                <WidgetSocialShare />
-                <WidgetInstagram />
               </div>
             </div>
           </div>

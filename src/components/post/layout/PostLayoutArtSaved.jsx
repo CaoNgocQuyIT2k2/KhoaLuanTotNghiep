@@ -30,7 +30,7 @@ const PostLayoutArtSaved = ({ postSizeMd, postBgDark, categoryId }) => {
         fetchData();
     }, [categoryId, token]); // Thêm 'token' vào mảng phụ thuộc của useEffect
     
-    console.log("data", data);
+
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const currentData = data.slice(startIndex, endIndex);

@@ -17,7 +17,7 @@ const EditCategory = ({ showModal,categoryName, categoryId, parentName, parentId
   const [parentCategories, setParentCategories] = useState([]);
 
   const user = useSelector((state) => state.user?.user);
-console.log("categoryName",categoryName);
+
   useEffect(() => {
     setCategoryData({
       name: categoryName,
@@ -73,12 +73,12 @@ console.log("categoryName",categoryName);
       const requestBody = {
         name: categoryData.name,
       };
-console.log("categoryData.parentId",categoryData.parentId);
+
       // Kiểm tra nếu có parentId thì thêm vào requestBody
       if (categoryData.parentId !== null) {
         requestBody.parent = { id: categoryData.parentId };
       }
-console.log("requestBody",requestBody);
+
       const response = await axios.post(
         `/api/update-category?categoryId=${categoryId}`,
         requestBody,

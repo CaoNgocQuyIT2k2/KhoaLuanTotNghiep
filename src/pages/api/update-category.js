@@ -18,8 +18,8 @@ export default async function handler(req, res) {
       const { categoryId } = req.query;
       const token = req.headers.authorization;
 
-      console.log("categoryId", categoryId);
-      console.log("token", token);
+
+
 
       // Construct the request body
       const requestBody = {
@@ -31,7 +31,7 @@ export default async function handler(req, res) {
         requestBody.parent = { id: parentId };
       }
 
-      console.log("requestBody", requestBody);
+
 
       // Send request to update tag API
       const response = await axios.post(

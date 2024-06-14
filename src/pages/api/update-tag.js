@@ -17,8 +17,8 @@ export default async function handler(req, res) {
       const { value} = req.body;
       const { tagId } = req.query;
       const token = req.headers.authorization;
-      console.log("tagId",tagId);
-      console.log("token",token);
+
+
       // Validate request body
       if (!value) {
         res.status(400).json({ message: 'All fields are required' });

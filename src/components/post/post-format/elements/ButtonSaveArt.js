@@ -1,33 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { Button } from 'antd';
 
-const ButtonSaveArt = ({ articleId,onRemoveSaveArticle  }) => {
+const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
   const [isSaved, setIsSaved] = useState(false);
   const token = useSelector((state) => state.user?.token);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/get-saved-article?articleId=${articleId}`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-  
-        // Kiểm tra nếu có dữ liệu trả về và đang được lưu
-        if (response.data && response.data.id) {
+        const responseSaved = await axios.get(`/api/get-saved-art-by-cat?categoryId=${categoryId}`,
+          { headers: { Authorization: `Bearer ${token}` }}
+        );
+        const savedArticles = responseSaved.data;
+
+        // Tìm kiếm articleId
+        const article = savedArticles.find(article => article.id === articleId);
+        if (article) {
           setIsSaved(true);
-        } else {
+        }
+        else {
           setIsSaved(false);
         }
       } catch (error) {
         console.error('Error fetching saved status:', error);
       }
     };
-  
+
     fetchData();
-  }, [articleId, token]);
-  
+  }, [articleId, token, categoryId]);
+
 
   const handleSaveArticle = async () => {
     try {
@@ -36,10 +38,10 @@ const ButtonSaveArt = ({ articleId,onRemoveSaveArticle  }) => {
         { articleId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      
+
       if (response.status === 200) {
         setIsSaved(true);
-        console.log('Tạo tag thành công!');
+
       } else {
         console.error('Tạo tag thất bại.');
       }
@@ -62,7 +64,7 @@ const ButtonSaveArt = ({ articleId,onRemoveSaveArticle  }) => {
 
       if (response.status === 200) {
         setIsSaved(false);
-        console.log('Xóa bài đã lưu thành công!');
+
         onRemoveSaveArticle();
       } else {
         console.error('Xóa bài đã lưu thất bại.');
@@ -87,7 +89,10 @@ const ButtonSaveArt = ({ articleId,onRemoveSaveArticle  }) => {
   };
 
   return (
-    <li >
+   <ul style={{
+    listStyle: "none !important"
+   }}>
+     <li >
       <button className={isSaved ? "saved-icon" : "save-icon"}
         onClick={handleClick}
         style={{
@@ -99,6 +104,7 @@ const ButtonSaveArt = ({ articleId,onRemoveSaveArticle  }) => {
       >
       </button>
     </li>
+   </ul>
   );
 };
 

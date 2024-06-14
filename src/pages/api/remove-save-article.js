@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     try {
       const { articleId } = req.query;
       const token = req.headers.authorization; // Lấy token từ header
-      console.log("token: ", articleId);
+
 
       if (!articleId) {
         res.status(400).json({ message: 'Invalid request params' });

@@ -6624,9 +6624,11 @@ input[type="radio"] + label::after {
 /*--Post details--*/
 article ul {
   margin-bottom: 3rem;
+
 }
 article li {
   margin-bottom: 1rem;
+  list-style: none !important;
 }
 .single-blog-wrapper {
   margin: 0;
@@ -10151,7 +10153,7 @@ label.valid:after {
   position: relative;
   line-height: 0;
   display: block;
-  padding: 0 0 66.66667%;
+  padding: 0 0 !important;
   overflow: hidden
 }
 

@@ -56,9 +56,9 @@ const LayoutAddArticle = () => {
 
             // Log form data for debugging
             for (let pair of formData.entries()) {
-                console.log(pair[0] + ': ' + pair[1]);
+
             }
-            console.log("formData: " + formData);
+
             const response = await axios.post(
                 '/api/create-article',
                 formData,

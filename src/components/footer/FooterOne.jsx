@@ -31,7 +31,7 @@ const FooterOne = () => {
 
   const GetChildCategories = async (categoryId) => {
     try {
-      console.log('Fetching child categories:', categoryId);
+
       const response = await axios.get('/api/get-child-categories', {
         params: { categoryId }
       });

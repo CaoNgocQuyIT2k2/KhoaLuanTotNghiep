@@ -54,7 +54,7 @@ export default async function handler(req, res) {
 
     const file = req.file;
     const token = req.headers.authorization; // Extract token từ Authorization header
-    console.log("token: " + token);
+
     if (!file || !token) {
       res.status(400).json({ message: 'File and authorization token are required' });
       return;

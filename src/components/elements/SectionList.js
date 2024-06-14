@@ -33,14 +33,14 @@ const SectionList = (props) => {
                 setFollowedParentCategories(parentCategories);
 
                 for (let parentCategory of parentCategories) {
-                    console.log("arentCategory.id",parentCategory.id);
+
                     const childCategoriesResponse = await axios.get(`/api/get-follow-child-cat?categoryId=${parentCategory.id}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     setFollowedChildCategories(prev => [...prev, ...childCategoriesResponse.data]);
                 }
             } catch (error) {
-                console.error("Error fetching data:", error);
+                console.error("Lỗi cập nhật dữ liệu:");
             }
         };
 
@@ -155,7 +155,7 @@ const SectionList = (props) => {
                     console.error('Failed to follow category.');
                 }
             } else {
-                console.log('Category already followed.');
+
             }
         } catch (error) {
             console.error('Error:', error);

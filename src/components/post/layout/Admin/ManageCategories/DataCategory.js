@@ -78,7 +78,7 @@ export default function DataCategory() {
   ];
 
   const handleDelete = (categoryId) => {
-    console.log("categoryId",categoryId);
+
     axios
       .delete(`/api/delete-category?categoryId=${categoryId}`, {
         headers: { Authorization: `Bearer ${token}` },

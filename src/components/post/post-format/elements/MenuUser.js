@@ -12,7 +12,7 @@ export default function MenuUser() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const userRole = useSelector((state) => state.user.user?.role); 
-  console.log("userRole", userRole);
+
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

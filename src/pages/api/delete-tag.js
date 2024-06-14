@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     try {
       const { tagId } = req.query; // Extract comment details from request body
       const token = req.headers.authorization; // Extract token from Authorization header
-      console.log("userId",token);
+
       // Send request to create comment API
       const response = await axios.delete(
         `http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/tag/delete?tagId=${tagId}`,

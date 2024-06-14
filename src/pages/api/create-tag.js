@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     try {
       const { value } = req.body;
       const token = req.headers.authorization; // Lấy token từ header
-      console.log("token: " + token);
+
 
       if (!value) {
         res.status(400).json({ message: 'Invalid request body' });

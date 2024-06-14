@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   }
 
   const { articleId } = req.query;
-  console.log("articleId: " + articleId);
+
   if (!articleId) {
     res.status(400).json({ message: 'articleId is required' });
     return;
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     }
   } catch (error) {
     console.error('Error fetching average star:', error);
-    console.log("Lấy thất bại sao trung bình");
+
     res.status(500).json({ message: 'Internal Server Error' });
   }
 }

@@ -16,8 +16,8 @@ export default async function handler(req, res) {
     try {
       const { oldPassword, newPassword, reEnterPassword } = req.body;
       const token = req.headers.authorization;
-      console.log("oldPassword, newPassword, reEnterPassword ", oldPassword, newPassword, reEnterPassword);
-      console.log("token", token);
+
+
       // Validate request body
       if (!oldPassword || !newPassword || !reEnterPassword) {
         res.status(400).json({ message: 'All fields are required' });

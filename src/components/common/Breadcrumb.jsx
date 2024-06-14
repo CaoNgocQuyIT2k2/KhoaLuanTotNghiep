@@ -24,7 +24,7 @@ const Breadcrumb = ({ aPage }) => {
   }, [categoryId]);
 
 
-  console.log("data", data);
+
 
 
 

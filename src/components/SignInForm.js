@@ -35,14 +35,14 @@ const SignInForm = () => {
           token: response.data.token,
           user: response.data.user // hoặc các thông tin khác từ response nếu có
         };
-        console.log("userInfo", userInfo);
+
         localStorage.setItem('USER_INFO', JSON.stringify(userInfo));
 
         window.location.href = "/"; // Chuyển hướng đến trang đăng nhập
         dispatch(setUserInfo(userInfo));
       } 
     } catch (error) {
-      console.log("Đăng nhập thất bại", error);
+
       message.error(error.response.data.message);
     }
   };

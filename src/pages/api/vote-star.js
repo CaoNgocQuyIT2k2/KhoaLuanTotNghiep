@@ -20,9 +20,9 @@ export default async function handler(req, res) {
     try {
       const { article, star } = req.body;
       const token = req.headers.authorization;
-console.log("toFixed", token);
-console.log("toFixed", article, star);
-      if (!article || !article.id || !star) {
+
+
+      if (!article || !star) {
         res.status(400).json({ message: 'Invalid request body' });
         return;
       }

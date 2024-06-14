@@ -39,7 +39,7 @@ const AddTag = ({ articleName, fetchTags }) => {
       }, { headers: { Authorization: `Bearer ${token}` } });
 
       const addedTag = response.data || [];
-      console.log("🚀 ~ response.data:", response.data);
+
       message.success("Thêm chuyên mục thành công");
       fetchTags();
       setOpen(false);

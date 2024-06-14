@@ -16,7 +16,7 @@ const LayoutArticlesByCategory = ({ allPosts }) => {
     const router = useRouter();
     const { categoryId } = router.query;
     const [data, setData] = useState(null);
-console.log("category: " + categoryId);
+
     useEffect(() => {
         const fetchData = async () => {
             if (categoryId) {
@@ -62,9 +62,6 @@ console.log("category: " + categoryId);
                         <div className="col-lg-4">
                             <div className="post-sidebar">
                                 <WidgetPost dataPost={allPosts} />
-                                <WidgetAd />
-                                <WidgetSocialShare />
-                                <WidgetAd img="/images/clientbanner/clientbanner3.jpg" height={492} width={320} />
                             </div>
                         </div>
                     </div>

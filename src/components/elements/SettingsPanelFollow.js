@@ -109,11 +109,13 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                     ...prevState,
                     [categoryId]: true
                 }));
+                messages.success("Lưu bài viết thành công")
             } else {
-                console.error('Failed to follow category.');
+                messages.error("Lưu bài viết thất bại")
+
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Có Lỗi!');
         }
     };
 
@@ -132,11 +134,14 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                     ...prevState,
                     [categoryId]: false
                 }));
+
+                messages.success("Bỏ lưu bài viết thành công")
+
             } else {
-                console.error('Failed to unfollow category.');
+                messages.error("Bỏ lưu bài viết thất bại")
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Có Lỗi!');
         }
     };
 

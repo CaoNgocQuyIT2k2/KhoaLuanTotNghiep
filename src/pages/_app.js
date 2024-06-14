@@ -6,7 +6,7 @@ import store from '../../store';
 
 function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
-    console.log('NEXT_PUBLIC_BASEPATH:', process.env.NEXT_PUBLIC_BASEPATH);
+
   }, []);
 
   return (

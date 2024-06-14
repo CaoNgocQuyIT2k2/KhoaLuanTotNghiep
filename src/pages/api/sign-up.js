@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
       // Xử lý phản hồi từ API khác
       const data = response.data;
-      console.log("🚀 ~ data:", data);
+
 
       // Trả về kết quả
       if (response.status === 200) {

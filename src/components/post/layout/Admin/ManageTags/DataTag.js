@@ -22,7 +22,7 @@ export default function DataTag() {
     try {
       const response = await axios.get(`/api/get-all-tag`);
       const tags = response.data || [];
-      console.log("🚀 ~ response.data:", response.data);
+
       setDetail(tags);
     } catch (error) {
       console.error("Error fetching article detail:", error);
@@ -72,7 +72,7 @@ export default function DataTag() {
       )
       .then((res) => {
         message.success("Xóa thành công");
-        console.log("🚀 ~ res:", res);
+
         fetchTags();
       })
       .catch((err) => {

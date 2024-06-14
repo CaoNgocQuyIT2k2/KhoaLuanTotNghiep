@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     try {
       const { articleId } = req.body;
       const token = req.headers.authorization;
-      console.log("articleId",articleId);
+
       if (!articleId) {
         res.status(400).json({ message: 'Invalid request body' });
         return;

@@ -11,21 +11,18 @@ import WidgetSocialShare from '../../widget/WidgetSocialShare';
 import FooterOne from '../../footer/FooterOne';
 import BackToTopButton from '../post-format/elements/BackToTopButton';
 
-
 const LayoutArtBySearch = () => {
   const router = useRouter();
   const { slug } = router.query; // Lấy từ khóa tìm kiếm từ URL
   const [searchData, setSearchData] = useState([]);
-  console.log("slug: " + slug);
+
   const keyList = slug;
-  console.log("keyList: " + keyList);
 
   useEffect(() => {
-    if (slug) {
+    if (keyList) {
       const fetchSearchData = async () => {
         try {
           const response = await axios.get(`/api/search-article?keyList=${keyList}`);
-
           if (response.status === 200) {
             setSearchData(response.data);
           } else {
@@ -38,7 +35,7 @@ const LayoutArtBySearch = () => {
 
       fetchSearchData();
     }
-  }, [slug]);
+  }, [keyList]); 
 
   return (
     <>
@@ -67,7 +64,6 @@ const LayoutArtBySearch = () => {
                 <WidgetPost dataPost={searchData} />
                 <WidgetAd />
                 <WidgetSocialShare />
-                {/* <WidgetCategory cateData={searchData} /> */}
                 <WidgetAd img="/images/clientbanner/clientbanner3.jpg" height={492} width={320} />
               </div>
             </div>
@@ -75,8 +71,7 @@ const LayoutArtBySearch = () => {
         </div>
       </div>
       <FooterOne />
-    <BackToTopButton />
-
+      <BackToTopButton />
     </>
   );
 };

@@ -19,7 +19,7 @@ const formatDateTime = (dateTimeString) => {
   return date.toLocaleString('vi-VN', options);
 };
 const MetaDataOne = ({ metaData }) => {
-  console.log("MetaDataOne", metaData);
+
   return (
     <div className="banner banner__single-post banner__standard">
       <div className="container">

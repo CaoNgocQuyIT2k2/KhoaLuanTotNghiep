@@ -76,7 +76,7 @@ const PostLayoutArtBySearch = ({ searchData, postSizeMd, postBgDark }) => {
                     <i className="" />
                     {article.artSource}
                   </li>
-                  <ButtonSaveArt articleId={article.id}/>
+                  <ButtonSaveArt categoryId={article.category && article.category?.id} articleId={article.id}/>
                 </ul>
               </div>
             </div>

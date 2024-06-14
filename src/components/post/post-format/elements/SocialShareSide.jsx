@@ -49,7 +49,7 @@ const SocialShareSide = ({ articleId }) => {
 
       if (response.status === 200) {
         fetchData(); // Refresh data after successful vote
-        console.log('Article saved successfully!');
+
       }
     } catch (error) {
       console.error("Error submitting reaction:", error);

@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 
       // Process the response from the external API
       const data = response.data;
-      console.log("🚀 ~ data:", data.user);
+
 
       // Ensure that the response contains a token
       if (response.status === 200) {

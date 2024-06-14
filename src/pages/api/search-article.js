@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     try {
       // Lấy dữ liệu từ query string
       const { keyList } = req.query;
-      console.log("keyList", keyList);
+
 
       // Kiểm tra tính hợp lệ của dữ liệu
       if (!keyList || keyList.length === 0) {

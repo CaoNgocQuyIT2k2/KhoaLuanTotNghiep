@@ -60,7 +60,7 @@ const SearchImage = ({ setSearchKeyword }) => {
     const predictions = await model.detect(imageElement, 6);
     const classNames = getClassNames(predictions);
     setSearchKeyword(classNames);
-    console.log("Predictions: ", predictions);
+
   };
   
   const readImage = (file) => {

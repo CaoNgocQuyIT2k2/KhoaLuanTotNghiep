@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   try {
     // Lấy articleId từ query params
     const { articleId } = req.query;
-    console.log("articleId", articleId);
+
     
     // Tạo mảng các loại reaction
     const types = ['LIKE', 'HEART', 'CLAP', 'STAR'];
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       return acc;
     }, {});
     
-    console.log("acc", data);
+
 
     // Trả về dữ liệu dưới dạng JSON
     res.status(200).json(data);

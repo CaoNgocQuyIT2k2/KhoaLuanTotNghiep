@@ -14,8 +14,8 @@ const EditPasswordForm = () => {
   const token = useSelector((state) => state.user.token);
   const userPass = useSelector((state) => state.user.user?.password);
 
-  console.log("userPass", userPass);
-  console.log("token", token);
+
+
 
 
   const handleSubmit = async (e) => {

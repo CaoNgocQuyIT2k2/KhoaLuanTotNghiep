@@ -17,7 +17,7 @@ function LayoutArtSaved() {
     const [articles, setSavedArticles] = useState([]);
     const [reload, setReload] = useState(false); // State để cập nhật lại giao diện
     const token = useSelector((state) => state.user?.token);
-    console.log("article: " + articles);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -74,7 +74,7 @@ function LayoutArtSaved() {
                                                 <div className="kVunuOJJvyAdEERuRnUL">
 
                                                     <div className="saved-article-20240609180238620 vLPsOJ4TxOzrC0g8QrVd  " title="Bỏ lưu bài viết">
-                                                        <ButtonSaveArt articleId={article.article.id} onRemoveSaveArticle={handleRemoveSaveArticle} />
+                                                        <ButtonSaveArt categoryId={article.article && article.article.category && article.article.category?.id} articleId={article.article.id} onRemoveSaveArticle={handleRemoveSaveArticle} />
                                                     </div>
                                                 </div>
                                             </div>

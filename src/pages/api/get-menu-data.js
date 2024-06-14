@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   // Handle API request
   try {
     const parentResponse = await axios.get('http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/category/anonymous/get-all-parent');
-    console.log("🚀 ~ get parent categories data:", parentResponse.data);
+
 
     if (parentResponse.status !== 200) {
       throw new Error('Unexpected status code from API');
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 
     const menuPromises = parentCategories.map(async (parent) => {
       const childResponse = await axios.get(`http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/category/anonymous/get-child?categoryId=${parent.id}`);
-      console.log("🚀 ~ get child categories data:", childResponse.data);
+
 
       if (childResponse.status !== 200) {
         throw new Error('Unexpected status code from API');

@@ -13,7 +13,7 @@ const PostComment = ({ articleId, parentId, token }) => {
   const handleCommentChange = (e) => {
     setComment(e.target.value);
   };
-  console.log('articleId:', articleId); // Debug log
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ const PostComment = ({ articleId, parentId, token }) => {
       parent: parentId ? { id: parentId } : null,
     };
 
-    console.log('Comment data being sent:', commentData); // Debug log
+
 
     try {
       const response = await axios.post(

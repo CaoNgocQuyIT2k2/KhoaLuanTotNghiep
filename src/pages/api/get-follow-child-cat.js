@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   const { categoryId } = req.query;
   const token = req.headers.authorization; // Extract token from Authorization header
 
-  console.log("Kiểm tra việc truyền article_id vào PostFormatStandard1", categoryId);
+
 
   // Handle API request
   try {
@@ -19,12 +19,12 @@ export default async function handler(req, res) {
     );
     
     const data = response.data;
-    console.log("🚀 ~ data:", data);
+
 
     // Send response only once
     res.status(200).json(data);
   } catch (error) {
-    console.log("🚀 ~ error:", error);
+
     res.status(500).json({ message: 'Internal Server Error' });
   }
 }

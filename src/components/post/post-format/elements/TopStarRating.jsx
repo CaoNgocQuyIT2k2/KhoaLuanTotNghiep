@@ -9,8 +9,8 @@ const TopStarRatingTop = ({ articleId }) => {
     fetchAverageRatingTop(articleId);
   }, [articleId]);
 
-  console.log("articleId", articleId);
-console.log("averageRatingTop",averageRatingTop);
+
+
   const fetchAverageRatingTop = async (articleId) => {
     try {
       const response = await axios.get(`/api/get-average-star?articleId=${articleId}`);

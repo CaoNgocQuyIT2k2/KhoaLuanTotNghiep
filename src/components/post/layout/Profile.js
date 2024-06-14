@@ -16,7 +16,7 @@ const Profile = () => {
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
     const dispatch = useDispatch();
-    console.log("avatarUrl", userAvatar);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -56,7 +56,7 @@ const Profile = () => {
 
             // Update state and localStorage before reloading the page
             setUser(response.data);
-            console.log("response.data",response.data);
+
             dispatch(updateUserInfo(response.data)); // Dispatch action to update Redux state
 
            const userInfo = JSON.parse(localStorage.getItem("USER_INFO"));

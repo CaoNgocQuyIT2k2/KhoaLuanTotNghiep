@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const ArticleFollowed = ({ articleId, title, imageUrl, category, date, categoryId }) => {
-    console.log("articleId", articleId);
+
     return (
         <article className="T4C8M7gx47SgNVdeaEo5">
             <div className="cejlglTblCkKqUv8Qao3">

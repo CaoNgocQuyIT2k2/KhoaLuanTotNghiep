@@ -5,20 +5,22 @@ import axios from 'axios';
 import { Pagination } from 'antd';
 import ButtonSaveArt from "../post-format/elements/ButtonSaveArt";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png";
 
 const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
     const [data, setData] = useState([]);
+    const token = useSelector((state) => state.user?.token);
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
-console.log("categoryId", categoryId);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`/api/get-art-by-cat?categoryId=${categoryId}`);
                 setData(response.data);
-                console.log("response", response);
+
                 // Đặt trang hiện tại về 1 khi thay đổi danh mục
                 setCurrentPage(1);
             } catch (error) {
@@ -26,9 +28,12 @@ console.log("categoryId", categoryId);
             }
         };
 
+        
         fetchData();
     }, [categoryId]);
-    console.log("data",data);
+    
+
+
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const currentData = data.slice(startIndex, endIndex);
@@ -94,7 +99,8 @@ console.log("categoryId", categoryId);
                                         <i className="" />
                                         {article.artSource}
                                     </li>
-                                    <ButtonSaveArt articleId={article.id}/>
+                                    
+                                    <ButtonSaveArt articleId={article.id} categoryId={categoryId}/>
                                 </ul>
                             </div>
                         </div>
