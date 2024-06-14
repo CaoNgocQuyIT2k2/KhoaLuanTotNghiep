@@ -39,7 +39,6 @@ const PostFormatStandard = ({ articleId, allData }) => {
   }
 
   const parsedContent = postData.content && typeof postData.content === 'string' ? parse(postData.content) : null;
-
   return (
     <>
       <MetaDataOne metaData={postData} />
@@ -50,7 +49,7 @@ const PostFormatStandard = ({ articleId, allData }) => {
               <main className="site-main">
                 <article className="post-details">
                   <div className="single-blog-wrapper">
-                    <SocialShareSide articleId={articleId} />
+                    <SocialShareSide categoryId={postData.category && postData.category?.id} articleId={articleId} />
                     {parsedContent}
                   </div>
                 </article>

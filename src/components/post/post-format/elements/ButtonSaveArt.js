@@ -10,7 +10,7 @@ const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
     const fetchData = async () => {
       try {
         const responseSaved = await axios.get(`/api/get-saved-art-by-cat?categoryId=${categoryId}`,
-          { headers: { Authorization: `Bearer ${token}` }}
+          { headers: { Authorization: `Bearer ${token}` } }
         );
         const savedArticles = responseSaved.data;
 
@@ -89,10 +89,9 @@ const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
   };
 
   return (
-   <ul style={{
-    listStyle: "none !important"
-   }}>
-     <li >
+    <li style={{
+      listStyle: "none !important"
+    }} >
       <button className={isSaved ? "saved-icon" : "save-icon"}
         onClick={handleClick}
         style={{
@@ -104,7 +103,6 @@ const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
       >
       </button>
     </li>
-   </ul>
   );
 };
 

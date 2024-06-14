@@ -17,10 +17,6 @@ const ArticleFollowed = ({ articleId, title, imageUrl, category, date, categoryI
                             height={300} 
                             layout="responsive" 
                             objectFit="cover" 
-                            onError={(e) => {
-                                e.target.onerror = null; 
-                                e.target.src = "/path/to/default-image.jpg"; // Đường dẫn đến ảnh mặc định
-                            }} 
                         />
                     </a>
                 </Link>
@@ -31,13 +27,14 @@ const ArticleFollowed = ({ articleId, title, imageUrl, category, date, categoryI
                 </h3>
                 <div className="DFvkGh7X5w3Tc2YVuhsc">
                     <div className="DLthO24IR5yJeB6qXBm5">
-                        <ButtonSaveArt articleId={articleId} />
+                        <ButtonSaveArt categoryId={categoryId} articleId={articleId} />
                     </div>
                     <div className="Vf3BrfrGTlBJ9SqOawCQ">
                         <a className="AuRR3nlDzpNADbzhpaC1 baoayGCy5KTsiUdG7uGe" href={`/category/${categoryId}`}>{category}</a> - <span>{date}</span>
                     </div>
                 </div>
             </div>
+            <div className="LhUcpE8AvJVc3kiaLSEJ"></div>
         </article>
     );
 }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useSelector } from "react-redux";
 import ButtonSaveArt from "./ButtonSaveArt";
 
-const SocialShareSide = ({ articleId }) => {
+const SocialShareSide = ({ articleId,categoryId }) => {
   const [windowPath, setWindowPath] = useState(null);
   const token = useSelector((state) => state.user?.token);
 
@@ -59,7 +59,7 @@ const SocialShareSide = ({ articleId }) => {
   return (
     <div className="post-details__SaveArt mt-2">
        <ul className="SaveArt SaveArt__with-bg SaveArt__vertical">
-       <ButtonSaveArt articleId={articleId}/>
+       <ButtonSaveArt categoryId={categoryId} articleId={articleId}/>
         </ul>
       <ul className="social-share social-share__with-bg social-share__vertical">
         

@@ -221,7 +221,7 @@ const SectionList = (props) => {
                     <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="m7 5.36 2.174 2.173a.662.662 0 0 1 0 .934L7 10.64" stroke="#888" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"></path>
                     </svg>
-                    <a href="#">Thiết lập</a>
+                    <span href="#">Thiết lập</span>
                 </div>
                 <h4>Theo dõi chuyên mục</h4>
             </div>
