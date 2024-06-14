@@ -6,15 +6,14 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept');
   
   const { categoryId } = req.query;
-
+  console.log("category: " + categoryId);
+console.log("categoryId", categoryId);
   if (!categoryId) {
     return res.status(400).json({ message: 'categoryId is required' });
   }
 
   try {
-    const response = await axios.get(`http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/article/anonymous/find-by-category`, {
-      params: { categoryId }
-    });
+    const response = await axios.get(`http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/article/anonymous/find-by-category?categoryId=${categoryId}`);
     const data = response.data;
     console.log("🚀 ~ data:", data);
     if (response.status === 200) {

@@ -213,90 +213,90 @@ const SectionList = (props) => {
 
     const filteredMenuData = filterMenuData(menuData, searchText);
 
-    // return (
-    //     <div className='hnDnbfcbh83CEOdzrSbo'>
-    //         <div>
-    //             <div className="Ccoa5Slfcman_7DtENdO">
-    //                 <a href="#" onClick={props.handleBackToDashboard}>Bảng tin của bạn</a>
-    //                 <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    //                     <path d="m7 5.36 2.174 2.173a.662.662 0 0 1 0 .934L7 10.64" stroke="#888" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"></path>
-    //                 </svg>
-    //                 <a href="#">Thiết lập</a>
-    //             </div>
-    //             <h4>Theo dõi chuyên mục</h4>
-    //         </div>
-    //         <div className="Ae8Z5BKVF0S0yz_wDIkg ">
-    //             <div className="search-container mb-5">
-    //                 <input
-    //                     type="text"
-    //                     placeholder="Tìm kiếm chuyên mục..."
-    //                     onChange={handleSearchChange}
-    //                 />
-    //             </div>
-    //             {filteredMenuData.map((section, index) => (
-    //                 <div key={index}>
-    //                     <div className="MwTn6zWG4_2tPHxA6yoG" style={{ display: 'flex' }}>
-    //                         <div className="QIOCZgyVaqEM6CrHzKrl" href={`/${section.id}`}>
-    //                             {section.label}
-    //                         </div>
-    //                         <div className="G8rMGWdreAGHVOvLGtIh">
-    //                             <button className="GTl86OzEYpo2XsSsAfn8" onClick={() => toggleExpand(section.label)}>
-    //                                 <span>Mở rộng</span>
-    //                                 <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    //                                     <path d="M2.667 4.667h10M2.667 8h4" stroke="#888" strokeLinecap="round"></path>
-    //                                     <path d="m13.067 10-1.811 1.811a.552.552 0 0 1-.778 0L8.667 10" stroke="#888" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"></path>
-    //                                     <path d="M2.667 11.334h4" stroke="#888" strokeLinecap="round"></path>
-    //                                 </svg>
-    //                             </button>
-    //                             {isParentCategoryFollowed(section.id) ? (
-    //                                 <button className="O9VAherl4x0Mm97xjCIp s0Yr8xvVir_2KNnwycpu kKAxMBA76wUDIG2C9F4w kGRXLSMESFZzLPG7yXhS" title="Bỏ theo dõi" onClick={() => unfollowCategory(section.id)}>
-    //                                     <span>Đang theo dõi</span>
-    //                                 </button>
-    //                             ) : (
-    //                                 <button className="O9VAherl4x0Mm97xjCIp s0Yr8xvVir_2KNnwycpu RXCflJFIOBK8xwKJ7xv2 kGRXLSMESFZzLPG7yXhS" title="Theo dõi" onClick={() => followCategory(section.id)}>
-    //                                     <span>
-    //                                         <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    //                                             <path d="M4 8h8m-4 4V4" stroke="#0F6C32" strokeLinecap="round" strokeLinejoin="round"></path>
-    //                                         </svg>
-    //                                         Theo dõi
-    //                                     </span>
-    //                                 </button>
-    //                             )}
-    //                         </div>
-    //                     </div>
-    //                     {expanded[section.label] && (
-    //                         <div className="AOQgp6rl6lTaAjc_2xJR">
-    //                             {section.submenu.map((subItem, subIndex) => (
-    //                                 <div key={subIndex} className="MwTn6zWG4_2tPHxA6yoG" style={{ display: 'flex', marginLeft: '20px' }}>
-    //                                     <div style={{ fontSize: '14px' }} className="QIOCZgyVaqEM6CrHzKrl" href={subItem.subpath}>
-    //                                         {subItem.sublabel}
-    //                                     </div>
-    //                                     <div className="G8rMGWdreAGHVOvLGtIh btn-follow-child-cat">
-    //                                         {isChildCategoryFollowed(subItem.id) ? (
-    //                                             <button className="O9VAherl4x0Mm97xjCIp s0Yr8xvVir_2KNnwycpu kKAxMBA76wUDIG2C9F4w kGRXLSMESFZzLPG7yXhS" title="Bỏ theo dõi" onClick={() => unfollowCategoryChild(subItem.id)}>
-    //                                                 <span>Đang theo dõi</span>
-    //                                             </button>
-    //                                         ) : (
-    //                                             <button className="O9VAherl4x0Mm97xjCIp s0Yr8xvVir_2KNnwycpu RXCflJFIOBK8xwKJ7xv2 kGRXLSMESFZzLPG7yXhS" title="Theo dõi" onClick={() => followCategoryChild(subItem.id)}>
-    //                                                 <span>
-    //                                                     <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    //                                                         <path d="M4 8h8m-4 4V4" stroke="#0F6C32" strokeLinecap="round" strokeLinejoin="round"></path>
-    //                                                     </svg>
-    //                                                     Theo dõi
-    //                                                 </span>
-    //                                             </button>
-    //                                         )}
-    //                                     </div>
-    //                                 </div>
-    //                             ))}
-    //                         </div>
-    //                     )}
-    //                 </div>
-    //             ))}
-    //         </div>
-    //     </div>
+    return (
+        <div className='hnDnbfcbh83CEOdzrSbo'>
+            <div>
+                <div className="Ccoa5Slfcman_7DtENdO">
+                    <a href="#" onClick={props.handleBackToDashboard}>Bảng tin của bạn</a>
+                    <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m7 5.36 2.174 2.173a.662.662 0 0 1 0 .934L7 10.64" stroke="#888" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"></path>
+                    </svg>
+                    <a href="#">Thiết lập</a>
+                </div>
+                <h4>Theo dõi chuyên mục</h4>
+            </div>
+            <div className="Ae8Z5BKVF0S0yz_wDIkg ">
+                <div className="search-container mb-5">
+                    <input
+                        type="text"
+                        placeholder="Tìm kiếm chuyên mục..."
+                        onChange={handleSearchChange}
+                    />
+                </div>
+                {filteredMenuData.map((section, index) => (
+                    <div key={index}>
+                        <div className="MwTn6zWG4_2tPHxA6yoG" style={{ display: 'flex' }}>
+                            <div className="QIOCZgyVaqEM6CrHzKrl" href={`/${section.id}`}>
+                                {section.label}
+                            </div>
+                            <div className="G8rMGWdreAGHVOvLGtIh">
+                                <button className="GTl86OzEYpo2XsSsAfn8" onClick={() => toggleExpand(section.label)}>
+                                    <span>Mở rộng</span>
+                                    <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2.667 4.667h10M2.667 8h4" stroke="#888" strokeLinecap="round"></path>
+                                        <path d="m13.067 10-1.811 1.811a.552.552 0 0 1-.778 0L8.667 10" stroke="#888" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"></path>
+                                        <path d="M2.667 11.334h4" stroke="#888" strokeLinecap="round"></path>
+                                    </svg>
+                                </button>
+                                {isParentCategoryFollowed(section.id) ? (
+                                    <button className="O9VAherl4x0Mm97xjCIp s0Yr8xvVir_2KNnwycpu kKAxMBA76wUDIG2C9F4w kGRXLSMESFZzLPG7yXhS" title="Bỏ theo dõi" onClick={() => unfollowCategory(section.id)}>
+                                        <span>Đang theo dõi</span>
+                                    </button>
+                                ) : (
+                                    <button className="O9VAherl4x0Mm97xjCIp s0Yr8xvVir_2KNnwycpu RXCflJFIOBK8xwKJ7xv2 kGRXLSMESFZzLPG7yXhS" title="Theo dõi" onClick={() => followCategory(section.id)}>
+                                        <span>
+                                            <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4 8h8m-4 4V4" stroke="#0F6C32" strokeLinecap="round" strokeLinejoin="round"></path>
+                                            </svg>
+                                            Theo dõi
+                                        </span>
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+                        {expanded[section.label] && (
+                            <div className="AOQgp6rl6lTaAjc_2xJR">
+                                {section.submenu.map((subItem, subIndex) => (
+                                    <div key={subIndex} className="MwTn6zWG4_2tPHxA6yoG" style={{ display: 'flex', marginLeft: '20px' }}>
+                                        <div style={{ fontSize: '14px' }} className="QIOCZgyVaqEM6CrHzKrl" href={subItem.subpath}>
+                                            {subItem.sublabel}
+                                        </div>
+                                        <div className="G8rMGWdreAGHVOvLGtIh btn-follow-child-cat">
+                                            {isChildCategoryFollowed(subItem.id) ? (
+                                                <button className="O9VAherl4x0Mm97xjCIp s0Yr8xvVir_2KNnwycpu kKAxMBA76wUDIG2C9F4w kGRXLSMESFZzLPG7yXhS" title="Bỏ theo dõi" onClick={() => unfollowCategoryChild(subItem.id)}>
+                                                    <span>Đang theo dõi</span>
+                                                </button>
+                                            ) : (
+                                                <button className="O9VAherl4x0Mm97xjCIp s0Yr8xvVir_2KNnwycpu RXCflJFIOBK8xwKJ7xv2 kGRXLSMESFZzLPG7yXhS" title="Theo dõi" onClick={() => followCategoryChild(subItem.id)}>
+                                                    <span>
+                                                        <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M4 8h8m-4 4V4" stroke="#0F6C32" strokeLinecap="round" strokeLinejoin="round"></path>
+                                                        </svg>
+                                                        Theo dõi
+                                                    </span>
+                                                </button>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
 
-    // );
+    );
 };
 
 export default SectionList;

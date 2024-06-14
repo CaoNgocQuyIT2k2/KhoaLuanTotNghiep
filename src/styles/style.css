@@ -11527,3 +11527,30 @@ ul {
 .defaultImage {
   border: 1px solid black;
 }
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.jnoHSI {
+  padding: 7px 10px;
+  border: 2px solid transparent;
+  background-color: #f9f9f9 !important;
+  color: #0a0f22;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+  margin-top: 2em;
+  cursor: pointer;
+  -webkit-transition: all 260ms ease-in-out;
+  transition: all 260ms ease-in-out;
+  padding-bottom: 5px !important;
+}
+
+.jnoHSI:hover {
+  background-color: none !important;
+  border:none !important;
+  color: red !important;
+}

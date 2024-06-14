@@ -16,7 +16,7 @@ const LayoutArticlesByCategory = ({ allPosts }) => {
     const router = useRouter();
     const { categoryId } = router.query;
     const [data, setData] = useState(null);
-
+console.log("category: " + categoryId);
     useEffect(() => {
         const fetchData = async () => {
             if (categoryId) {

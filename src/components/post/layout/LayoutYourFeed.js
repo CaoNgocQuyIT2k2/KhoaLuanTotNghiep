@@ -4,6 +4,7 @@ import SectionList from '../../elements/SectionList';
 import SectionArticleFollowed from '../../elements/SectionArticleFollowed';
 import SettingsPanelFollow from '../../elements/SettingsPanelFollow';
 import HeaderOne from '../../header/HeaderOne';
+import BackToTopButton from '../post-format/elements/BackToTopButton';
 
 
 const LayoutYourFeed = () => {
@@ -47,6 +48,7 @@ const LayoutYourFeed = () => {
                 {showSettingsPanel && <SettingsPanelFollow onToggleSectionList={handleToggleSectionList} buttonText="Thiết lập hiển thị" />}
             </div>
         </div>
+                <BackToTopButton/>
         </>
     );
 };

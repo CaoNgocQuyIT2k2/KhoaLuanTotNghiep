@@ -26,7 +26,8 @@ module.exports = {
       'i1-vnexpress.vnecdn.net',
       'res.cloudinary.com',
       'cdnphoto.dantri.com.vn',
-      'nhandaoonline.vn'
+      'nhandaoonline.vn',
+      'cdn.langsontv.vn',
     ],
   },
   // async rewrites() {

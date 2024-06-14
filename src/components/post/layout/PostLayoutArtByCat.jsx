@@ -12,12 +12,13 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
     const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
-
+console.log("categoryId", categoryId);
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`/api/get-art-by-cat?categoryId=${categoryId}`);
                 setData(response.data);
+                console.log("response", response);
                 // Đặt trang hiện tại về 1 khi thay đổi danh mục
                 setCurrentPage(1);
             } catch (error) {
@@ -27,7 +28,7 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
 
         fetchData();
     }, [categoryId]);
-
+    console.log("data",data);
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const currentData = data.slice(startIndex, endIndex);

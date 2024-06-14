@@ -34,9 +34,6 @@ const HeaderOne = () => {
     const toggleDropdownMenu = () => {
       const dropdownSelect = menuRef.current?.childNodes;
       let dropdownList = [];
-
-
-
       for (let i = 0; i < dropdownSelect?.length; i++) {
 
         const element = dropdownSelect[i];

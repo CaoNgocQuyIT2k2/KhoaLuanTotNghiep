@@ -40,9 +40,11 @@ const SearchImage = ({ setSearchKeyword }) => {
   const [classNames, setClassNames] = useState("");
   const [isLoading, setLoading] = useState(false);
 
-  const openFilePicker = () => {
+  const openFilePicker = (e) => {
+    e.preventDefault();  // Thêm dòng này để ngăn chặn hành vi mặc định
     if (fileInputRef.current) fileInputRef.current.click();
   };
+  
 
   const getClassNames = (predictions) => {
     if (!predictions || predictions.length === 0) {
@@ -85,6 +87,18 @@ const SearchImage = ({ setSearchKeyword }) => {
       setLoading(false);
     };
   };
+  const spinnerIcon = (
+    <svg style={{
+        display: "inline-block",
+        width: "24px",
+        height: "24px",
+       color:"black",
+       background:"none !important",
+       border:"none !important" ,
+    }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle fill="#000000" stroke="#000000" strokeWidth="15" r="15" cx="40" cy="100"><animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate></circle><circle fill="#000000" stroke="#000000" strokeWidth="15" r="15" cx="100" cy="100"><animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate></circle><circle fill="#000000" stroke="#000000" strokeWidth="15" r="15" cx="160" cy="100"><animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate></circle></svg>
+  );
+
+
 
   return (
     <ObjectDetectorContainer>
@@ -100,7 +114,10 @@ const SearchImage = ({ setSearchKeyword }) => {
       <SelectButton style={{
         marginTop: "1.5rem",
       }} onClick={openFilePicker}>
-      {isLoading ? <i className="fa-solid fa-spinner"></i> : <i className="fa-solid fa-image"></i>}
+      {isLoading ? <i className="">{spinnerIcon}</i> : <i style={{
+        backgroundColor: "#f9f9f9",
+        border:"none",
+      }} title="Search Image" className="fa-solid fa-image"></i>}
       </SelectButton>
     </ObjectDetectorContainer>
   );

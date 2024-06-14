@@ -8,7 +8,6 @@ const EditUser = ({ showModal, userId, userfirstname, fetchListUser, userlastnam
   const token = useSelector((state) => state.user?.token);
   const [open, setOpen] = useState(false);
   const [userData, setUserData] = useState({
-    userId: '',
     firstname: '',
     lastname: '',
     email: '',
