@@ -24,7 +24,7 @@ const LayoutArtBySearch = () => {
     if (slug) {
       const fetchSearchData = async () => {
         try {
-          const response = await axios.get(`/api/search?keyList=${keyList}`);
+          const response = await axios.get(`/api/search-article?keyList=${keyList}`);
 
           if (response.status === 200) {
             setSearchData(response.data);
