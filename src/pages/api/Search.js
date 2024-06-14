@@ -29,8 +29,7 @@ export default async function handler(req, res) {
 
       // Gọi API tìm kiếm từ server 8080 bằng phương thức GET
       const response = await axios.get(
-        'http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/article/anonymous/search',
-        { params: { keyList } }
+        `http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/article/anonymous/search?keyList=${keyList}`
       );
       const data = response.data;
       // Xử lý kết quả trả về từ server 8080

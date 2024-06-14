@@ -16,14 +16,13 @@ const LayoutArtBySearch = () => {
   const router = useRouter();
   const { slug } = router.query; // Lấy từ khóa tìm kiếm từ URL
   const [searchData, setSearchData] = useState([]);
+  console.log("slug: " + slug);
 
   useEffect(() => {
     if (slug) {
       const fetchSearchData = async () => {
         try {
-          const response = await axios.get('/api/search', {
-            params: { keyList: slug }
-          });
+          const response = await axios.get(`/api/search?keyList=${slug}`);
 
           if (response.status === 200) {
             setSearchData(response.data);
@@ -49,7 +48,7 @@ const LayoutArtBySearch = () => {
           <div className="row align-items-center">
             <div className="col-lg-12">
               <div className="post-title-wrapper">
-                <h2 className="m-b-xs-0 axil-post-title hover-line">Search Results for {slug}</h2>
+                <h2 className="m-b-xs-0 axil-post-title hover-line">Search Results for: {slug}</h2>
               </div>
             </div>
           </div>

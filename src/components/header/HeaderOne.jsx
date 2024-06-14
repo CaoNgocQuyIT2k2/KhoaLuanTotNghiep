@@ -116,26 +116,12 @@ const HeaderOne = () => {
   };
 
   const handleSearchButtonClick = async () => {
+    console.log("searchKeyword",searchKeyword);
     if (!searchKeyword) {
       message.error("Please enter a search keyword");
       return;
     }
-
-    try {
-      const response = await axios.get('/api/search', {
-        params: { keyList: searchKeyword }
-      });
-
-      if (response.status === 200) {
-        console.log("Kết quả tìm kiếm:", response.data);
-        router.push(`/search/${searchKeyword}`);
-      } else {
-        message.error("Search failed");
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      message.error("Internal Server Error");
-    }
+    else router.push(`/search/${searchKeyword}`);
   };
 
   const handleKeyDown = (event) => {
