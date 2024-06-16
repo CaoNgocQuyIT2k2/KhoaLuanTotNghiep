@@ -1,30 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ArticleFollowed from './ArticleFollowed';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { format } from 'date-fns';
 import SettingsPanelFollowFoot from './SettingsPanelFollowFoot';
 import HeaderOne from '../header/HeaderOne';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../store/constants/spinner';
 
 const SectionArticleFollowed = ({ refresh, onToggleSectionList }) => {
     const [articles, setArticles] = useState([]);
     const token = useSelector((state) => state.user?.token);
-    
+    const dispatch = useDispatch();
+
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await axios.get('/api/get-list-follow-article', 
+                dispatch({ type: SHOW_SPINNER });
+
+                const response = await axios.get('/api/get-list-follow-article',
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
                 setArticles(response.data);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
             } catch (error) {
-                console.error('Error fetching articles:', error);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                    message.error(error.response.data.message);
+                }, 3000);
             }
         };
-        
+
         fetchArticles();
-    }, [refresh, token]);
-    
+    }, [refresh, token, dispatch]);
+
     return (
         <>
             <div className="y7idnc0MSa__siU3g_I3">

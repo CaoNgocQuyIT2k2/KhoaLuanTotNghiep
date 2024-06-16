@@ -6,15 +6,14 @@ import { useDispatch } from 'react-redux';
 
 import Image from 'next/image';
 import { setUserInfo } from '../../store/action/userActions';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../store/constants/spinner';
 
 const SignInForm = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
-
   const dispatch = useDispatch();
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -22,29 +21,32 @@ const SignInForm = () => {
       [name]: value
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.post('/api/sign-in', formData);
-
       if (response.status === 200) {
-        message.success("Đăng nhập thành công");
 
         const userInfo = {
           token: response.data.token,
           user: response.data.user // hoặc các thông tin khác từ response nếu có
         };
-
         localStorage.setItem('USER_INFO', JSON.stringify(userInfo));
-
-        window.location.href = "/"; // Chuyển hướng đến trang đăng nhập
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
         dispatch(setUserInfo(userInfo));
-      } 
+        message.success("Đăng nhập thành công");
+        window.location.href = "/"; // Chuyển hướng đến trang đăng nhập
+      }
     } catch (error) {
-
-      message.error(error.response.data.message);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response.data.message);
+      }, 3000);
     }
+
   };
 
   return (

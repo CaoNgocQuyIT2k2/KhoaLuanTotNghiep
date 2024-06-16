@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Select, Form } from 'antd';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
 
 const Category = ({ setSelectedCategory }) => {
   const [categories, setCategories] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch({ type: SHOW_SPINNER });
     axios.get('/api/get-all-categories')
       .then(response => {
         setCategories(response.data);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
       })
       .catch(error => {
-        console.error('Lỗi khi lấy danh sách danh mục:', error);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+          message.error(error.response.data.message);
+        }, 3000);
       });
-  }, []);
+  }, [dispatch]);
 
   const handleCategoryChange = (value) => {
     setSelectedCategory(value);

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../store/constants/spinner';
 
 const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
     const token = useSelector((state) => state.user?.token);
@@ -13,10 +14,12 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
     const [searchText, setSearchText] = useState('');
     const [randomCategories, setRandomCategories] = useState([]);
     const [followedCategories, setFollowedCategories] = useState([]); // New state for followed categories
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchMenuData = async () => {
             try {
+                dispatch({ type: SHOW_SPINNER });
                 const menuResponse = await axios.get('/api/get-menu-data');
                 const menuData = menuResponse.data;
                 const parentCategoriesResponse = await axios.get('/api/get-follow-parent-cat', { headers: { Authorization: `Bearer ${token}` } });
@@ -51,18 +54,24 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                     ...allChildCategories.map(category => category.id)
                 ];
                 setFollowedCategories(followedCategories);
-
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
             } catch (error) {
-                console.error("Error fetching data:", error);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                    message.error(error.response.data.message);
+                }, 3000);
             }
         };
 
         fetchMenuData();
-    }, [token]);
+    }, [token,dispatch]);
 
     useEffect(() => {
         axios.get('/api/get-all-categories')
             .then(response => {
+                dispatch({ type: SHOW_SPINNER });
                 const allCategories = response.data;
                 const childCategories = allCategories.filter(category => category.parent !== null);
                 const randomSixCategories = getRandomItems(childCategories, 5);
@@ -80,11 +89,17 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                         setFollowedCategories(prevState => [...prevState, category.id]);
                     }
                 });
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
             })
             .catch(error => {
-                console.error('Error fetching random categories:', error);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                    message.error(error.response.data.message);
+                }, 3000);
             });
-    }, [token]);
+    }, [token,dispatch]);
 
     const toggleExpand = (section) => {
         setExpanded(prevState => ({
@@ -95,6 +110,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
 
     const followCategory = async (categoryId) => {
         try {
+            dispatch({ type: SHOW_SPINNER });
             const response = await axios.post(
                 '/api/follow-category',
                 { category: { id: categoryId } },
@@ -109,18 +125,28 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                     ...prevState,
                     [categoryId]: true
                 }));
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
                 messages.success("Lưu bài viết thành công")
             } else {
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
                 messages.error("Lưu bài viết thất bại")
 
             }
         } catch (error) {
-            console.error('Có Lỗi!');
+            setTimeout(() => {
+                dispatch({ type: HIDE_SPINNER });
+                message.error(error.response.data.message);
+            }, 3000);
         }
     };
 
     const unfollowCategory = async (categoryId) => {
         try {
+            dispatch({ type: SHOW_SPINNER });
             const response = await axios.delete(
                 `/api/unfollow-category?categoryId=${categoryId}`,
                 { headers: { Authorization: `Bearer ${token}` } }
@@ -136,16 +162,24 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                 }));
 
                 messages.success("Bỏ lưu bài viết thành công")
-
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
             } else {
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
                 messages.error("Bỏ lưu bài viết thất bại")
             }
         } catch (error) {
-            console.error('Có Lỗi!');
+            setTimeout(() => {
+                dispatch({ type: HIDE_SPINNER });
+                message.error(error.response.data.message);
+            }, 3000);
         }
     };
 
-  
+
 
     const getRandomItems = (array, count) => {
         const shuffled = array.sort(() => 0.5 - Math.random());

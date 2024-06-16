@@ -1,26 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Select, Form, Button, Modal, Input, message } from 'antd';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
 
 const AllTag = ({ selectedTags, setSelectedTags }) => {
   const [tags, setTags] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [newTag, setNewTag] = useState('');
   const token = useSelector((state) => state.user?.token);
+  const dispatch = useDispatch();
+
+  const fetchTags = useCallback(async () => {
+    try {
+      dispatch({ type: SHOW_SPINNER });
+      const response = await axios.get('/api/get-all-tag');
+      setTags(response.data);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 3000);
+    } catch (error) {
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response.data.message);
+      }, 3000);
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     fetchTags();
-  }, []);
-
-  const fetchTags = async () => {
-    try {
-      const response = await axios.get('/api/get-all-tag');
-      setTags(response.data);
-    } catch (error) {
-      console.error('Lỗi khi lấy danh sách thẻ:', error);
-    }
-  };
+  }, [fetchTags]);
 
   const handleAddTag = async () => {
     try {
@@ -28,6 +37,7 @@ const AllTag = ({ selectedTags, setSelectedTags }) => {
         message.error('Token không tồn tại. Vui lòng đăng nhập lại.');
         return;
       }
+      dispatch({ type: SHOW_SPINNER });
 
       const response = await axios.post(
         '/api/create-tag',
@@ -44,16 +54,17 @@ const AllTag = ({ selectedTags, setSelectedTags }) => {
         setIsModalVisible(false);
         setNewTag('');
         fetchTags();
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
       } else {
         message.error('Tạo tag thất bại.');
       }
     } catch (error) {
-      console.error('Error:', error);
-      if (error.response && error.response.status === 403) {
-        message.error('Unauthorized');
-      } else {
-        message.error('Lỗi máy chủ nội bộ');
-      }
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response.data.message);
+      }, 3000);
     }
   };
 

@@ -4,24 +4,35 @@ import { slugify } from "../../../utils";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ButtonSaveArt from "../post-format/elements/ButtonSaveArt";
+import { useDispatch } from "react-redux";
+import { HIDE_SPINNER, SHOW_SPINNER } from "../../../../store/constants/spinner";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
 const PostLatestPer4Cat = ({ pClass, videoIcon, postSizeMd }) => {
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        dispatch({ type: SHOW_SPINNER });
+
         const response = await axios.get("/api/latesPer4Cat");
         setData(response.data);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+          message.error(error.response.data.message);
+        }, 3000);
       }
     };
 
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
@@ -64,7 +75,7 @@ const PostLatestPer4Cat = ({ pClass, videoIcon, postSizeMd }) => {
               <ul className="list-inline">
                 {article.user && article.user.name && (
                   <li>
-                    <span>By</span>
+                    <span>Bởi</span>
                     <Link href={`/author/${slugify(article.user.name)}`}>
                       <a className="post-author">{article.user.name}</a>
                     </Link>

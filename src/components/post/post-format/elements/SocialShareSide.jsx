@@ -1,11 +1,13 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from 'axios';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ButtonSaveArt from "./ButtonSaveArt";
+import { HIDE_SPINNER, SHOW_SPINNER } from "../../../../../store/constants/spinner";
 
 const SocialShareSide = ({ articleId,categoryId }) => {
   const [windowPath, setWindowPath] = useState(null);
   const token = useSelector((state) => state.user?.token);
+  const dispatch = useDispatch();
 
   const fetchData = useCallback(async () => {
     try {
@@ -41,18 +43,24 @@ const SocialShareSide = ({ articleId,categoryId }) => {
 
   const handleReaction = async (typeReact) => {
     try {
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.post(
         '/api/react-article',
         { article: { id: articleId }, typeReact },
         { headers: { Authorization: `Bearer ${token}` }}
       );
-
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 3000);
       if (response.status === 200) {
         fetchData(); // Refresh data after successful vote
 
       }
     } catch (error) {
-      console.error("Error submitting reaction:", error);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response.data.message);
+      }, 3000);
     }
   };
 

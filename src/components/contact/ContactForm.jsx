@@ -7,7 +7,7 @@ import { useRef, useState } from 'react';
 const Result = () => {
   return (
       <Alert variant="success" className="success-msg">
-          Your Message has been successfully sent.
+          Tin nhắn của bạn đã được gửi thành công
       </Alert>
   )
 }

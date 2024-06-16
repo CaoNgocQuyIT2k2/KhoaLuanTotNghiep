@@ -1,47 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { message } from 'antd';
+import { useDispatch } from 'react-redux';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
 
 const StarRating = ({ articleId, token }) => {
   const [rating, setRating] = useState(0);
   const [averageRating, setAverageRating] = useState(null);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetchAverageRating(articleId, setAverageRating);
-  }, [articleId]);
-
-  const fetchAverageRating = async (articleId, setAverageRating) => {
+  const fetchAverageRating = useCallback(async (articleId, setAverageRating) => {
     try {
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.get(`/api/get-average-star?articleId=${articleId}`);
       if (response.status === 200) {
         setAverageRating(response.data);
-      } 
+      }
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 3000);
     } catch (error) {
-      console.error('Error fetching average rating:', error);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response.data.message);
+      }, 3000);
     }
-  };
+  }, [dispatch]);
+
+  useEffect(() => {
+    fetchAverageRating(articleId, setAverageRating);
+  }, [articleId, fetchAverageRating]);
 
   const handleRating = async (star) => {
     setRating(star);
 
     const data = {
       article: {
-        id: articleId
+        id: articleId,
       },
-      star: star
+      star: star,
     };
 
     try {
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.post(
         'api/vote-star',
         data,
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
-
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 3000);
       if (response.status === 200) {
         message.success("Đánh giá sao thành công");
         fetchAverageRating(articleId, setAverageRating); // Refresh the average rating
@@ -49,7 +62,9 @@ const StarRating = ({ articleId, token }) => {
         message.error("Đánh giá sao thất bại");
       }
     } catch (error) {
-      console.error('Error submitting rating:', error);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 3000);
       if (error.response && error.response.status === 403) {
         message.error("Bạn không có quyền thực hiện đánh giá.");
       } else {
@@ -64,7 +79,7 @@ const StarRating = ({ articleId, token }) => {
         {averageRating !== null ? (
           <span>Sao trung bình: {averageRating.toFixed(1)} / 5.0</span>
         ) : (
-          <span>Loading average rating...</span>
+          <span>Đang tải sao trung bình...</span>
         )}
       </div>
       <div className="rating-stars">

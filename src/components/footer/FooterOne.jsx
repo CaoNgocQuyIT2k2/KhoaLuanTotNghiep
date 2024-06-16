@@ -1,46 +1,59 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import Image from 'next/image';
 import SocialLink from '../../data/social/SocialLink.json';
+import { useDispatch } from 'react-redux';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../store/constants/spinner';
+import { message } from 'antd';
 
 const FooterOne = () => {
   const [categories, setCategories] = useState([]);
   const [childMenus, setChildMenus] = useState({});
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const getCategories = async () => {
-      try {
-        const response = await axios.get('/api/get-parent-categories');
-        const parentCategories = response.data;
-        // Lấy 7 danh mục cha đầu tiên
-        const firstSevenCategories = parentCategories.slice(0, 6);
-        setCategories(firstSevenCategories);
-
-        // Lấy danh sách child categories cho tất cả các parent categories
-        firstSevenCategories.forEach(category => {
-          GetChildCategories(category.id);
-        });
-      } catch (error) {
-        console.error("Error fetching parent categories:", error);
-      }
-    };
-
-    getCategories();
-  }, []);
-
-  const GetChildCategories = async (categoryId) => {
+  const GetChildCategories = useCallback(async (categoryId) => {
     try {
-
       const response = await axios.get('/api/get-child-categories', {
         params: { categoryId }
       });
       const childCategories = response.data;
       setChildMenus(prev => ({ ...prev, [categoryId]: childCategories }));
     } catch (error) {
-      console.error("Error fetching child categories:", error);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response.data.message);
+      }, 3000);
     }
-  };
+  }, [dispatch]);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        dispatch({ type: SHOW_SPINNER });
+
+        const response = await axios.get('/api/get-parent-categories');
+        const parentCategories = response.data;
+        const firstSevenCategories = parentCategories.slice(0, 6);
+        setCategories(firstSevenCategories);
+
+        firstSevenCategories.forEach(category => {
+          GetChildCategories(category.id);
+        });
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
+      } catch (error) {
+        console.error("Error fetching parent categories:", error);
+      }
+    };
+
+    getCategories();
+  }, [dispatch, GetChildCategories]);
+
+  if (!categories.length) {
+    return <div></div>;
+  }
 
   return (
     <footer className="page-footer bg-grey-dark-key">
@@ -81,13 +94,11 @@ const FooterOne = () => {
                   </a>
                 </Link>
               </div>
-              {/* End of .brand-logo-container */}
             </div>
-            {/* End of .col-md-6 */}
             <div className="col-md-auto">
               <div className="footer-social-share-wrapper">
                 <div className="footer-social-share">
-                  <div className="axil-social-title">Find us here</div>
+                  <div className="axil-social-title">Tìm chúng tôi ở đây</div>
                   <ul className="social-share social-share__with-bg">
                     <li>
                       <a href={SocialLink.fb.url}>
@@ -117,30 +128,23 @@ const FooterOne = () => {
                   </ul>
                 </div>
               </div>
-              {/* End of .footer-social-share-wrapper */}
             </div>
-            {/* End of .col-md-6 */}
           </div>
-          {/* End of .row */}
         </div>
-        {/* End of .footer-mid */}
         <div className="footer-bottom">
           <ul className="footer-bottom-links">
             <li>
               <Link href="/">
-                <a>Terms of Use</a>
+                <a>Điều khoản sử dụng</a>
               </Link>
             </li>
             {/* Các li khác giữ nguyên */}
           </ul>
-          {/* End of .footer-bottom-links */}
           <p className="axil-copyright-txt">
-            © {new Date().getFullYear()}. All rights reserved by Your Company.
+            © {new Date().getFullYear()}. Mọi quyền được bảo lưu bởi Công ty của tôi.
           </p>
         </div>
-        {/* End of .footer-bottom */}
       </div>
-      {/* End of .container */}
     </footer>
   );
 };

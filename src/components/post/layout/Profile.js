@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { UploadOutlined } from '@ant-design/icons';
 import { Avatar, Upload, message } from 'antd';
 import { setUserInfo, updateUserInfo } from '../../../../store/action/userActions';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../store/constants/spinner';
 
 const Profile = () => {
     const [editing, setEditing] = useState(false);
@@ -21,17 +22,24 @@ const Profile = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                dispatch({ type: SHOW_SPINNER });
                 const response = await axios.get("/api/get-info-myself", {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setUser(response.data);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
             } catch (error) {
-                console.error("Error fetching data:", error);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                    message.error(error.response.data.message);
+                }, 3000);
             }
         };
 
         fetchData();
-    }, [token, userId]);
+    }, [token, userId,dispatch]);
 
     const handleEditClick = (field) => {
         setEditing(true);
@@ -45,6 +53,7 @@ const Profile = () => {
 
     const handleConfirmClick = async () => {
         try {
+            dispatch({ type: SHOW_SPINNER });
             const formUser = {
                 firstname: user.firstname,
                 lastname: user.lastname,
@@ -59,19 +68,23 @@ const Profile = () => {
 
             dispatch(updateUserInfo(response.data)); // Dispatch action to update Redux state
 
-           const userInfo = JSON.parse(localStorage.getItem("USER_INFO"));
+            const userInfo = JSON.parse(localStorage.getItem("USER_INFO"));
             localStorage.setItem("USER_INFO", JSON.stringify({ ...userInfo, user: { ...userInfo.user, user: response.data } }));
 
             setSuccess("Cập nhật thành công!");
-
+            setTimeout(() => {
+                dispatch({ type: HIDE_SPINNER });
+            }, 3000);
             // Delay reload to ensure state updates are completed
+            message.success("Cập nhật thành công!");
             setTimeout(() => {
                 window.location.reload();
             }, 500);
-            message.success("Cập nhật thành công!");
         } catch (error) {
-            setError("Cập nhật thất bại!");
-            message.success("Cập nhật thất bại!");
+            setTimeout(() => {
+                dispatch({ type: HIDE_SPINNER });
+                message.success("Cập nhật thất bại!");
+            }, 3000);
 
         } finally {
             setEditing(false);
@@ -91,6 +104,7 @@ const Profile = () => {
         formData.append('file', file);
 
         try {
+      dispatch({ type: SHOW_SPINNER });
             const response = await axios.post('/api/update-avatar', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
@@ -99,21 +113,22 @@ const Profile = () => {
             });
 
             if (response.status === 200) {
-                message.success('Cập nhật avatar thành công.');
                 setAvatarUrl(response.data.avatar); // Thay đổi URL của avatar sau khi cập nhật thành công
                 const userInfo = JSON.parse(localStorage.getItem("USER_INFO"));
                 localStorage.setItem("USER_INFO", JSON.stringify({ ...userInfo, user: { ...userInfo.user, avatar: response.data.avatar } }));
+                message.success('Cập nhật avatar thành công.');
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                  }, 3000);
                 window.location.reload();
             } else {
                 message.error('Cập nhật avatar thất bại.');
             }
         } catch (error) {
-            console.error('Error:', error);
-            if (error.response && error.response.data && error.response.data.message) {
+            setTimeout(() => {
+                dispatch({ type: HIDE_SPINNER });
                 message.error(error.response.data.message);
-            } else {
-                message.error('Đã xảy ra lỗi, vui lòng thử lại sau.');
-            }
+              }, 3000);
         }
     };
 
@@ -173,7 +188,7 @@ const Profile = () => {
             <ul className='mt-5'>
                 <li>
                     <p className="_qNcrWg9077ruGTHRxlG HKuWzgM64twCPEzK73fd">
-                        Firstname
+                        Tên
                         <span className="aNEC4lq86sRCKZos9vNV">
                             <input
                                 id='inputNameUser'
@@ -208,7 +223,7 @@ const Profile = () => {
                 <div className="TFIbC1iuTF7X4NdOcQVf"></div>
                 <li>
                     <p className="_qNcrWg9077ruGTHRxlG HKuWzgM64twCPEzK73fd">
-                        Lastname
+                        Họ và tên lót
                         <span className="aNEC4lq86sRCKZos9vNV">
                             <input
                                 id='inputNameUser'
@@ -243,7 +258,7 @@ const Profile = () => {
                 <div className="TFIbC1iuTF7X4NdOcQVf"></div>
                 <li>
                     <p className="_qNcrWg9077ruGTHRxlG HKuWzgM64twCPEzK73fd">
-                        Date of birth
+                        Ngày sinh
                         <span className={`aNEC4lq86sRCKZos9vNV ${editingField === 'dob' ? 'editing' : ''}`}>
                             <input
                                 style={{
@@ -302,7 +317,7 @@ const Profile = () => {
                 <div className="TFIbC1iuTF7X4NdOcQVf"></div>
                 <li>
                     <p className="_qNcrWg9077ruGTHRxlG HKuWzgM64twCPEzK73fd ">
-                        ROLE
+                        Vai trò
                         <span className="aNEC4lq86sRCKZos9vNV">
                             <input
                                 id='inputRoleUser'

@@ -10,11 +10,14 @@ import WidgetAd from '../../widget/WidgetAd';
 import WidgetSocialShare from '../../widget/WidgetSocialShare';
 import FooterOne from '../../footer/FooterOne';
 import BackToTopButton from '../post-format/elements/BackToTopButton';
+import { useDispatch } from 'react-redux';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../store/constants/spinner';
 
 const LayoutArtBySearch = () => {
   const router = useRouter();
   const { slug } = router.query; // Lấy từ khóa tìm kiếm từ URL
   const [searchData, setSearchData] = useState([]);
+  const dispatch = useDispatch();
 
   const keyList = slug;
 
@@ -22,20 +25,28 @@ const LayoutArtBySearch = () => {
     if (keyList) {
       const fetchSearchData = async () => {
         try {
+      dispatch({ type: SHOW_SPINNER });
+
           const response = await axios.get(`/api/search-article?keyList=${keyList}`);
           if (response.status === 200) {
             setSearchData(response.data);
+            setTimeout(() => {
+              dispatch({ type: HIDE_SPINNER });
+            }, 3000);
           } else {
             console.error('Search failed');
           }
         } catch (error) {
-          console.error('Error:', error);
+          setTimeout(() => {
+            dispatch({ type: HIDE_SPINNER });
+            message.error(error.response.data.message);
+          }, 3000);
         }
       };
 
       fetchSearchData();
     }
-  }, [keyList]); 
+  }, [keyList,dispatch]); 
 
   return (
     <>
@@ -45,7 +56,7 @@ const LayoutArtBySearch = () => {
           <div className="row align-items-center">
             <div className="col-lg-12">
               <div className="post-title-wrapper">
-                <h2 className="m-b-xs-0 axil-post-title hover-line">Search Results for: {slug}</h2>
+                <h2 className="m-b-xs-0 axil-post-title hover-line">Kết quả tìm kiếm cho từ: {slug}</h2>
               </div>
             </div>
           </div>

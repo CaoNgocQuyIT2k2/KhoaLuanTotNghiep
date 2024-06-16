@@ -19,10 +19,9 @@ const AboutUs = ({ aboutData, allPosts }) => {
 
     return (
         <>
-            <HeadMeta metaTitle="About Us" />
+            <HeadMeta metaTitle="Về chúng tôi" />
             <HeaderOne />
-            <Breadcrumb aPage="About Us" />
-            <BreadcrumbBanner pageTitle="About Us" />
+            <BreadcrumbBanner pageTitle="Về chúng tôi" />
             <div className="axil-about-us section-gap-top p-b-xs-20">
                 <div className="container">
                     <figure className="m-b-xs-40">
@@ -54,7 +53,7 @@ const AboutUs = ({ aboutData, allPosts }) => {
             <div className="axil-our-team section-gap section-gap-top__with-text bg-grey-light-three">
                 <div className="container">
                     <div className="axil-team-grid-wrapper">
-                        <SectionTitleTwo title="Meet Our Publishing Authors" paragraph="Wherever &amp; whenever you need us. We are here for you - contact us for all your support needs, <br> be it technical, general queries or information support." />
+                        <SectionTitleTwo title="Gặp gỡ các tác giả xuất bản của chúng tôi" paragraph="Mọi nơi &amp; bất cứ khi nào bạn cần chúng tôi. Chúng tôi luôn sẵn sàng hỗ trợ bạn - hãy liên hệ với chúng tôi nếu bạn có mọi nhu cầu hỗ trợ, dù đó là hỗ trợ kỹ thuật, thắc mắc chung hay hỗ trợ thông tin." />
                         <div className="row">
                             {AuthorList.slice(0, 6).map((data) => (
                                 <div className="col-lg-4" key={data.slug}>

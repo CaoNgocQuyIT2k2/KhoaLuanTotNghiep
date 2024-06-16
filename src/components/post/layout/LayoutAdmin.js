@@ -58,17 +58,17 @@ const LayoutAdmin = () => {
           <Menu.Item key="1" icon={<PieChartOutlined style={{
             fontSize: '1.5rem',
           }} />}>
-            Manage Categories
+            Quản lý chuyên mục
           </Menu.Item>
           <Menu.Item key="2" icon={<FundViewOutlined style={{
             fontSize: '1.5rem',
           }} />}>
-            Manage Tags
+            Quản lý thẻ
           </Menu.Item>
           <Menu.Item key="3" icon={<UserOutlined style={{
             fontSize: '1.5rem',
           }} />}>
-            Manage Users
+            Quản lý người dùng
           </Menu.Item>
         </Menu>
       </Sider>
@@ -78,7 +78,7 @@ const LayoutAdmin = () => {
         </Header>
         <Content style={{ padding: '64px 16px 0', margin: '0 16px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>LayoutAdmin</Breadcrumb.Item>
+            <Breadcrumb.Item>Trang quản trị</Breadcrumb.Item>
             <Breadcrumb.Item>{breadcrumbMap[selectedMenuItem]}</Breadcrumb.Item>
           </Breadcrumb>
 

@@ -3,8 +3,9 @@ import { slugify } from "../../../utils";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Pagination } from 'antd';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
+import { HIDE_SPINNER } from "../../../../store/constants/spinner";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png";
 
@@ -12,23 +13,31 @@ const PostLayoutArtSaved = ({ postSizeMd, postBgDark, categoryId }) => {
     const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const token = useSelector((state) => state.user?.token);
+    const dispatch = useDispatch();
 
     const pageSize = 10;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+      dispatch({ type: SHOW_SPINNER });
                 const response = await axios.get(`/api/get-list-article-saved`,
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
                 setData(response.data);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                  }, 3000);
             } catch (error) {
-                console.error("Error fetching data:", error);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                    message.error(error.response.data.message);
+                  }, 3000);
             }
         };
     
         fetchData();
-    }, [categoryId, token]); // Thêm 'token' vào mảng phụ thuộc của useEffect
+    }, [categoryId, token,dispatch]); // Thêm 'token' vào mảng phụ thuộc của useEffect
     
 
     const startIndex = (currentPage - 1) * pageSize;
@@ -78,7 +87,7 @@ const PostLayoutArtSaved = ({ postSizeMd, postBgDark, categoryId }) => {
                                 <ul className="list-inline">
                                     {article.article.author_name && (
                                         <li>
-                                            <span>By</span>
+                                            <span>Bởi</span>
                                             <Link href={`/author/${slugify(article.article.author_name)}`}>
                                                 <a className="post-author">{article.article.author_name}</a>
                                             </Link>
@@ -90,7 +99,7 @@ const PostLayoutArtSaved = ({ postSizeMd, postBgDark, categoryId }) => {
                                     </li>
                                     <li>
                                         <i className="feather icon-activity" />
-                                        {article.article.reading_time} min
+                                        {article.article.reading_time} phút
                                     </li>
                                     <li>
                                         <i className="" />

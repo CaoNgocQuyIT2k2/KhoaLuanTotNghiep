@@ -3,28 +3,38 @@ import { RightOutlined, DownOutlined } from '@ant-design/icons'; // Import Right
 import { Dropdown, Space, Menu } from 'antd';
 import axios from 'axios';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../store/constants/spinner';
 
 const MenuCategories = () => {
   const [categories, setCategories] = useState([]);
   const [childMenus, setChildMenus] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getCategories = async () => {
       try {
+      dispatch({ type: SHOW_SPINNER });
         const response = await axios.get('/api/get-parent-categories');
         const parentCategories = response.data;
         setCategories(parentCategories);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
       } catch (error) {
-        console.error("Error fetching parent categories:", error);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+          message.error(error.response.data.message);
+        }, 3000);
       }
     };
 
     getCategories();
-  }, []);
+  }, [dispatch]);
 
   const handleMenuClick = async (categoryId) => {
     try {
-
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.get('/api/get-child-categories', {
         params: { categoryId }
       });
@@ -38,8 +48,14 @@ const MenuCategories = () => {
         ),
       }));
       setChildMenus(prev => ({ ...prev, [categoryId]: items }));
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 3000);
     } catch (error) {
-      console.error("Error fetching child categories:", error);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response.data.message);
+      }, 3000);
     }
   };
 

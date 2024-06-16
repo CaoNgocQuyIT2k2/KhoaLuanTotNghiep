@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
+import { message } from 'antd';
 
 const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
   const [isSaved, setIsSaved] = useState(false);
   const token = useSelector((state) => state.user?.token);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+      dispatch({ type: SHOW_SPINNER });
         const responseSaved = await axios.get(`/api/get-saved-art-by-cat?categoryId=${categoryId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         const savedArticles = responseSaved.data;
-
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 1000);
         // Tìm kiếm articleId
         const article = savedArticles.find(article => article.id === articleId);
         if (article) {
@@ -23,59 +29,65 @@ const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
           setIsSaved(false);
         }
       } catch (error) {
-        console.error('Error fetching saved status:', error);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+          message.error(error.response.data.message);
+        }, 3000);
       }
     };
 
     fetchData();
-  }, [articleId, token, categoryId]);
+  }, [articleId, token, categoryId,dispatch]);
 
 
   const handleSaveArticle = async () => {
     try {
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.post(
         '/api/add-save-article',
         { articleId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 1000);
       if (response.status === 200) {
         setIsSaved(true);
-
-      } else {
-        console.error('Tạo tag thất bại.');
+        message.success('Lưu bài viết thành công.');
+      }
+      else {
+        message.error('Lưu bài viết thất bại.');
       }
     } catch (error) {
-      console.error('Error:', error);
-      if (error.response && error.response.status === 403) {
-        console.error('Unauthorized');
-      } else {
-        console.error('Internal Server Error');
-      }
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response.data.message);
+      }, 3000);
     }
   };
 
   const handleRemoveSaveArticle = async () => {
     try {
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.delete(
         `/api/remove-save-article?articleId=${articleId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 1000);
       if (response.status === 200) {
         setIsSaved(false);
-
         onRemoveSaveArticle();
+        message.success('Bỏ lưu bài viết thành công.');
       } else {
-        console.error('Xóa bài đã lưu thất bại.');
+        message.error('Bỏ lưu bài viết thất bại.');
       }
     } catch (error) {
-      console.error('Error:', error);
-      if (error.response && error.response.status === 403) {
-        console.error('Unauthorized');
-      } else {
-        console.error('Internal Server Error');
-      }
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response?.data?.message);
+      }, 3000);
     }
   };
 
@@ -99,7 +111,7 @@ const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
           color: 'black',
           marginRight: '20px',
         }}
-        title={isSaved ? "saved" : "save"}
+        title={isSaved ? "Đã lưu" : "Lưu"}
       >
       </button>
     </li>

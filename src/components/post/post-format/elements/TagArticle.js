@@ -1,25 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { Divider, Flex, Tag, Spin } from 'antd';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
 
 const TagArticle = ({articleId}) => {
   const [tags, setTags] = useState([]);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchTags = async () => {
       try {
+      dispatch({ type: SHOW_SPINNER });
         const response = await axios.get(`/api/get-tag-article?article_id=${articleId}`);
         setTags(response.data);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
       } catch (error) {
-        console.error('Error fetching tags:', error);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+          message.error(error.response.data.message);
+        }, 3000);
       } finally {
         setLoading(false);
       }
     };
 
     fetchTags();
-  }, [articleId]);
+  }, [articleId,dispatch]);
 
   if (loading) {
     return <Spin />;

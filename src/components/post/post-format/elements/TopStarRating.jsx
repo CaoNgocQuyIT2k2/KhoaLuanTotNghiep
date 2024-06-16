@@ -1,24 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { message } from 'antd';
+import { useDispatch } from 'react-redux';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
 
 const TopStarRatingTop = ({ articleId }) => {
   const [averageRatingTop, setAverageRatingTop] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchAverageRatingTop(articleId);
-  }, [articleId]);
+  }, [articleId,dispatch]);
 
 
 
   const fetchAverageRatingTop = async (articleId) => {
     try {
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.get(`/api/get-average-star?articleId=${articleId}`);
       if (response.status === 200) {
         setAverageRatingTop(response.data);
       }
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 3000);
     } catch (error) {
-      console.error('Error fetching average rating:', error);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response.data.message);
+      }, 3000);
     }
   };
 

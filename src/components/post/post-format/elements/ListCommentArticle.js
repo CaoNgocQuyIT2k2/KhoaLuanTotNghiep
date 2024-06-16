@@ -2,30 +2,39 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Avatar, List, Space, message } from 'antd';
 import axios from 'axios';
 import EditComment from './EditComment'; // Import EditComment component
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { format } from 'date-fns';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
 
 const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token }) => {
   const [position, setPosition] = useState('bottom');
   const [align, setAlign] = useState('center');
   const [comments, setComments] = useState([]);
   const userId = useSelector((state) => state.user?.user?.id);
-  
+  const dispatch = useDispatch();
+   
   const fetchCommentArticleDetail = useCallback(async () => {
     try {
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.get(`/api/get-comment-article?articleId=${articleId}`);
       setComments(response.data);
       setCommentPosted(false);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 3000);
     } catch (error) {
-      console.error(error.message);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response.data.message);
+      }, 3000);
     }
-  }, [articleId, setCommentPosted]);
+  }, [articleId, setCommentPosted,dispatch]);
 
   useEffect(() => {
     if (articleId) {
       fetchCommentArticleDetail();
     }
-  }, [articleId, commentPosted, fetchCommentArticleDetail]);
+  }, [articleId, commentPosted, fetchCommentArticleDetail,dispatch]);
 
   
   const handleUpdateComments = async (commentId, newComment) => {

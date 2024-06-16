@@ -4,24 +4,34 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // Import axios
 import ButtonSaveArt from "../post-format/elements/ButtonSaveArt";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { HIDE_SPINNER, SHOW_SPINNER } from "../../../../store/constants/spinner";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
 const PostLayoutArtPerCat = ({ postSizeMd = false, postBgDark = false }) => {
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+      dispatch({ type: SHOW_SPINNER });
         const response = await axios.get("/api/latest-article-per-cat"); // Make request to API route
         setData(response.data);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+          message.error(error.response.data.message);
+        }, 3000);
       }
     };
 
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   // Function to limit the number of words in a string
   const limitWords = (text, limit) => {
@@ -73,7 +83,7 @@ const PostLayoutArtPerCat = ({ postSizeMd = false, postBgDark = false }) => {
                 <ul className="list-inline">
                   {article.author_name && (
                     <li>
-                      <span>By</span>
+                      <span>Bởi</span>
                       <Link href={`/author/${slugify(article.author_name)}`}>
                         <a className="post-author">{article.author_name}</a>
                       </Link>
@@ -84,7 +94,7 @@ const PostLayoutArtPerCat = ({ postSizeMd = false, postBgDark = false }) => {
                   </li>
                   <li>
                     <i className="" />
-                    {article.reading_time} min
+                    {article.reading_time} phút
                   </li>
                   <li>
                     <i className="" />

@@ -7,7 +7,7 @@ import axios from 'axios';
 import { message } from "antd";
 import dynamic from 'next/dynamic';
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import LogUser from "../post/post-format/elements/LogUser";
 
 const SearchImage = dynamic(() => import("../objectDetector/SearchImage"), {
@@ -146,17 +146,17 @@ const HeaderOne = () => {
                   <li className="current-date">{dateFormate()}</li>
                   <li>
                     <Link href="/">
-                      <a id="btn-header">Advertisement</a>
+                      <a id="btn-header">Quảng cáo</a>
                     </Link>
                   </li>
                   <li>
                     <Link href="/about-us">
-                      <a id="btn-header">About</a>
+                      <a id="btn-header">Thông tin</a>
                     </Link>
                   </li>
                   <li>
                     <Link href="/contact">
-                      <a id="btn-header">Contact</a>
+                      <a id="btn-header">Liên hệ</a>
                     </Link>
                   </li>
                 </ul>
@@ -169,7 +169,7 @@ const HeaderOne = () => {
                     <li>
                       <Link href="/login">
                         <a>
-                          <i className="feather icon-log-in" /> LogIn
+                          <i className="feather icon-log-in" /> Đăng nhập
                         </a>
                       </Link>
                     </li>

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import FormGroup from "../../../contact/FormGroup";
 import ListCommentArticle from './ListCommentArticle';
+import { useDispatch } from 'react-redux';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
 
 const PostComment = ({ articleId, parentId, token }) => {
   const [comment, setComment] = useState('');
@@ -9,6 +11,7 @@ const PostComment = ({ articleId, parentId, token }) => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [commentPosted, setCommentPosted] = useState(false); // Step 1
+  const dispatch = useDispatch();
 
   const handleCommentChange = (e) => {
     setComment(e.target.value);
@@ -30,6 +33,7 @@ const PostComment = ({ articleId, parentId, token }) => {
 
 
     try {
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.post(
         '/api/create-comment',
         commentData,
@@ -39,15 +43,20 @@ const PostComment = ({ articleId, parentId, token }) => {
         setSuccess('Bình luận thành công!');
         setComment(''); // Clear the comment field
         setCommentPosted(true); // Step 2
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
       } else {
         setError('Bình luận thất bại.');
       }
     } catch (error) {
-      console.error('Error:', error);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 3000);
       if (error.response && error.response.status === 403) {
         setError('Unauthorized');
       } else {
-        setError('Internal Server Error');
+        message.error(error.response.data.message);
       }
     } finally {
       setLoading(false);
@@ -57,9 +66,9 @@ const PostComment = ({ articleId, parentId, token }) => {
   return (
     <div className="post-comment-area">
       <div className="comment-box">
-        <h2>Leave A Reply</h2>
+        <h2>Hãy để lại bình luận</h2>
         <p>
-          Your email address will not be published.
+          Địa chỉ email của bạn sẽ không bị công khai
           <span className="primary-color">*</span>
         </p>
       </div>

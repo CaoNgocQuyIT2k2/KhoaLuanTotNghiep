@@ -14,10 +14,10 @@ const ErrorPage = () => {
                         <div className="txt-404 tilt-this">404</div>
                         <div className="error-inner-content">
                             <h1 className="h1 m-b-xs-20 m-b-md-40">
-                                Sorry, This Page Doesn&apos;t Exist.
+                               Xin lỗi, trang này không tồn tại.
                             </h1>
                             <Link href="/">
-                                <a className="btn btn-primary">BACK TO HOMEPAGE</a>
+                                <a className="btn btn-primary">Trở về trang chủ</a>
                             </Link>
                         </div>
                     </div>

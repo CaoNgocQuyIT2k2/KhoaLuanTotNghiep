@@ -16,7 +16,7 @@ const PostSectionOne = ({ postData }) => {
             <div className="col-lg-6">
               <div className="axil-recent-news">
                 <SectionTitle
-                  title="Recent News"
+                  title="Mới Nhất"
                  
                   pClass="m-b-xs-30"
                 />

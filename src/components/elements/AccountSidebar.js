@@ -1,12 +1,20 @@
 import Link from 'next/link';
 import React from 'react';
 import { message } from 'antd';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../store/constants/spinner';
+import { useDispatch } from 'react-redux';
 
 const AccountSidebar = () => {
+  const dispatch = useDispatch();
+
     const handleLogoutClick = async () => {
         // Assuming handleClose() is a function you need to call here
         // handleClose();
+      dispatch({ type: SHOW_SPINNER });
         localStorage.removeItem('USER_INFO');
+        setTimeout(() => {
+            dispatch({ type: HIDE_SPINNER });
+        }, 3000);
         message.success('Đăng xuất thành công');
         window.location.reload();
     };

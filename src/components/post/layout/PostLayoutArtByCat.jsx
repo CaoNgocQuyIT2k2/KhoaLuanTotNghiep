@@ -5,33 +5,44 @@ import axios from 'axios';
 import { Pagination } from 'antd';
 import ButtonSaveArt from "../post-format/elements/ButtonSaveArt";
 import Image from "next/image";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { HIDE_SPINNER, SHOW_SPINNER } from "../../../../store/constants/spinner";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png";
 
 const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
     const [data, setData] = useState([]);
     const token = useSelector((state) => state.user?.token);
+    const dispatch = useDispatch();
+
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                dispatch({ type: SHOW_SPINNER });
+
                 const response = await axios.get(`/api/get-art-by-cat?categoryId=${categoryId}`);
                 setData(response.data);
 
                 // Đặt trang hiện tại về 1 khi thay đổi danh mục
                 setCurrentPage(1);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
             } catch (error) {
-                console.error("Error fetching data:", error);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                    message.error(error.response.data.message);
+                }, 3000);
             }
         };
 
-        
+
         fetchData();
-    }, [categoryId]);
-    
+    }, [categoryId,dispatch]);
+
 
 
     const startIndex = (currentPage - 1) * pageSize;
@@ -81,7 +92,7 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
                                 <ul className="list-inline">
                                     {article.author_name && (
                                         <li>
-                                            <span>By</span>
+                                            <span>Bởi</span>
                                             <Link href={`/author/${slugify(article.author_name)}`}>
                                                 <a className="post-author">{article.author_name}</a>
                                             </Link>
@@ -93,14 +104,14 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
                                     </li>
                                     <li>
                                         <i className="feather icon-activity" />
-                                        {article.reading_time} min
+                                        {article.reading_time} phút
                                     </li>
                                     <li>
                                         <i className="" />
                                         {article.artSource}
                                     </li>
-                                    
-                                    <ButtonSaveArt articleId={article.id} categoryId={categoryId}/>
+
+                                    <ButtonSaveArt articleId={article.id} categoryId={categoryId} />
                                 </ul>
                             </div>
                         </div>

@@ -34,8 +34,8 @@ const EditComment = ({ comment, commentId, onEdit, onDelete }) => {
 
   const menu = (
     <Menu onClick={handleItemClick}>
-      <Menu.Item key="edit">Update</Menu.Item>
-      <Menu.Item key="delete">Delete</Menu.Item>
+      <Menu.Item key="edit">Cập nhật</Menu.Item>
+      <Menu.Item key="delete">Xóa</Menu.Item>
     </Menu>
   );
 
@@ -63,7 +63,7 @@ const EditComment = ({ comment, commentId, onEdit, onDelete }) => {
         onOk={handleDeleteOk}
         onCancel={handleDeleteCancel}
       >
-        <p>Are you sure you want to delete this comment?</p>
+        <p>Bạn chắc rằng muốn xóa bình luận không?</p>
         <Input value={comment} disabled /> {/* Hiển thị comment nhưng không cho phép thay đổi */}
       </Modal>
     </>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { format } from 'date-fns';
 import Image from 'next/image';
@@ -11,27 +11,37 @@ import AccountSidebar from '../../elements/AccountSidebar';
 import ButtonSaveArt from '../post-format/elements/ButtonSaveArt';
 import FooterOne from '../../footer/FooterOne';
 import BackToTopButton from '../post-format/elements/BackToTopButton';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../store/constants/spinner';
 
 function LayoutArtSaved() {
 
     const [articles, setSavedArticles] = useState([]);
     const [reload, setReload] = useState(false); // State để cập nhật lại giao diện
     const token = useSelector((state) => state.user?.token);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+      dispatch({ type: SHOW_SPINNER });
+
                 const response = await axios.get('/api/get-list-article-saved',
                     {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                 setSavedArticles(response.data);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                  }, 3000);
             } catch (error) {
-                console.error('Error fetching saved articles:', error);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                    message.error(error.response.data.message);
+                  }, 3000);
             }
         };
         fetchData();
-    }, [token, reload]); // Thêm reload vào dependency array để khi reload thì useEffect được kích hoạt lại
+    }, [token, reload,dispatch]); // Thêm reload vào dependency array để khi reload thì useEffect được kích hoạt lại
 
     const handleRemoveSaveArticle = () => {
 

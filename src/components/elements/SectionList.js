@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { div } from '@tensorflow/tfjs-core';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../store/constants/spinner';
+import { message } from 'antd';
 
 const SectionList = (props) => {
     const [expanded, setExpanded] = useState({});
@@ -10,9 +12,13 @@ const SectionList = (props) => {
     const [followedChildCategories, setFollowedChildCategories] = useState([]);
     const [searchText, setSearchText] = useState('');
     const token = useSelector((state) => state.user?.token);
+    const dispatch = useDispatch();
+
     useEffect(() => {
         const fetchMenuData = async () => {
             try {
+                dispatch({ type: SHOW_SPINNER });
+
                 const menuResponse = await axios.get('/api/get-menu-data');
                 const menuData = menuResponse.data;
                 const parentCategoriesResponse = await axios.get('/api/get-follow-parent-cat', { headers: { Authorization: `Bearer ${token}` } });
@@ -39,13 +45,19 @@ const SectionList = (props) => {
                     });
                     setFollowedChildCategories(prev => [...prev, ...childCategoriesResponse.data]);
                 }
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
             } catch (error) {
-                console.error("Lỗi cập nhật dữ liệu:");
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                    message.error(error.response.data.message);
+                }, 3000);
             }
         };
 
         fetchMenuData();
-    }, [token]);
+    }, [token,dispatch]);
 
     const toggleExpand = (section) => {
         setExpanded(prevState => ({
@@ -64,13 +76,15 @@ const SectionList = (props) => {
 
     const followCategory = async (categoryId) => {
         try {
+            dispatch({ type: SHOW_SPINNER });
+
             const response = await axios.post(
                 '/api/follow-category',
                 { category: { id: categoryId } },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             const allParent = await axios.get('/api/get-all-parent');
-            
+
             if (response.status === 200) {
                 const parentCategoriesResponse = await axios.get('/api/get-follow-parent-cat', { headers: { Authorization: `Bearer ${token}` } });
                 const parentCategories = parentCategoriesResponse.data;
@@ -89,16 +103,27 @@ const SectionList = (props) => {
                     ...prevState,
                     [categoryId]: true
                 }));
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
             } else {
-                console.error('Failed to follow category.');
+                console.error('Theo dõi chuyên mục thất bại');
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
             }
         } catch (error) {
-            console.error('Error:', error);
+            setTimeout(() => {
+                dispatch({ type: HIDE_SPINNER });
+                message.error(error.response.data.message);
+            }, 3000);
         }
     };
 
     const unfollowCategory = async (categoryId) => {
         try {
+            dispatch({ type: SHOW_SPINNER });
+
             const response = await axios.delete(
                 `/api/unfollow-category?categoryId=${categoryId}`,
                 { headers: { Authorization: `Bearer ${token}` } }
@@ -122,16 +147,27 @@ const SectionList = (props) => {
                     followedChildCategories.push(...childCategoriesResponse.data);
                 }
                 setFollowedChildCategories(followedChildCategories);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
             } else {
-                console.error('Failed to unfollow category.');
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 3000);
+                console.error('Bỏ theo dõi chuyên mục thất bại.');
             }
         } catch (error) {
-            console.error('Error:', error);
+            setTimeout(() => {
+                dispatch({ type: HIDE_SPINNER });
+                message.error(error.response.data.message);
+            }, 3000);
         }
     };
 
     const followCategoryChild = async (categoryId) => {
         try {
+            dispatch({ type: SHOW_SPINNER });
+
             // Check if the category is already followed
             const isAlreadyFollowed = followedChildCategories.some(category => category.id === categoryId);
             if (!isAlreadyFollowed) {
@@ -141,31 +177,42 @@ const SectionList = (props) => {
                     { category: { id: categoryId } },
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
-    
+
                 if (response.status === 200) {
                     // Add the followed category to the state
                     setFollowedChildCategories(prev => [...prev, { id: categoryId }]);
-    
+
                     // Update parent category state if necessary
                     const parentCategory = menuData.find(menuItem => menuItem.submenu.some(subItem => subItem.id === categoryId));
                     if (parentCategory && !isParentCategoryFollowed(parentCategory.id)) {
                         setFollowedParentCategories(prev => [...prev, { id: parentCategory.id }]);
                     }
                 } else {
-                    console.error('Failed to follow category.');
+                    setTimeout(() => {
+                        dispatch({ type: HIDE_SPINNER });
+                    }, 3000);
+                    message.error('Theo dõi chuyên mục con thất bại.');
                 }
             } else {
-
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                    message.error(error.response.data.message);
+                }, 3000);
             }
         } catch (error) {
-            console.error('Error:', error);
+            setTimeout(() => {
+                dispatch({ type: HIDE_SPINNER });
+                message.error(error.response.data.message);
+            }, 3000);
         }
     };
-    
+
 
 
     const unfollowCategoryChild = async (categoryId) => {
         try {
+            dispatch({ type: SHOW_SPINNER });
+
             const response = await axios.delete(
                 `/api/unfollow-category?categoryId=${categoryId}`,
                 { headers: { Authorization: `Bearer ${token}` } }
@@ -189,12 +236,18 @@ const SectionList = (props) => {
                         unfollowCategory(parentCategory.id);
                     }
                 } else {
-                    console.error('Failed to unfollow category.');
+                    setTimeout(() => {
+                        dispatch({ type: HIDE_SPINNER });
+                    }, 3000);
+                    message.error('Bỏ theo dõi chuyên mục con thất bại.');
                 }
             }
         }
         catch (error) {
-            console.error('Error:', error);
+            setTimeout(() => {
+                dispatch({ type: HIDE_SPINNER });
+                message.error(error.response.data.message);
+            }, 3000);
         }
     };
 

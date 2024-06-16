@@ -59,7 +59,7 @@ const PostLayoutArtBySearch = ({ searchData, postSizeMd, postBgDark }) => {
                 <ul className="list-inline">
                   {article.author_name && (
                     <li>
-                      <span>By</span>
+                      <span>Bởi</span>
                       <Link href={`/author/${slugify(article.author_name)}`}>
                         <a className="post-author">{article.author_name}</a>
                       </Link>
@@ -70,7 +70,7 @@ const PostLayoutArtBySearch = ({ searchData, postSizeMd, postBgDark }) => {
                   </li>
                   <li>
                     <i className="feather icon-activity" />
-                    {article.reading_time} min
+                    {article.reading_time} phút
                   </li>
                   <li>
                     <i className="" />

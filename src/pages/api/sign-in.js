@@ -34,7 +34,6 @@ export default async function handler(req, res) {
         throw new Error('Unexpected status code from API');
       }
       // Return the token in the response
-      res.status(200).json({ token: data.token, user: data.user });
     } catch (error) {
       console.error("Error:", error.message || error);
 

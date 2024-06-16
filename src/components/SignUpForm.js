@@ -3,6 +3,8 @@ import axios from "axios";
 import { message } from "antd";
 import Link from "next/link";
 import Image from "next/image";
+import { HIDE_SPINNER, SHOW_SPINNER } from "../../store/constants/spinner";
+import { useDispatch } from "react-redux";
 
 const RegisterScreen = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +16,7 @@ const RegisterScreen = () => {
   });
   const [confirmpassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -37,23 +40,26 @@ const RegisterScreen = () => {
       setConfirmPassword("");
       setTimeout(() => {
         setError("");
-      }, 8000);
+      }, 3000);
       return message.error("Mật khẩu không trùng khớp");
     }
 
     try {
+      dispatch({ type: SHOW_SPINNER });
       const { data } = await axios.post(
         "/api/sign-up", // Gửi request đến API Route bạn vừa tạo
         formData
       );
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 3000);
       message.success("Đăng ký thành công");
       window.location.href = "/login"; // Chuyển hướng đến trang đăng nhập
-      return;
     } catch (error) {
-      message.error("Email đã tồn tại");
       setTimeout(() => {
-        setError("");
-      }, 6000);
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response.data.message);
+      }, 3000);
     }
   };
 
