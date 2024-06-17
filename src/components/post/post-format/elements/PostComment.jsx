@@ -47,16 +47,16 @@ const PostComment = ({ articleId, parentId, token }) => {
           dispatch({ type: HIDE_SPINNER });
         }, 3000);
       } else {
-        setError('Bình luận thất bại.');
+        message.error('Bình luận thất bại.');
       }
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
       }, 3000);
       if (error.response && error.response.status === 403) {
-        setError('Unauthorized');
+        message.error('Bạn cần đăng nhập để thực hiện chức năng này');
       } else {
-        message.error(error.response.data.message);
+        message.error(error.response?.data?.message);
       }
     } finally {
       setLoading(false);

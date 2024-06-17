@@ -43,7 +43,7 @@ const SignInForm = () => {
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-        message.error(error.response.data.message);
+        message.error(error.response?.data?.message);
       }, 3000);
     }
 
@@ -54,7 +54,7 @@ const SignInForm = () => {
       <div className="containerSign">
         <div className="signin-content">
           <div className="signin-form">
-            <h2 className="form-title">Sign In</h2>
+            <h2 className="form-title">Đăng nhâp</h2>
             <form method="POST" className="login-form" id="login-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="email"><i className="zmdi zmdi-email"></i></label>
@@ -62,7 +62,7 @@ const SignInForm = () => {
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="Your Email"
+                  placeholder="Email"
                   value={formData.email}
                   onChange={handleInputChange}
                 />
@@ -73,18 +73,18 @@ const SignInForm = () => {
                   type="password"
                   name="password"
                   id="password"
-                  placeholder="Password"
+                  placeholder="Mật khẩu"
                   value={formData.password}
                   onChange={handleInputChange}
                 />
               </div>
               <div className="form-group">
                 <Link className="createAnAcc" href="/register">
-                  Create an account
+                  Tạo tài khoản 
                 </Link>
               </div>
               <div className="form-group form-button">
-                <input type="submit" name="signin" id="signin" className="form-submit" value="Log in" />
+                <input type="submit" name="signin" id="signin" className="form-submit" value="Đăng nhập" />
               </div>
             </form>
           </div>

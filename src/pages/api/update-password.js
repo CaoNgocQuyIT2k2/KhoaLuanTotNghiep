@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
       // Validate request body
       if (!oldPassword || !newPassword || !reEnterPassword) {
-        res.status(400).json({ message: 'All fields are required' });
+        res.status(400).json({ message: 'Hãy điền đủ vào những ô còn trống' });
         return;
       }
 
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
         res.status(error.response.status).json({ message: error.response.data });
       } else {
         console.error('No response received from backend');
-        res.status(500).json({ message: 'Internal Server Error' });
+        res.status(500).json({ message: 'Lỗi hệ thống' });
       }
     }
   } else {

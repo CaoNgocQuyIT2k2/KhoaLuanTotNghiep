@@ -20,6 +20,9 @@ const PostLayoutArtSaved = ({ postSizeMd, postBgDark, categoryId }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                if(!token){
+                    return;
+                }
       dispatch({ type: SHOW_SPINNER });
                 const response = await axios.get(`/api/get-list-article-saved`,
                     { headers: { Authorization: `Bearer ${token}` } }
@@ -31,7 +34,7 @@ const PostLayoutArtSaved = ({ postSizeMd, postBgDark, categoryId }) => {
             } catch (error) {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                    message.error(error.response.data.message);
+                    message.error(error.response?.data?.message);
                   }, 3000);
             }
         };

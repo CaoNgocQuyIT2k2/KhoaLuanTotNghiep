@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { HIDE_SPINNER, SHOW_SPINNER } from '../../../store/constants/spinner';
+import { message } from 'antd';
 
 const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
     const token = useSelector((state) => state.user?.token);
@@ -19,6 +20,9 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
     useEffect(() => {
         const fetchMenuData = async () => {
             try {
+                if(!token) {
+                    return;
+                }
                 dispatch({ type: SHOW_SPINNER });
                 const menuResponse = await axios.get('/api/get-menu-data');
                 const menuData = menuResponse.data;
@@ -60,7 +64,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
             } catch (error) {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                    message.error(error.response.data.message);
+                    message.error(error.response?.data?.message);
                 }, 3000);
             }
         };
@@ -69,6 +73,9 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
     }, [token,dispatch]);
 
     useEffect(() => {
+        if(!token) {
+            return;
+        }
         axios.get('/api/get-all-categories')
             .then(response => {
                 dispatch({ type: SHOW_SPINNER });
@@ -96,7 +103,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
             .catch(error => {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                    message.error(error.response.data.message);
+                    message.error(error.response?.data?.message);
                 }, 3000);
             });
     }, [token,dispatch]);
@@ -118,6 +125,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
             );
 
             if (response.status === 200) {
+             
                 // Update the followed categories state
                 setFollowedCategories(prevState => [...prevState, categoryId]);
 
@@ -128,18 +136,18 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
                 }, 3000);
-                messages.success("Lưu bài viết thành công")
+                message.success("Lưu bài viết thành công")
             } else {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
                 }, 3000);
-                messages.error("Lưu bài viết thất bại")
+                message.error("Lưu bài viết thất bại")
 
             }
         } catch (error) {
             setTimeout(() => {
                 dispatch({ type: HIDE_SPINNER });
-                message.error(error.response.data.message);
+                message.error(error.response?.data?.message);
             }, 3000);
         }
     };
@@ -153,6 +161,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
             );
 
             if (response.status === 200) {
+                
                 // Update the followed categories state
                 setFollowedCategories(prevState => prevState.filter(id => id !== categoryId));
 
@@ -161,7 +170,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                     [categoryId]: false
                 }));
 
-                messages.success("Bỏ lưu bài viết thành công")
+                message.success("Bỏ lưu bài viết thành công")
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
                 }, 3000);
@@ -169,12 +178,12 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
                 }, 3000);
-                messages.error("Bỏ lưu bài viết thất bại")
+                message.error("Bỏ lưu bài viết thất bại")
             }
         } catch (error) {
             setTimeout(() => {
                 dispatch({ type: HIDE_SPINNER });
-                message.error(error.response.data.message);
+                message.error(error.response?.data?.message);
             }, 3000);
         }
     };

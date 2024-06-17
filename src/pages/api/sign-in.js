@@ -39,7 +39,7 @@ export default async function handler(req, res) {
 
       // Determine the status code based on the error
       const statusCode = error.response ? error.response.status : 500;
-      res.status(statusCode).json({ message: error.message || 'Internal Server Error' });
+      res.status(statusCode).json({ message: error.message || 'Lỗi hệ thống' });
     }
   } else {
     res.status(405).json({ message: 'Method not allowed' });

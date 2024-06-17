@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import SettingsPanelFollowFoot from './SettingsPanelFollowFoot';
 import HeaderOne from '../header/HeaderOne';
 import { HIDE_SPINNER, SHOW_SPINNER } from '../../../store/constants/spinner';
+import { message } from 'antd';
 
 const SectionArticleFollowed = ({ refresh, onToggleSectionList }) => {
     const [articles, setArticles] = useState([]);
@@ -13,6 +14,9 @@ const SectionArticleFollowed = ({ refresh, onToggleSectionList }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        if(!token) {
+            return;
+        }
         const fetchArticles = async () => {
             try {
                 dispatch({ type: SHOW_SPINNER });
@@ -27,7 +31,7 @@ const SectionArticleFollowed = ({ refresh, onToggleSectionList }) => {
             } catch (error) {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                    message.error(error.response.data.message);
+                    message.error(error.response?.data?.message);
                 }, 3000);
             }
         };

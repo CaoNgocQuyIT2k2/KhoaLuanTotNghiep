@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
       // Validate request body
       if (!value) {
-        res.status(400).json({ message: 'All fields are required' });
+        res.status(400).json({ message: 'Hãy điền đủ vào những ô còn trống' });
         return;
       }
 
@@ -41,9 +41,9 @@ export default async function handler(req, res) {
     } catch (error) {
       console.error('Error:', error);
       if (error.response && error.response.status === 403) {
-        res.status(403).json({ message: 'Unauthorized' });
+        res.status(403).json({ message: 'Bạn cần đăng nhập để thực hiện chức năng này'});
       } else {
-        res.status(500).json({ message: 'Internal Server Error' });
+        res.status(500).json({ message: 'Lỗi hệ thống' });
       }
     }
   } else {

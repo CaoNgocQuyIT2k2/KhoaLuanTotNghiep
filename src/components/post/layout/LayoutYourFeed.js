@@ -41,7 +41,7 @@ const LayoutYourFeed = () => {
                 {showSectionList ? (
                     <SectionList searchTerm={searchTerm} handleBackToDashboard={handleBackToDashboard} />
                 ) : (
-                    <SectionArticleFollowed refresh={refreshArticles} />
+                    <SectionArticleFollowed onToggleSectionList={handleToggleSectionList} refresh={refreshArticles} />
                 )}
             </div>
             <div className="settings-panel">

@@ -24,7 +24,7 @@ const PostVNExpress = ({ pClass, videoIcon, postSizeMd }) => {
       } catch (error) {
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
-          message.error(error.response.data.message);
+          message.error(error.response?.data?.message);
         }, 3000);
       }
     };

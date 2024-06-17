@@ -26,7 +26,7 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 			} catch (error) {
 				setTimeout(() => {
 					dispatch({ type: HIDE_SPINNER });
-					message.error(error.response.data.message);
+					message.error(error.response?.data?.message);
 				  }, 3000);
 			}
 		};
@@ -92,7 +92,7 @@ const PostLayoutThree = ({ postSizeLg, pClass, videoPost }) => {
 										</li>
 										<li>
 											<i className="" />
-											{data.reading_time} min
+											{data.reading_time} phút
 										</li>
 										<li>
 											<i className="" />

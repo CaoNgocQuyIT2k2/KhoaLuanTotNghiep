@@ -43,8 +43,12 @@ const EditPasswordForm = () => {
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-        message.error(error.response.data.message);
       }, 3000);
+      if (error.response && error.response.status === 403) {
+        message.error('Bạn cần đăng nhập để thực hiện chức năng này');
+      } else {
+        message.error(error.response?.data?.message);
+      }
     }
   };
 

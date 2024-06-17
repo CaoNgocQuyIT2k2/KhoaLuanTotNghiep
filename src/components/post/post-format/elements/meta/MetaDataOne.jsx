@@ -40,7 +40,7 @@ const MetaDataOne = ({ metaData }) => {
                   </li>
                   <li>
                     <i className="" />
-                    {metaData.reading_time} min
+                    {metaData.reading_time} phút
                   </li>
                   {/* <li>
                     <i className="feather icon-eye" />

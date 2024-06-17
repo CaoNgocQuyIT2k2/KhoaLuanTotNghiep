@@ -19,6 +19,9 @@ function SavedArticle() {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                if(!token){
+                    return;
+                }
                 dispatch({ type: SHOW_SPINNER });
                 const response = await axios.get('/api/get-list-article-saved',
                     {
@@ -27,11 +30,11 @@ function SavedArticle() {
                 setSavedArticles(response.data);
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                }, 3000);
+                }, 2000);
             } catch (error) {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                    message.error(error.response.data.message);
+                    message.error(error.response?.data?.message);
                 }, 3000);
             }
         };

@@ -16,7 +16,11 @@ const SectionList = (props) => {
 
     useEffect(() => {
         const fetchMenuData = async () => {
+           
             try {
+                if(!token) {
+                    return;
+                }
                 dispatch({ type: SHOW_SPINNER });
 
                 const menuResponse = await axios.get('/api/get-menu-data');
@@ -45,14 +49,12 @@ const SectionList = (props) => {
                     });
                     setFollowedChildCategories(prev => [...prev, ...childCategoriesResponse.data]);
                 }
-                setTimeout(() => {
-                    dispatch({ type: HIDE_SPINNER });
-                }, 3000);
+                
             } catch (error) {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                    message.error(error.response.data.message);
-                }, 3000);
+                    message.error(error.response?.data?.message);
+                }, 0);
             }
         };
 
@@ -76,7 +78,7 @@ const SectionList = (props) => {
 
     const followCategory = async (categoryId) => {
         try {
-            dispatch({ type: SHOW_SPINNER });
+      
 
             const response = await axios.post(
                 '/api/follow-category',
@@ -86,6 +88,9 @@ const SectionList = (props) => {
             const allParent = await axios.get('/api/get-all-parent');
 
             if (response.status === 200) {
+                if(!token) {
+                    return;
+                }
                 const parentCategoriesResponse = await axios.get('/api/get-follow-parent-cat', { headers: { Authorization: `Bearer ${token}` } });
                 const parentCategories = parentCategoriesResponse.data;
                 setFollowedParentCategories(parentCategories);
@@ -103,26 +108,19 @@ const SectionList = (props) => {
                     ...prevState,
                     [categoryId]: true
                 }));
-                setTimeout(() => {
-                    dispatch({ type: HIDE_SPINNER });
-                }, 3000);
+                
             } else {
                 console.error('Theo dõi chuyên mục thất bại');
-                setTimeout(() => {
-                    dispatch({ type: HIDE_SPINNER });
-                }, 3000);
+                
             }
         } catch (error) {
-            setTimeout(() => {
-                dispatch({ type: HIDE_SPINNER });
-                message.error(error.response.data.message);
-            }, 3000);
+           
         }
     };
 
     const unfollowCategory = async (categoryId) => {
         try {
-            dispatch({ type: SHOW_SPINNER });
+     
 
             const response = await axios.delete(
                 `/api/unfollow-category?categoryId=${categoryId}`,
@@ -130,6 +128,9 @@ const SectionList = (props) => {
             );
 
             if (response.status === 200) {
+                if(!token) {
+                    return;
+                }
                 const parentCategoriesResponse = await axios.get('/api/get-follow-parent-cat', { headers: { Authorization: `Bearer ${token}` } });
                 const parentCategories = parentCategoriesResponse.data;
                 setFollowedParentCategories(parentCategories);
@@ -147,26 +148,19 @@ const SectionList = (props) => {
                     followedChildCategories.push(...childCategoriesResponse.data);
                 }
                 setFollowedChildCategories(followedChildCategories);
-                setTimeout(() => {
-                    dispatch({ type: HIDE_SPINNER });
-                }, 3000);
+                
             } else {
-                setTimeout(() => {
-                    dispatch({ type: HIDE_SPINNER });
-                }, 3000);
+                
                 console.error('Bỏ theo dõi chuyên mục thất bại.');
             }
         } catch (error) {
-            setTimeout(() => {
-                dispatch({ type: HIDE_SPINNER });
-                message.error(error.response.data.message);
-            }, 3000);
+           
         }
     };
 
     const followCategoryChild = async (categoryId) => {
         try {
-            dispatch({ type: SHOW_SPINNER });
+            
 
             // Check if the category is already followed
             const isAlreadyFollowed = followedChildCategories.some(category => category.id === categoryId);
@@ -179,6 +173,9 @@ const SectionList = (props) => {
                 );
 
                 if (response.status === 200) {
+                    if(!token) {
+                        return;
+                    }
                     // Add the followed category to the state
                     setFollowedChildCategories(prev => [...prev, { id: categoryId }]);
 
@@ -190,20 +187,17 @@ const SectionList = (props) => {
                 } else {
                     setTimeout(() => {
                         dispatch({ type: HIDE_SPINNER });
-                    }, 3000);
+                    }, 0);
                     message.error('Theo dõi chuyên mục con thất bại.');
                 }
             } else {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                    message.error(error.response.data.message);
-                }, 3000);
+                    message.error(error.response?.data?.message);
+                }, 0);
             }
         } catch (error) {
-            setTimeout(() => {
-                dispatch({ type: HIDE_SPINNER });
-                message.error(error.response.data.message);
-            }, 3000);
+           
         }
     };
 
@@ -211,7 +205,7 @@ const SectionList = (props) => {
 
     const unfollowCategoryChild = async (categoryId) => {
         try {
-            dispatch({ type: SHOW_SPINNER });
+         
 
             const response = await axios.delete(
                 `/api/unfollow-category?categoryId=${categoryId}`,
@@ -219,6 +213,9 @@ const SectionList = (props) => {
             );
 
             if (response.status === 200) {
+                if(!token) {
+                    return;
+                }
                 const followedChildCategoriesCopy = [...followedChildCategories];
                 const index = followedChildCategoriesCopy.findIndex(item => item.id === categoryId);
                 if (index !== -1) {
@@ -236,18 +233,13 @@ const SectionList = (props) => {
                         unfollowCategory(parentCategory.id);
                     }
                 } else {
-                    setTimeout(() => {
-                        dispatch({ type: HIDE_SPINNER });
-                    }, 3000);
                     message.error('Bỏ theo dõi chuyên mục con thất bại.');
                 }
+                
             }
         }
         catch (error) {
-            setTimeout(() => {
-                dispatch({ type: HIDE_SPINNER });
-                message.error(error.response.data.message);
-            }, 3000);
+           
         }
     };
 

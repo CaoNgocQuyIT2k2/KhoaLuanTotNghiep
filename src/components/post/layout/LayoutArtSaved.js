@@ -12,6 +12,7 @@ import ButtonSaveArt from '../post-format/elements/ButtonSaveArt';
 import FooterOne from '../../footer/FooterOne';
 import BackToTopButton from '../post-format/elements/BackToTopButton';
 import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../store/constants/spinner';
+import { message } from 'antd';
 
 function LayoutArtSaved() {
 
@@ -23,7 +24,10 @@ function LayoutArtSaved() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-      dispatch({ type: SHOW_SPINNER });
+                if(!token){
+                    return;
+                }
+            dispatch({ type: SHOW_SPINNER });
 
                 const response = await axios.get('/api/get-list-article-saved',
                     {
@@ -36,7 +40,7 @@ function LayoutArtSaved() {
             } catch (error) {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                    message.error(error.response.data.message);
+                    message.error(error.response?.data?.message);
                   }, 3000);
             }
         };
@@ -83,7 +87,11 @@ function LayoutArtSaved() {
                                                 </div>
                                                 <div className="kVunuOJJvyAdEERuRnUL">
 
-                                                    <div className="saved-article-20240609180238620 vLPsOJ4TxOzrC0g8QrVd  " title="Bỏ lưu bài viết">
+                                                    <div
+                                                    style={{
+                                                        listStyle: 'none',
+                                                    }} 
+                                                    className="saved-article-20240609180238620 vLPsOJ4TxOzrC0g8QrVd  " title="Bỏ lưu bài viết">
                                                         <ButtonSaveArt categoryId={article.article && article.article.category && article.article.category?.id} articleId={article.article.id} onRemoveSaveArticle={handleRemoveSaveArticle} />
                                                     </div>
                                                 </div>

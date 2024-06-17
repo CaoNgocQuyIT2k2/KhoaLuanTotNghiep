@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Divider, Flex, Tag, Spin } from 'antd';
+import { Divider, Flex, Tag, Spin, message } from 'antd';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
@@ -21,7 +21,7 @@ const TagArticle = ({articleId}) => {
       } catch (error) {
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
-          message.error(error.response.data.message);
+          message.error(error.response?.data?.message);
         }, 3000);
       } finally {
         setLoading(false);

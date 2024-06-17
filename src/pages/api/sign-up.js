@@ -32,11 +32,11 @@ export default async function handler(req, res) {
     } catch (error) {
       console.error("Error:", error);
 
-      if (error.response && error.response.data && error.response.data.message === 'Request failed with status code 500') {
+      if (error.response && error.response.data && error.response?.data?.message === 'Request failed with status code 500') {
         return res.status(400).json({ error: 'Email đã tồn tại' });
       }
 
-      res.status(500).json({ message: 'Internal Server Error' });
+      res.status(500).json({ message: 'Lỗi hệ thống' });
     }
   } else {
     res.status(405).json({ message: 'Method not allowed' });

@@ -76,8 +76,8 @@ export default async function handler(req, res) {
       }
     } catch (error) {
       console.error('Error:', error);
-      if (error.response && error.response.data && error.response.data.message) {
-        res.status(error.response.status).json({ message: error.response.data.message });
+      if (error.response && error.response.data && error.response?.data?.message) {
+        res.status(error.response.status).json({ message: error.response?.data?.message });
       } else {
         res.status(500).json({ message: 'Đã xảy ra lỗi, vui lòng thử lại sau.' });
       }

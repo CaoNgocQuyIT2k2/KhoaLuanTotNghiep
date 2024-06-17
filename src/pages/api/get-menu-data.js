@@ -50,6 +50,6 @@ export default async function handler(req, res) {
     res.status(200).json(menuData);
   } catch (error) {
     console.error("Error fetching menu data:", error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    res.status(500).json({ message: 'Lỗi hệ thống' });
   }
 }

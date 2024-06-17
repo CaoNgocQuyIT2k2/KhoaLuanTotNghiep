@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
 import ButtonSaveArt from "./ButtonSaveArt";
 import { HIDE_SPINNER, SHOW_SPINNER } from "../../../../../store/constants/spinner";
+import { message } from "antd";
 
 const SocialShareSide = ({ articleId,categoryId }) => {
   const [windowPath, setWindowPath] = useState(null);
@@ -51,7 +52,7 @@ const SocialShareSide = ({ articleId,categoryId }) => {
       );
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-      }, 3000);
+      }, 2000);
       if (response.status === 200) {
         fetchData(); // Refresh data after successful vote
 
@@ -59,7 +60,7 @@ const SocialShareSide = ({ articleId,categoryId }) => {
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-        message.error(error.response.data.message);
+        message.error(error.response?.data?.message);
       }, 3000);
     }
   };

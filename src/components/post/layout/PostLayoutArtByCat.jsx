@@ -34,7 +34,7 @@ const PostLayoutArtByCat = ({ postSizeMd, postBgDark, categoryId }) => {
             } catch (error) {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                    message.error(error.response.data.message);
+                    message.error(error.response?.data?.message);
                 }, 3000);
             }
         };

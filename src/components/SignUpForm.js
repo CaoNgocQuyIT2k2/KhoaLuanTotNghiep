@@ -39,7 +39,6 @@ const RegisterScreen = () => {
       setFormData({ ...formData, password: "" });
       setConfirmPassword("");
       setTimeout(() => {
-        setError("");
       }, 3000);
       return message.error("Mật khẩu không trùng khớp");
     }
@@ -58,7 +57,7 @@ const RegisterScreen = () => {
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-        message.error(error.response.data.message);
+        message.error(error.response?.data?.message);
       }, 3000);
     }
   };
@@ -68,7 +67,7 @@ const RegisterScreen = () => {
       <div className="containerSign">
         <div className="signup-content">
           <div className="signup-form">
-            <h2 className="form-title">Sign up</h2>
+            <h2 className="form-title">Đăng kí</h2>
             <form method="POST" className="register-form" id="register-form" onSubmit={registerHandler}>
               {error && <div className="error_message">{error}</div>}
               <div className="form-group">
@@ -77,7 +76,7 @@ const RegisterScreen = () => {
                   type="text"
                   name="firstname"
                   id="firstname"
-                  placeholder="Your First Name"
+                  placeholder="Tên"
                   value={formData.firstname}
                   onChange={handleInputChange}
                 />
@@ -88,7 +87,7 @@ const RegisterScreen = () => {
                   type="text"
                   name="lastname"
                   id="lastname"
-                  placeholder="Your Last Name"
+                  placeholder="Họ và tên lót"
                   value={formData.lastname}
                   onChange={handleInputChange}
                 />
@@ -99,7 +98,7 @@ const RegisterScreen = () => {
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="Your Email"
+                  placeholder="Email"
                   value={formData.email}
                   onChange={handleInputChange}
                 />
@@ -110,7 +109,7 @@ const RegisterScreen = () => {
                   type="password"
                   name="password"
                   id="password"
-                  placeholder="Password"
+                  placeholder="Mật khẩu"
                   value={formData.password}
                   onChange={handleInputChange}
                 />
@@ -120,7 +119,7 @@ const RegisterScreen = () => {
                 <input
                   type="password"
                   id="confirmpassword"
-                  placeholder="Confirm Password"
+                  placeholder="Nhập lại mật khẩu"
                   value={confirmpassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
@@ -131,18 +130,18 @@ const RegisterScreen = () => {
                   type="date"
                   name="dob"
                   id="dob"
-                  placeholder="Your Date of Birth"
+                  placeholder="Ngày sinh"
                   value={formData.dob}
                   onChange={handleInputChange}
                 />
               </div>
               <div className="form-group">
                 <Link className="createAnAcc" href="/login">
-                  I am already member
+                  Tôi đã đăng kí rồi!
                 </Link>
               </div>
               <div className="form-group form-button">
-                <input type="submit" name="signup" id="signup" className="form-submit" value="Register" />
+                <input type="submit" name="signup" id="signup" className="form-submit" value="Đăng kí" />
               </div>
             </form>
           </div>

@@ -25,7 +25,7 @@ const PostLayoutTwo = ({ postSizeMd, postBgDark }) => {
       } catch (error) {
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
-          message.error(error.response.data.message);
+          message.error(error.response?.data?.message);
         }, 3000);
       }
     };
@@ -156,7 +156,7 @@ const PostLayoutTwo = ({ postSizeMd, postBgDark }) => {
                   </li>
                   <li>
                     <i className="" />
-                    {article.reading_time} min
+                    {article.reading_time} phút
                   </li>
                   <li>
                     <i className="" />

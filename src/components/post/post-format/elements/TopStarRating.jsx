@@ -9,28 +9,26 @@ const TopStarRatingTop = ({ articleId }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchAverageRatingTop(articleId);
-  }, [articleId,dispatch]);
-
-
-
-  const fetchAverageRatingTop = async (articleId) => {
-    try {
-      dispatch({ type: SHOW_SPINNER });
-      const response = await axios.get(`/api/get-average-star?articleId=${articleId}`);
-      if (response.status === 200) {
-        setAverageRatingTop(response.data);
+    const fetchAverageRatingTop = async (articleId) => {
+      try {
+        dispatch({ type: SHOW_SPINNER });
+        const response = await axios.get(`/api/get-average-star?articleId=${articleId}`);
+        if (response.status === 200) {
+          setAverageRatingTop(response.data);
+        }
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
+      } catch (error) {
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+          message.error(error.response?.data?.message);
+        }, 3000);
       }
-      setTimeout(() => {
-        dispatch({ type: HIDE_SPINNER });
-      }, 3000);
-    } catch (error) {
-      setTimeout(() => {
-        dispatch({ type: HIDE_SPINNER });
-        message.error(error.response.data.message);
-      }, 3000);
-    }
-  };
+    };
+
+    fetchAverageRatingTop(articleId);
+  }, [articleId, dispatch]);
 
   if (averageRatingTop === null) {
     return <div>Loading...</div>;
@@ -39,12 +37,9 @@ const TopStarRatingTop = ({ articleId }) => {
   return (
     <div className="star-rating ">
       <div className="average-rating">
-
-        <p style={{
-          color: 'white',
-          fontSize: '2rem'
-        }}>{averageRatingTop && averageRatingTop?.toFixed(1)} </p>
-
+        <p style={{ color: 'white', fontSize: '2rem' }}>
+          {averageRatingTop && averageRatingTop.toFixed(1)}
+        </p>
       </div>
       <div className="rating-stars">
         <i className="fa-star fas" />

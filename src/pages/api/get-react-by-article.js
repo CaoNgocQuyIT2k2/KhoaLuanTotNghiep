@@ -33,6 +33,6 @@ export default async function handler(req, res) {
   } catch (error) {
     // Xử lý lỗi nếu có
     console.error("Error fetching react data:", error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    res.status(500).json({ message: 'Lỗi hệ thống' });
   }
 }

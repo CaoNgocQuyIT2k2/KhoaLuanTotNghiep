@@ -25,7 +25,7 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-        message.error(error.response.data.message);
+        message.error(error.response?.data?.message);
       }, 3000);
     }
   }, [articleId, setCommentPosted,dispatch]);
@@ -52,8 +52,8 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
       }
     } catch (error) {
       console.error(error.message);
-      if (error.response && error.response.data && error.response.data.message) {
-        message.error(error.response.data.message);
+      if (error.response && error.response.data && error.response?.data?.message) {
+        message.error(error.response?.data?.message);
       } else {
         message.error('Đã xảy ra lỗi, vui lòng thử lại sau.');
       }

@@ -28,6 +28,7 @@ module.exports = {
       'cdnphoto.dantri.com.vn',
       'nhandaoonline.vn',
       'cdn.langsontv.vn',
+      'icdn.dantri.com.vn',  // Thêm miền này vào danh sách
     ],
   },
   // async rewrites() {

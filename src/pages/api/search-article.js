@@ -40,7 +40,7 @@ export default async function handler(req, res) {
       }
     } catch (error) {
       console.error('Error:', error);
-      res.status(500).json({ message: 'Internal Server Error' });
+      res.status(500).json({ message: 'Lỗi hệ thống' });
     }
   } else {
     res.status(405).json({ message: 'Method not allowed' });

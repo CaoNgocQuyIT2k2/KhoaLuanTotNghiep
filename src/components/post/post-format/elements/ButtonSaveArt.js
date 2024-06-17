@@ -11,6 +11,9 @@ const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if(!token) {
+        return;
+      }
       try {
       dispatch({ type: SHOW_SPINNER });
         const responseSaved = await axios.get(`/api/get-saved-art-by-cat?categoryId=${categoryId}`,
@@ -31,7 +34,7 @@ const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
       } catch (error) {
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
-          message.error(error.response.data.message);
+          message.error(error.response?.data?.message);
         }, 3000);
       }
     };
@@ -61,7 +64,7 @@ const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-        message.error(error.response.data.message);
+        message.error(error.response?.data?.message);
       }, 3000);
     }
   };
