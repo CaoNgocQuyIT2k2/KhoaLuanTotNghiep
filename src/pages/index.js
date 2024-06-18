@@ -11,7 +11,7 @@ import BackToTopButton from "../components/post/post-format/elements/BackToTopBu
 const HomeOne = ({allPosts}) => {
   return ( 
     <>
-    <HeadMeta metaTitle="Home One"/>
+    <HeadMeta metaTitle="Trang chủ"/>
     <HeaderOne />
     <PostSectionOne postData={allPosts} />
     <PostSectionTwo postData={allPosts} />

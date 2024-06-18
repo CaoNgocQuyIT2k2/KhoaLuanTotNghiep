@@ -102,35 +102,38 @@ const Profile = () => {
     const handleAvatarChange = async (file) => {
         const formData = new FormData();
         formData.append('file', file);
-
+      
         try {
-            dispatch({ type: SHOW_SPINNER });
-            const response = await axios.post('/api/update-avatar', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (response.status === 200) {
-                setAvatarUrl(response.data.avatar); // Thay đổi URL của avatar sau khi cập nhật thành công
-                const userInfo = JSON.parse(localStorage.getItem("USER_INFO"));
-                localStorage.setItem("USER_INFO", JSON.stringify({ ...userInfo, user: { ...userInfo.user, avatar: response.data.avatar } }));
-                message.success('Cập nhật avatar thành công.');
-                setTimeout(() => {
-                    dispatch({ type: HIDE_SPINNER });
-                  }, 3000);
-                window.location.reload();
-            } else {
-                message.error('Cập nhật avatar thất bại.');
-            }
-        } catch (error) {
+          dispatch({ type: SHOW_SPINNER });
+          const response = await axios.post('/api/update-avatar', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              Authorization: `Bearer ${token}`,
+            },
+          });
+      
+          if (response.status === 200) {
+            setAvatarUrl(response.data.avatar); // Thay đổi URL của avatar sau khi cập nhật thành công
+            const userInfo = JSON.parse(localStorage.getItem("USER_INFO"));
+            localStorage.setItem("USER_INFO", JSON.stringify({ ...userInfo, user: { ...userInfo.user, avatar: response.data.avatar } }));
+            message.success('Cập nhật avatar thành công.');
             setTimeout(() => {
-                dispatch({ type: HIDE_SPINNER });
-                message.error(error.response?.data?.message);
-              }, 3000);
+              dispatch({ type: HIDE_SPINNER });
+            }, 3000);
+            window.location.reload();
+          } else {
+            message.error('Cập nhật avatar thất bại.');
+          }
+        } catch (error) {
+          dispatch({ type: HIDE_SPINNER });
+          if (error.response && error.response.data && error.response?.data?.message) {
+            message.error(error.response.data.message);
+          } else {
+            message.error('Đã xảy ra lỗi khi cập nhật avatar.');
+          }
         }
-    };
+      };
+      
 
     return (
         <div className="Rr1BbE1U19QgCEgV7mxS undefined">
