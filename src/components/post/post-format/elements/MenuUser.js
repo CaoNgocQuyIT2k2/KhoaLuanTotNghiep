@@ -6,7 +6,7 @@ import { DownOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import { message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import Link from 'next/link'; // Import Link from next/link
+import Link from 'next/link'; // Import Link từ next/link
 import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
 
 export default function MenuUser() {
@@ -14,7 +14,7 @@ export default function MenuUser() {
   const open = Boolean(anchorEl);
   const userRole = useSelector((state) => state.user.user?.role); 
   const dispatch = useDispatch();
-
+  const router = useRouter();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -24,37 +24,39 @@ export default function MenuUser() {
     setAnchorEl(null);
   };
 
-  const router = useRouter();
-
+  const navigateWithSpinner = async (callback, messageText) => {
+    dispatch({ type: SHOW_SPINNER });
+    handleClose();
+    await callback();
+    setTimeout(() => {
+      dispatch({ type: HIDE_SPINNER });
+      if (messageText) {
+        message.success(messageText);
+      }
+    }, 3000);
+  };
 
   const handleSavedNewsClick = () => {
-    handleClose();
-    router.push('/article/article-saved');
+    navigateWithSpinner(() => router.push('/article/article-saved'));
   };
 
   const handleYourFeedClick = () => {
-    handleClose();
-    router.push('/your-feed');
+    navigateWithSpinner(() => router.push('/your-feed'));
   };
+
   const handleProfileClick = () => {
-    handleClose();
-    router.push('/profile');
+    navigateWithSpinner(() => router.push('/profile'));
   };
 
   const handlePaswordClick = () => {
-    handleClose();
-    router.push('/edit-password');
+    navigateWithSpinner(() => router.push('/edit-password'));
   };
 
   const handleLogoutClick = async () => {
-    dispatch({ type: SHOW_SPINNER });
-    handleClose();
-    localStorage.removeItem('USER_INFO');
-    setTimeout(() => {
-      dispatch({ type: HIDE_SPINNER });
-    }, 3000);
-    message.success('Đăng xuất thành công');
-    window.location.reload();
+    await navigateWithSpinner(() => {
+      localStorage.removeItem('USER_INFO');
+      window.location.reload();
+    }, 'Đăng xuất thành công');
   };
 
   return (
@@ -102,7 +104,6 @@ export default function MenuUser() {
             </Link>
           </MenuItem>
         )}
-
         <MenuItem onClick={handleLogoutClick} style={{ fontSize: '1.5rem' }}>
           Đăng xuất
         </MenuItem>

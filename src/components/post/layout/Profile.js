@@ -104,7 +104,7 @@ const Profile = () => {
         formData.append('file', file);
 
         try {
-      dispatch({ type: SHOW_SPINNER });
+            dispatch({ type: SHOW_SPINNER });
             const response = await axios.post('/api/update-avatar', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',

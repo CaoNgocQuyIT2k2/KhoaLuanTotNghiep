@@ -4,6 +4,7 @@ import FormGroup from "../../../contact/FormGroup";
 import ListCommentArticle from './ListCommentArticle';
 import { useDispatch } from 'react-redux';
 import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
+import { message } from 'antd';
 
 const PostComment = ({ articleId, parentId, token }) => {
   const [comment, setComment] = useState('');
@@ -33,6 +34,10 @@ const PostComment = ({ articleId, parentId, token }) => {
 
 
     try {
+      if(!token){
+        message.error("Bạn cần đăng nhập để bình luận");
+        return;
+      }
       dispatch({ type: SHOW_SPINNER });
       const response = await axios.post(
         '/api/create-comment',
@@ -76,7 +81,7 @@ const PostComment = ({ articleId, parentId, token }) => {
         <div className="col-12">
           <FormGroup
             pClass="comment-message-field"
-            label="Comment"
+            label="Bình luận"
             type="textarea"
             name="comment-message"
             rows={2}
@@ -86,7 +91,7 @@ const PostComment = ({ articleId, parentId, token }) => {
         </div>
         <div className="col-12">
           <button type="submit" className="btn btn-primary" disabled={loading}>
-            {loading ? 'Posting...' : 'POST COMMENT'}
+            {loading ? 'Dang đăng...' : 'Đăng bình luận'}
           </button>
         </div>
       </form>

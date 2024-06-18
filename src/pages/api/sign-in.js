@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     try {
       // Extract user credentials from the request body
       const { email, password } = req.body;
-
+console.log("email: " + email,password);
       // Send POST request to the external API
       const response = await axios.post(
         'http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/auth/sign-in',

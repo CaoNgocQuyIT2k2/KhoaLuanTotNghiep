@@ -36,17 +36,17 @@ export default function DataTag() {
 
   const columns = [
     {
-      title: 'Id Tag',
+      title: 'Mã thẻ',
       dataIndex: 'id',
       key: 'id',
     },
     {
-      title: 'Tag',
+      title: 'Tên thẻ',
       dataIndex: 'value',
       key: 'value',
     },
     {
-      title: 'Action',
+      title: 'Hành động',
       key: 'action',
       render: (_, tags) => (
         <div>

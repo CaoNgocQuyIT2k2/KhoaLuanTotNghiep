@@ -15,7 +15,7 @@ const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
         return;
       }
       try {
-      dispatch({ type: SHOW_SPINNER });
+        dispatch({ type: SHOW_SPINNER });
         const responseSaved = await axios.get(`/api/get-saved-art-by-cat?categoryId=${categoryId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -40,8 +40,7 @@ const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
     };
 
     fetchData();
-  }, [articleId, token, categoryId,dispatch]);
-
+  }, [articleId, token, categoryId, dispatch]);
 
   const handleSaveArticle = async () => {
     try {
@@ -57,8 +56,7 @@ const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
       if (response.status === 200) {
         setIsSaved(true);
         message.success('Lưu bài viết thành công.');
-      }
-      else {
+      } else {
         message.error('Lưu bài viết thất bại.');
       }
     } catch (error) {
@@ -80,16 +78,17 @@ const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
         dispatch({ type: HIDE_SPINNER });
       }, 1000);
       if (response.status === 200) {
+        const successMessage = response.data;
+        message.success(successMessage);
         setIsSaved(false);
         onRemoveSaveArticle();
-        message.success('Bỏ lưu bài viết thành công.');
+        return;
       } else {
         message.error('Bỏ lưu bài viết thất bại.');
       }
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-        message.error(error.response?.data?.message);
       }, 3000);
     }
   };
@@ -104,9 +103,7 @@ const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
   };
 
   return (
-    <li style={{
-      listStyle: "none !important"
-    }} >
+    <li style={{ listStyle: "none" }}>
       <button className={isSaved ? "saved-icon" : "save-icon"}
         onClick={handleClick}
         style={{

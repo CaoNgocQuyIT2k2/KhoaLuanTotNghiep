@@ -37,9 +37,9 @@ const LayoutAdmin = () => {
     }
   };
   const breadcrumbMap = {
-    '1': 'Manage Categories',
-    '2': 'Manage Tags',
-    '3': 'Manage Users',
+    '1': 'Quản lý chuyên mục',
+    '2': 'Quản lý thẻ',
+    '3': 'Quản lý người dùng',
   };
 
   return (
@@ -53,7 +53,7 @@ const LayoutAdmin = () => {
             alignItems: 'center',
             marginBottom: '10px',
           }} />}>
-            <Link href="/" onClick={() => window.location.href = "/"}>Home</Link>
+            <Link href="/" onClick={() => window.location.href = "/"}>Trang chủ</Link>
           </Menu.Item>
           <Menu.Item key="1" icon={<PieChartOutlined style={{
             fontSize: '1.5rem',

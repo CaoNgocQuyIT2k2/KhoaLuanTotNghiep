@@ -48,7 +48,6 @@ function LayoutArtSaved() {
     }, [token, reload,dispatch]); // Thêm reload vào dependency array để khi reload thì useEffect được kích hoạt lại
 
     const handleRemoveSaveArticle = () => {
-
     };
 
     return (

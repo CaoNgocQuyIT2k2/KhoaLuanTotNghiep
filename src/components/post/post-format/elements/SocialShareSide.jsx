@@ -44,24 +44,17 @@ const SocialShareSide = ({ articleId,categoryId }) => {
 
   const handleReaction = async (typeReact) => {
     try {
-      dispatch({ type: SHOW_SPINNER });
       const response = await axios.post(
         '/api/react-article',
         { article: { id: articleId }, typeReact },
         { headers: { Authorization: `Bearer ${token}` }}
       );
-      setTimeout(() => {
-        dispatch({ type: HIDE_SPINNER });
-      }, 2000);
       if (response.status === 200) {
         fetchData(); // Refresh data after successful vote
 
       }
     } catch (error) {
-      setTimeout(() => {
-        dispatch({ type: HIDE_SPINNER });
-        message.error(error.response?.data?.message);
-      }, 3000);
+      message.error(error.response?.data?.message);
     }
   };
 

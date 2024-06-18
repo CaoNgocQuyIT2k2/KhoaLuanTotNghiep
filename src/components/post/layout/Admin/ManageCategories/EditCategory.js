@@ -97,19 +97,19 @@ const EditCategory = ({ showModal,categoryName, categoryId, parentName, parentId
   return (
     <>
       <Button type="primary" onClick={showModalHandler} className='bg-yellow-500 text-white'>
-        Edit
+        Sửa
       </Button>
       <AntModal
         visible={open}
-        title="Edit Category"
+        title="Chỉnh sửa chuyên mục"
         onOk={handleEditCategory}
         onCancel={handleCancel}
         footer={[
           <Button key="back" onClick={handleCancel}>
-            back
+            Trở về
           </Button>,
           <Button key="submit" type='default' loading={loading} onClick={handleEditCategory}>
-            Edit
+            Sửa
           </Button>,
         ]}
       >
@@ -126,7 +126,7 @@ const EditCategory = ({ showModal,categoryName, categoryId, parentName, parentId
           onChange={handleSelectParent}
           disabled={categoryData.parentId === null} // Vô hiệu hóa nếu parentId là null
         >
-          <Option value={null}>None</Option>
+          <Option value={null}>Không có</Option>
           {parentCategories.map((category) => (
             <Option key={category.id} value={category.id}>
               {category.name}

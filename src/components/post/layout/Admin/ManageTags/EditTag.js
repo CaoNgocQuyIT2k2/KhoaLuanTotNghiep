@@ -86,7 +86,7 @@ const EditUser = ({ showModal,tagId,tagName, fetchTags}) => {
       </Button>
       <AntModal
         visible={open}
-        title="Chỉnh sửa tên tag"
+        title="Chỉnh sửa tên thẻ"
         onOk={handlEditTag}
         onCancel={() => setOpen(false)}
         footer={[

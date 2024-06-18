@@ -33,22 +33,22 @@ export default function DataCategory() {
   };
   const columns = [
     {
-      title: 'Id Cat',
+      title: 'Mã chuyên mục',
       dataIndex: 'id',
       key: 'id',
     },
     {
-      title: 'Name Cat',
+      title: 'Tên chuyên mục',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: 'Second Name',
+      title: 'Tên phụ chuyên mục',
       dataIndex: 'second_name',
       key: 'second_name',
     },
     {
-      title: 'Parent Name',
+      title: 'Tên chuyên mục cha',
       dataIndex: 'parent',
       key: 'parent_name',
       render: (parent) => {
@@ -56,7 +56,7 @@ export default function DataCategory() {
       },
     },
     {
-      title: 'Action',
+      title: 'Hành động',
       key: 'action',
       render: (_, category) => (
         <div>

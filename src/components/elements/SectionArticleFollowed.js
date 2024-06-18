@@ -4,7 +4,6 @@ import ArticleFollowed from './ArticleFollowed';
 import { useDispatch, useSelector } from 'react-redux';
 import { format } from 'date-fns';
 import SettingsPanelFollowFoot from './SettingsPanelFollowFoot';
-import HeaderOne from '../header/HeaderOne';
 import { HIDE_SPINNER, SHOW_SPINNER } from '../../../store/constants/spinner';
 import { message } from 'antd';
 
@@ -14,11 +13,12 @@ const SectionArticleFollowed = ({ refresh, onToggleSectionList }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(!token) {
-            return;
-        }
+      
         const fetchArticles = async () => {
             try {
+                if(!token) {
+                    return;
+                }
                 dispatch({ type: SHOW_SPINNER });
 
                 const response = await axios.get('/api/get-list-follow-article',

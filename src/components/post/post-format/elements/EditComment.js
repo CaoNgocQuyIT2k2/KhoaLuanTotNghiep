@@ -47,10 +47,12 @@ const EditComment = ({ comment, commentId, onEdit, onDelete }) => {
         </a>
       </Dropdown>
       <Modal
-        title="Update Comment"
+        title="Chỉnh sửa bình luận"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
+        okText="Sửa"  // Đổi tên nút Ok thành "Sửa"
+        cancelText="Hủy"  // Đổi tên nút Cancel thành "Hủy"
       >
         <Input
           value={inputValue}
@@ -61,7 +63,7 @@ const EditComment = ({ comment, commentId, onEdit, onDelete }) => {
         title="Confirm Delete"
         visible={isDeleteModalVisible}
         onOk={handleDeleteOk}
-        onCancel={handleDeleteCancel}
+        onCancel={handleDeleteCancel} 
       >
         <p>Bạn chắc rằng muốn xóa bình luận không?</p>
         <Input value={comment} disabled /> {/* Hiển thị comment nhưng không cho phép thay đổi */}

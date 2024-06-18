@@ -16,7 +16,7 @@ import TagArticle from './elements/TagArticle';
 const PostFormatStandard = ({ articleId, allData }) => {
   const [postData, setPostData] = useState(null);
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.user?.token); // Ensure token exists
+  const token = useSelector((state) => state.user?.token);
 
   useEffect(() => {
     const fetchPostData = async () => {
@@ -26,6 +26,11 @@ const PostFormatStandard = ({ articleId, allData }) => {
         const response = await fetch(`/api/get-art-detail?article_id=${articleId}`);
         const data = await response.json();
         setPostData(data);
+
+        // Check for contentEditable in the content
+        if (data.content.includes('contentEditable')) {
+          console.warn('Content contains contentEditable elements:', data.content);
+        }
       } catch (error) {
         console.error('Error fetching post data:', error);
       }
@@ -39,6 +44,15 @@ const PostFormatStandard = ({ articleId, allData }) => {
   }
 
   const parsedContent = postData.content && typeof postData.content === 'string' ? parse(postData.content) : null;
+
+  // Using dangerouslySetInnerHTML for contentEditable elements
+  const renderContent = () => {
+    if (postData.content.includes('contentEditable')) {
+      return <div dangerouslySetInnerHTML={{ __html: postData.content }} />;
+    }
+    return parsedContent;
+  };
+
   return (
     <>
       <MetaDataOne metaData={postData} />
@@ -49,12 +63,12 @@ const PostFormatStandard = ({ articleId, allData }) => {
               <main className="site-main">
                 <article className="post-details">
                   <div className="single-blog-wrapper">
-                    <SocialShareSide categoryId={postData.category && postData.category?.id} articleId={articleId} />
-                    {parsedContent}
+                    <SocialShareSide categoryId={postData.category && postData.category.id} articleId={articleId} />
+                    {renderContent()}
                   </div>
                 </article>
-                <TagArticle articleId={articleId}/>
-                <StarRating articleId={articleId} token={token}/>
+                <TagArticle articleId={articleId} />
+                <StarRating articleId={articleId} token={token} />
                 <hr className="m-t-xs-50 m-b-xs-60" />
                 <PostComment articleId={articleId} token={token} />
               </main>

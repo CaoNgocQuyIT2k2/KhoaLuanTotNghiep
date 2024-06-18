@@ -43,6 +43,7 @@ function SavedArticle() {
 
     const handleRemoveSaveArticle = () => {
         // Xử lý xóa bài viết đã lưu ở đây
+
         // Sau khi xóa xong, setReload(true) để cập nhật lại giao diện
         setReload(true);
     };
