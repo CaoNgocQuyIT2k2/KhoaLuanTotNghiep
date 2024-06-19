@@ -43,7 +43,7 @@ export default async function handler(req, res) {
       if (error.response && error.response.status === 403) {
         res.status(403).json({ message: 'Bạn cần đăng nhập để thực hiện chức năng này'});
       } else {
-        res.status(500).json({ message: 'Lỗi hệ thống' });
+        res.status(500).json({ message: 'Quá 15p nên không cập nhật được' });
       }
     }
   } else {

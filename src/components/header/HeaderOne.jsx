@@ -9,6 +9,8 @@ import dynamic from 'next/dynamic';
 import { useRouter } from "next/router";
 import {  useSelector } from "react-redux";
 import LogUser from "../post/post-format/elements/LogUser";
+import { format } from 'date-fns';
+import { vi } from 'date-fns/locale';
 
 const SearchImage = dynamic(() => import("../objectDetector/SearchImage"), {
   ssr: false
@@ -131,6 +133,10 @@ const HeaderOne = () => {
     }
   };
 
+    const dateFormate = () => {
+      return format(new Date(), 'EEEE, dd MMMM yyyy', { locale: vi });
+    };
+  
 
   if(!mount) return null
 
@@ -143,7 +149,7 @@ const HeaderOne = () => {
             <div className="row align-items-center">
               <div className="col-md">
                 <ul className="header-top-nav list-inline justify-content-center justify-content-md-start" >
-                  <li className="current-date">{dateFormate()}</li>
+                <li className="current-date">{dateFormate()}</li>
                   <li>
                     <Link href="/">
                       <a id="btn-header">Quảng cáo</a>

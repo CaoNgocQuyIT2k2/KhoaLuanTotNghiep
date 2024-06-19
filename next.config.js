@@ -29,6 +29,7 @@ module.exports = {
       'nhandaoonline.vn',
       'cdn.langsontv.vn',
       'icdn.dantri.com.vn',  // Thêm miền này vào danh sách
+      'timo.vn',
     ],
   },
   // async rewrites() {

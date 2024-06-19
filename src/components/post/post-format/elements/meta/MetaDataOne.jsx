@@ -42,14 +42,6 @@ const MetaDataOne = ({ metaData }) => {
                     <i className="" />
                     {metaData.reading_time} phút
                   </li>
-                  {/* <li>
-                    <i className="feather icon-eye" />
-                    {metaData.post_views}
-                  </li>
-                  <li>
-                    <i className="feather icon-share-2" />
-                    {metaData.post_share}
-                  </li> */}
                 </ul>
               </div>
             </div>

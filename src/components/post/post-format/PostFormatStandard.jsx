@@ -47,11 +47,13 @@ const PostFormatStandard = ({ articleId, allData }) => {
 
   // Using dangerouslySetInnerHTML for contentEditable elements
   const renderContent = () => {
-    if (postData.content.includes('contentEditable')) {
-      return <div dangerouslySetInnerHTML={{ __html: postData.content }} />;
+    if (postData?.content?.includes('contentEditable')) {
+      return <div className="custom-paragraph" dangerouslySetInnerHTML={{ __html: postData.content }} />;
     }
     return parsedContent;
   };
+  
+  
 
   return (
     <>

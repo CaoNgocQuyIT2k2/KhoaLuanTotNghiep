@@ -114,19 +114,19 @@ const EditCategory = ({ showModal,categoryName, categoryId, parentName, parentId
         ]}
       >
         <Input
-          placeholder="Category Name"
+          placeholder="Tên chuyên mục"
           style={{ marginBottom: '15px' }}
           value={categoryData.name}
           onChange={(e) => handleChange(e, 'name')}
         />
         <Select
-          placeholder="Select Parent Category"
+          placeholder="Chọn chuyên mục cha"
           style={{ width: '100%', marginBottom: '15px' }}
           value={categoryData.parentId}
           onChange={handleSelectParent}
           disabled={categoryData.parentId === null} // Vô hiệu hóa nếu parentId là null
         >
-          <Option value={null}>Không có</Option>
+          <Option value={null}></Option>
           {parentCategories.map((category) => (
             <Option key={category.id} value={category.id}>
               {category.name}

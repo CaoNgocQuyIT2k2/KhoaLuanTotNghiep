@@ -63,9 +63,10 @@ const PostLayoutArtSaved = ({ postSizeMd, postBgDark, categoryId }) => {
                                     />
                                 ) : (
                                     <Image
-                                        className="defaultImage"
-                                        src={defaultAvatarSrc}
-                                        alt="Default Avatar"
+                                    id="defaultImage"
+                                    src={defaultAvatarSrc}
+                                    alt="Default Avatar"
+                                 
                                         width={postSizeMd ? 285 : 150}
                                         height={postSizeMd ? 285 : 150}
                                     />

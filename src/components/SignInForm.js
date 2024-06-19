@@ -41,11 +41,15 @@ const SignInForm = () => {
         message.success("Đăng nhập thành công");
         window.location.href = "/"; // Chuyển hướng đến trang đăng nhập
       }
-    } catch (error) {
+  } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-        message.error(error.response?.data?.message);
       }, 3000);
+      if (error.response && error.response.status === 403) {
+        message.error('Bạn cần đăng nhập để thực hiện chức năng này');
+      } else {
+        message.error("Lỗi:  Email hoặc mật khẩu không hợp lệ.");
+      }
     }
 
   };
