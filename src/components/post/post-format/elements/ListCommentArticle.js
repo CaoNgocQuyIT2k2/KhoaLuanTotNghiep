@@ -39,42 +39,61 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
   
   const handleUpdateComments = async (commentId, newComment) => {
     try {
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.post(`/api/update-comment?commentId=${commentId}`, {
         comment: newComment,
       }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.status === 200) {
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
         message.success('Sửa bình luận thành công.');
         fetchCommentArticleDetail();
+
       } else {
         message.error('Sửa bình luận thất bại');
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
       }
     } catch (error) {
-      console.error(error.message);
-      if (error.response && error.response.data && error.response?.data?.message) {
-        message.error(error.response?.data?.message);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 3000);
+      if (error.response && error.response.status === 403) {
+        message.error('Bạn cần đăng nhập để thực hiện chức năng này');
       } else {
-        message.error('Đã xảy ra lỗi, vui lòng thử lại sau.');
+        message.error(error.response?.data?.message);
       }
     }
   };
 
   const handledelete = async (commentId) => {
     try {
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.delete(`/api/delete-comment?commentId=${commentId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.status === 200) {
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
         fetchCommentArticleDetail();
         message.success('Xóa bình luận thành công.');
       } else {
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 3000);
         message.error('Xóa bình luận thất bại.');
       }
     } catch (error) {
-      console.error(error.message);
-      message.error('An error occurred while deleting the comment.');
-    }
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 3000);
+        message.error(error.response?.data?.message);
+      }
   };
 
   return (

@@ -12,6 +12,14 @@ import SocialShareSide from "./elements/SocialShareSide";
 import WidgetPostRanSameCat from '../../widget/WidgetPostRanSameCat';
 import StarRating from './elements/StarRating';
 import TagArticle from './elements/TagArticle';
+import styled from 'styled-components';
+
+const CustomParagraph = styled.div`
+  p {
+    line-height: 1.5 !important;
+    margin-bottom: 1.5rem !important;
+  }
+`;
 
 const PostFormatStandard = ({ articleId, allData }) => {
   const [postData, setPostData] = useState(null);
@@ -48,13 +56,11 @@ const PostFormatStandard = ({ articleId, allData }) => {
   // Using dangerouslySetInnerHTML for contentEditable elements
   const renderContent = () => {
     if (postData?.content?.includes('contentEditable')) {
-      return <div className="custom-paragraph" dangerouslySetInnerHTML={{ __html: postData.content }} />;
+      return <CustomParagraph dangerouslySetInnerHTML={{ __html: postData.content }} />;
     }
-    return parsedContent;
+    return <CustomParagraph>{parsedContent}</CustomParagraph>;
   };
   
-  
-
   return (
     <>
       <MetaDataOne metaData={postData} />

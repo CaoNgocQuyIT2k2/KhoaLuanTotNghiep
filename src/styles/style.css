@@ -8889,8 +8889,7 @@ p {
   margin-bottom: 0px;
   font-size: 20px;
   color: #777;
-  line-height: 1.6;
-  margin-bottom: 1.2em;
+
 }
 h2 {
   line-height: 1.66;
@@ -11565,9 +11564,9 @@ ul {
   cursor: pointer !important;
 }
 
-.custom-paragraph p {
-  line-height: 1.5;
-  margin-bottom: 2rem;
+#custom-paragraph p {
+  line-height: 1.5 !important;
+  margin-bottom: 1.5rem !important;
 }
 
 .defaultImage {
