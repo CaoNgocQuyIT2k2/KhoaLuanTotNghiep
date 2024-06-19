@@ -60,12 +60,12 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                 setFollowedCategories(followedCategories);
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                }, 3000);
+                }, 2000);
             } catch (error) {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
                     message.error(error.response?.data?.message);
-                }, 3000);
+                }, 2000);
             }
         };
 
@@ -98,13 +98,13 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                 });
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                }, 3000);
+                }, 2000);
             })
             .catch(error => {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
                     message.error(error.response?.data?.message);
-                }, 3000);
+                }, 2000);
             });
     }, [token,dispatch]);
 
@@ -135,12 +135,12 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                 }));
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                }, 3000);
+                }, 2000);
                 message.success("Lưu bài viết thành công")
             } else {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                }, 3000);
+                }, 2000);
                 message.error("Lưu bài viết thất bại")
 
             }
@@ -148,7 +148,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
             setTimeout(() => {
                 dispatch({ type: HIDE_SPINNER });
                 message.error(error.response?.data?.message);
-            }, 3000);
+            }, 2000);
         }
     };
 
@@ -173,18 +173,18 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                 message.success("Bỏ lưu bài viết thành công")
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                }, 3000);
+                }, 2000);
             } else {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                }, 3000);
+                }, 2000);
                 message.error("Bỏ lưu bài viết thất bại")
             }
         } catch (error) {
             setTimeout(() => {
                 dispatch({ type: HIDE_SPINNER });
                 message.error(error.response?.data?.message);
-            }, 3000);
+            }, 2000);
         }
     };
 

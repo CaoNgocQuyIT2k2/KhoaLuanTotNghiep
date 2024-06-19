@@ -36,15 +36,15 @@ const SignInForm = () => {
         localStorage.setItem('USER_INFO', JSON.stringify(userInfo));
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
-        }, 3000);
+          message.success("Đăng nhập thành công");
+        }, 2000);
         dispatch(setUserInfo(userInfo));
-        message.success("Đăng nhập thành công");
         window.location.href = "/"; // Chuyển hướng đến trang đăng nhập
       }
   } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-      }, 3000);
+      }, 2000);
       if (error.response && error.response.status === 403) {
         message.error('Bạn cần đăng nhập để thực hiện chức năng này');
       } else {

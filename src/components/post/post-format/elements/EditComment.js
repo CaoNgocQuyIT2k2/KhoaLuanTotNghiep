@@ -60,7 +60,7 @@ const EditComment = ({ comment, commentId, onEdit, onDelete }) => {
         />
       </Modal>
       <Modal
-        title="Confirm Delete"
+        title="Xác nhận xóa bình luận"
         visible={isDeleteModalVisible}
         onOk={handleDeleteOk}
         onCancel={handleDeleteCancel} 

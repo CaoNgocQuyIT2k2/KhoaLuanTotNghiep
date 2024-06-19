@@ -35,7 +35,7 @@ function SavedArticle() {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
                     message.error(error.response?.data?.message);
-                }, 3000);
+                }, 2000);
             }
         };
         fetchData();

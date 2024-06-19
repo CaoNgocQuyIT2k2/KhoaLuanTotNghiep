@@ -39,7 +39,7 @@ const RegisterScreen = () => {
       setFormData({ ...formData, password: "" });
       setConfirmPassword("");
       setTimeout(() => {
-      }, 3000);
+      }, 2000);
       return message.error("Mật khẩu không trùng khớp");
     }
 
@@ -51,14 +51,14 @@ const RegisterScreen = () => {
       );
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-      }, 3000);
+      }, 2000);
       message.success("Đăng ký thành công");
       window.location.href = "/login"; // Chuyển hướng đến trang đăng nhập
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
         message.error(error.response?.data?.message);
-      }, 3000);
+      }, 2000);
     }
   };
 

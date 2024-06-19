@@ -18,12 +18,12 @@ const AllTag = ({ selectedTags, setSelectedTags }) => {
       setTags(response.data);
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-      }, 3000);
+      }, 2000);
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
         message.error(error.response?.data?.message);
-      }, 3000);
+      }, 2000);
     }
   }, [dispatch]);
 
@@ -56,7 +56,7 @@ const AllTag = ({ selectedTags, setSelectedTags }) => {
         fetchTags();
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
-        }, 3000);
+        }, 2000);
       } else {
         message.error('Tạo tag thất bại.');
       }
@@ -64,7 +64,7 @@ const AllTag = ({ selectedTags, setSelectedTags }) => {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
         message.error(error.response?.data?.message);
-      }, 3000);
+      }, 2000);
     }
   };
 

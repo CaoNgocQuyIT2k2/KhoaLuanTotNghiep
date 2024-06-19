@@ -36,7 +36,7 @@ const EditUser = ({ showModal,tagId,tagName, fetchTags}) => {
     setTimeout(() => {
       setLoading(false);
       setOpen(false);
-    }, 3000);
+    }, 2000);
   };
 
   const handleCancel = () => {

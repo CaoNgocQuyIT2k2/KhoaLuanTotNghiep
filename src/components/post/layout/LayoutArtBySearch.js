@@ -32,7 +32,7 @@ const LayoutArtBySearch = () => {
             setSearchData(response.data);
             setTimeout(() => {
               dispatch({ type: HIDE_SPINNER });
-            }, 3000);
+            }, 2000);
           } else {
             console.error('Search failed');
           }
@@ -40,7 +40,7 @@ const LayoutArtBySearch = () => {
           setTimeout(() => {
             dispatch({ type: HIDE_SPINNER });
             message.error(error.response?.data?.message);
-          }, 3000);
+          }, 2000);
         }
       };
 

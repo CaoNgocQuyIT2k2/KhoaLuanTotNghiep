@@ -18,12 +18,12 @@ const StarRating = ({ articleId, token }) => {
       }
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-      }, 3000);
+      }, 2000);
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
         message.error(error.response?.data?.message);
-      }, 3000);
+      }, 2000);
     }
   }, [dispatch]);
 
@@ -54,7 +54,7 @@ const StarRating = ({ articleId, token }) => {
       );
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-      }, 3000);
+      }, 2000);
       if (response.status === 200) {
         message.success("Đánh giá sao thành công");
         fetchAverageRating(articleId, setAverageRating); // Refresh the average rating
@@ -64,7 +64,7 @@ const StarRating = ({ articleId, token }) => {
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-      }, 3000);
+      }, 2000);
       if (error.response && error.response.status === 403) {
         message.error("Bạn không có quyền thực hiện đánh giá.");
       } else {

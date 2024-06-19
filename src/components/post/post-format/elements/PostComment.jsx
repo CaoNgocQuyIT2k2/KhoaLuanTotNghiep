@@ -50,14 +50,14 @@ const PostComment = ({ articleId, parentId, token }) => {
         setCommentPosted(true); // Step 2
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
-        }, 3000);
+        }, 2000);
       } else {
         message.error('Bình luận thất bại.');
       }
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-      }, 3000);
+      }, 2000);
       if (error.response && error.response.status === 403) {
         message.error('Bạn cần đăng nhập để thực hiện chức năng này');
       } else {

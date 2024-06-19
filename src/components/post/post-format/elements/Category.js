@@ -15,13 +15,13 @@ const Category = ({ setSelectedCategory }) => {
         setCategories(response.data);
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
-        }, 3000);
+        }, 2000);
       })
       .catch(error => {
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
           message.error(error.response?.data?.message);
-        }, 3000);
+        }, 2000);
       });
   }, [dispatch]);
 

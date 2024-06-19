@@ -23,7 +23,7 @@ const FooterOne = () => {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
         message.error(error.response?.data?.message);
-      }, 3000);
+      }, 2000);
     }
   }, [dispatch]);
 
@@ -42,7 +42,7 @@ const FooterOne = () => {
         });
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
-        }, 3000);
+        }, 2000);
       } catch (error) {
         console.error("Error fetching parent categories:", error);
       }

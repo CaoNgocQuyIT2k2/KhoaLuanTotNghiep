@@ -21,12 +21,12 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
       setCommentPosted(false);
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-      }, 3000);
+      }, 2000);
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
         message.error(error.response?.data?.message);
-      }, 3000);
+      }, 2000);
     }
   }, [articleId, setCommentPosted,dispatch]);
 
@@ -48,7 +48,7 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
       if (response.status === 200) {
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
-        }, 3000);
+        }, 2000);
         message.success('Sửa bình luận thành công.');
         fetchCommentArticleDetail();
 
@@ -56,12 +56,12 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
         message.error('Sửa bình luận thất bại');
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
-        }, 3000);
+        }, 2000);
       }
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-      }, 3000);
+      }, 2000);
       if (error.response && error.response.status === 403) {
         message.error('Bạn cần đăng nhập để thực hiện chức năng này');
       } else {
@@ -79,19 +79,19 @@ const ListCommentArticle = ({ articleId, commentPosted, setCommentPosted, token 
       if (response.status === 200) {
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
-        }, 3000);
+        }, 2000);
         fetchCommentArticleDetail();
         message.success('Xóa bình luận thành công.');
       } else {
         setTimeout(() => {
           dispatch({ type: HIDE_SPINNER });
-        }, 3000);
+        }, 2000);
         message.error('Xóa bình luận thất bại.');
       }
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-      }, 3000);
+      }, 2000);
         message.error(error.response?.data?.message);
       }
   };

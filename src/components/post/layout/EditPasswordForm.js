@@ -36,14 +36,14 @@ const EditPasswordForm = () => {
       });
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-      }, 3000);
+      }, 2000);
       message.success("Cập nhật mật khẩu mới thành công")
       window.location.href = "/";
 
     } catch (error) {
       setTimeout(() => {
         dispatch({ type: HIDE_SPINNER });
-      }, 3000);
+      }, 2000);
       if (error.response && error.response.status === 403) {
         message.error('Bạn cần đăng nhập để thực hiện chức năng này');
       } else {

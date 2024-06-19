@@ -29,12 +29,12 @@ const Profile = () => {
                 setUser(response.data);
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
-                }, 3000);
+                }, 2000);
             } catch (error) {
                 setTimeout(() => {
                     dispatch({ type: HIDE_SPINNER });
                     message.error(error.response?.data?.message);
-                }, 3000);
+                }, 2000);
             }
         };
 
@@ -74,7 +74,7 @@ const Profile = () => {
             setSuccess("Cập nhật thành công!");
             setTimeout(() => {
                 dispatch({ type: HIDE_SPINNER });
-            }, 3000);
+            }, 2000);
             // Delay reload to ensure state updates are completed
             message.success("Cập nhật thành công!");
             setTimeout(() => {
@@ -84,7 +84,7 @@ const Profile = () => {
             setTimeout(() => {
                 dispatch({ type: HIDE_SPINNER });
                 message.success("Cập nhật thất bại!");
-            }, 3000);
+            }, 2000);
 
         } finally {
             setEditing(false);
@@ -119,7 +119,7 @@ const Profile = () => {
             message.success('Cập nhật avatar thành công.');
             setTimeout(() => {
               dispatch({ type: HIDE_SPINNER });
-            }, 3000);
+            }, 2000);
             window.location.reload();
           } else {
             message.error('Cập nhật avatar thất bại.');

@@ -17,7 +17,7 @@ const AccountSidebar = () => {
       if (messageText) {
         message.success(messageText);
       }
-    }, 3000);
+    }, 2000);
   };
 
   const handleLogoutClick = async () => {

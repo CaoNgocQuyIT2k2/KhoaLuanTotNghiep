@@ -33,7 +33,7 @@ export default function MenuUser() {
       if (messageText) {
         message.success(messageText);
       }
-    }, 3000);
+    }, 2000);
   };
 
   const handleSavedNewsClick = () => {
