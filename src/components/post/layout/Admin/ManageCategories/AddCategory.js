@@ -96,24 +96,24 @@ const AddCategory = ({ fetchCategories }) => {
         ]}
       >
         <Input
-          placeholder="Category Name"
+          placeholder="Tên chuyên mục"
           value={categoryName}
           onChange={handleChange}
           style={{ marginBottom: '15px' }}
         />
         <Input
-          placeholder="Second Name"
+          placeholder="Tên phụ"
           value={secondName}
           onChange={handleSecondNameChange}
           style={{ marginBottom: '15px' }}
         />
         <Select
-          placeholder="Select Parent Category"
+          placeholder="Lựa chọn tên chuyên mục cha"
           style={{ width: '100%', marginBottom: '15px' }}
           value={parentId}
           onChange={handleSelectParent}
         >
-          <Option value={null}>None</Option>
+          <Option value={null}></Option>
           {parentCategories.map((category) => (
             <Option key={category.id} value={category.id}>
               {category.name}

@@ -7,6 +7,7 @@ import DataUser from './Admin/ManageUsers/DataUser';
 import DataCategory from './Admin/ManageCategories/DataCategory';
 import DataTag from './Admin/ManageTags/DataTag';
 import Link from 'next/link';
+import BackToTopButton from '../post-format/elements/BackToTopButton';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -94,7 +95,8 @@ const LayoutAdmin = () => {
             {renderContent()}
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}></Footer>
+        <Footer style={{ textAlign: 'center', paddingTop:'50px' }}></Footer>
+        <BackToTopButton/>
       </Layout>
     </Layout>
   );

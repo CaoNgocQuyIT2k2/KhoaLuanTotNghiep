@@ -59,17 +59,17 @@ export default function DataUser() {
 
   const columns = [
     {
-      title: 'ID',
+      title: 'Mã người dùng',
       dataIndex: 'id',
       key: 'id',
     },
     {
-      title: 'Firstname',
+      title: 'Tên người dùng',
       dataIndex: 'firstname',
       key: 'firstname',
     },
     {
-      title: 'Lastname',
+      title: 'Họ và tên lót',
       dataIndex: 'lastname',
       key: 'lastname',
     },
@@ -79,13 +79,13 @@ export default function DataUser() {
       key: 'email',
     },
     {
-      title: 'Date of Birth',
+      title: 'Ngày sinh',
       dataIndex: 'dob',
       key: 'dob',
       render: (dob) => moment(dob).format('DD/MM/YYYY'),
     },
     {
-      title: 'Role',
+      title: 'Vị trí',
       dataIndex: 'role',
       key: 'role',
       render: (role) => {
@@ -97,7 +97,7 @@ export default function DataUser() {
       },
     },
     {
-      title: 'Action',
+      title: 'Hành động',
       key: 'action',
       render: (_, users) => (
         <div>

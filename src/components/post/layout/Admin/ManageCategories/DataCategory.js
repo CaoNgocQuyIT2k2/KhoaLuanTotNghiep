@@ -52,7 +52,7 @@ export default function DataCategory() {
       dataIndex: 'parent',
       key: 'parent_name',
       render: (parent) => {
-        return parent ? parent.name : 'null';
+        return parent ? parent.name : '';
       },
     },
     {

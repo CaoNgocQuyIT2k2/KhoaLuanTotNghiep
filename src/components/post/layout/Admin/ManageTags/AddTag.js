@@ -56,7 +56,7 @@ const AddTag = ({ articleName, fetchTags }) => {
       </Button>
       <AntModal
         visible={open}
-        title="Thêm mới tag"
+        title="Thêm mới thẻ"
         onCancel={handleCancel}
         footer={[
           <Button key="back" onClick={handleCancel}>

@@ -150,21 +150,6 @@ const HeaderOne = () => {
               <div className="col-md">
                 <ul className="header-top-nav list-inline justify-content-center justify-content-md-start" >
                 <li className="current-date">{dateFormate()}</li>
-                  <li>
-                    <Link href="/">
-                      <a id="btn-header">Quảng cáo</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/about-us">
-                      <a id="btn-header">Thông tin</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/contact">
-                      <a id="btn-header">Liên hệ</a>
-                    </Link>
-                  </li>
                 </ul>
               </div>
               <div className="col-md-auto">
@@ -214,7 +199,7 @@ const HeaderOne = () => {
                     <input
                       type="text"
                       className="navbar-search-field"
-                      placeholder="Search Here..."
+                      placeholder="Tìm kiếm ở đây..."
                       value={searchKeyword}
                       onChange={(e) => setSearchKeyword(e.target.value)}
                       onKeyDown={handleKeyDown}
