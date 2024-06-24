@@ -12,7 +12,7 @@ const ArticleFollowed = ({ articleId, title, imageUrl, category, date, categoryI
                     <a>
                         <Image 
                             src={imageUrl} 
-                            alt={title} 
+                            alt={''}
                             width={500} 
                             height={300} 
                             layout="responsive" 
