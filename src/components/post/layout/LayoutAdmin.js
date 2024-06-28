@@ -8,6 +8,7 @@ import DataCategory from './Admin/ManageCategories/DataCategory';
 import DataTag from './Admin/ManageTags/DataTag';
 import Link from 'next/link';
 import BackToTopButton from '../post-format/elements/BackToTopButton';
+import DataArtPending from './Admin/ManageArtPending/DataArtPending';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -32,7 +33,9 @@ const LayoutAdmin = () => {
       case '2':
         return <DataTag />;
       case '3':
-        return <DataUser />
+        return <DataUser />;
+      case '4':
+        return <DataArtPending />
       default:
         return null;
     }
@@ -41,6 +44,7 @@ const LayoutAdmin = () => {
     '1': 'Quản lý chuyên mục',
     '2': 'Quản lý thẻ',
     '3': 'Quản lý người dùng',
+    '4': 'Kiểm duyệt bài viết',
   };
 
   return (
@@ -70,6 +74,11 @@ const LayoutAdmin = () => {
             fontSize: '1.5rem',
           }} />}>
             Quản lý người dùng
+          </Menu.Item>
+          <Menu.Item key="4" icon={<UserOutlined style={{
+            fontSize: '1.5rem',
+          }} />}>
+            Kiểm duyệt bài viết
           </Menu.Item>
         </Menu>
       </Sider>
