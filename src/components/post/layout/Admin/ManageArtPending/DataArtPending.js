@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Button, Table, Tag, message } from 'antd';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import 'moment/locale/vi'; // Import the locale you want to use, 'vi' for Vietnamese
 import axios from 'axios';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../../store/constants/spinner';
 
 const defaultAvatarSrc = "/images/category/BgWhite.png";
 
@@ -12,20 +13,28 @@ export default function DataArtPending() {
   const user = useSelector((state) => state.user?.user);
   const token = useSelector((state) => state.user?.token);
   const [detail, setDetail] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchListArtPending();
   }, [userId, fetchListArtPending]);
 
   const fetchListArtPending = useCallback(async () => {
+    dispatch({ type: SHOW_SPINNER });
     try {
       const response = await axios.get(`/api/get-all-art-pending`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const users = response.data || [];
       setDetail(users);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 2000);
     } catch (error) {
-      console.error("Error fetching article detail:", error);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response?.data?.message);
+      }, 2000);
     }
   }, [token]);
 
@@ -34,6 +43,7 @@ export default function DataArtPending() {
       console.error("User information is missing");
       return;
     }
+    dispatch({ type: SHOW_SPINNER });
   
     try {
       const response = await axios.post(
@@ -49,8 +59,10 @@ export default function DataArtPending() {
         message.error("Chấp thuận bài viết thất bại");
       }
     } catch (error) {
-      message.error("Chấp thuận bài viết thất bại");
-      console.error(error);
+      console.error(error); setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response?.data?.message);
+      }, 2000);
     }
   };
   
@@ -59,6 +71,7 @@ export default function DataArtPending() {
       console.error("User information is missing");
       return;
     }
+    dispatch({ type: SHOW_SPINNER });
   
     try {
       const response = await axios.post(
@@ -68,14 +81,23 @@ export default function DataArtPending() {
       );
   
       if (response.status === 200) {
-        message.success("Loại bỏ bài viết thành công");
         fetchListArtPending();
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 2000);
+        message.success("Loại bỏ bài viết thành công");
       } else {
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 2000);
         message.error("Loại bỏ bài viết thất bại");
+
       }
     } catch (error) {
-      message.error("Loại bỏ bài viết thất bại");
-      console.error(error);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response?.data?.message);
+      }, 2000);
     }
   };
 
