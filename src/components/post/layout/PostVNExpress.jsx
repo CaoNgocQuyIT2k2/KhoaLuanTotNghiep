@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { HIDE_SPINNER, SHOW_SPINNER } from "../../../../store/constants/spinner";
 import { useDispatch } from "react-redux";
+import { message } from "antd";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 

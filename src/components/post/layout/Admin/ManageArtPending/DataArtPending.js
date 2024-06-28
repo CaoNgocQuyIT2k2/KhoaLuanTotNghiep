@@ -5,6 +5,7 @@ import 'moment/locale/vi'; // Import the locale you want to use, 'vi' for Vietna
 import axios from 'axios';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
 import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../../store/constants/spinner';
+import Link from 'next/link';
 
 const defaultAvatarSrc = "/images/category/BgWhite.png";
 
@@ -14,10 +15,6 @@ export default function DataArtPending() {
   const token = useSelector((state) => state.user?.token);
   const [detail, setDetail] = useState([]);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    fetchListArtPending();
-  }, [userId, fetchListArtPending]);
 
   const fetchListArtPending = useCallback(async () => {
     dispatch({ type: SHOW_SPINNER });
@@ -36,7 +33,11 @@ export default function DataArtPending() {
         message.error(error.response?.data?.message);
       }, 2000);
     }
-  }, [token]);
+  }, [dispatch, token]);
+
+  useEffect(() => {
+    fetchListArtPending();
+  }, [userId, fetchListArtPending]);
 
   const handleAccept = async (id) => {
     if (user.role !== "ADMIN") {
@@ -53,9 +54,15 @@ export default function DataArtPending() {
       );
   
       if (response.status === 200) {
-        message.success("Chấp thuận bài viết thành công");
         fetchListArtPending();
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 2000);
+        message.success("Chấp thuận bài viết thành công");
       } else {
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 2000);
         message.error("Chấp thuận bài viết thất bại");
       }
     } catch (error) {
@@ -113,12 +120,11 @@ export default function DataArtPending() {
       width: 300,
       render: (record) => (
         <div style={{ display: 'flex', alignItems: 'center', }}>
-        <img 
+          <img 
             src={record.duplicatedArt.avatar || defaultAvatarSrc} 
-
             style={{ marginRight: '10px', width: '100px', height: '100px'}} 
           />
-          <span>{record.duplicatedArt.title}</span>
+          <Link href={`/article-public/${record.duplicatedArt.id}`}>{record.duplicatedArt.title}</Link>
         </div>
       ),
     },
@@ -130,10 +136,9 @@ export default function DataArtPending() {
         <div style={{ display: 'flex', alignItems: 'center',  }}>
           <img 
             src={record.pendingArt.avatar || defaultAvatarSrc} 
-
             style={{ marginRight: '10px' ,width: '100px', height: '100px' }} 
           />
-          <span>{record.pendingArt.title}</span>
+          <Link href={`/article-pending/${record.pendingArt.id}`}>{record.pendingArt.title}</Link>
         </div>
       ),
     },
@@ -143,7 +148,7 @@ export default function DataArtPending() {
       key: 'similarity',
       render: (similarity) => {
         let color = 'green';
-        if (similarity >= 0.8) color = 'red';
+        if (similarity >= 0.7) color = 'red';
         else if (similarity >= 0.5) color = 'yellow';
         return (
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
