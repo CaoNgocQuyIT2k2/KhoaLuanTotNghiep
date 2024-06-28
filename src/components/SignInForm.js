@@ -6,15 +6,14 @@ import { useDispatch } from 'react-redux';
 
 import Image from 'next/image';
 import { setUserInfo } from '../../store/action/userActions';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../store/constants/spinner';
 
 const SignInForm = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
-
   const dispatch = useDispatch();
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -26,25 +25,33 @@ const SignInForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/SignIn', formData);
-
+      dispatch({ type: SHOW_SPINNER });
+      const response = await axios.post('/api/sign-in', formData);
       if (response.status === 200) {
-        message.success("Đăng nhập thành công");
 
         const userInfo = {
           token: response.data.token,
           user: response.data.user // hoặc các thông tin khác từ response nếu có
         };
-        console.log("userInfo", userInfo);
         localStorage.setItem('USER_INFO', JSON.stringify(userInfo));
-
-        window.location.href = "/"; // Chuyển hướng đến trang đăng nhập
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+          message.success("Đăng nhập thành công");
+        }, 2000);
         dispatch(setUserInfo(userInfo));
-      } 
-    } catch (error) {
-      console.log("Đăng nhập thất bại", error);
-      message.error(error.response.data.message);
+        window.location.href = "/"; // Chuyển hướng đến trang đăng nhập
+      }
+  } catch (error) {
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 2000);
+      if (error.response && error.response.status === 403) {
+        message.error('Bạn cần đăng nhập để thực hiện chức năng này');
+      } else {
+        message.error("Lỗi:  Email hoặc mật khẩu không hợp lệ.");
+      }
     }
+
   };
 
   return (
@@ -52,7 +59,7 @@ const SignInForm = () => {
       <div className="containerSign">
         <div className="signin-content">
           <div className="signin-form">
-            <h2 className="form-title">Sign In</h2>
+            <h2 className="form-title">Đăng nhâp</h2>
             <form method="POST" className="login-form" id="login-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="email"><i className="zmdi zmdi-email"></i></label>
@@ -60,7 +67,7 @@ const SignInForm = () => {
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="Your Email"
+                  placeholder="Email"
                   value={formData.email}
                   onChange={handleInputChange}
                 />
@@ -71,18 +78,18 @@ const SignInForm = () => {
                   type="password"
                   name="password"
                   id="password"
-                  placeholder="Password"
+                  placeholder="Mật khẩu"
                   value={formData.password}
                   onChange={handleInputChange}
                 />
               </div>
               <div className="form-group">
                 <Link className="createAnAcc" href="/register">
-                  Create an account
+                  Tạo tài khoản 
                 </Link>
               </div>
               <div className="form-group form-button">
-                <input type="submit" name="signin" id="signin" className="form-submit" value="Log in" />
+                <input type="submit" name="signin" id="signin" className="form-submit" value="Đăng nhập" />
               </div>
             </form>
           </div>

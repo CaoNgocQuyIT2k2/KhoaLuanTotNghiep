@@ -9,7 +9,7 @@ const PostSectionTwo = ({ postData }) => {
   return (
     <div className="section-gap section-gap-top__with-text top-stories bg-grey-dark-one" >
       <div className="container">
-        <SectionTitle title="Top Star"  pClass="title-white m-b-xs-40" />
+        <SectionTitle title="Đánh Giá Cao"  pClass="title-white m-b-xs-40" />
         <div className="row">
           <div className="col-lg-8">
           	

@@ -7,8 +7,10 @@ import axios from 'axios';
 import { message } from "antd";
 import dynamic from 'next/dynamic';
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import LogUser from "../post/post-format/elements/LogUser";
+import { format } from 'date-fns';
+import { vi } from 'date-fns/locale';
 
 const SearchImage = dynamic(() => import("../objectDetector/SearchImage"), {
   ssr: false
@@ -21,7 +23,10 @@ const HeaderOne = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchshow, setSearchShow] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
+
+
   const [mount, setMount] = useState(false);
+
 
   useEffect(() => {
     setMount(true)
@@ -31,14 +36,17 @@ const HeaderOne = () => {
     const toggleDropdownMenu = () => {
       const dropdownSelect = menuRef.current?.childNodes;
       let dropdownList = [];
-
       for (let i = 0; i < dropdownSelect?.length; i++) {
+
         const element = dropdownSelect[i];
         if (element.classList.contains("has-dropdown")) {
           dropdownList.push(element);
         }
       }
+
+
       if (dropdownSelect?.length > 0) {
+
         dropdownList.forEach((element) => {
           element.children[0].addEventListener("click", (e) => {
             e.preventDefault();
@@ -110,26 +118,12 @@ const HeaderOne = () => {
   };
 
   const handleSearchButtonClick = async () => {
+
     if (!searchKeyword) {
-      message.error("Please enter a search keyword");
+      message.error("Vui lòng nhập dữ liệu tìm kiếm");
       return;
     }
-
-    try {
-      const response = await axios.get('/api/Search', {
-        params: { keyList: searchKeyword }
-      });
-
-      if (response.status === 200) {
-        console.log("Kết quả tìm kiếm:", response.data);
-        router.push(`/search/${searchKeyword}`);
-      } else {
-        message.error("Search failed");
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      message.error("Internal Server Error");
-    }
+    else router.push(`/search/${searchKeyword}`);
   };
 
   const handleKeyDown = (event) => {
@@ -138,7 +132,14 @@ const HeaderOne = () => {
       handleSearchButtonClick();
     }
   };
+
+    const dateFormate = () => {
+      return format(new Date(), 'EEEE, dd MMMM yyyy', { locale: vi });
+    };
+  
+
   if(!mount) return null
+
   return (
     <>
   
@@ -148,22 +149,7 @@ const HeaderOne = () => {
             <div className="row align-items-center">
               <div className="col-md">
                 <ul className="header-top-nav list-inline justify-content-center justify-content-md-start" >
-                  <li className="current-date">{dateFormate()}</li>
-                  <li>
-                    <Link href="/">
-                      <a id="btn-header">Advertisement</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/about-us">
-                      <a id="btn-header">About</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/contact">
-                      <a id="btn-header">Contact</a>
-                    </Link>
-                  </li>
+                <li className="current-date">{dateFormate()}</li>
                 </ul>
               </div>
               <div className="col-md-auto">
@@ -174,7 +160,7 @@ const HeaderOne = () => {
                     <li>
                       <Link href="/login">
                         <a>
-                          <i className="feather icon-log-in" /> LogIn
+                          <i className="feather icon-log-in" /> Đăng nhập
                         </a>
                       </Link>
                     </li>
@@ -213,7 +199,7 @@ const HeaderOne = () => {
                     <input
                       type="text"
                       className="navbar-search-field"
-                      placeholder="Search Here..."
+                      placeholder="Tìm kiếm ở đây..."
                       value={searchKeyword}
                       onChange={(e) => setSearchKeyword(e.target.value)}
                       onKeyDown={handleKeyDown}

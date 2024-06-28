@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import FormGroup from "../../../contact/FormGroup";
 import ListCommentArticle from './ListCommentArticle';
+import { useDispatch } from 'react-redux';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
+import { message } from 'antd';
 
 const PostComment = ({ articleId, parentId, token }) => {
   const [comment, setComment] = useState('');
@@ -9,11 +12,12 @@ const PostComment = ({ articleId, parentId, token }) => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [commentPosted, setCommentPosted] = useState(false); // Step 1
+  const dispatch = useDispatch();
 
   const handleCommentChange = (e) => {
     setComment(e.target.value);
   };
-  console.log('articleId:', articleId); // Debug log
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,11 +31,16 @@ const PostComment = ({ articleId, parentId, token }) => {
       parent: parentId ? { id: parentId } : null,
     };
 
-    console.log('Comment data being sent:', commentData); // Debug log
+
 
     try {
+      if(!token){
+        message.error("Bạn cần đăng nhập để bình luận");
+        return;
+      }
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.post(
-        '/api/CreateComment',
+        '/api/create-comment',
         commentData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -39,15 +48,20 @@ const PostComment = ({ articleId, parentId, token }) => {
         setSuccess('Bình luận thành công!');
         setComment(''); // Clear the comment field
         setCommentPosted(true); // Step 2
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 2000);
       } else {
-        setError('Bình luận thất bại.');
+        message.error('Bình luận thất bại.');
       }
     } catch (error) {
-      console.error('Error:', error);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 2000);
       if (error.response && error.response.status === 403) {
-        setError('Unauthorized');
+        message.error('Bạn cần đăng nhập để thực hiện chức năng này');
       } else {
-        setError('Internal Server Error');
+        message.error(error.response?.data?.message);
       }
     } finally {
       setLoading(false);
@@ -57,9 +71,9 @@ const PostComment = ({ articleId, parentId, token }) => {
   return (
     <div className="post-comment-area">
       <div className="comment-box">
-        <h2>Leave A Reply</h2>
+        <h2>Hãy để lại bình luận</h2>
         <p>
-          Your email address will not be published.
+          Địa chỉ email của bạn sẽ không bị công khai
           <span className="primary-color">*</span>
         </p>
       </div>
@@ -67,7 +81,7 @@ const PostComment = ({ articleId, parentId, token }) => {
         <div className="col-12">
           <FormGroup
             pClass="comment-message-field"
-            label="Comment"
+            label="Bình luận"
             type="textarea"
             name="comment-message"
             rows={2}
@@ -77,7 +91,7 @@ const PostComment = ({ articleId, parentId, token }) => {
         </div>
         <div className="col-12">
           <button type="submit" className="btn btn-primary" disabled={loading}>
-            {loading ? 'Posting...' : 'POST COMMENT'}
+            {loading ? 'Dang đăng...' : 'Đăng bình luận'}
           </button>
         </div>
       </form>

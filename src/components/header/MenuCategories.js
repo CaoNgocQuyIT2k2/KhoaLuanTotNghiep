@@ -1,31 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { RightOutlined, DownOutlined } from '@ant-design/icons'; // Import RightOutlined
-import { Dropdown, Space, Menu } from 'antd';
+import { Dropdown, Space, Menu, message } from 'antd';
 import axios from 'axios';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../store/constants/spinner';
 
 const MenuCategories = () => {
   const [categories, setCategories] = useState([]);
   const [childMenus, setChildMenus] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const response = await axios.get('/api/GetParentCategories');
+      dispatch({ type: SHOW_SPINNER });
+        const response = await axios.get('/api/get-parent-categories');
         const parentCategories = response.data;
         setCategories(parentCategories);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 2000);
       } catch (error) {
-        console.error("Error fetching parent categories:", error);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+          message.error(error.response?.data?.message);
+        }, 2000);
       }
     };
 
     getCategories();
-  }, []);
+  }, [dispatch]);
 
   const handleMenuClick = async (categoryId) => {
     try {
-      console.log('Fetching child categories:', categoryId);
-      const response = await axios.get('/api/GetChildCategories', {
+      dispatch({ type: SHOW_SPINNER });
+      const response = await axios.get('/api/get-child-categories', {
         params: { categoryId }
       });
       const childCategories = response.data;
@@ -38,8 +48,14 @@ const MenuCategories = () => {
         ),
       }));
       setChildMenus(prev => ({ ...prev, [categoryId]: items }));
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 2000);
     } catch (error) {
-      console.error("Error fetching child categories:", error);
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response?.data?.message);
+      }, 2000);
     }
   };
 

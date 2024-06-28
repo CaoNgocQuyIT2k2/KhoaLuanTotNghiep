@@ -7,6 +7,8 @@ import DataUser from './Admin/ManageUsers/DataUser';
 import DataCategory from './Admin/ManageCategories/DataCategory';
 import DataTag from './Admin/ManageTags/DataTag';
 import Link from 'next/link';
+import BackToTopButton from '../post-format/elements/BackToTopButton';
+import DataArtPending from './Admin/ManageArtPending/DataArtPending';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -31,15 +33,18 @@ const LayoutAdmin = () => {
       case '2':
         return <DataTag />;
       case '3':
-        return <DataUser />
+        return <DataUser />;
+      case '4':
+        return <DataArtPending />
       default:
         return null;
     }
   };
   const breadcrumbMap = {
-    '1': 'Manage Categories',
-    '2': 'Manage Tags',
-    '3': 'Manage Users',
+    '1': 'Quản lý chuyên mục',
+    '2': 'Quản lý thẻ',
+    '3': 'Quản lý người dùng',
+    '4': 'Kiểm duyệt bài viết',
   };
 
   return (
@@ -53,22 +58,27 @@ const LayoutAdmin = () => {
             alignItems: 'center',
             marginBottom: '10px',
           }} />}>
-            <Link href="/" onClick={() => window.location.href = "/"}>Home</Link>
+            <Link href="/" onClick={() => window.location.href = "/"}>Trang chủ</Link>
           </Menu.Item>
           <Menu.Item key="1" icon={<PieChartOutlined style={{
             fontSize: '1.5rem',
           }} />}>
-            Manage Categories
+            Quản lý chuyên mục
           </Menu.Item>
           <Menu.Item key="2" icon={<FundViewOutlined style={{
             fontSize: '1.5rem',
           }} />}>
-            Manage Tags
+            Quản lý thẻ
           </Menu.Item>
           <Menu.Item key="3" icon={<UserOutlined style={{
             fontSize: '1.5rem',
           }} />}>
-            Manage Users
+            Quản lý người dùng
+          </Menu.Item>
+          <Menu.Item key="4" icon={<UserOutlined style={{
+            fontSize: '1.5rem',
+          }} />}>
+            Kiểm duyệt bài viết
           </Menu.Item>
         </Menu>
       </Sider>
@@ -78,7 +88,7 @@ const LayoutAdmin = () => {
         </Header>
         <Content style={{ padding: '64px 16px 0', margin: '0 16px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>LayoutAdmin</Breadcrumb.Item>
+            <Breadcrumb.Item>Trang quản trị</Breadcrumb.Item>
             <Breadcrumb.Item>{breadcrumbMap[selectedMenuItem]}</Breadcrumb.Item>
           </Breadcrumb>
 
@@ -94,7 +104,8 @@ const LayoutAdmin = () => {
             {renderContent()}
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}></Footer>
+        <Footer style={{ textAlign: 'center', paddingTop:'50px' }}></Footer>
+        <BackToTopButton/>
       </Layout>
     </Layout>
   );

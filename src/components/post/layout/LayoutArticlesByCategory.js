@@ -10,26 +10,37 @@ import WidgetAd from "../../widget/WidgetAd";
 import WidgetSocialShare from "../../widget/WidgetSocialShare";
 import FooterOne from "../../footer/FooterOne";
 import BackToTopButton from "../post-format/elements/BackToTopButton";
+import { HIDE_SPINNER, SHOW_SPINNER } from "../../../../store/constants/spinner";
+import { useDispatch } from "react-redux";
 
 
 const LayoutArticlesByCategory = ({ allPosts }) => {
     const router = useRouter();
     const { categoryId } = router.query;
     const [data, setData] = useState(null);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchData = async () => {
             if (categoryId) {
                 try {
-                    const response = await axios.get(`/api/GetCategoryById?categoryId=${categoryId}`);
+                    dispatch({ type: SHOW_SPINNER });
+
+                    const response = await axios.get(`/api/get-category-by-id?categoryId=${categoryId}`);
                     setData(response.data);
+                    setTimeout(() => {
+                        dispatch({ type: HIDE_SPINNER });
+                    }, 2000);
                 } catch (error) {
-                    console.error("Error fetching data:", error);
+                    setTimeout(() => {
+                        dispatch({ type: HIDE_SPINNER });
+                        message.error(error.response?.data?.message);
+                    }, 2000);
                 }
             }
         };
         fetchData();
-    }, [categoryId]);
+    }, [categoryId,dispatch]);
 
     if (!data) {
         return <div>Loading...</div>;
@@ -62,16 +73,13 @@ const LayoutArticlesByCategory = ({ allPosts }) => {
                         <div className="col-lg-4">
                             <div className="post-sidebar">
                                 <WidgetPost dataPost={allPosts} />
-                                <WidgetAd />
-                                <WidgetSocialShare />
-                                <WidgetAd img="/images/clientbanner/clientbanner3.jpg" height={492} width={320} />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <FooterOne />
-    <BackToTopButton />
+            <BackToTopButton />
 
         </>
     );

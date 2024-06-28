@@ -36,7 +36,7 @@ const EditUser = ({ showModal,tagId,tagName, fetchTags}) => {
     setTimeout(() => {
       setLoading(false);
       setOpen(false);
-    }, 3000);
+    }, 2000);
   };
 
   const handleCancel = () => {
@@ -51,7 +51,7 @@ const EditUser = ({ showModal,tagId,tagName, fetchTags}) => {
     }));
   };
 
-  console.log("tagId",token);
+
 
   const handlEditTag = async () => {
     try {
@@ -59,15 +59,15 @@ const EditUser = ({ showModal,tagId,tagName, fetchTags}) => {
         console.error("User information is missing");
         return;
       }
-      console.log("tagId",tagId);
-      const response = await axios.post(`/api/UpdateTag?tagId=${tagId}`, {
+
+      const response = await axios.post(`/api/update-tag?tagId=${tagId}`, {
         value: userData.value,
       }
     , { headers: { Authorization: `Bearer ${token}` } }
     );
 
       const updatedUser = response.data || {};
-      console.log("🚀 ~ updatedUser:", updatedUser);
+
       message.success("Cập nhật người dùng thành công");
       fetchTags();
       setOpen(false);
@@ -86,7 +86,7 @@ const EditUser = ({ showModal,tagId,tagName, fetchTags}) => {
       </Button>
       <AntModal
         visible={open}
-        title="Chỉnh sửa tên tag"
+        title="Chỉnh sửa tên thẻ"
         onOk={handlEditTag}
         onCancel={() => setOpen(false)}
         footer={[

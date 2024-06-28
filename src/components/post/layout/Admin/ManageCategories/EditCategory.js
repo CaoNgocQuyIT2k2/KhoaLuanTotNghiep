@@ -17,7 +17,7 @@ const EditCategory = ({ showModal,categoryName, categoryId, parentName, parentId
   const [parentCategories, setParentCategories] = useState([]);
 
   const user = useSelector((state) => state.user?.user);
-console.log("categoryName",categoryName);
+
   useEffect(() => {
     setCategoryData({
       name: categoryName,
@@ -32,7 +32,7 @@ console.log("categoryName",categoryName);
 
   const fetchParentCategories = async () => {
     try {
-      const response = await axios.get(`/api/GetParentCategories`);
+      const response = await axios.get(`/api/get-parent-categories`);
       setParentCategories(response.data || []);
     } catch (error) {
       console.error("Error fetching parent categories:", error);
@@ -73,14 +73,14 @@ console.log("categoryName",categoryName);
       const requestBody = {
         name: categoryData.name,
       };
-console.log("categoryData.parentId",categoryData.parentId);
+
       // Kiểm tra nếu có parentId thì thêm vào requestBody
       if (categoryData.parentId !== null) {
         requestBody.parent = { id: categoryData.parentId };
       }
-console.log("requestBody",requestBody);
+
       const response = await axios.post(
-        `/api/UpdateCategory?categoryId=${categoryId}`,
+        `/api/update-category?categoryId=${categoryId}`,
         requestBody,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -97,36 +97,36 @@ console.log("requestBody",requestBody);
   return (
     <>
       <Button type="primary" onClick={showModalHandler} className='bg-yellow-500 text-white'>
-        Edit
+        Sửa
       </Button>
       <AntModal
         visible={open}
-        title="Edit Category"
+        title="Chỉnh sửa chuyên mục"
         onOk={handleEditCategory}
         onCancel={handleCancel}
         footer={[
           <Button key="back" onClick={handleCancel}>
-            back
+            Trở về
           </Button>,
           <Button key="submit" type='default' loading={loading} onClick={handleEditCategory}>
-            Edit
+            Sửa
           </Button>,
         ]}
       >
         <Input
-          placeholder="Category Name"
+          placeholder="Tên chuyên mục"
           style={{ marginBottom: '15px' }}
           value={categoryData.name}
           onChange={(e) => handleChange(e, 'name')}
         />
         <Select
-          placeholder="Select Parent Category"
+          placeholder="Chọn chuyên mục cha"
           style={{ width: '100%', marginBottom: '15px' }}
           value={categoryData.parentId}
           onChange={handleSelectParent}
           disabled={categoryData.parentId === null} // Vô hiệu hóa nếu parentId là null
         >
-          <Option value={null}>None</Option>
+          <Option value={null}></Option>
           {parentCategories.map((category) => (
             <Option key={category.id} value={category.id}>
               {category.name}

@@ -1,79 +1,95 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
-import { Button } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
+import { message } from 'antd';
 
-const ButtonSaveArt = ({ articleId,onRemoveSaveArticle  }) => {
+const ButtonSaveArt = ({ articleId, onRemoveSaveArticle, categoryId }) => {
   const [isSaved, setIsSaved] = useState(false);
   const token = useSelector((state) => state.user?.token);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
+      if(!token) {
+        return;
+      }
       try {
-        const response = await axios.get(`/api/GetSavedArticle?articleId=${articleId}`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-  
-        // Kiểm tra nếu có dữ liệu trả về và đang được lưu
-        if (response.data && response.data.id) {
+        dispatch({ type: SHOW_SPINNER });
+        const responseSaved = await axios.get(`/api/get-saved-art-by-cat?categoryId=${categoryId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        const savedArticles = responseSaved.data;
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 1000);
+        // Tìm kiếm articleId
+        const article = savedArticles.find(article => article.id === articleId);
+        if (article) {
           setIsSaved(true);
-        } else {
+        }
+        else {
           setIsSaved(false);
         }
       } catch (error) {
-        console.error('Error fetching saved status:', error);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+          message.error(error.response?.data?.message);
+        }, 2000);
       }
     };
-  
+
     fetchData();
-  }, [articleId, token]);
-  
+  }, [articleId, token, categoryId, dispatch]);
 
   const handleSaveArticle = async () => {
     try {
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.post(
-        '/api/AddSaveArticle',
+        '/api/add-save-article',
         { articleId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 1000);
       if (response.status === 200) {
         setIsSaved(true);
-        console.log('Tạo tag thành công!');
+        message.success('Lưu bài viết thành công.');
       } else {
-        console.error('Tạo tag thất bại.');
+        message.error('Lưu bài viết thất bại.');
       }
     } catch (error) {
-      console.error('Error:', error);
-      if (error.response && error.response.status === 403) {
-        console.error('Unauthorized');
-      } else {
-        console.error('Internal Server Error');
-      }
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+        message.error(error.response?.data?.message);
+      }, 2000);
     }
   };
 
   const handleRemoveSaveArticle = async () => {
     try {
+      dispatch({ type: SHOW_SPINNER });
       const response = await axios.delete(
-        `/api/RemoveSaveArticle?articleId=${articleId}`,
+        `/api/remove-save-article?articleId=${articleId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 1000);
       if (response.status === 200) {
+        const successMessage = response.data;
+        message.success(successMessage);
         setIsSaved(false);
-        console.log('Xóa bài đã lưu thành công!');
         onRemoveSaveArticle();
+        return;
       } else {
-        console.error('Xóa bài đã lưu thất bại.');
+        message.error('Bỏ lưu bài viết thất bại.');
       }
     } catch (error) {
-      console.error('Error:', error);
-      if (error.response && error.response.status === 403) {
-        console.error('Unauthorized');
-      } else {
-        console.error('Internal Server Error');
-      }
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 2000);
     }
   };
 
@@ -87,7 +103,7 @@ const ButtonSaveArt = ({ articleId,onRemoveSaveArticle  }) => {
   };
 
   return (
-    <li >
+    <li style={{ listStyle: "none" }}>
       <button className={isSaved ? "saved-icon" : "save-icon"}
         onClick={handleClick}
         style={{
@@ -95,7 +111,7 @@ const ButtonSaveArt = ({ articleId,onRemoveSaveArticle  }) => {
           color: 'black',
           marginRight: '20px',
         }}
-        title={isSaved ? "saved" : "save"}
+        title={isSaved ? "Đã lưu" : "Lưu"}
       >
       </button>
     </li>

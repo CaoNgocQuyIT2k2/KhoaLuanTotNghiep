@@ -4,7 +4,7 @@ import PostRanArtByCat from "../post/layout/PostRanArtByCat";
 
 
 const WidgetPostRanSameCat = ({dataPost}) => {
-    console.log("dataPost",dataPost)
+
   return (
     <div className="post-widget sidebar-post-widget m-b-xs-40">
         <Tab.Container id="widget-post" defaultActiveKey="recent">

@@ -1,16 +1,19 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from 'axios';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ButtonSaveArt from "./ButtonSaveArt";
+import { HIDE_SPINNER, SHOW_SPINNER } from "../../../../../store/constants/spinner";
+import { message } from "antd";
 
-const SocialShareSide = ({ articleId }) => {
+const SocialShareSide = ({ articleId,categoryId }) => {
   const [windowPath, setWindowPath] = useState(null);
   const token = useSelector((state) => state.user?.token);
+  const dispatch = useDispatch();
 
   const fetchData = useCallback(async () => {
     try {
       const types = ['LIKE', 'HEART', 'CLAP', 'STAR'];
-      const promises = types.map(type => axios.get(`/api/GetReactByArticle?articleId=${articleId}&typeReact=${type}`));
+      const promises = types.map(type => axios.get(`/api/get-react-by-article?articleId=${articleId}&typeReact=${type}`));
       const responses = await Promise.all(promises);
 
       // Extract quantity values from each response's data
@@ -42,24 +45,23 @@ const SocialShareSide = ({ articleId }) => {
   const handleReaction = async (typeReact) => {
     try {
       const response = await axios.post(
-        '/api/ReactArticle',
+        '/api/react-article',
         { article: { id: articleId }, typeReact },
         { headers: { Authorization: `Bearer ${token}` }}
       );
-
       if (response.status === 200) {
         fetchData(); // Refresh data after successful vote
-        console.log('Article saved successfully!');
+
       }
     } catch (error) {
-      console.error("Error submitting reaction:", error);
+      message.error(error.response?.data?.message);
     }
   };
 
   return (
     <div className="post-details__SaveArt mt-2">
        <ul className="SaveArt SaveArt__with-bg SaveArt__vertical">
-       <ButtonSaveArt articleId={articleId}/>
+       <ButtonSaveArt categoryId={categoryId} articleId={articleId}/>
         </ul>
       <ul className="social-share social-share__with-bg social-share__vertical">
         

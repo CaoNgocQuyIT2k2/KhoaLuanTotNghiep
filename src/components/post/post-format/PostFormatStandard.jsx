@@ -12,20 +12,33 @@ import SocialShareSide from "./elements/SocialShareSide";
 import WidgetPostRanSameCat from '../../widget/WidgetPostRanSameCat';
 import StarRating from './elements/StarRating';
 import TagArticle from './elements/TagArticle';
+import styled from 'styled-components';
+
+const CustomParagraph = styled.div`
+  p {
+    line-height: 1.5 !important;
+    margin-bottom: 1.5rem !important;
+  }
+`;
 
 const PostFormatStandard = ({ articleId, allData }) => {
   const [postData, setPostData] = useState(null);
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.user?.token); // Ensure token exists
+  const token = useSelector((state) => state.user?.token);
 
   useEffect(() => {
     const fetchPostData = async () => {
       if (!articleId) return;
 
       try {
-        const response = await fetch(`/api/GetArtDetail?article_id=${articleId}`);
+        const response = await fetch(`/api/get-art-detail?article_id=${articleId}`);
         const data = await response.json();
         setPostData(data);
+
+        // Check for contentEditable in the content
+        if (data.content.includes('contentEditable')) {
+          console.warn('Content contains contentEditable elements:', data.content);
+        }
       } catch (error) {
         console.error('Error fetching post data:', error);
       }
@@ -40,6 +53,14 @@ const PostFormatStandard = ({ articleId, allData }) => {
 
   const parsedContent = postData.content && typeof postData.content === 'string' ? parse(postData.content) : null;
 
+  // Using dangerouslySetInnerHTML for contentEditable elements
+  const renderContent = () => {
+    if (postData?.content?.includes('contentEditable')) {
+      return <CustomParagraph dangerouslySetInnerHTML={{ __html: postData.content }} />;
+    }
+    return <CustomParagraph>{parsedContent}</CustomParagraph>;
+  };
+  
   return (
     <>
       <MetaDataOne metaData={postData} />
@@ -50,12 +71,12 @@ const PostFormatStandard = ({ articleId, allData }) => {
               <main className="site-main">
                 <article className="post-details">
                   <div className="single-blog-wrapper">
-                    <SocialShareSide articleId={articleId} />
-                    {parsedContent}
+                    <SocialShareSide categoryId={postData.category && postData.category.id} articleId={articleId} />
+                    {renderContent()}
                   </div>
                 </article>
-                <TagArticle articleId={articleId}/>
-                <StarRating articleId={articleId} token={token}/>
+                <TagArticle articleId={articleId} />
+                <StarRating articleId={articleId} token={token} />
                 <hr className="m-t-xs-50 m-b-xs-60" />
                 <PostComment articleId={articleId} token={token} />
               </main>
@@ -64,10 +85,6 @@ const PostFormatStandard = ({ articleId, allData }) => {
               <div className="post-sidebar">
                 <WidgetPostRanSameCat dataPost={postData} />
                 <WidgetPost dataPost={allData} />
-                <WidgetAd />
-                <WidgetNewsletter />
-                <WidgetSocialShare />
-                <WidgetInstagram />
               </div>
             </div>
           </div>

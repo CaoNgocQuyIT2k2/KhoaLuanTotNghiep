@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { message } from 'antd';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../store/constants/spinner';
 
 
 const EditPasswordForm = () => {
@@ -13,9 +14,10 @@ const EditPasswordForm = () => {
   const [success, setSuccess] = useState('');
   const token = useSelector((state) => state.user.token);
   const userPass = useSelector((state) => state.user.user?.password);
+  const dispatch = useDispatch();
 
-  console.log("userPass", userPass);
-  console.log("token", token);
+
+
 
 
   const handleSubmit = async (e) => {
@@ -28,16 +30,25 @@ const EditPasswordForm = () => {
     };
 
     try {
-      await axios.post(`/api/UpdatePassword`, formData, {
+      dispatch({ type: SHOW_SPINNER });
+      await axios.post(`/api/update-password`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
-
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 2000);
       message.success("Cập nhật mật khẩu mới thành công")
       window.location.href = "/";
 
     } catch (error) {
-      const errorMessage = error.response?.data?.message;
-     message.error(errorMessage)
+      setTimeout(() => {
+        dispatch({ type: HIDE_SPINNER });
+      }, 2000);
+      if (error.response && error.response.status === 403) {
+        message.error('Bạn cần đăng nhập để thực hiện chức năng này');
+      } else {
+        message.error(error.response?.data?.message);
+      }
     }
   };
 

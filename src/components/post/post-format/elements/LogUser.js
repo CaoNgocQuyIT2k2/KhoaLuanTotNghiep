@@ -20,7 +20,7 @@ export default function LogUser({ userName }) {
         color: 'white',
         marginTop: "0.5rem",
         fontSize: "1.5rem",
-      }}>Hello, {userName}</p>
+      }}>Xin Chào, {userName}</p>
       <MenuUser />
     </Stack>
   );

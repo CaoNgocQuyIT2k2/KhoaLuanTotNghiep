@@ -34,12 +34,12 @@ const AddTag = ({ articleName, fetchTags }) => {
         return;
       }
 
-      const response = await axios.post(`/api/CreateTag`, {
+      const response = await axios.post(`/api/create-tag`, {
         value: tagName,
       }, { headers: { Authorization: `Bearer ${token}` } });
 
       const addedTag = response.data || [];
-      console.log("🚀 ~ response.data:", response.data);
+
       message.success("Thêm chuyên mục thành công");
       fetchTags();
       setOpen(false);
@@ -56,7 +56,7 @@ const AddTag = ({ articleName, fetchTags }) => {
       </Button>
       <AntModal
         visible={open}
-        title="Thêm mới tag"
+        title="Thêm mới thẻ"
         onCancel={handleCancel}
         footer={[
           <Button key="back" onClick={handleCancel}>

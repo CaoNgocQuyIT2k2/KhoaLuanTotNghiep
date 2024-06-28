@@ -5,14 +5,16 @@ import MenuItem from '@mui/material/MenuItem';
 import { DownOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import { message } from 'antd';
-import { useSelector } from 'react-redux';
-import Link from 'next/link'; // Import Link from next/link
+import { useDispatch, useSelector } from 'react-redux';
+import Link from 'next/link'; // Import Link từ next/link
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../../../store/constants/spinner';
 
 export default function MenuUser() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const userRole = useSelector((state) => state.user.user?.role); // Lấy role từ state.user.user.user.role
-  console.log("userRole", userRole);
+  const userRole = useSelector((state) => state.user.user?.role); 
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -22,33 +24,39 @@ export default function MenuUser() {
     setAnchorEl(null);
   };
 
-  const router = useRouter();
-
+  const navigateWithSpinner = async (callback, messageText) => {
+    dispatch({ type: SHOW_SPINNER });
+    handleClose();
+    await callback();
+    setTimeout(() => {
+      dispatch({ type: HIDE_SPINNER });
+      if (messageText) {
+        message.success(messageText);
+      }
+    }, 2000);
+  };
 
   const handleSavedNewsClick = () => {
-    handleClose();
-    router.push('/article/ArticleSaved');
+    navigateWithSpinner(() => router.push('/article/article-saved'));
   };
 
   const handleYourFeedClick = () => {
-    handleClose();
-    router.push('/yourfeed');
+    navigateWithSpinner(() => router.push('/your-feed'));
   };
+
   const handleProfileClick = () => {
-    handleClose();
-    router.push('/profile');
+    navigateWithSpinner(() => router.push('/profile'));
   };
 
   const handlePaswordClick = () => {
-    handleClose();
-    router.push('/EditPassword');
+    navigateWithSpinner(() => router.push('/edit-password'));
   };
 
   const handleLogoutClick = async () => {
-    handleClose();
-    localStorage.removeItem('USER_INFO');
-    message.success('Đăng xuất thành công');
-    window.location.reload();
+    await navigateWithSpinner(() => {
+      localStorage.removeItem('USER_INFO');
+      window.location.reload();
+    }, 'Đăng xuất thành công');
   };
 
   return (
@@ -78,27 +86,26 @@ export default function MenuUser() {
         }}
       >
         <MenuItem onClick={handleProfileClick} style={{ fontSize: '1.5rem' }}>
-          Your Profile
+          Thông tin tài khoản
         </MenuItem>
         <MenuItem onClick={handlePaswordClick} style={{ fontSize: '1.5rem' }}>
-          Update Password
+          Cập nhật mật khẩu
         </MenuItem>
         <MenuItem onClick={handleYourFeedClick} style={{ fontSize: '1.5rem' }}>
-          Your feed
+          Bảng tin của bạn
         </MenuItem>
         <MenuItem onClick={handleSavedNewsClick} style={{ fontSize: '1.5rem' }}>
-          Saved news
+          Tin đã lưu
         </MenuItem>
         {userRole === 'ADMIN' && (
           <MenuItem onClick={handleClose} style={{ fontSize: '1.5rem' }}>
             <Link href="/admin/AdminDashboard">
-              <a>Admin Dashboard</a>
+              <a>Quản trị viên</a>
             </Link>
           </MenuItem>
         )}
-
         <MenuItem onClick={handleLogoutClick} style={{ fontSize: '1.5rem' }}>
-          Logout
+          Đăng xuất
         </MenuItem>
       </Menu>
     </div>

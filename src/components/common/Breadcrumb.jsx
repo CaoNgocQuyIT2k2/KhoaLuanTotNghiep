@@ -1,30 +1,39 @@
 import Link from "next/link";
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { HIDE_SPINNER, SHOW_SPINNER } from "../../../store/constants/spinner";
+import { message } from "antd";
 
 const Breadcrumb = ({ aPage }) => {
   const [data, setData] = useState();
   const [error, setError] = useState();
   const categoryId = aPage;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       if (categoryId) {
         try {
-          const response = await axios.get(`/api/GetCategoryById?categoryId=${categoryId}`); // Make request to API route
-
+          dispatch({ type: SHOW_SPINNER });
+          const response = await axios.get(`/api/get-category-by-id?categoryId=${categoryId}`); // Make request to API route
           setData(response.data);
+          setTimeout(() => {
+            dispatch({ type: HIDE_SPINNER });
+          }, 2000);
         } catch (error) {
-          console.error("Error fetching data:", error);
-          setError(error);
+          setTimeout(() => {
+            dispatch({ type: HIDE_SPINNER });
+            message.error(error.response?.data?.message);
+          }, 2000);
         }
       }
     };
     fetchData();
-  }, [categoryId]);
+  }, [categoryId,dispatch]);
 
 
-  console.log("data", data);
+
 
 
 
@@ -40,7 +49,7 @@ const Breadcrumb = ({ aPage }) => {
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
               <Link href="/">
-                <a>Home</a>
+                <a>Trang chủ</a>
               </Link>
             </li>
             {data.parent && (
