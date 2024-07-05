@@ -58,7 +58,7 @@ const LayoutAdmin = () => {
       <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed} style={{ paddingTop: '60px' }}>
         <div className="demo-logo-vertical" />
         <Menu theme="dark" selectedKeys={[selectedMenuItem]} mode="inline" onClick={handleMenuClick}>
-          <Menu.Item key="0" icon={<HomeOutlined style={{ fontSize: '1.5rem' }} />}>
+          <Menu.Item icon={<HomeOutlined style={{ fontSize: '1.5rem' }} />}>
             <Link href="/">Trang chủ</Link>
           </Menu.Item>
           <Menu.Item key="1" icon={<PieChartOutlined style={{ fontSize: '1.5rem' }} />}>
