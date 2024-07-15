@@ -1,4 +1,5 @@
 const path = require('path');
+require('dotenv').config();
 
 module.exports = {
   reactStrictMode: true,
@@ -32,15 +33,13 @@ module.exports = {
       'timo.vn',
     ],
   },
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: '/post/:article_id',
-  //       destination: '/post/[article_id]',
-  //     },
-  //   ];
-  // },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
+  },
+  env: {
+    AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+    AWS_REGION: process.env.AWS_REGION,
+    AWS_S3_BUCKET_NAME: process.env.AWS_S3_BUCKET_NAME,
   },
 };

@@ -22,7 +22,7 @@ export default async function handler(req, res) {
       }
 
       const response = await axios.delete(
-        `http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/saved-articles/remove?articleId=${articleId}`,
+        `http://ec2-3-106-226-159.ap-southeast-2.compute.amazonaws.com:8080/api/v1/saved-articles/remove?articleId=${articleId}`,
         { headers: { Authorization: token } }
       );
       const data = response.data;

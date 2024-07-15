@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     
     // Tạo mảng các promise để gọi API cho từng loại reaction
     const promises = types.map(type => 
-      axios.get(`http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/react-emotion/anonymous/get-react-quantity?articleId=${articleId}&typeReact=${type}`)
+      axios.get(`http://ec2-3-106-226-159.ap-southeast-2.compute.amazonaws.com:8080/api/v1/react-emotion/anonymous/get-react-quantity?articleId=${articleId}&typeReact=${type}`)
     );
     // Gửi các request API song song và đợi tất cả các promise hoàn thành
     const responses = await Promise.all(promises);

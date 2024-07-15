@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await axios.get(`http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/article/anonymous/find-by-category?categoryId=${categoryId}`);
+    const response = await axios.get(`http://ec2-3-106-226-159.ap-southeast-2.compute.amazonaws.com:8080/api/v1/article/anonymous/find-by-category?categoryId=${categoryId}`);
     const data = response.data;
 
     if (response.status === 200) {

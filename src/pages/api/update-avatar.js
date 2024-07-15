@@ -1,23 +1,29 @@
 import multer from 'multer';
-import fs from 'fs';
-import path from 'path';
+import multerS3 from 'multer-s3';
+import { S3 } from '@aws-sdk/client-s3';
 import axios from 'axios';
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const uploadDir = './uploads'; // Thư mục lưu trữ file tải lên
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-    cb(null, uploadDir);
+const s3 = new S3({
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   },
-  filename: (req, file, cb) => {
-    const fileName = `${Date.now()}-${file.originalname}`;
-    cb(null, fileName);
-  },
+  region: process.env.AWS_REGION,
 });
 
-const upload = multer({ storage });
+const upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: process.env.AWS_S3_BUCKET_NAME,
+    acl: 'public-read',
+    metadata: (req, file, cb) => {
+      cb(null, { fieldName: file.fieldname });
+    },
+    key: (req, file, cb) => {
+      cb(null, `${Date.now().toString()}-${file.originalname}`);
+    },
+  }),
+});
 
 export const config = {
   api: {
@@ -42,17 +48,18 @@ export default async function handler(req, res) {
     return;
   }
 
-  // Sử dụng middleware multer để xử lý file upload
-  upload.single('file')(req, res, async (err) => {
-    if (err instanceof multer.MulterError) {
-      res.status(500).json({ message: 'Error uploading file' });
-      return;
-    } else if (err) {
-      res.status(500).json({ message: 'Unknown error' });
-      return;
-    }
+  // // Sử dụng middleware multer để xử lý file upload
+  // upload.single('file')(req, res, async (err) => {
+  //   if (err instanceof multer.MulterError) {
+  //     res.status(500).json({ message: 'Error uploading file' });
+  //     return;
+  //   } else if (err) {
+  //     res.status(500).json({ message: 'Unknown error' });
+  //     return;
+  //   }
 
     const file = req.file;
+    console.log("file", file);
     const token = req.headers.authorization; // Extract token từ Authorization header
 
     if (!file || !token) {
@@ -60,14 +67,17 @@ export default async function handler(req, res) {
       return;
     }
 
-    const filePath = file.path; // Đường dẫn tới file tải lên
+    // URL của file đã tải lên trên S3
+    const fileUrl = file.location;
 
     // Tiếp tục xử lý như trong mã gốc của bạn
     try {
-      const response = await axios.post('http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/user/update-user-avatar', 
-        { file: fs.createReadStream(filePath) },
-        { headers: { 'Content-Type': 'multipart/form-data', Authorization: token } }
+      const response = await axios.post(
+        'http://ec2-3-106-226-159.ap-southeast-2.compute.amazonaws.com:8080/api/v1/user/update-user-avatar', 
+        { file: fileUrl },
+        { headers: { Authorization: token } }
       );
+
       const data = response.data;
       if (response.status === 200) {
         res.status(200).json(data);
@@ -82,5 +92,5 @@ export default async function handler(req, res) {
         res.status(500).json({ message: 'Đã xảy ra lỗi, vui lòng thử lại sau.' });
       }
     }
-  });
-}
+  }
+

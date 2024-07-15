@@ -6,6 +6,7 @@ import ButtonSaveArt from "../post-format/elements/ButtonSaveArt";
 import Image from "next/image";
 import { HIDE_SPINNER, SHOW_SPINNER } from "../../../../store/constants/spinner";
 import { useDispatch } from "react-redux";
+import { message } from "antd";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png";
 

@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
       // Send request to update password API
       const response = await axios.post(
-        `http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/user/update-user-infor?userId=${userId}`,
+        `http://ec2-3-106-226-159.ap-southeast-2.compute.amazonaws.com:8080/api/v1/user/update-user-infor?userId=${userId}`,
         { firstname, lastname, dob, email },
         { headers: { Authorization: token } }
       );

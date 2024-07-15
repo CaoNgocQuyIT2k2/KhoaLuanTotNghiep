@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   // Handle API request
   try {
-    const response = await axios.get('http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/category/anonymous/get-child', {
+    const response = await axios.get('http://ec2-3-106-226-159.ap-southeast-2.compute.amazonaws.com:8080/api/v1/category/anonymous/get-child', {
       params: { categoryId }
     });
     const data = response.data;

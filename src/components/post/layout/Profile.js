@@ -105,6 +105,9 @@ const Profile = () => {
       
         try {
           dispatch({ type: SHOW_SPINNER });
+          if(file){
+            console.log("file changed");
+          }
           const response = await axios.post('/api/update-avatar', formData, {
             headers: {
               'Content-Type': 'multipart/form-data',

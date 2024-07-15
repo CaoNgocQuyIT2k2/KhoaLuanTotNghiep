@@ -23,7 +23,7 @@ export default async function handler(req, res) {
 
       // Send request to update tag API
       const response = await axios.delete(
-        `http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/follow-category/un-follow?categoryId=${categoryId}`,
+        `http://ec2-3-106-226-159.ap-southeast-2.compute.amazonaws.com:8080/api/v1/follow-category/un-follow?categoryId=${categoryId}`,
         { headers: { Authorization: token } }
       );
       const data = response.data;

@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
       // Gửi request POST đến API khác
       const response = await axios.post(
-        'http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/auth/sign-up',
+        'http://ec2-3-106-226-159.ap-southeast-2.compute.amazonaws.com:8080/api/v1/auth/sign-up',
         { firstname, lastname, email, password, dob }, // Truyền dữ liệu từ req.body
         { headers }
       );

@@ -24,7 +24,7 @@ export default async function handler(req, res) {
       console.log("token", token);
 
       const response = await axios.post(
-        'http://ec2-18-143-143-173.ap-southeast-1.compute.amazonaws.com:8080/api/v1/pending/public-article',
+        'http://ec2-3-106-226-159.ap-southeast-2.compute.amazonaws.com:8080/api/v1/pending/public-article',
         { id },
         { headers: { Authorization: token } }
       );
