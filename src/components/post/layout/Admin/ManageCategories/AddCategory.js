@@ -22,7 +22,7 @@ const AddCategory = ({ fetchCategories }) => {
 
   const fetchParentCategories = async () => {
     try {
-      const response = await axios.get(`/api/GetParentCategories`);
+      const response = await axios.get(`/api/get-parent-categories`);
       setParentCategories(response.data || []);
     } catch (error) {
       console.error("Error fetching parent categories:", error);
@@ -64,7 +64,7 @@ const AddCategory = ({ fetchCategories }) => {
         requestBody.parent = { id: parentId };
       }
 
-      const response = await axios.post(`/api/CreateCategory`, requestBody, {
+      const response = await axios.post(`/api/create-category`, requestBody, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -96,24 +96,24 @@ const AddCategory = ({ fetchCategories }) => {
         ]}
       >
         <Input
-          placeholder="Category Name"
+          placeholder="Tên chuyên mục"
           value={categoryName}
           onChange={handleChange}
           style={{ marginBottom: '15px' }}
         />
         <Input
-          placeholder="Second Name"
+          placeholder="Tên phụ"
           value={secondName}
           onChange={handleSecondNameChange}
           style={{ marginBottom: '15px' }}
         />
         <Select
-          placeholder="Select Parent Category"
+          placeholder="Lựa chọn tên chuyên mục cha"
           style={{ width: '100%', marginBottom: '15px' }}
           value={parentId}
           onChange={handleSelectParent}
         >
-          <Option value={null}>None</Option>
+          <Option value={null}></Option>
           {parentCategories.map((category) => (
             <Option key={category.id} value={category.id}>
               {category.name}

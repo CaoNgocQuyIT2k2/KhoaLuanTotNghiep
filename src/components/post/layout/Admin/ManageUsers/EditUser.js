@@ -8,7 +8,6 @@ const EditUser = ({ showModal, userId, userfirstname, fetchListUser, userlastnam
   const token = useSelector((state) => state.user?.token);
   const [open, setOpen] = useState(false);
   const [userData, setUserData] = useState({
-    userId: '',
     firstname: '',
     lastname: '',
     email: '',
@@ -50,7 +49,7 @@ const EditUser = ({ showModal, userId, userfirstname, fetchListUser, userlastnam
         console.error("User information is missing");
         return;
       }
-      const response = await axios.post(`/api/UpdateUserInfo?userId=${userId}`, {
+      const response = await axios.post(`/api/update-user-info?userId=${userId}`, {
         firstname: userData.firstname,
         lastname: userData.lastname,
         dob: userData.dob,
@@ -87,13 +86,13 @@ const EditUser = ({ showModal, userId, userfirstname, fetchListUser, userlastnam
         ]}
       >
         <div style={{ marginBottom: '15px' }}>
-          <Input placeholder="First Name" value={userData.firstname} onChange={(e) => handleChange(e, 'firstname')} />
+          <Input placeholder="Tên người dùng" value={userData.firstname} onChange={(e) => handleChange(e, 'firstname')} />
         </div>
         <div style={{ marginBottom: '15px' }}>
-          <Input placeholder="Last Name" value={userData.lastname} onChange={(e) => handleChange(e, 'lastname')} />
+          <Input placeholder="Họ và tên lót" value={userData.lastname} onChange={(e) => handleChange(e, 'lastname')} />
         </div>
         <div style={{ marginBottom: '15px' }}>
-          <Input placeholder="Date of Birth" value={userData.dob} onChange={(e) => handleChange(e, 'dob')} />
+          <Input placeholder="Ngày sinh" value={userData.dob} onChange={(e) => handleChange(e, 'dob')} />
         </div>
         <div style={{ marginBottom: '15px' }}>
           <Input placeholder="Email" value={userData.email} onChange={(e) => handleChange(e, 'email')} />

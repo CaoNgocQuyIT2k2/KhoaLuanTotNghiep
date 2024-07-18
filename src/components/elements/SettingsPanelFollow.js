@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
+import { HIDE_SPINNER, SHOW_SPINNER } from '../../../store/constants/spinner';
+import { message } from 'antd';
 
 const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
     const token = useSelector((state) => state.user?.token);
@@ -13,13 +15,18 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
     const [searchText, setSearchText] = useState('');
     const [randomCategories, setRandomCategories] = useState([]);
     const [followedCategories, setFollowedCategories] = useState([]); // New state for followed categories
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchMenuData = async () => {
             try {
-                const menuResponse = await axios.get('/api/GetMenuData');
+                if(!token) {
+                    return;
+                }
+                dispatch({ type: SHOW_SPINNER });
+                const menuResponse = await axios.get('/api/get-menu-data');
                 const menuData = menuResponse.data;
-                const parentCategoriesResponse = await axios.get('/api/GetFollowParentCat', { headers: { Authorization: `Bearer ${token}` } });
+                const parentCategoriesResponse = await axios.get('/api/get-follow-parent-cat', { headers: { Authorization: `Bearer ${token}` } });
                 const parentCategories = parentCategoriesResponse.data;
 
                 const updatedMenuData = menuData.map(menuItem => {
@@ -38,7 +45,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
 
                 const allChildCategories = [];
                 for (let parentCategory of parentCategories) {
-                    const childCategoriesResponse = await axios.get(`/api/GetFollowChildCat?categoryId=${parentCategory.id}`, {
+                    const childCategoriesResponse = await axios.get(`/api/get-follow-child-cat?categoryId=${parentCategory.id}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     allChildCategories.push(...childCategoriesResponse.data);
@@ -51,18 +58,27 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                     ...allChildCategories.map(category => category.id)
                 ];
                 setFollowedCategories(followedCategories);
-
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 2000);
             } catch (error) {
-                console.error("Error fetching data:", error);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                    message.error(error.response?.data?.message);
+                }, 2000);
             }
         };
 
         fetchMenuData();
-    }, [token]);
+    }, [token,dispatch]);
 
     useEffect(() => {
-        axios.get('/api/GetAllCategories')
+        if(!token) {
+            return;
+        }
+        axios.get('/api/get-all-categories')
             .then(response => {
+                dispatch({ type: SHOW_SPINNER });
                 const allCategories = response.data;
                 const childCategories = allCategories.filter(category => category.parent !== null);
                 const randomSixCategories = getRandomItems(childCategories, 5);
@@ -71,7 +87,7 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                 // Fetch and set followed status for random categories
                 randomSixCategories.forEach(async (category) => {
                     const parentCategoryId = category.parent.id;
-                    const childCategoriesResponse = await axios.get(`/api/GetFollowChildCat?categoryId=${parentCategoryId}`, {
+                    const childCategoriesResponse = await axios.get(`/api/get-follow-child-cat?categoryId=${parentCategoryId}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     const followedChildCategories = childCategoriesResponse.data;
@@ -80,11 +96,17 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                         setFollowedCategories(prevState => [...prevState, category.id]);
                     }
                 });
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 2000);
             })
             .catch(error => {
-                console.error('Error fetching random categories:', error);
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                    message.error(error.response?.data?.message);
+                }, 2000);
             });
-    }, [token]);
+    }, [token,dispatch]);
 
     const toggleExpand = (section) => {
         setExpanded(prevState => ({
@@ -95,13 +117,15 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
 
     const followCategory = async (categoryId) => {
         try {
+            dispatch({ type: SHOW_SPINNER });
             const response = await axios.post(
-                '/api/FollowCategory',
+                '/api/follow-category',
                 { category: { id: categoryId } },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
             if (response.status === 200) {
+             
                 // Update the followed categories state
                 setFollowedCategories(prevState => [...prevState, categoryId]);
 
@@ -109,22 +133,35 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                     ...prevState,
                     [categoryId]: true
                 }));
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 2000);
+                message.success("Lưu bài viết thành công")
             } else {
-                console.error('Failed to follow category.');
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 2000);
+                message.error("Lưu bài viết thất bại")
+
             }
         } catch (error) {
-            console.error('Error:', error);
+            setTimeout(() => {
+                dispatch({ type: HIDE_SPINNER });
+                message.error(error.response?.data?.message);
+            }, 2000);
         }
     };
 
     const unfollowCategory = async (categoryId) => {
         try {
+            dispatch({ type: SHOW_SPINNER });
             const response = await axios.delete(
-                `/api/UnfollowCategory?categoryId=${categoryId}`,
+                `/api/unfollow-category?categoryId=${categoryId}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
             if (response.status === 200) {
+                
                 // Update the followed categories state
                 setFollowedCategories(prevState => prevState.filter(id => id !== categoryId));
 
@@ -132,15 +169,26 @@ const SettingsPanelFollow = ({ onToggleSectionList, buttonText }) => {
                     ...prevState,
                     [categoryId]: false
                 }));
+
+                message.success("Bỏ lưu bài viết thành công")
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 2000);
             } else {
-                console.error('Failed to unfollow category.');
+                setTimeout(() => {
+                    dispatch({ type: HIDE_SPINNER });
+                }, 2000);
+                message.error("Bỏ lưu bài viết thất bại")
             }
         } catch (error) {
-            console.error('Error:', error);
+            setTimeout(() => {
+                dispatch({ type: HIDE_SPINNER });
+                message.error(error.response?.data?.message);
+            }, 2000);
         }
     };
 
-  
+
 
     const getRandomItems = (array, count) => {
         const shuffled = array.sort(() => 0.5 - Math.random());

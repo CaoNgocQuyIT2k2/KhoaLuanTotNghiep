@@ -19,7 +19,7 @@ const formatDateTime = (dateTimeString) => {
   return date.toLocaleString('vi-VN', options);
 };
 const MetaDataOne = ({ metaData }) => {
-  console.log("MetaDataOne", metaData);
+
   return (
     <div className="banner banner__single-post banner__standard">
       <div className="container">
@@ -40,16 +40,8 @@ const MetaDataOne = ({ metaData }) => {
                   </li>
                   <li>
                     <i className="" />
-                    {metaData.reading_time} min
+                    {metaData.reading_time} phút
                   </li>
-                  {/* <li>
-                    <i className="feather icon-eye" />
-                    {metaData.post_views}
-                  </li>
-                  <li>
-                    <i className="feather icon-share-2" />
-                    {metaData.post_share}
-                  </li> */}
                 </ul>
               </div>
             </div>

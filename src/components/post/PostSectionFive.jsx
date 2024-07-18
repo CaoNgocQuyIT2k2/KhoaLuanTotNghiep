@@ -13,7 +13,7 @@ const PostSectionFive = ({postData, adBanner, pClass}) => {
     return ( 
         <div className={`random-posts ${pClass ?? "section-gap"}`}>
             <div className="container">
-            <SectionTitle title="Latest In Each Category" pClass="title-black m-b-xs-40"/>
+            <SectionTitle title="Mới Nhất Mọi Lĩnh Vực" pClass="title-black m-b-xs-40"/>
                 <div className="row">
                     <div className="col-lg-8">
                         
@@ -24,12 +24,7 @@ const PostSectionFive = ({postData, adBanner, pClass}) => {
                     <div className="col-lg-4">
                         <div className="post-sidebar">
                             <WidgetPost dataPost={postData} />
-                            <WidgetAd />
-                            <WidgetNewsletter />
-                            <WidgetCategory cateData={postData} />
-                            <WidgetSocialShare />
-                            <WidgetInstagram />
-                            {adBanner === true ? <AdBanner /> : "" }
+                            
                         </div>
                     </div>
                 </div>

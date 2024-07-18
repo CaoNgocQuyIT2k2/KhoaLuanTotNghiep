@@ -20,9 +20,9 @@ export default function DataTag() {
 
   const fetchTags = async () => {
     try {
-      const response = await axios.get(`/api/GetAllTag`);
+      const response = await axios.get(`/api/get-all-tag`);
       const tags = response.data || [];
-      console.log("🚀 ~ response.data:", response.data);
+
       setDetail(tags);
     } catch (error) {
       console.error("Error fetching article detail:", error);
@@ -36,17 +36,17 @@ export default function DataTag() {
 
   const columns = [
     {
-      title: 'Id Tag',
+      title: 'Mã thẻ',
       dataIndex: 'id',
       key: 'id',
     },
     {
-      title: 'Tag',
+      title: 'Tên thẻ',
       dataIndex: 'value',
       key: 'value',
     },
     {
-      title: 'Action',
+      title: 'Hành động',
       key: 'action',
       render: (_, tags) => (
         <div>
@@ -67,12 +67,12 @@ export default function DataTag() {
 
   const handleDelete = (tags_id) => {
     axios
-      .delete(`/api/DeleteTag?tagId=${tags_id}`,
+      .delete(`/api/delete-tag?tagId=${tags_id}`,
       { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((res) => {
         message.success("Xóa thành công");
-        console.log("🚀 ~ res:", res);
+
         fetchTags();
       })
       .catch((err) => {

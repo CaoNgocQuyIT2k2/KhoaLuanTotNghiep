@@ -18,7 +18,7 @@ export default function DataCategory() {
   
   const fetchCategories = async () => {
     try {
-      const response = await axios.get(`/api/GetAllCategories`);
+      const response = await axios.get(`/api/get-all-categories`);
       const categories = response.data || [];
       setDetail(categories);
     } catch (error) {
@@ -33,30 +33,30 @@ export default function DataCategory() {
   };
   const columns = [
     {
-      title: 'Id Cat',
+      title: 'Mã chuyên mục',
       dataIndex: 'id',
       key: 'id',
     },
     {
-      title: 'Name Cat',
+      title: 'Tên chuyên mục',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: 'Second Name',
+      title: 'Tên phụ chuyên mục',
       dataIndex: 'second_name',
       key: 'second_name',
     },
     {
-      title: 'Parent Name',
+      title: 'Tên chuyên mục cha',
       dataIndex: 'parent',
       key: 'parent_name',
       render: (parent) => {
-        return parent ? parent.name : 'null';
+        return parent ? parent.name : '';
       },
     },
     {
-      title: 'Action',
+      title: 'Hành động',
       key: 'action',
       render: (_, category) => (
         <div>
@@ -78,9 +78,9 @@ export default function DataCategory() {
   ];
 
   const handleDelete = (categoryId) => {
-    console.log("categoryId",categoryId);
+
     axios
-      .delete(`/api/DeleteCategory?categoryId=${categoryId}`, {
+      .delete(`/api/delete-category?categoryId=${categoryId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

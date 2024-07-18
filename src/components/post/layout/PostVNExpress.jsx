@@ -3,24 +3,35 @@ import Link from "next/link";
 import { slugify } from "../../../utils";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { HIDE_SPINNER, SHOW_SPINNER } from "../../../../store/constants/spinner";
+import { useDispatch } from "react-redux";
+import { message } from "antd";
 
 const defaultAvatarSrc = "/images/category/BgWhite.png"; // Default avatar source
 
 const PostVNExpress = ({ pClass, videoIcon, postSizeMd }) => {
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/LatesVNExpress");
+      dispatch({ type: SHOW_SPINNER });
+        const response = await axios.get("/api/lates-vnexpress");
         setData(response.data);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+        }, 2000);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        setTimeout(() => {
+          dispatch({ type: HIDE_SPINNER });
+          message.error(error.response?.data?.message);
+        }, 2000);
       }
     };
 
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
@@ -62,8 +73,8 @@ const PostVNExpress = ({ pClass, videoIcon, postSizeMd }) => {
             <div className="post-metas">
               <ul className="list-inline">
                 {article.user && article.user.name && (
-                  <li>
-                    <span>By</span>
+                  <li> 
+                    <span>Bởi</span>
                     <Link href={`/author/${slugify(article.user.name)}`}>
                       <a className="post-author">{article.user.name}</a>
                     </Link>

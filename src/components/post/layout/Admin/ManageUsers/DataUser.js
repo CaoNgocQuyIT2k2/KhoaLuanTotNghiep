@@ -12,19 +12,19 @@ export default function DataUser() {
   const token = useSelector((state) => state.user?.token);
   const [detail, setDetail] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
-  console.log("🚀 ~ userId111:", userId);
-console.log("userId",userId);
+
+
   useEffect(() => {
     fetchListUser();
   }, [userId, fetchListUser]);
 
   const fetchListUser = useCallback(async () => {
     try {
-      const response = await axios.get(`/api/GetAllUser`, {
+      const response = await axios.get(`/api/get-all-user`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const users = response.data || [];
-      console.log("users", users);
+
       setDetail(users);
     } catch (error) {
       console.error("Error fetching article detail:", error);
@@ -42,15 +42,15 @@ console.log("userId",userId);
       console.error("User information is missing");
       return;
     }
-    console.log("user_id", user_id);
+
     axios
-      .delete(`/api/DeleteUser?userId=${user_id}`, {
+      .delete(`/api/delete-user?userId=${user_id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res = 200) => {
         message.success("Xóa thành công");
         fetchListUser();
-        console.log("🚀 ~ res:", res);
+
       })
       .catch((err) => {
         message.error("Xóa thất bại");
@@ -59,17 +59,17 @@ console.log("userId",userId);
 
   const columns = [
     {
-      title: 'ID',
+      title: 'Mã người dùng',
       dataIndex: 'id',
       key: 'id',
     },
     {
-      title: 'Firstname',
+      title: 'Tên người dùng',
       dataIndex: 'firstname',
       key: 'firstname',
     },
     {
-      title: 'Lastname',
+      title: 'Họ và tên lót',
       dataIndex: 'lastname',
       key: 'lastname',
     },
@@ -79,13 +79,13 @@ console.log("userId",userId);
       key: 'email',
     },
     {
-      title: 'Date of Birth',
+      title: 'Ngày sinh',
       dataIndex: 'dob',
       key: 'dob',
       render: (dob) => moment(dob).format('DD/MM/YYYY'),
     },
     {
-      title: 'Role',
+      title: 'Vị trí',
       dataIndex: 'role',
       key: 'role',
       render: (role) => {
@@ -97,7 +97,7 @@ console.log("userId",userId);
       },
     },
     {
-      title: 'Action',
+      title: 'Hành động',
       key: 'action',
       render: (_, users) => (
         <div>

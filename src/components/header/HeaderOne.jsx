@@ -3,12 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { dateFormate } from "../../utils";
 import MenuCategories from "./MenuCategories";
-import axios from 'axios';
 import { message } from "antd";
 import dynamic from 'next/dynamic';
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import LogUser from "../post/post-format/elements/LogUser";
+import { format } from 'date-fns';
+import { vi } from 'date-fns/locale';
 
 const SearchImage = dynamic(() => import("../objectDetector/SearchImage"), {
   ssr: false
@@ -24,14 +25,13 @@ const HeaderOne = () => {
   const [mount, setMount] = useState(false);
 
   useEffect(() => {
-    setMount(true)
-  },[])
+    setMount(true);
+  }, []);
 
   useEffect(() => {
     const toggleDropdownMenu = () => {
       const dropdownSelect = menuRef.current?.childNodes;
       let dropdownList = [];
-
       for (let i = 0; i < dropdownSelect?.length; i++) {
         const element = dropdownSelect[i];
         if (element.classList.contains("has-dropdown")) {
@@ -42,7 +42,6 @@ const HeaderOne = () => {
         dropdownList.forEach((element) => {
           element.children[0].addEventListener("click", (e) => {
             e.preventDefault();
-
             if (element.classList.contains("active")) {
               element.classList.remove("active");
               element.childNodes[1].classList.remove("opened");
@@ -51,7 +50,6 @@ const HeaderOne = () => {
                 submenu.classList.remove("active");
                 submenu.childNodes[1].classList.remove("opened");
               });
-
               element.classList.add("active");
               element.childNodes[1].classList.add("opened");
             }
@@ -61,15 +59,20 @@ const HeaderOne = () => {
         console.error("Dropdown select is empty!");
       }
     };
-
     toggleDropdownMenu();
   }, []);
+
+  useEffect(() => {
+    if (searchKeyword) {
+      handleSearchButtonClick();
+    }
+  }, [searchKeyword]);
 
   const handleClose = () => {
     setSearchShow(false);
     setMobileToggle(false);
   };
-  
+
   const handleShow = () => {
     setSearchShow(true);
     setMobileToggle(false);
@@ -90,7 +93,6 @@ const HeaderOne = () => {
     setMobileToggle(!mobileToggle);
     const HtmlTag = document.querySelector("html");
     const menuSelect = document.querySelectorAll(".main-navigation li");
-  
     if (HtmlTag.classList.contains("main-menu-opened")) {
       HtmlTag.classList.remove("main-menu-opened");
     } else {
@@ -98,7 +100,6 @@ const HeaderOne = () => {
         HtmlTag.classList.add("main-menu-opened");
       }, 800);
     }
-  
     menuSelect.forEach((element) => {
       element.addEventListener("click", function () {
         if (!element.classList.contains("has-dropdown")) {
@@ -111,24 +112,10 @@ const HeaderOne = () => {
 
   const handleSearchButtonClick = async () => {
     if (!searchKeyword) {
-      message.error("Please enter a search keyword");
+      message.error("Vui lòng nhập dữ liệu tìm kiếm");
       return;
-    }
-
-    try {
-      const response = await axios.get('/api/Search', {
-        params: { keyList: searchKeyword }
-      });
-
-      if (response.status === 200) {
-        console.log("Kết quả tìm kiếm:", response.data);
-        router.push(`/search/${searchKeyword}`);
-      } else {
-        message.error("Search failed");
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      message.error("Internal Server Error");
+    } else {
+      router.push(`/search/${searchKeyword}`);
     }
   };
 
@@ -138,32 +125,22 @@ const HeaderOne = () => {
       handleSearchButtonClick();
     }
   };
-  if(!mount) return null
+
+  const dateFormate = () => {
+    return format(new Date(), 'EEEE, dd MMMM yyyy', { locale: vi });
+  };
+
+  if (!mount) return null;
+
   return (
     <>
-  
       <header className="page-header">
         <div className="header-top bg-grey-dark-one">
           <div className="container">
             <div className="row align-items-center">
               <div className="col-md">
-                <ul className="header-top-nav list-inline justify-content-center justify-content-md-start" >
+                <ul className="header-top-nav list-inline justify-content-center justify-content-md-start">
                   <li className="current-date">{dateFormate()}</li>
-                  <li>
-                    <Link href="/">
-                      <a id="btn-header">Advertisement</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/about-us">
-                      <a id="btn-header">About</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/contact">
-                      <a id="btn-header">Contact</a>
-                    </Link>
-                  </li>
                 </ul>
               </div>
               <div className="col-md-auto">
@@ -174,7 +151,7 @@ const HeaderOne = () => {
                     <li>
                       <Link href="/login">
                         <a>
-                          <i className="feather icon-log-in" /> LogIn
+                          <i className="feather icon-log-in" /> Đăng nhập
                         </a>
                       </Link>
                     </li>
@@ -213,7 +190,7 @@ const HeaderOne = () => {
                     <input
                       type="text"
                       className="navbar-search-field"
-                      placeholder="Search Here..."
+                      placeholder="Tìm kiếm ở đây..."
                       value={searchKeyword}
                       onChange={(e) => setSearchKeyword(e.target.value)}
                       onKeyDown={handleKeyDown}
@@ -240,13 +217,8 @@ const HeaderOne = () => {
                 >
                   <i className="far fa-search" />
                 </button>
-               
               </div>
-              <div
-              
-              >
-                
-              </div>
+              <div></div>
             </div>
           </div>
         </nav>

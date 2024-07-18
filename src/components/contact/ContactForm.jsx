@@ -7,7 +7,7 @@ import { useRef, useState } from 'react';
 const Result = () => {
   return (
       <Alert variant="success" className="success-msg">
-          Your Message has been successfully sent.
+          Tin nhắn của bạn đã được gửi thành công
       </Alert>
   )
 }
@@ -23,9 +23,9 @@ const sendEmail = (e) => {
 
 	emailjs.sendForm('service_g3aufzu', 'template_sk4dqiz', form.current, '9L_sRsO66U253zcxC')
 		.then((result) => {
-			console.log(result.text);
+
 		}, (error) => {
-			console.log(error.text);
+
 		});
 		form.current.reset();
 		showresult(true);
