@@ -56,7 +56,7 @@ const LayoutArtBySearch = () => {
           <div className="row align-items-center">
             <div className="col-lg-12">
               <div className="post-title-wrapper">
-                <h2 className="m-b-xs-0 axil-post-title hover-line">Kết quả tìm kiếm cho từ: {slug}</h2>
+                <h2 className="m-b-xs-0 axil-post-title hover-line">Kết quả tìm kiếm: </h2>
               </div>
             </div>
           </div>
