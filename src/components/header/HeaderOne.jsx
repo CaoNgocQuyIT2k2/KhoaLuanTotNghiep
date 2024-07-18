@@ -116,8 +116,10 @@ const HeaderOne = () => {
       return;
     } else {
       router.push(`/search/${searchKeyword}`);
+      setSearchKeyword(""); // Đặt lại searchKeyword về rỗng sau khi thực hiện tìm kiếm
     }
   };
+  
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
